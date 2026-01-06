@@ -9,6 +9,30 @@
   <link rel="apple-touch-icon" sizes="180x180" href="{{ 'apple-touch-icon.png' | relative_url }}">
   
   <style>
+    
+ /* ===== GLOBAL ANIMATION ===== */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.project-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
     * {
       margin: 0;
       padding: 0;
