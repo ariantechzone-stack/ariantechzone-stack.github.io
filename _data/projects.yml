@@ -1,11 +1,17 @@
 - title: Instagram Campaign
-  description: Minimal social media visuals with strong hierarchy.
+  category: Social Media
+  description: Minimal social media visuals with strong hierarchy and clear messaging.
   image: https://picsum.photos/600/400?1
+  image_alt: Instagram campaign visual design for social media branding
 
 - title: Poster Design
-  description: Bold typography with modern composition.
+  category: Print Design
+  description: Bold typography combined with modern layout composition.
   image: https://picsum.photos/600/400?2
+  image_alt: Modern poster design with bold typography
 
 - title: Brand Visual
-  description: Clean layouts adaptable for multiple platforms.
+  category: Branding
+  description: Clean and adaptable visual layouts suitable for multiple platforms.
   image: https://picsum.photos/600/400?3
+  image_alt: Brand visual identity design layout
