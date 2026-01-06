@@ -69,36 +69,37 @@ footer p{ font-size:0.9rem; color:#777; }
   display:flex;
   align-items:center;
   justify-content:center;
-  color:#aaa;
+  background:#1a1a1a; /* default circle background */
+  color:#aaa;          /* default icon color */
   position:relative;
   overflow:hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
-  background:#1a1a1a; /* default background inside the circle */
 }
 
-/* Hover scale effect */
+/* Hover scale */
 .social-link:hover {
   transform: scale(1.2);
 }
 
-/* Platform-specific hover backgrounds */
+/* Platform-specific hover backgrounds and icon colors */
 .social-link.github:hover {
-  background:#000;  /* black background inside GitHub circle */
-  color:#fff;       /* white icon */
-  box-shadow:0 0 25px rgba(255,255,255,0.6);
+  background:#fff;   /* white background inside GitHub circle */
+  color:#000;        /* black GitHub icon */
+  box-shadow:0 0 25px rgba(0,0,0,0.3);
 }
 
 .social-link.instagram:hover {
   background: linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5); /* gradient inside */
-  color:#fff;
+  color:#fff;        /* white icon */
   box-shadow:0 0 25px rgba(214,41,118,0.6);
 }
 
 .social-link.pinterest:hover {
-  background:#e60023;  /* red background inside Pinterest circle */
-  color:#fff;
+  background:#e60023;  /* red background inside circle */
+  color:#fff;          /* white icon */
   box-shadow:0 0 25px rgba(230,0,35,0.6);
 }
+
 
 .tooltip{ position:absolute; bottom:120%; left:50%; transform:translateX(-50%); padding:6px 12px; background:#222; color:#fff; font-size:0.8rem; border-radius:6px; opacity:0; pointer-events:none; transition:opacity 0.3s ease; }
 .social-link:hover .tooltip{ opacity:1; }
