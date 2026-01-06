@@ -20,6 +20,14 @@ body{
   overflow-x:hidden;
   transition:background .4s,color .4s;
 }
+.projects {
+  margin-top: 120px;
+}
+
+.projects h2 {
+  font-size: 2.2rem;
+  margin-bottom: 50px;
+}
 
 /* ================= PAGE LOAD INTRO ================= */
 body.loading *{pointer-events:none;}
@@ -63,10 +71,22 @@ body.loading *{pointer-events:none;}
 }
 
 /* ================= HERO ================= */
-.hero{
-  position:relative;text-align:center;
-  padding:120px 20px;overflow:hidden;
+.hero {
+  text-align: center;
+  padding: 120px 20px 100px;
 }
+
+.hero h1 {
+  font-size: clamp(2.8rem, 5vw, 4rem);
+  margin-bottom: 16px;
+}
+
+.hero-subtext {
+  font-size: 1.15rem;
+  max-width: 600px;
+  margin: auto;
+}
+
 .hero-bg{
   position:absolute;inset:0;
   background:linear-gradient(135deg,#1a1a1a,#0f0f0f);
@@ -85,19 +105,48 @@ body.loading *{pointer-events:none;}
 .hero-subtext{color:#ccc;margin-top:20px;position:relative;z-index:1}
 
 /* ================= CONTAINER ================= */
-.container{max-width:1000px;margin:auto;padding:40px 20px}
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 80px 24px;
+}
+
 
 /* ================= PROJECTS ================= */
-.project-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
 }
+
 @media(max-width:900px){.project-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.project-grid{grid-template-columns:1fr}}
 
-.project-card{
-  background:#1a1a1a;padding:25px;border-radius:12px;
-  transition:transform .2s ease,box-shadow .3s;
-  transform-style:preserve-3d;
+.card {
+  background: #161616;
+  padding: 36px 32px;
+  border-radius: 18px;
+  min-height: 220px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+}
+.card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 14px;
+}
+
+.card p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+.section-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, #333, transparent);
+  margin: 120px 0;
 }
 
 /* ================= FADE UP ================= */
