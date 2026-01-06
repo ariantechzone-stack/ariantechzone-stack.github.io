@@ -4,7 +4,7 @@ title: Home
 ---
 
 <div class="hero">
-  <h1>YOUR NAME</h1>
+  <h1>Arian Designs</h1>
   <p>Demo Portfolio Website • Jekyll Practice</p>
 </div>
 
