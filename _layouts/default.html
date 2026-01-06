@@ -14,6 +14,39 @@
 <meta name="theme-color" content="#0f0f0f">
 
 <style>
+<!-- HERO -->
+<div class="hero page-intro">
+  <h1 class="gradient-text">ARIAN DESIGNS</h1>
+  <p>Clean, modern visual design for posters, banners & social media.</p>
+</div>
+
+<!-- PROJECTS -->
+<section class="project-grid page-intro">
+  {% for project in site.data.projects %}
+  <div class="project-card">
+    <img src="{{ project.image }}" alt="{{ project.title }}">
+    <div class="project-content">
+      <h3>{{ project.title }}</h3>
+      <p>{{ project.description }}</p>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+
+<!-- ABOUT -->
+<section class="about page-intro">
+  <h2>About</h2>
+  <p>{{ site.data.about.description }}</p>
+</section>
+
+<!-- FOOTER -->
+<footer class="page-intro">
+  <p>© 2026 ARIAN DESIGNS</p>
+  <div class="socials">
+    <!-- your social icons here -->
+  </div>
+</footer>
+
 /* ================= PAGE LOAD INTRO ================= */
 .page-intro {
   opacity: 0;
@@ -208,6 +241,34 @@ window.addEventListener('DOMContentLoaded', () => {
     intro.classList.add('show');
   }, 100); // small delay to trigger transition
 });
+/* ================= PAGE LOAD INTRO FOR ALL SECTIONS ================= */
+.page-intro {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.page-intro.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-intro > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.page-intro.show > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered delays for sections */
+.hero.page-intro.show > * { transition-delay: 0.3s; }
+.project-grid.page-intro.show > * { transition-delay: 0.6s; }
+.about.page-intro.show > * { transition-delay: 0.9s; }
+footer.page-intro.show > * { transition-delay: 1.2s; }
   
 </script>
 </body>
