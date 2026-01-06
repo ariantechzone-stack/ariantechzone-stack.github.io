@@ -24,5 +24,7 @@ title: Home
 <h2>About</h2>
 <p>I design modern, clean and effective visuals.</p>
 </div>
+<div class="section-divider">
+</div>
 
 </div>
