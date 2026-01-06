@@ -3,28 +3,32 @@ layout: default
 title: Home
 ---
 
-<div class="hero fade-up">
+<!-- HERO SECTION -->
+<section class="hero fade-up">
   <div class="hero-bg"></div>
   <h1 class="gradient-text">Welcome to ARIAN DESIGNS</h1>
   <p class="hero-subtext">Modern, minimal & professional visuals</p>
-</div>  
+</section>
 
-<div class="container">
+<!-- PROJECTS SECTION -->
+<section class="projects fade-up">
+  <h2>Projects</h2>
+  <div class="project-grid">
+    {% for project in site.data.projects %}
+      <div class="project-card fade-up">
+        <img src="{{ project.image }}" alt="{{ project.title }}">
+        <div class="project-content">
+          <h3>{{ project.title }}</h3>
+          <p>{{ project.description }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
 
-<div class="projects fade-up">
-<h2>Projects</h2>
-<div class="project-grid">
-<div class="project-card">Project 1</div>
-<div class="project-card">Project 2</div>
-<div class="project-card">Project 3</div>
-</div>
-</div>
+<!-- ABOUT SECTION -->
+<section class="about fade-up">
+  <h2>About</h2>
+  <p>{{ site.data.about.description }}</p>
+</section>
 
-<div class="about fade-up">
-<h2>About</h2>
-<p>I design modern, clean and effective visuals.</p>
-</div>
-<div class="section-divider">
-</div>
-
-</div>
