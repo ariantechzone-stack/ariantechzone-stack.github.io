@@ -1,3 +1,7 @@
-title: Demo Portfolio
-description: Demo website made with Jekyll and GitHub Pages
+title: ARIAN DESIGNS
+description: Modern, minimal, professional portfolio
 theme: null
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-paginate
