@@ -7,7 +7,7 @@ title: Home
   <div class="hero-bg"></div>
   <h1 class="gradient-text">Welcome to ARIAN DESIGNS</h1>
   <p class="hero-subtext">Modern, minimal & professional visuals</p>
-</div>
+</div>  
 
 <div class="container">
 
