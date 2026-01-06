@@ -9,6 +9,28 @@
   <link rel="apple-touch-icon" sizes="180x180" href="{{ 'apple-touch-icon.png' | relative_url }}">
   
   <style>
+    /* ===== HERO PARALLAX BACKGROUND ===== */
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1a1a1a, #0f0f0f);
+  z-index: 0;
+  transform: translateY(0);
+  transition: transform 0.2s ease-out;
+  pointer-events: none;
+  border-radius: 0;
+}
+.hero h1, .hero p { position: relative; z-index: 1; }
+
     /* ===== GLOBAL RESET ===== */
     * {
       margin: 0;
@@ -93,37 +115,39 @@
   </style>
 </head>
 <body>
+<!-- HERO -->
+<div class="hero fade-up">
+  <div class="hero "></div> <!-- parallax background -->
+  <h1 class="gradient-text">Welcome to ARIAN DESIGNS</h1>
+  <p class="hero-subtext">Creating clean, modern visuals & designs for your projects.</p>
+</div>
 
-  <!-- HERO -->
-  <div class="hero fade-up">
-    <h1 class="gradient-text">Welcome to ARIAN DESIGNS</h1>
-    <p class="hero-subtext">Creating clean, modern visuals & designs for your projects.</p>
-  </div>
-
-  <!-- PROJECTS -->
-  <div class="projects">
-    <h2 class="fade-up">Projects</h2>
-    <div class="project-grid">
-      <div class="card project-card">
-        <h3>Project 1</h3>
-        <p>Short description of project 1.</p>
-      </div>
-      <div class="card project-card">
-        <h3>Project 2</h3>
-        <p>Short description of project 2.</p>
-      </div>
-      <div class="card project-card">
-        <h3>Project 3</h3>
-        <p>Short description of project 3.</p>
-      </div>
+<!-- PROJECTS (outside hero!) -->
+<div class="projects">
+  <h2 class="fade-up">Projects</h2>
+  <div class="project-grid">
+    <div class="card project-card">
+      <h3>Project 1</h3>
+      <p>Short description of project 1.</p>
+    </div>
+    <div class="card project-card">
+      <h3>Project 2</h3>
+      <p>Short description of project 2.</p>
+    </div>
+    <div class="card project-card">
+      <h3>Project 3</h3>
+      <p>Short description of project 3.</p>
     </div>
   </div>
+</div>
 
   <!-- ABOUT -->
-  <div class="about fade-up">
-    <h2>About Me</h2>
-    <p>I am a designer focused on minimal, modern, and professional visuals. I create posters, banners, and social media content that stand out.</p>
-  </div>
+  <div class="hero fade-up">
+  <div class="hero-bg"></div> <!-- parallax background -->
+  <h1 class="gradient-text">Welcome to ARIAN DESIGNS</h1>
+  <p class="hero-subtext">Creating clean, modern visuals & designs for your projects.</p>
+</div>
+
 
   <!-- FOOTER -->
   <footer id="site-footer">
@@ -151,6 +175,15 @@
     fadeElements.forEach(el => observer.observe(el));
   });
   </script>
+  <script>
+document.addEventListener('scroll', function() {
+  const heroBg = document.querySelector('.hero-bg');
+  const scrollY = window.scrollY;
+  // Move background slower than scroll for parallax
+  heroBg.style.transform = `translateY(${scrollY * 0.3}px)`;
+});
+</script>
+
 
 </body>
 </html>
