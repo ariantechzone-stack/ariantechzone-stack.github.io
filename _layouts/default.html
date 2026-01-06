@@ -201,6 +201,14 @@ if(!reduceMotion){
     });
   });
 }
+// ===== PAGE LOAD INTRO =====
+window.addEventListener('DOMContentLoaded', () => {
+  const intro = document.querySelector('.page-intro');
+  setTimeout(() => {
+    intro.classList.add('show');
+  }, 100); // small delay to trigger transition
+});
+  
 </script>
 </body>
 </html>
