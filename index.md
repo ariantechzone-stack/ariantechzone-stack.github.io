@@ -3,38 +3,62 @@ layout: default
 title: Home
 ---
 
-<!-- HERO SECTION -->
-<div class="hero fade-up">
+<!-- ================= HERO SECTION ================= -->
+<section class="hero fade-up">
   <div class="hero-bg"></div>
-  <h1 class="gradient-text">Welcome to ARIAN DESIGNS</h1>
-  <p class="hero-subtext">Modern, minimal & professional visuals</p>
-</div>  
 
-<div class="container">
+  <div class="hero-inner">
+    <h1 class="gradient-text">ARIAN DESIGNS</h1>
+    <p class="hero-subtext">
+      Modern, minimal & professional visuals
+    </p>
+  </div>
+</section>
 
-  <!-- PROJECTS SECTION -->
-  <div class="projects fade-up">
-    <h2>Projects</h2>
+<!-- ================= MAIN CONTENT ================= -->
+<main class="container">
+
+  <!-- ========== PROJECTS SECTION ========== -->
+  <section class="projects fade-up">
+    <header class="section-header">
+      <h2>Selected Projects</h2>
+      <p class="section-subtext">
+        Clean visual systems designed for clarity and impact
+      </p>
+    </header>
+
     <div class="project-grid">
       {% for project in site.data.projects %}
-      <div class="project-card">
-        <img src="{{ project.image }}" alt="{{ project.title }}">
+      <article class="project-card">
+        
+        <div class="project-image">
+          <img src="{{ project.image }}" alt="{{ project.title }}">
+        </div>
+
         <div class="project-content">
           <h3>{{ project.title }}</h3>
           <p>{{ project.description }}</p>
         </div>
-      </div>
+
+      </article>
       {% endfor %}
     </div>
-  </div>
+  </section>
 
-  <!-- ABOUT SECTION -->
-  <div class="about fade-up">
-    <h2>About</h2>
-    {% for line in site.data.about.description %}
-      <p>{{ line }}</p>
-    {% endfor %}
-  </div>
-
+  <!-- ========== SECTION DIVIDER ========== -->
   <div class="section-divider"></div>
-</div>
+
+  <!-- ========== ABOUT SECTION ========== -->
+  <section class="about fade-up">
+    <header class="section-header">
+      <h2>About</h2>
+    </header>
+
+    <div class="about-content">
+      {% for line in site.data.about.description %}
+        <p>{{ line }}</p>
+      {% endfor %}
+    </div>
+  </section>
+
+</main>
