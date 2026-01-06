@@ -63,26 +63,42 @@ footer{ padding:50px 20px; text-align:center; background:linear-gradient(to top,
 footer p{ font-size:0.9rem; color:#777; }
 .socials{ margin-top:30px; display:flex; justify-content:center; gap:20px; }
 .social-link {
-  width:56px; height:56px; border-radius:50%; display:flex; align-items:center; justify-content:center;
-  color:#aaa; position:relative; overflow:hidden; border:2px solid transparent; background-clip: padding-box;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#aaa;
+  position:relative;
+  overflow:hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+  background:#1a1a1a; /* default background inside the circle */
 }
 
-/* General outline gradient effect (optional) */
-.social-link::after {
-  content:""; position:absolute; top:-2px; left:-2px; right:-2px; bottom:-2px;
-  border-radius:50%; background: linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);
-  z-index:-1; opacity:0; transition: opacity 0.3s ease;
+/* Hover scale effect */
+.social-link:hover {
+  transform: scale(1.2);
 }
-.social-link:hover::after{ opacity:1; }
 
-/* Icon scaling on hover */
-.social-link:hover { transform: scale(1.2); }
+/* Platform-specific hover backgrounds */
+.social-link.github:hover {
+  background:#000;  /* black background inside GitHub circle */
+  color:#fff;       /* white icon */
+  box-shadow:0 0 25px rgba(255,255,255,0.6);
+}
 
-/* Platform-specific hover backgrounds & colors */
-.social-link.github:hover { background:#fff; color:#000; box-shadow:0 0 25px rgba(255,255,255,0.6); }
-.social-link.instagram:hover { background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5); color:#fff; box-shadow:0 0 25px rgba(214,41,118,0.6); }
-.social-link.pinterest:hover { background:#e60023; color:#fff; box-shadow:0 0 25px rgba(230,0,35,0.6); }
+.social-link.instagram:hover {
+  background: linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5); /* gradient inside */
+  color:#fff;
+  box-shadow:0 0 25px rgba(214,41,118,0.6);
+}
+
+.social-link.pinterest:hover {
+  background:#e60023;  /* red background inside Pinterest circle */
+  color:#fff;
+  box-shadow:0 0 25px rgba(230,0,35,0.6);
+}
 
 .tooltip{ position:absolute; bottom:120%; left:50%; transform:translateX(-50%); padding:6px 12px; background:#222; color:#fff; font-size:0.8rem; border-radius:6px; opacity:0; pointer-events:none; transition:opacity 0.3s ease; }
 .social-link:hover .tooltip{ opacity:1; }
