@@ -11,7 +11,14 @@ title: Home
 
 
 <div class="container">
+<!-- HERO -->
+<div class="hero fade-up">
+  <div class="hero-bg"></div> <!-- parallax background -->
+  <h1 class="gradient-text">Welcome to ARIAN DESIGNS</h1>
+  <p class="hero-subtext">Creating clean, modern visuals & designs for your projects.</p>
+</div>
 
+<!-- PROJECTS (outside hero!) -->
 <div class="projects">
   <h2 class="fade-up">Projects</h2>
   <div class="project-grid">
@@ -29,7 +36,6 @@ title: Home
     </div>
   </div>
 </div>
-
 
 <div class="about fade-up">
   <h2>About Me</h2>
