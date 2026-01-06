@@ -150,15 +150,13 @@ footer p{ font-size:0.9rem; color:#777; }
   </div>
 </footer>
 
-
-
 <script>
 // ===== REDUCED MOTION =====
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // ===== CURSOR GLOW & SCROLL BAR =====
+const glow = document.querySelector('.cursor-glow');
 if(!reduceMotion){
-  const glow = document.querySelector('.cursor-glow');
   document.addEventListener('mousemove', e=>{
     glow.style.left = e.clientX+'px';
     glow.style.top = e.clientY+'px';
@@ -193,16 +191,21 @@ if(!reduceMotion){
       setTimeout(()=>ripple.remove(),600);
     });
   });
+
+  // Cursor enlarges near interactive elements
+  document.querySelectorAll('a, .project-card, button').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{ glow.style.width='50px'; glow.style.height='50px'; });
+    el.addEventListener('mouseleave',()=>{ glow.style.width='30px'; glow.style.height='30px'; });
+  });
 }
 
-// ===== PAGE LOAD INTRO =====
+// ===== PAGE LOAD INTRO & TYPING HERO =====
 window.addEventListener('DOMContentLoaded', () => {
   const introElements = document.querySelectorAll('.page-intro');
   introElements.forEach((el, index) => {
     setTimeout(() => { el.classList.add('show'); }, index * 200 + 100);
   });
 
-  // ===== TYPING EFFECT HERO =====
   const heroText = "Clean, modern visual design for posters, banners & social media.";
   const heroEl = document.getElementById("hero-text");
   if(heroEl){
@@ -215,17 +218,18 @@ window.addEventListener('DOMContentLoaded', () => {
     },35);
   }
 
-  // ===== MOBILE / TOUCH FEEDBACK FOR PROJECT CARDS =====
+  // Fade-in project cards
+  const cards = document.querySelectorAll('.project-card');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('fade-in'); });
+  }, { threshold:0.2 });
+  cards.forEach(card => observer.observe(card));
+
+  // Mobile / Touch feedback
   if('ontouchstart' in window){
     document.querySelectorAll('.project-card').forEach(card=>{
-      card.addEventListener('touchstart', ()=>{
-        card.style.transform = 'scale(1.03)';
-        card.style.boxShadow = '0 15px 30px rgba(0,0,0,0.4)';
-      });
-      card.addEventListener('touchend', ()=>{
-        card.style.transform = 'scale(1)';
-        card.style.boxShadow = '0 0 0 rgba(0,0,0,0)';
-      });
+      card.addEventListener('touchstart', ()=>{ card.style.transform = 'scale(1.03)'; card.style.boxShadow='0 15px 30px rgba(0,0,0,0.4)'; });
+      card.addEventListener('touchend', ()=>{ card.style.transform='scale(1)'; card.style.boxShadow='0 0 0 rgba(0,0,0,0)'; });
     });
   }
 });
