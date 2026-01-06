@@ -442,7 +442,24 @@
     observer.observe(footer);
   });
 </script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Fade-in footer (already added)
+  
+  // New: Hero, About, Projects animations
+  const fadeElements = document.querySelectorAll('.fade-up, .project-card');
 
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.3 });
+
+  fadeElements.forEach(el => observer.observe(el));
+});
+</script>
   
 </body>
 </html>
