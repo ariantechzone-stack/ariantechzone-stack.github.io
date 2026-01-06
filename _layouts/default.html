@@ -117,7 +117,7 @@ footer p{ font-size:0.9rem; color:#777; }
 <footer class="page-intro">
   <p>© 2026 ARIAN DESIGNS</p>
   <div class="socials">
-    {% for link in site.data.social.links %}
+    {% for link in site.social.links %}
       {% if link contains "github.com" %}
         {% assign platform = "GitHub" %}
       {% elsif link contains "instagram.com" %}
@@ -140,6 +140,7 @@ footer p{ font-size:0.9rem; color:#777; }
     {% endfor %}
   </div>
 </footer>
+
 
 <script>
 // ===== REDUCED MOTION =====
