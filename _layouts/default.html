@@ -14,6 +14,31 @@
 <meta name="theme-color" content="#0f0f0f">
 
 <style>
+/* ================= PAGE LOAD INTRO ================= */
+.page-intro {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.page-intro.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Optional: add slight delay for children */
+.page-intro > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+  transition-delay: 0.3s;
+}
+
+.page-intro.show > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* ================= GLOBAL ================= */
 * { margin:0; padding:0; box-sizing:border-box; font-family: 'Inter', Arial, Helvetica, sans-serif; }
 body { background:#0f0f0f; color:#fff; line-height:1.6; overflow-x:hidden; min-height:100vh; }
@@ -73,11 +98,13 @@ footer p{ font-size:0.9rem; color:#777; }
 <div class="cursor-glow"></div>
 <div class="progress"></div>
 
-<!-- HERO -->
-<div class="hero fade-up">
+<!-- HERO WITH INTRO -->
+<div class="hero page-intro">
   <h1 class="gradient-text">ARIAN DESIGNS</h1>
-  <p class="hero-subtext">{{ site.data.about.description }}</p>
+  <p>Clean, modern visual design for posters, banners & social media.</p>
 </div>
+
+
 
 <!-- PROJECTS -->
 <section class="projects fade-up">
