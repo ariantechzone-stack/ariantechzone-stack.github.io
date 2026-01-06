@@ -113,7 +113,9 @@ footer {
   font-size: 0.9rem;
 }
 
-/* Social container */
+/* ===== SOCIAL ICONS CLEAN CSS ===== */
+
+/* Social links container */
 .social-links {
   margin-top: 18px;
   display: flex;
@@ -122,7 +124,7 @@ footer {
   gap: 18px;
 }
 
-/* Icon wrapper */
+/* Circular icon wrapper */
 .social-links a {
   width: 56px;
   height: 56px;
@@ -134,84 +136,42 @@ footer {
   justify-content: center;
   align-items: center;
 
-  transition:
-    background 0.3s ease,
-    color 0.3s ease,
-    box-shadow 0.3s ease,
-    transform 0.3s ease;
+  overflow: visible;
+  transition: all 0.3s ease;
 }
 
-/* Icon size */
-.social-links .icon {
-  width: 40px;   /* 👈 BIG ICON */
-  height: 40px;
+/* SVG icon size */
+.social-links svg {
+  width: 36px;
+  height: 36px;
+  display: block;
+  fill: currentColor; /* ensures icon color comes from parent */
 }
 
-/* Lift animation */
+/* Lift animation on hover */
 .social-links a:hover {
   transform: translateY(-6px);
 }
 
-/* GitHub */
+/* Platform-specific hover background + icon color + glow */
 .social-links a[aria-label="GitHub"]:hover {
   background: #ffffff;
   color: #000000; /* black icon */
   box-shadow: 0 0 18px rgba(255, 255, 255, 0.6);
 }
 
-/* Instagram */
 .social-links a[aria-label="Instagram"]:hover {
   background: #e1306c;
   color: #ffffff; /* white icon */
   box-shadow: 0 0 18px rgba(225, 48, 108, 0.6);
 }
 
-/* Pinterest */
 .social-links a[aria-label="Pinterest"]:hover {
   background: #e60023;
   color: #ffffff; /* white icon */
   box-shadow: 0 0 18px rgba(230, 0, 35, 0.6);
 }
-/* ===== SOCIAL ICON FIX ===== */
 
-.social-links a {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: #1a1a1a;
-  color: #aaaaaa;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  overflow: visible;
-  transition: all 0.3s ease;
-}
-
-.social-links svg {
-  width: 36px;
-  height: 36px;
-  fill: currentColor;
-  display: block;
-}
-/* FORCE SVG ICON VISIBILITY */
-.social-links svg {
-  width: 36px;
-  height: 36px;
-  display: block;
-}
-
-.social-links svg path {
-  fill: currentColor !important;
-  stroke: none !important;
-  opacity: 1 !important;
-}
-.social-links svg path {
-  fill: red !important;
-}
-
-    
   </style>
 </head>
 <body>
