@@ -171,6 +171,95 @@ footer {
   color: #ffffff; /* white icon */
   box-shadow: 0 0 18px rgba(230, 0, 35, 0.6);
 }
+/* ===== ANIMATED INSTAGRAM GRADIENT ===== */
+.social-links a[aria-label="Instagram"] {
+  background: #e1306c;
+  position: relative;
+  overflow: hidden;
+}
+
+.social-links a[aria-label="Instagram"]::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  background-size: 400% 400%;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.social-links a[aria-label="Instagram"]:hover::before {
+  animation: gradientRotate 3s linear infinite;
+  opacity: 1;
+}
+
+@keyframes gradientRotate {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.social-links a[aria-label="Instagram"] svg {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+}
+
+/* ===== PULSE EFFECT ON HOVER ===== */
+.social-links a:hover {
+  animation: pulse 0.8s ease-out forwards;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+/* ===== RESPONSIVE ICON SCALING ===== */
+@media (max-width: 600px) {
+  .social-links a {
+    width: 48px;
+    height: 48px;
+  }
+
+  .social-links a svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* ===== TOOLTIP ON HOVER ===== */
+.social-links a {
+  position: relative;
+}
+
+.social-links a::after {
+  content: attr(aria-label);
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #222;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, bottom 0.2s ease;
+}
+
+.social-links a:hover::after {
+  opacity: 1;
+  bottom: 140%;
+}
 
   </style>
 </head>
