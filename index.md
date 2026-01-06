@@ -3,10 +3,11 @@ layout: default
 title: Home
 ---
 
-<div class="hero">
-  <h1>Arian Designs</h1>
-  <p>Demo Portfolio Website • Jekyll Practice</p>
+<div class="hero fade-up">
+  <h1>Welcome to ARIAN DESIGNS</h1>
+  <p>Creating clean, modern visuals & designs for your projects.</p>
 </div>
+
 
 <div class="container">
 
