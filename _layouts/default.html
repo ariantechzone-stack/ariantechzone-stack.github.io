@@ -95,47 +95,84 @@
       margin: auto;
     }
 
-    footer {
-      margin-top: 80px;
-      text-align: center;
-      color: #777777;
-      font-size: 0.9rem;
-    }
-    .social-links {
-  margin-top: 18px;
+/* Sticky footer setup */
+html, body {
+  height: 100%;
 }
 
-/* Base icon style */
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  margin-top: auto; /* 👈 makes footer sticky */
+  padding: 30px 20px;
+  text-align: center;
+  color: #777777;
+  font-size: 0.9rem;
+}
+
+/* Social container */
+.social-links {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+}
+
+/* Icon wrapper */
 .social-links a {
-  margin: 0 14px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #1a1a1a;
   color: #aaaaaa;
-  display: inline-flex;
-  transition: color 0.3s ease, transform 0.3s ease;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
 }
 
 /* Icon size */
 .social-links .icon {
-  width: 30px;   /* 👈 ICON SIZE */
-  height: 30px;
+  width: 40px;   /* 👈 BIG ICON */
+  height: 40px;
 }
 
-/* Hover animation */
+/* Lift animation */
 .social-links a:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
 }
 
-/* Platform-specific hover colors */
+/* GitHub hover */
 .social-links a[aria-label="GitHub"]:hover {
-  color: #ffffff; /* GitHub white */
+  background: #ffffff;
+  color: #000000;
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.6);
 }
 
+/* Instagram hover */
 .social-links a[aria-label="Instagram"]:hover {
-  color: #e1306c; /* Instagram pink */
+  background: #e1306c;
+  color: #ffffff;
+  box-shadow: 0 0 18px rgba(225, 48, 108, 0.6);
 }
 
+/* Pinterest hover */
 .social-links a[aria-label="Pinterest"]:hover {
-  color: #e60023; /* Pinterest red */
+  background: #e60023;
+  color: #ffffff;
+  box-shadow: 0 0 18px rgba(230, 0, 35, 0.6);
 }
+
 
   </style>
 </head>
