@@ -36,7 +36,12 @@ title: Home
 </section>
 
 <footer>
-  Made for practice • GitHub Pages + Jekyll
-</footer>
+  <p>Made for practice • GitHub Pages + Jekyll</p>
 
+  <div class="social-links">
+    <a href="https://instagram.com/_arian.designs_" target="_blank">Instagram</a>
+    <a href="https://github.com/ariantechzone-stack" target="_blank">GitHub</a>
+    <a href="https://in.pinterest.com/ariantech" target="_blank">X</a>
+  </div>
+</footer>
 </div>
