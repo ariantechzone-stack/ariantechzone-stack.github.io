@@ -11,29 +11,46 @@ title: Home
 
 <div class="container">
 
-<section class="projects">
-  <h2>Demo Projects</h2>
+<div class="projects">
+  <h2 class="fade-up">Projects</h2>
   <div class="project-grid">
-    <div class="card">
-      <h3>Project One</h3>
-      <p>Demo project for layout practice.</p>
+    <div class="card project-card">
+      <h3>Project 1</h3>
+      <p>Short description of project 1.</p>
     </div>
-    <div class="card">
-      <h3>Project Two</h3>
-      <p>Simple placeholder content.</p>
+    <div class="card project-card">
+      <h3>Project 2</h3>
+      <p>Short description of project 2.</p>
     </div>
-    <div class="card">
-      <h3>Project Three</h3>
-      <p>Learning Jekyll + GitHub Pages.</p>
+    <div class="card project-card">
+      <h3>Project 3</h3>
+      <p>Short description of project 3.</p>
     </div>
   </div>
-</section>
+</div>
 
-<section class="about">
-  <h2>About</h2>
-  <p>
-    This is a demo website built using Jekyll and hosted on GitHub Pages.
-  </p>
-</section>
+<div class="about fade-up">
+  <h2>About Me</h2>
+  <p>I am a designer focused on minimal, modern, and professional visuals. I create posters, banners, and social media content that stand out.</p>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Fade-in footer (already added)
+  
+  // New: Hero, About, Projects animations
+  const fadeElements = document.querySelectorAll('.fade-up, .project-card');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.3 });
+
+  fadeElements.forEach(el => observer.observe(el));
+});
+</script>
+
 
 </div>
