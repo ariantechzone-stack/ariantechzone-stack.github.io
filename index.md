@@ -40,7 +40,7 @@ title: Home
 
   <div class="social-links">
     <!-- GitHub -->
-    <a href="https://github.com/yourusername" target="_blank" aria-label="GitHub">
+    <a href="https://github.com/ariantechzone-stack" target="_blank" aria-label="GitHub">
       <svg viewBox="0 0 24 24" class="icon">
 <!-- github path -->
 </svg>
@@ -48,7 +48,7 @@ title: Home
     </a>
 
     <!-- Instagram -->
-    <a href="https://instagram.com/yourusername" target="_blank" aria-label="Instagram">
+    <a href="https://instagram.com/_arian.designs_" target="_blank" aria-label="Instagram">
       <svg viewBox="0 0 24 24" class="icon">
   <!-- instagram path -->
 </svg>
@@ -56,7 +56,7 @@ title: Home
     </a>
 
     <!-- Pinterest -->
-    <a href="https://pinterest.com/yourusername" target="_blank" aria-label="Pinterest">
+    <a href="https://pinterest.com/ariantech" target="_blank" aria-label="Pinterest">
      <svg viewBox="0 0 24 24" class="icon">
  <!-- pinterest path -->
 </svg>
