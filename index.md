@@ -33,24 +33,5 @@ title: Home
   <h2>About Me</h2>
   <p>I am a designer focused on minimal, modern, and professional visuals. I create posters, banners, and social media content that stand out.</p>
 </div>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Fade-in footer (already added)
-  
-  // New: Hero, About, Projects animations
-  const fadeElements = document.querySelectorAll('.fade-up, .project-card');
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.3 });
-
-  fadeElements.forEach(el => observer.observe(el));
-});
-</script>
-
 
 </div>
