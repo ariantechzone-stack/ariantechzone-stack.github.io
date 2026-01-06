@@ -270,6 +270,16 @@ window.addEventListener('DOMContentLoaded', () => {
 .about.page-intro.show > * { transition-delay: 0.9s; }
 footer.page-intro.show > * { transition-delay: 1.2s; }
   
+// ===== PAGE LOAD INTRO FOR ALL SECTIONS =====
+window.addEventListener('DOMContentLoaded', () => {
+  const introElements = document.querySelectorAll('.page-intro');
+  introElements.forEach((el, index) => {
+    setTimeout(() => {
+      el.classList.add('show');
+    }, index * 200 + 100); // stagger 200ms between sections
+  });
+});
+
 </script>
 </body>
 </html>
