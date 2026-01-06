@@ -4,9 +4,10 @@ title: Home
 ---
 
 <div class="hero fade-up">
-  <h1>Welcome to ARIAN DESIGNS</h1>
-  <p>Creating clean, modern visuals & designs for your projects.</p>
+  <h1 class="gradient-text">Welcome to ARIAN DESIGNS</h1>
+  <p class="hero-subtext">Creating clean, modern visuals & designs for your projects.</p>
 </div>
+
 
 
 <div class="container">
