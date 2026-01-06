@@ -9,6 +9,66 @@
   <link rel="apple-touch-icon" sizes="180x180" href="{{ 'apple-touch-icon.png' | relative_url }}">
   
   <style>
+    /* ===== HERO SECTION ===== */
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradient animated headline */
+.gradient-text {
+  font-size: 3rem;
+  font-weight: bold;
+  background: linear-gradient(90deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientTextAnim 8s ease infinite;
+}
+
+/* Gradient animation keyframes */
+@keyframes gradientTextAnim {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Hero subtext */
+.hero-subtext {
+  color: #ccc;
+  font-size: 1.2rem;
+  margin-top: 20px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Optional subtle background shimmer */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02), rgba(255,255,255,0.05));
+  animation: shimmer 6s linear infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-50%) translateY(-50%) rotate(0deg); }
+  100% { transform: translateX(50%) translateY(50%) rotate(360deg); }
+}
+
+/* Ensure text is above shimmer */
+.hero h1,
+.hero p {
+  position: relative;
+  z-index: 1;
+}
+
     
  /* ===== GLOBAL ANIMATION ===== */
 .fade-up {
