@@ -1,257 +1,71 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>ARIAN DESIGNS</title>
+<title>{{ page.title | default: "ARIAN DESIGNS" }}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="{{ site.data.about.description | strip_newlines }}">
+
 <!-- FAVICONS -->
 <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="shortcut icon" href="/assets/favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<meta name="theme-color" content="#0f0f0f"> <!-- matches dark background -->
+<meta name="theme-color" content="#0f0f0f">
 
 <style>
 /* ================= GLOBAL ================= */
-* {
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family: 'Inter', Arial, Helvetica, sans-serif;
-}
-body {
-  background: #0f0f0f; /* dark modern base */
-  color: #fff;
-  line-height:1.6;
-  overflow-x:hidden;
-  min-height:100vh;
-}
-h1,h2,h3,p{
-  margin:0;
-}
-img{
-  display:block;
-  width:100%;
-  border-radius:10px;
-}
+* { margin:0; padding:0; box-sizing:border-box; font-family: 'Inter', Arial, Helvetica, sans-serif; }
+body { background:#0f0f0f; color:#fff; line-height:1.6; overflow-x:hidden; min-height:100vh; }
+h1,h2,h3,p{ margin:0; }
+img{ display:block; width:100%; border-radius:10px; }
 
 /* ================= HERO ================= */
-.hero{
-  text-align:center;
-  padding:120px 20px;
-  position:relative;
-  overflow:hidden;
-  background: linear-gradient(135deg,#111,#1a1a1a);
-}
-.gradient-text{
-  font-size:3rem;
-  font-weight:800;
-  background: linear-gradient(90deg, #feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);
-  background-size:400% 400%;
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  animation:gradientAnim 8s ease infinite;
-}
-@keyframes gradientAnim{
-  0%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
-  100%{background-position:0% 50%;}
-}
-.hero p{
-  margin-top:20px;
-  color:#ccc;
-  font-size:1.2rem;
-  max-width:700px;
-  margin-left:auto;
-  margin-right:auto;
-}
+.hero{ text-align:center; padding:120px 20px; position:relative; overflow:hidden; background: linear-gradient(135deg,#111,#1a1a1a); }
+.gradient-text{ font-size:3rem; font-weight:800; background: linear-gradient(90deg, #feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5); background-size:400% 400%; -webkit-background-clip:text; -webkit-text-fill-color:transparent; animation:gradientAnim 8s ease infinite; }
+@keyframes gradientAnim{ 0%{background-position:0% 50%;} 50%{background-position:100% 50%;} 100%{background-position:0% 50%;} }
+.hero p{ margin-top:20px; color:#ccc; font-size:1.2rem; max-width:700px; margin-left:auto; margin-right:auto; }
 
 /* ================= PROJECT GRID ================= */
-section{
-  padding:80px 20px;
-}
-h2{
-  text-align:center;
-  font-size:2rem;
-  margin-bottom:40px;
-}
-.project-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:30px;
-}
-@media(max-width:900px){.project-grid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:600px){.project-grid{grid-template-columns:1fr;}}
-.project-card{
-  background:#1a1a1a;
-  border-radius:12px;
-  overflow:hidden;
-  cursor:pointer;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  perspective:1000px;
-  position:relative;
-}
-.project-card:hover{
-  box-shadow:0 20px 40px rgba(0,0,0,0.5);
-}
-.project-content{
-  padding:20px;
-}
-.project-content h3{
-  font-size:1.25rem;
-  margin-bottom:10px;
-  color:#fff;
-}
-.project-content p{
-  color:#bbb;
-  font-size:0.95rem;
-  line-height:1.4;
-}
+section{ padding:80px 20px; }
+h2{ text-align:center; font-size:2rem; margin-bottom:40px; }
+.project-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:30px; }
+@media(max-width:900px){ .project-grid{grid-template-columns:repeat(2,1fr);} }
+@media(max-width:600px){ .project-grid{grid-template-columns:1fr;} }
+.project-card{ background:#1a1a1a; border-radius:12px; overflow:hidden; cursor:pointer; transition: transform 0.4s ease, box-shadow 0.4s ease; perspective:1000px; position:relative; }
+.project-card:hover{ box-shadow:0 20px 40px rgba(0,0,0,0.5); }
+.project-content{ padding:20px; }
+.project-content h3{ font-size:1.25rem; margin-bottom:10px; color:#fff; }
+.project-content p{ color:#bbb; font-size:0.95rem; line-height:1.4; }
 
 /* ================= ABOUT ================= */
-.about{
-  text-align:center;
-  padding:60px 20px;
-}
-.about p{
-  max-width:600px;
-  margin:auto;
-  color:#ccc;
-  line-height:1.6;
-}
+.about{ text-align:center; padding:60px 20px; }
+.about p{ max-width:600px; margin:auto; color:#ccc; line-height:1.6; }
 
 /* ================= FOOTER & SOCIAL ICONS ================= */
-footer{
-  padding:40px 20px;
-  text-align:center;
-  background:linear-gradient(to top, #111 0%, #1a1a1a 100%);
-  border-top:2px solid #333;
-}
-footer p{
-  font-size:0.9rem;
-  color:#777;
-}
-.socials{
-  margin-top:30px;
-  display:flex;
-  justify-content:center;
-  gap:20px;
-}
-.socials a{
-  width:56px;
-  height:56px;
-  border-radius:50%;
-  background:#1a1a1a;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#aaa;
-  position:relative;
-  overflow:hidden;
-  transition:transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-  animation: iconPulse 3.5s ease-in-out infinite;
-}
-.socials svg{
-  width:30px;
-  height:30px;
-  fill:currentColor;
-}
-.socials a:hover{
-  transform:scale(1.2);
-  box-shadow:0 0 18px rgba(255,255,255,0.25);
-  animation:none;
-}
-
-/* Brand Hovers */
-.socials a[aria-label="Instagram"]:hover{
-  background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);
-  color:#fff;
-}
-.socials a[aria-label="Pinterest"]:hover{
-  background:#e60023;
-  color:#fff;
-}
-.socials a[aria-label="GitHub"]:hover{
-  background:#ffffff;
-  color:#000;
-  box-shadow:0 0 22px rgba(255,255,255,0.6);
-}
-
-/* ================= ICON PULSE ================= */
-@keyframes iconPulse{
-  0%,100%{ box-shadow:0 0 0 rgba(255,255,255,0); }
-  50%{ box-shadow:0 0 12px rgba(255,255,255,0.15); }
-}
-
-/* ================= RIPPLE ================= */
-.socials a span.ripple{
-  position:absolute;
-  border-radius:50%;
-  background:rgba(255,255,255,0.4);
-  transform:scale(0);
-  animation:ripple 0.6s linear;
-  pointer-events:none;
-}
-@keyframes ripple{
-  to{ transform:scale(4); opacity:0; }
-}
-
-/* ================= TOOLTIP ================= */
-.socials a::after{
-  content: attr(aria-label);
-  position:absolute;
-  bottom:140%;
-  left:50%;
-  transform:translateX(-50%) translateY(6px);
-  background:#222;
-  color:#fff;
-  padding:5px 10px;
-  border-radius:6px;
-  font-size:0.75rem;
-  white-space:nowrap;
-  opacity:0;
-  pointer-events:none;
-  transition:opacity 0.25s ease, transform 0.25s ease;
-}
-.socials a:hover::after{
-  opacity:1;
-  transform:translateX(-50%) translateY(0);
-}
+footer{ padding:40px 20px; text-align:center; background:linear-gradient(to top, #111 0%, #1a1a1a 100%); border-top:2px solid #333; }
+footer p{ font-size:0.9rem; color:#777; }
+.socials{ margin-top:30px; display:flex; justify-content:center; gap:20px; }
+.socials a{ width:56px; height:56px; border-radius:50%; background:#1a1a1a; display:flex; align-items:center; justify-content:center; color:#aaa; position:relative; overflow:hidden; transition:transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; animation: iconPulse 3.5s ease-in-out infinite; }
+.socials svg{ width:30px; height:30px; fill:currentColor; }
+.socials a:hover{ transform:scale(1.2); box-shadow:0 0 18px rgba(255,255,255,0.25); animation:none; }
+.socials a[aria-label="Instagram"]:hover{ background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5); color:#fff; }
+.socials a[aria-label="Pinterest"]:hover{ background:#e60023; color:#fff; }
+.socials a[aria-label="GitHub"]:hover{ background:#ffffff; color:#000; box-shadow:0 0 22px rgba(255,255,255,0.6); }
+@keyframes iconPulse{ 0%,100%{ box-shadow:0 0 0 rgba(255,255,255,0); } 50%{ box-shadow:0 0 12px rgba(255,255,255,0.15); } }
+.socials a span.ripple{ position:absolute; border-radius:50%; background:rgba(255,255,255,0.4); transform:scale(0); animation:ripple 0.6s linear; pointer-events:none; }
+@keyframes ripple{ to{ transform:scale(4); opacity:0; } }
+.socials a::after{ content: attr(aria-label); position:absolute; bottom:140%; left:50%; transform:translateX(-50%) translateY(6px); background:#222; color:#fff; padding:5px 10px; border-radius:6px; font-size:0.75rem; white-space:nowrap; opacity:0; pointer-events:none; transition:opacity 0.25s ease, transform 0.25s ease; }
+.socials a:hover::after{ opacity:1; transform:translateX(-50%) translateY(0); }
 
 /* ================= CURSOR GLOW ================= */
-.cursor-glow{
-  position:fixed;
-  top:0;
-  left:0;
-  width:30px;
-  height:30px;
-  background:rgba(255,255,255,0.1);
-  border-radius:50%;
-  pointer-events:none;
-  transform:translate(-50%,-50%);
-  mix-blend-mode:screen;
-  transition:width 0.2s ease,height 0.2s ease;
-  z-index:9999;
-}
+.cursor-glow{ position:fixed; top:0; left:0; width:30px; height:30px; background:rgba(255,255,255,0.1); border-radius:50%; pointer-events:none; transform:translate(-50%,-50%); mix-blend-mode:screen; transition:width 0.2s ease,height 0.2s ease; z-index:9999; }
 
 /* ================= SCROLL BAR PROGRESS ================= */
-.progress{
-  position:fixed;
-  top:0;
-  left:0;
-  height:4px;
-  width:0%;
-  background:linear-gradient(90deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);
-  z-index:999;
-  transition:width 0.25s ease;
-}
+.progress{ position:fixed; top:0; left:0; height:4px; width:0%; background:linear-gradient(90deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5); z-index:999; transition:width 0.25s ease; }
 
 /* ================= REDUCED MOTION ================= */
-@media (prefers-reduced-motion: reduce){
-  *{ animation:none !important; transition:none !important; }
-  .cursor-glow{ display:none; }
-}
+@media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } .cursor-glow{ display:none; } }
 </style>
 </head>
 
@@ -260,60 +74,44 @@ footer p{
 <div class="progress"></div>
 
 <!-- HERO -->
-<div class="hero">
+<div class="hero fade-up">
   <h1 class="gradient-text">ARIAN DESIGNS</h1>
-  <p>Clean, modern visual design for posters, banners & social media.</p>
+  <p class="hero-subtext">{{ site.data.about.description }}</p>
 </div>
 
 <!-- PROJECTS -->
-<section>
+<section class="projects fade-up">
 <h2>Projects</h2>
 <div class="project-grid">
+  {% for project in site.data.projects %}
   <div class="project-card">
-    <img src="https://picsum.photos/600/400?1">
+    <img src="{{ project.image }}" alt="{{ project.title }}">
     <div class="project-content">
-      <h3>Instagram Campaign</h3>
-      <p>Minimal social media visuals with strong hierarchy.</p>
+      <h3>{{ project.title }}</h3>
+      <p>{{ project.description }}</p>
     </div>
   </div>
-  <div class="project-card">
-    <img src="https://picsum.photos/600/400?2">
-    <div class="project-content">
-      <h3>Poster Design</h3>
-      <p>Bold typography with modern composition.</p>
-    </div>
-  </div>
-  <div class="project-card">
-    <img src="https://picsum.photos/600/400?3">
-    <div class="project-content">
-      <h3>Brand Visual</h3>
-      <p>Clean layouts adaptable for multiple platforms.</p>
-    </div>
-  </div>
+  {% endfor %}
 </div>
 </section>
 
 <!-- ABOUT -->
-<section class="about">
+<section class="about fade-up">
 <h2>About</h2>
-<p>
-I’m a visual designer focused on clarity, balance, and modern aesthetics.
-I design posters, banners, and social media creatives that communicate clearly
-and look professional across platforms.
-</p>
+<p>{{ site.data.about.description }}</p>
 </section>
 
 <!-- FOOTER -->
 <footer>
 <p>© 2026 ARIAN DESIGNS</p>
 <div class="socials">
-  <a href="https://github.com/ariantechzone-stack" target="_blank" aria-label="GitHub">
+  <a href="https://github.com/ariantechzone-stack" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
     <svg viewBox="0 0 24 24"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.5v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.2-1.7-1.2-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 .1 1.5-.7 1.8-1.1.1-.7.4-1.1.7-1.4-2.6-.3-5.3-1.3-5.3-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.3 11.3 0 016 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.2 0 4.6-2.7 5.6-5.3 5.9.4.4.8 1 .8 2.1v3.1c0 .3.2.6.8.5A11.5 11.5 0 0023.5 12C23.5 5.7 18.3.5 12 .5z"/></svg>
   </a>
-  <a href="https://instagram.com/_arian.designs_" target="_blank" aria-label="Instagram">
+  <a href="https://instagram.com/_arian.designs_" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
     <svg viewBox="0 0 24 24"><path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10zm-5 3.2A4.8 4.8 0 1 0 16.8 12 4.81 4.81 0 0 0 12 7.2zm0 7.9A3.1 3.1 0 1 1 15.1 12 3.1 3.1 0 0 1 12 15.1zm4.9-8.4a1.1 1.1 0 1 1-1.1-1.1 1.1 1.1 0 0 1 1.1 1.1z"/></svg>
   </a>
-  <a href="https://pinterest.com/ariantech" target="_blank" aria-label="Pinterest">
+  <a href="https://pinterest.com/ariantech" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">
     <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.25 2 11.49c0 3.83 2.4 7.22 6.18 8.5-.09-.72-.17-1.83.03-2.62.18-.75 1.17-4.77 1.17-4.77s-.3-.6-.3-1.49c0-1.4.82-2.44 1.83-2.44.86 0 1.28.65 1.28 1.43 0 .87-.55 2.17-.84 3.38-.24 1.01.51 1.83 1.51 1.83 1.82 0 3.22-1.92 3.22-4.69 0-2.45-1.76-4.16-4.27-4.16-2.91 0-4.62 2.18-4.62 4.44 0 .88.34 1.83.76 2.34.08.1.09.19.07.29-.08.32-.26 1.01-.29 1.15-.05.18-.16.22-.37.13-1.38-.64-2.24-2.64-2.24-4.25 0-3.46 2.51-6.64 7.24-6.64 3.8 0 6.76 2.71 6.76 6.34 0 3.78-2.38 6.82-5.68 6.82-1.11 0-2.15-.58-2.51-1.26l-.68 2.6c-.25.96-.93 2.16-1.39 2.89.42.13.86.2 1.32.2 5.52 0 10-4.25 10-9.49C22 6.25 17.52 2 12 2z"/></svg>
   </a>
 </div>
@@ -340,9 +138,9 @@ if(!reduceMotion){
   // ===== 3D TILT =====
   document.querySelectorAll('.project-card').forEach(card=>{
     card.addEventListener('mousemove', e=>{
-      const r=card.getBoundingClientRect();
-      const x=e.clientX-r.left;
-      const y=e.clientY-r.top;
+      const r = card.getBoundingClientRect();
+      const x = e.clientX - r.left;
+      const y = e.clientY - r.top;
       card.style.transform = 
         `rotateX(${((y/r.height)-0.5)*10}deg)
          rotateY(${((x/r.width)-0.5)*-10}deg)
@@ -352,7 +150,7 @@ if(!reduceMotion){
   });
 
   // ===== MAGNETIC ICONS =====
-  document.querySelectorAll('.socials a').forEach(icon => {
+  document.querySelectorAll('.socials a').forEach(icon=>{
     icon.addEventListener('mousemove', e=>{
       const rect = icon.getBoundingClientRect();
       const x = e.clientX - rect.left - rect.width/2;
@@ -367,10 +165,10 @@ if(!reduceMotion){
     btn.addEventListener('click', e=>{
       const ripple = document.createElement('span');
       ripple.className='ripple';
-      const rect=btn.getBoundingClientRect();
-      ripple.style.left=(e.clientX-rect.left)+'px';
-      ripple.style.top=(e.clientY-rect.top)+'px';
-      ripple.style.width=ripple.style.height=rect.width+'px';
+      const rect = btn.getBoundingClientRect();
+      ripple.style.left=(e.clientX - rect.left)+'px';
+      ripple.style.top=(e.clientY - rect.top)+'px';
+      ripple.style.width = ripple.style.height = rect.width+'px';
       btn.appendChild(ripple);
       setTimeout(()=>ripple.remove(),600);
     });
