@@ -41,7 +41,7 @@ title: Home
   <div class="social-links">
     <a href="https://instagram.com/_arian.designs_" target="_blank">Instagram</a>
     <a href="https://github.com/ariantechzone-stack" target="_blank">GitHub</a>
-    <a href="https://pinterest.com/ariantech" target="_blank">X</a>
+    <a href="https://pinterest.com/ariantech" target="_blank">Pintrest</a>
   </div>
 </footer>
 </div>
