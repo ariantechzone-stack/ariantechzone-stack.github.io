@@ -81,11 +81,26 @@
       font-size: 2rem;
     }
 
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
+   .project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns horizontal */
+  gap: 20px; /* space between cards */
+  margin-top: 20px;
+}
+
+/* Responsive: stack on smaller screens */
+@media (max-width: 900px) {
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+  }
+}
+
+@media (max-width: 600px) {
+  .project-grid {
+    grid-template-columns: 1fr; /* 1 column on mobile */
+  }
+}
+
 
     .card {
       background: #1a1a1a;
