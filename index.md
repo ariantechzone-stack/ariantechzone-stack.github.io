@@ -42,22 +42,25 @@ title: Home
     <!-- GitHub -->
     <a href="https://github.com/yourusername" target="_blank" aria-label="GitHub">
       <svg viewBox="0 0 24 24" class="icon">
-        <!-- github path -->
-      </svg>
+<!-- github path -->
+</svg>
+
     </a>
 
     <!-- Instagram -->
     <a href="https://instagram.com/yourusername" target="_blank" aria-label="Instagram">
       <svg viewBox="0 0 24 24" class="icon">
-        <!-- instagram path -->
-      </svg>
+  <!-- instagram path -->
+</svg>
+
     </a>
 
     <!-- Pinterest -->
     <a href="https://pinterest.com/yourusername" target="_blank" aria-label="Pinterest">
-      <svg viewBox="0 0 24 24" class="icon">
-        <!-- pinterest path -->
-      </svg>
+     <svg viewBox="0 0 24 24" class="icon">
+ <!-- pinterest path -->
+</svg>
+
     </a>
   </div>
 </footer>
