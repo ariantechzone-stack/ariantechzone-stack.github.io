@@ -102,19 +102,39 @@
       font-size: 0.9rem;
     }
     .social-links {
-  margin-top: 15px;
+  margin-top: 18px;
 }
 
+/* Base icon style */
 .social-links a {
-  margin: 0 12px;
+  margin: 0 14px;
   color: #aaaaaa;
-  display: inline-block;
+  display: inline-flex;
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
+/* Icon size */
+.social-links .icon {
+  width: 30px;   /* 👈 ICON SIZE */
+  height: 30px;
+}
+
+/* Hover animation */
 .social-links a:hover {
-  color: #ffffff;
-  transform: translateY(-3px);
+  transform: translateY(-4px);
+}
+
+/* Platform-specific hover colors */
+.social-links a[aria-label="GitHub"]:hover {
+  color: #ffffff; /* GitHub white */
+}
+
+.social-links a[aria-label="Instagram"]:hover {
+  color: #e1306c; /* Instagram pink */
+}
+
+.social-links a[aria-label="Pinterest"]:hover {
+  color: #e60023; /* Pinterest red */
 }
 
   </style>
