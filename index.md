@@ -29,6 +29,7 @@ title: Home
   </div>
 </div>
 
+
 <div class="about fade-up">
   <h2>About Me</h2>
   <p>I am a designer focused on minimal, modern, and professional visuals. I create posters, banners, and social media content that stand out.</p>
