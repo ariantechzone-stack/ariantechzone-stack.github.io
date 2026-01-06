@@ -63,41 +63,55 @@ footer{ padding:50px 20px; text-align:center; background:linear-gradient(to top,
 footer p{ font-size:0.9rem; color:#777; }
 .socials{ margin-top:30px; display:flex; justify-content:center; gap:20px; }
 .social-link {
-  width:56px;
-  height:56px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#1a1a1a; /* default circle */
-  color:#000;          /* default icon color, GitHub black by default */
-  position:relative;
-  overflow:hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1a1a1a;  /* dark circle default */
+  color: #fff;           /* icon white default */
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease, background 0.3s ease;
 }
 
-/* Cursor / hover scale */
-.social-link:hover { transform: scale(1.2); }
+.social-link:hover {
+  transform: scale(1.2);
+}
 
-/* Glow effect on hover */
+/* GitHub hover: white circle, black icon, white glow */
 .social-link.github:hover {
-  background:#fff;       /* white circle background */
-  color:#000;            /* black icon */
-  box-shadow:0 0 25px rgba(255,255,255,0.8);
+  background: #fff;
+  color: #000;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
 }
 
+/* Instagram hover: gradient circle, white icon, glow */
 .social-link.instagram:hover {
   background: linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);
-  color:#fff;
-  box-shadow:0 0 25px rgba(214,41,118,0.6);
+  color: #fff;
+  box-shadow: 0 0 25px rgba(214,41,118,0.6);
 }
 
+/* Pinterest hover: red circle, white icon, glow */
 .social-link.pinterest:hover {
-  background:#e60023;
-  color:#fff;
-  box-shadow:0 0 25px rgba(230,0,35,0.6);
+  background: #e60023;
+  color: #fff;
+  box-shadow: 0 0 25px rgba(230,0,35,0.6);
 }
 
+/* Ripple effect */
+.social-link span.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  transform: scale(0);
+  animation: ripple 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes ripple { to { transform: scale(4); opacity: 0; } }
 
 .tooltip{ position:absolute; bottom:120%; left:50%; transform:translateX(-50%); padding:6px 12px; background:#222; color:#fff; font-size:0.8rem; border-radius:6px; opacity:0; pointer-events:none; transition:opacity 0.3s ease; }
 .social-link:hover .tooltip{ opacity:1; }
@@ -183,7 +197,18 @@ if(!reduceMotion){
     glow.style.left = e.clientX+'px';
     glow.style.top = e.clientY+'px';
   });
-
+document.querySelectorAll('.social-link').forEach(btn => {
+  btn.addEventListener('click', e => {
+    const ripple = document.createElement('span');
+    ripple.className = 'ripple';
+    const rect = btn.getBoundingClientRect();
+    ripple.style.left = (e.clientX - rect.left) + 'px';
+    ripple.style.top = (e.clientY - rect.top) + 'px';
+    ripple.style.width = ripple.style.height = rect.width + 'px';
+    btn.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 600);
+  });
+});
   window.addEventListener('scroll', ()=>{
     const scroll = (window.scrollY/(document.body.scrollHeight - innerHeight))*100;
     document.querySelector('.progress').style.width = scroll+'%';
