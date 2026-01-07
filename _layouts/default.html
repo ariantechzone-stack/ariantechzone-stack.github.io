@@ -120,9 +120,66 @@ footer{
 .socials a:hover{
   transform:scale(1.15);
 }
-.github:hover{background:#fff;color:#000}
-.instagram:hover{background:#d62976}
-.pinterest:hover{background:#e60023}
+.socials a{
+  transition:all 0.3s ease;
+}
+.socials a{
+  width:44px;
+  height:44px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:#111;
+  color:#fff;
+  transition:all .3s ease;
+}
+
+.socials a:hover{
+  transform:translateY(-3px) scale(1.08);
+}
+
+/* Fiverr specific */
+.fiverr{
+  background:#1dbf73;
+  color:#fff;
+}
+
+.fiverr-icon{
+  font-weight:800;
+  font-size:16px;
+  letter-spacing:-1px;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+/* GitHub */
+.github:hover{
+  background:#fff;
+  color:#000;
+  box-shadow:0 0 18px rgba(255,255,255,0.6);
+}
+
+/* Instagram */
+.instagram:hover{
+  background:#d62976;
+  color:#fff;
+  box-shadow:0 0 18px rgba(214,41,118,0.6);
+}
+
+/* Pinterest */
+.pinterest:hover{
+  background:#e60023;
+  color:#fff;
+  box-shadow:0 0 18px rgba(230,0,35,0.6);
+}
+
+/* Fiverr */
+.fiverr:hover{
+  background:#1dbf73;
+  color:#fff;
+  box-shadow:0 0 18px rgba(29,191,115,0.6);
+}
+  
 
 /* ===== MODAL ===== */
 .project-modal{
@@ -167,10 +224,34 @@ footer{
 <footer>
   <p>© {{ "now" | date: "%Y" }} ARIAN DESIGNS</p>
   <div class="socials">
-    <a class="github" href="{{ site.social.links[0] }}" target="_blank">G</a>
-    <a class="instagram" href="{{ site.social.links[1] }}" target="_blank">I</a>
-    <a class="pinterest" href="{{ site.social.links[2] }}" target="_blank">P</a>
-  </div>
+
+  <!-- GitHub -->
+  <a class="github magnetic" href="{{ site.social.links[0] }}" target="_blank" aria-label="GitHub">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+      <path d="M12 .5C5.73.5.5 5.74.5 12.02c0 5.1 3.29 9.42 7.86 10.95.57.1.78-.25.78-.55v-2.02c-3.2.7-3.87-1.55-3.87-1.55-.52-1.33-1.27-1.69-1.27-1.69-1.04-.72.08-.71.08-.71 1.15.08 1.76 1.19 1.76 1.19 1.02 1.75 2.68 1.25 3.33.96.1-.74.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.45.11-3.02 0 0 .97-.31 3.18 1.18a10.9 10.9 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.57.24 2.73.12 3.02.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.4-5.25 5.69.41.36.78 1.08.78 2.18v3.23c0 .3.2.66.79.55 4.56-1.53 7.84-5.86 7.84-10.95C23.5 5.74 18.27.5 12 .5z"/>
+    </svg>
+  </a>
+
+  <!-- Instagram -->
+  <a class="instagram magnetic" href="{{ site.social.links[1] }}" target="_blank" aria-label="Instagram">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+      <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10zm-5 3.5A4.5 4.5 0 1 0 16.5 12 4.51 4.51 0 0 0 12 7.5zm0 7.3A2.8 2.8 0 1 1 14.8 12 2.8 2.8 0 0 1 12 14.8zM17.5 6.3a1.05 1.05 0 1 0 1.05 1.05 1.05 1.05 0 0 0-1.05-1.05z"/>
+    </svg>
+  </a>
+
+  <!-- Pinterest -->
+  <a class="pinterest magnetic" href="{{ site.social.links[2] }}" target="_blank" aria-label="Pinterest">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+      <path d="M12.04 2C6.58 2 2.5 6.08 2.5 11.47c0 4.01 2.53 7.43 6.1 8.75-.08-.74-.16-1.88.03-2.69.17-.73 1.1-4.65 1.1-4.65s-.28-.56-.28-1.39c0-1.3.75-2.27 1.68-2.27.79 0 1.17.59 1.17 1.3 0 .79-.5 1.97-.76 3.06-.22.92.46 1.67 1.36 1.67 1.63 0 2.88-1.72 2.88-4.2 0-2.2-1.58-3.74-3.84-3.74-2.62 0-4.16 1.96-4.16 3.99 0 .79.3 1.64.69 2.1a.28.28 0 0 1 .06.27c-.07.3-.24.92-.27 1.05-.04.17-.14.2-.32.12-1.2-.56-1.95-2.33-1.95-3.75 0-3.05 2.21-5.86 6.38-5.86 3.35 0 5.96 2.39 5.96 5.59 0 3.33-2.1 6.01-5.01 6.01-1 0-1.94-.52-2.26-1.13l-.61 2.33c-.22.85-.82 1.92-1.22 2.57.92.29 1.9.45 2.93.45 5.46 0 9.54-4.08 9.54-9.47C21.5 6.08 17.5 2 12.04 2z"/>
+    </svg>
+  </a>
+<!-- Fiverr -->
+<a class="fiverr magnetic" href="{{ site.social.links.fiverr }}" target="_blank" aria-label="Fiverr">
+  <span class="fiverr-icon">fi</span>
+</a>
+
+</div>
+
 </footer>
 
 <div class="project-modal" id="projectModal">
