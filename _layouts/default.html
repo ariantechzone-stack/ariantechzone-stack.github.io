@@ -53,30 +53,68 @@ h2{text-align:center;margin-bottom:50px;font-size:2rem}
 @media(max-width:900px){.project-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.project-grid{grid-template-columns:1fr}}
 
+/* ================= PROJECT CARD UPGRADE ================= */
+
 .project-card{
-  background:#1a1a1a;
-  border-radius:16px;
+  padding:0;
+  overflow:hidden;
+}
+
+.project-media{
+  position:relative;
+  height:200px;
+  overflow:hidden;
+}
+
+.project-media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .6s ease;
+}
+
+/* Overlay */
+.project-media::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to bottom,transparent,rgba(0,0,0,.65));
+  opacity:.7;
+  transition:opacity .4s ease;
+}
+
+/* Info */
+.project-info{
   padding:26px;
   text-align:center;
-  transition:transform .35s ease,box-shadow .35s ease;
+  transform:translateY(10px);
+  transition:transform .4s ease;
 }
-.project-card:hover{
-  transform:translateY(-8px) rotateX(3deg);
-  box-shadow:0 30px 60px rgba(0,0,0,.6);
-}
-.project-card h3{font-size:1.3rem;margin-bottom:10px}
-.project-card p{color:#bbb;font-size:.95rem}
 
-.project-btn{
-  margin-top:14px;
-  padding:10px 22px;
-  border-radius:10px;
-  border:none;
-  background:linear-gradient(90deg,#feda75,#fa7e1e);
-  color:#111;
-  font-weight:600;
-  cursor:pointer;
+/* Hover effects */
+.project-card:hover .project-media img{
+  transform:scale(1.1);
 }
+
+.project-card:hover .project-media::after{
+  opacity:1;
+}
+
+.project-card:hover .project-info{
+  transform:translateY(0);
+}
+
+/* Button reveal */
+.project-btn{
+  opacity:.9;
+  transition:all .3s ease;
+}
+
+.project-card:hover .project-btn{
+  opacity:1;
+  transform:translateY(-2px);
+}
+
 
 /* ================= ABOUT ================= */
 .about p{
@@ -369,11 +407,309 @@ footer{
 @keyframes hero-fade{
   to{opacity:1}
 }
+.project-tags{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-bottom:10px;
+}
+
+.project-tags span{
+  font-size:.7rem;
+  padding:4px 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,.08);
+  color:#ccc;
+}
+  /* ================= ABOUT SECTION ================= */
+
+.about-wrap{
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+
+@media(max-width:900px){
+  .about-wrap{grid-template-columns:1fr}
+}
+
+/* Text */
+.about-text h2{
+  font-size:2.2rem;
+  margin-bottom:15px;
+}
+
+.about-text p{
+  color:#ccc;
+  line-height:1.7;
+}
+
+/* Stats */
+.about-stats{
+  display:flex;
+  gap:25px;
+  margin-top:30px;
+  flex-wrap:wrap;
+}
+
+.stat{
+  background:rgba(255,255,255,.05);
+  padding:20px 24px;
+  border-radius:14px;
+  text-align:center;
+  backdrop-filter:blur(8px);
+}
+
+.stat h3{
+  font-size:1.6rem;
+  color:#fff;
+}
+
+.stat span{
+  font-size:.75rem;
+  color:#aaa;
+}
+
+/* Skills */
+.about-skills{
+  background:rgba(255,255,255,.04);
+  padding:30px;
+  border-radius:18px;
+  backdrop-filter:blur(10px);
+}
+
+.about-skills h3{
+  margin-bottom:20px;
+}
+
+/* Skill bar */
+.skill{
+  margin-bottom:18px;
+}
+
+.skill span{
+  font-size:.85rem;
+  color:#ccc;
+}
+
+.bar{
+  height:8px;
+  background:#222;
+  border-radius:999px;
+  overflow:hidden;
+  margin-top:6px;
+}
+
+.bar div{
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,#fa7e1e,#d62976);
+  border-radius:999px;
+  transition:width 1.4s ease;
+}
+
+/* ================= SCROLL REVEAL ================= */
+
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:all .8s ease;
+}
+
+.reveal.show{
+  opacity:1;
+  transform:none;
+}
+
+/* Delays */
+.delay-1{transition-delay:.15s}
+.delay-2{transition-delay:.3s}
+.delay-3{transition-delay:.45s}
+
+/* Direction variants (optional) */
+.reveal.left{transform:translateX(-40px)}
+.reveal.right{transform:translateX(40px)}
+/* ================= FOOTER POLISH ================= */
+
+.site-footer{
+  background:linear-gradient(180deg,#0c0c0c,#111);
+  padding:80px 20px 40px;
+  border-top:1px solid rgba(255,255,255,.05);
+}
+
+.footer-inner{
+  max-width:1100px;
+  margin:auto;
+  text-align:center;
+}
+
+.footer-cta h3{
+  font-size:1.8rem;
+  margin-bottom:10px;
+}
+
+.footer-cta p{
+  color:#aaa;
+  margin-bottom:26px;
+}
+
+.footer-btn{
+  display:inline-block;
+  padding:14px 34px;
+  border-radius:14px;
+  font-weight:600;
+  background:linear-gradient(90deg,#feda75,#fa7e1e,#d62976);
+  color:#111;
+  box-shadow:0 12px 30px rgba(250,126,30,.3);
+  transition:transform .3s ease,box-shadow .3s ease;
+}
+
+.footer-btn:hover{
+  transform:translateY(-4px) scale(1.05);
+  box-shadow:0 20px 50px rgba(214,41,118,.45);
+}
+
+/* TRUST ROW */
+.footer-trust{
+  margin:60px auto 40px;
+  display:flex;
+  justify-content:center;
+  gap:40px;
+  flex-wrap:wrap;
+}
+
+.trust-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:#ccc;
+  font-size:1rem;
+  opacity:.85;
+}
+
+/* BOTTOM */
+.footer-bottom{
+  margin-top:30px;
+  color:#666;
+  font-size:.9rem;
+}
+/* ================= MOBILE PERFECTION ================= */
+@media (max-width: 768px){
+
+  section{
+    padding:80px 16px;
+  }
+
+  h1{
+    font-size:2.2rem;
+    line-height:1.2;
+  }
+
+  h2{
+    font-size:1.6rem;
+    margin-bottom:36px;
+  }
+
+  .hero{
+    padding:90px 16px 80px;
+  }
+
+  .hero p{
+    font-size:1rem;
+  }
+
+  .project-grid{
+    gap:26px;
+  }
+
+  .project-card{
+    padding:22px;
+  }
+
+  .footer-cta h3{
+    font-size:1.4rem;
+  }
+}
+@media (max-width: 768px){
+  .project-btn,
+  .footer-btn{
+    width:100%;
+    padding:16px 0;
+    font-size:1rem;
+  }
+}
+.mobile-float{
+  position:fixed;
+  bottom:18px;
+  right:18px;
+  background:#1dbf73;
+  color:#111;
+  padding:14px 20px;
+  border-radius:50px;
+  font-weight:600;
+  box-shadow:0 15px 40px rgba(29,191,115,.4);
+  z-index:999;
+  display:none;
+}
+
+@media (max-width:768px){
+  .mobile-float{display:block}
+}
+@media (hover:none){
+  .project-card:active,
+  .social-link:active,
+  .footer-btn:active{
+    transform:scale(.97);
+  }
+}
+.social-link{
+  min-width:56px;
+  min-height:56px;
+}
+svg{
+  shape-rendering:geometricPrecision;
+  text-rendering:optimizeLegibility;
+}
+@media (prefers-reduced-motion: reduce){
+  *{
+    animation:none!important;
+    transition:none!important;
+  }
+}
+.project-card,
+.social-link,
+.footer-btn{
+  will-change:transform;
+}
 
 </style>
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<a href="https://www.fiverr.com/r_kumar101"
+   class="mobile-float"
+   target="_blank"
+   aria-label="Hire me on Fiverr">
+  💬 Hire Me
+</a>
 </head>
 
 <body>
+<h1 class="reveal">ARIAN DESIGNS</h1>
+<p class="reveal delay-1">Modern social media & digital design</p>
+
+<div class="project-card reveal"></div>
+<div class="project-card reveal delay-1"></div>
+<div class="project-card reveal delay-2"></div>
+
+<div class="about-text reveal"></div>
+<div class="about-skills reveal delay-1"></div>
+
+<footer class="reveal"></footer>
 
 <!-- HERO -->
 <div class="hero">
@@ -392,7 +728,12 @@ footer{
 <div class="project-grid">
 
 {% for project in sit e.data.projects %}
-<div class="project-card">
+<div class="project-card"
+  <div class="project-tags">
+  <span>Instagram</span>
+  <span>Branding</span>
+</div>
+
   <h3>{{ project.title }}</h3>
   <p>{{ project.description }}</p>
   <button class="project-btn">View Project</button>
@@ -421,10 +762,60 @@ footer{
 </section>
 
 <!-- ABOUT -->
-<section class="about">
-<h2>About</h2>
-<p>{{ site.data.about.description | default: "I design clean, modern visuals focused on clarity and balance." }}</p>
-</section>
+  <section>
+<div class="about-wrap">
+
+  <div class="about-text">
+    <h2>About Me</h2>
+    <p>
+      I’m <strong>Arian</strong>, a detail-focused digital designer specializing in
+      social media visuals and clean layouts. I help brands stand out with
+      minimal, modern, and conversion-driven designs.
+    </p>
+
+    <div class="about-stats">
+      <div class="stat">
+        <h3 data-count="120">0</h3>
+        <span>Designs Created</span>
+      </div>
+      <div class="stat">
+        <h3 data-count="3">0</h3>
+        <span>Years Learning</span>
+      </div>
+      <div class="stat">
+        <h3 data-count="99">0</h3>
+        <span>Accuracy %</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-skills">
+    <h3>Skills</h3>
+
+    <div class="skill">
+      <span>Photoshop</span>
+      <div class="bar"><div data-width="90%"></div></div>
+    </div>
+
+    <div class="skill">
+      <span>Instagram Post Design</span>
+      <div class="bar"><div data-width="95%"></div></div>
+    </div>
+
+    <div class="skill">
+      <span>Branding</span>
+      <div class="bar"><div data-width="85%"></div></div>
+    </div>
+
+    <div class="skill">
+      <span>UI / Layout</span>
+      <div class="bar"><div data-width="80%"></div></div>
+    </div>
+
+  </div>
+
+</div>
+  </section>
 
 <!-- SOCIALS -->
 <div class="socials">
@@ -467,7 +858,42 @@ footer{
 
 </div>
 
-<footer>© 2026 ARIAN DESIGNS</footer>
+<footer class="site-footer reveal">
+  <div class="footer-inner">
+
+    <!-- CTA -->
+    <div class="footer-cta reveal">
+      <h3>Let’s build something clean & impactful</h3>
+      <p>Available for Instagram posts, branding & modern visuals.</p>
+      <a href="https://www.fiverr.com/r_kumar101" target="_blank" class="footer-btn">
+        Hire Me on Fiverr
+      </a>
+    </div>
+
+    <!-- TRUST -->
+    <div class="footer-trust reveal delay-1">
+      <div class="trust-item">
+        <span>⚡</span>
+        <p>Fast Delivery</p>
+      </div>
+      <div class="trust-item">
+        <span>🎯</span>
+        <p>Detail Oriented</p>
+      </div>
+      <div class="trust-item">
+        <span>💬</span>
+        <p>Clear Communication</p>
+      </div>
+    </div>
+
+    <!-- COPYRIGHT -->
+    <div class="footer-bottom reveal delay-2">
+      © 2026 <strong>ARIAN DESIGNS</strong> — All rights reserved.
+    </div>
+
+  </div>
+</footer>
+
 
 <script>
 /* HERO TYPE EFFECT */
@@ -504,6 +930,94 @@ document.querySelectorAll(".social-link").forEach(icon => {
 <audio id="ui-hover-sound" preload="auto">
   <source src="hover.mp3" type="audio/mpeg">
 </audio>
+<script>
+  
+const aboutSection = document.querySelector('#about');
+
+const aboutObserver = new IntersectionObserver(entries => {
+  if(entries[0].isIntersecting){
+
+    // Count up stats
+    document.querySelectorAll('.stat h3').forEach(el=>{
+      const target = +el.dataset.count;
+      let count = 0;
+      const step = target / 60;
+
+      const timer = setInterval(()=>{
+        count += step;
+        if(count >= target){
+          el.textContent = target;
+          clearInterval(timer);
+        } else {
+          el.textContent = Math.floor(count);
+        }
+      },20);
+    });
+
+    // Skill bars
+    document.querySelectorAll('.bar div').forEach(bar=>{
+      bar.style.width = bar.dataset.width;
+    });
+
+    aboutObserver.disconnect();
+  }
+});
+
+aboutObserver.observe(aboutSection);
+</script>
+<script>
+const revealItems = document.querySelectorAll('.reveal');
+
+const revealObserver = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+},{threshold:0.15});
+
+revealItems.forEach(item=>revealObserver.observe(item));
+</script>
+  <script>
+const tapSound = document.getElementById('tap-sound');
+tapSound.volume = 0.18; // very subtle
+
+let soundEnabled = false;
+
+// Enable sound only after user interacts (browser safe)
+document.addEventListener('click', () => {
+  soundEnabled = true;
+}, { once:true });
+
+function playTap(){
+  if(!('ontouchstart' in window)) return;
+
+  if(!soundEnabled) return;
+  tapSound.currentTime = 0;
+  tapSound.play().catch(()=>{});
+}
+
+// Attach to interactive elements
+const tapTargets = document.querySelectorAll(
+  '.social-link, .project-btn, .footer-btn, .mobile-float'
+);
+
+tapTargets.forEach(el=>{
+ document.addEventListener('click', () => {
+  tapSound.load();
+  soundEnabled = true;
+}, { once:true });
+
+</script>
+
+  
+<audio id="tap-sound" preload="none">
+  <source src="https://assets.mixkit.co/sfx/preview/mixkit-modern-click-1117.mp3" type="audio/mpeg">
+</audio>
+
+  
+<script src="main.js" defer></script>
 
 </body>
 </html>
