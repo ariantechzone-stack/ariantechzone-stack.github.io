@@ -108,6 +108,44 @@ h2{text-align:center;margin-bottom:50px;font-size:2rem}
   transition:transform .3s ease,box-shadow .3s ease;
   overflow:visible;
 }
+  /* ================= BUTTON RING EFFECT ================= */
+
+.social-link::after{
+  content:"";
+  position:absolute;
+  inset:-6px;
+  border-radius:50%;
+  border:2px solid transparent;
+  opacity:0;
+  transform:scale(.85);
+  transition:all .45s ease;
+  pointer-events:none;
+}
+.social-link:hover::after{
+  opacity:1;
+  transform:scale(1.15);
+}
+  .social-link.github::after{
+  border-color:rgba(255,255,255,.85);
+  box-shadow:0 0 18px rgba(255,255,255,.6);
+}
+.social-link.instagram::after{
+  border:2px solid transparent;
+  background:
+    linear-gradient(#000,#000) padding-box,
+    linear-gradient(135deg,#feda75,#fa7e1e,#d62976,#962fbf) border-box;
+  box-shadow:0 0 22px rgba(214,41,118,.6);
+}
+.social-link.pinterest::after{
+  border-color:#e60023;
+  box-shadow:0 0 20px rgba(230,0,35,.7);
+}
+.social-link.fiverr::after{
+  border-color:#1dbf73;
+  box-shadow:0 0 20px rgba(29,191,115,.7);
+}
+
+
 /* ================= PLATFORM GLOW COLORS ================= */
 
 /* GitHub – clean white glow */
