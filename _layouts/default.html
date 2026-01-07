@@ -258,26 +258,22 @@ a{text-decoration:none;color:inherit}
 </div>
 
 <!-- PROJECTS -->
-<section id="projects">
-  <h2 style="text-align:center; margin-bottom:40px;">Projects</h2>
+<section id="projects" style="padding:80px 20px; background:#0f0f0f;">
+  <h2 style="text-align:center; font-size:2.5rem; margin-bottom:60px;">Projects</h2>
   <div class="project-grid">
 
-    {% for project in site.data.projects %}
-    <div class="project-card reveal">
+    {% for project in site.data.projects limit:3 %}
+    <div class="project-card reveal" data-tilt data-tilt-max="15" data-tilt-scale="1.05" data-tilt-speed="400">
       <div class="project-media">
         <img src="{{ project.image }}" alt="{{ project.image_alt }}">
       </div>
-
       <div class="project-info">
         <div class="project-tags">
           <span>{{ project.category }}</span>
         </div>
-
-        <h3 style="margin:12px 0;">{{ project.title }}</h3>
-        <p style="color:#ccc;">{{ project.description }}</p>
-        <button class="project-btn" style="padding:12px 28px; font-size:1rem; background:linear-gradient(135deg,#fa7e1e,#d62976); color:#fff; border:none; border-radius:12px; cursor:pointer; transition:all .3s ease;">
-          View Project
-        </button>
+        <h3>{{ project.title }}</h3>
+        <p>{{ project.description }}</p>
+        <button class="project-btn" style="background:#fa7e1e; color:#111; padding:12px 28px; border-radius:12px; font-weight:600; font-size:1rem;">View Project</button>
       </div>
     </div>
     {% endfor %}
@@ -310,13 +306,10 @@ a{text-decoration:none;color:inherit}
 
 
 <!-- SOCIALS -->
-  
-<div class="socials">
+<div class="socials" style="margin-top:80px; margin-bottom:80px; display:flex; justify-content:center; gap:36px; flex-wrap:wrap;">
   <!-- GitHub -->
   <a href="https://github.com/ariantechzone-stack" target="_blank" class="social-link github" aria-label="GitHub">
-    <svg viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 .5C5.73.5.5 5.74.5 12.02c0 5.1 3.29 9.42 7.86 10.95.57.1.78-.25.78-.55v-2.02c-3.2.7-3.87-1.55-3.87-1.55-.52-1.33-1.27-1.69-1.27-1.69-1.04-.72.08-.71.08-.71 1.15.08 1.76 1.19 1.76 1.19 1.02 1.75 2.68 1.25 3.33.96.1-.74.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.45.11-3.02 0 0 .97-.31 3.18 1.18a10.9 10.9 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.57.24 2.73.12 3.02.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.4-5.25 5.69.41.36.78 1.08.78 2.18v3.23c0 .3.2.66.79.55 4.56-1.53 7.84-5.86 7.84-10.95C23.5 5.74 18.27.5 12 .5z"/>
-    </svg>
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.74.5 12.02c0 5.1 3.29 9.42 7.86 10.95.57.1.78-.25.78-.55v-2.02c-3.2.7-3.87-1.55-3.87-1.55-.52-1.33-1.27-1.69-1.27-1.69-1.04-.72.08-.71.08-.71 1.15.08 1.76 1.19 1.76 1.19 1.02 1.75 2.68 1.25 3.33.96.1-.74.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.45.11-3.02 0 0 .97-.31 3.18 1.18a10.9 10.9 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.57.24 2.73.12 3.02.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.4-5.25 5.69.41.36.78 1.08.78 2.18v3.23c0 .3.2.66.79.55 4.56-1.53 7.84-5.86 7.84-10.95C23.5 5.74 18.27.5 12 .5z"/></svg>
     <div class="icon-glow"></div>
     <div class="premium-glow"></div>
     <div class="tooltip">GitHub</div>
@@ -324,9 +317,7 @@ a{text-decoration:none;color:inherit}
 
   <!-- Instagram -->
   <a href="https://instagram.com/_arian.designs_" target="_blank" class="social-link instagram" aria-label="Instagram">
-    <svg viewBox="0 0 24 24" fill="currentColor">
-      <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10zm-5 3.5A4.5 4.5 0 1 0 16.5 12 4.51 4.51 0 0 0 12 7.5zm0 7.3A2.8 2.8 0 1 1 14.8 12 2.8 2.8 0 0 1 12 14.8zM17.5 6.3a1.05 1.05 0 1 0 1.05 1.05 1.05 1.05 0 0 0-1.05-1.05z"/>
-    </svg>
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10zm-5 3.5A4.5 4.5 0 1 0 16.5 12 4.51 4.51 0 0 0 12 7.5zm0 7.3A2.8 2.8 0 1 1 14.8 12 2.8 2.8 0 0 1 12 14.8zM17.5 6.3a1.05 1.05 0 1 0 1.05 1.05 1.05 1.05 0 0 0-1.05-1.05z"/></svg>
     <div class="icon-glow" style="background: radial-gradient(circle, rgba(255,255,255,0.35), transparent 70%);"></div>
     <div class="premium-glow" style="background: radial-gradient(circle, rgba(255,255,255,0.55), transparent 75%); filter: blur(8px);"></div>
     <div class="tooltip">Instagram</div>
@@ -334,9 +325,7 @@ a{text-decoration:none;color:inherit}
 
   <!-- Pinterest -->
   <a href="https://pinterest.com/ariantech" target="_blank" class="social-link pinterest" aria-label="Pinterest">
-    <svg viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 0C5.37 0 0 5.373 0 12c0 5.064 3.163 9.387 7.594 11.077-.105-.94-.2-2.39.042-3.423.217-.93 1.4-5.927 1.4-5.927s-.36-.723-.36-1.79c0-1.678.973-2.93 2.185-2.93 1.03 0 1.527.773 1.527 1.7 0 1.035-.66 2.583-1 4.018-.283 1.2.6 2.18 1.775 2.18 2.13 0 3.772-2.247 3.772-5.49 0-2.856-2.054-4.857-4.992-4.857-3.395 0-5.383 2.53-5.383 5.15 0 1.02.392 2.12.883 2.717a.355.355 0 0 1 .082.342c-.09.375-.29 1.2-.33 1.364-.05.218-.164.265-.38.16-1.42-.664-2.31-2.713-2.31-4.372 0-3.563 2.592-6.835 7.48-6.835 3.92 0 6.965 2.8 6.965 6.535 0 3.89-2.455 7.034-5.855 7.034-1.145 0-2.223-.593-2.592-1.296l-.705 2.682c-.255.992-.948 2.24-1.414 2.996 1.062.328 2.19.505 3.367.505 6.63 0 12-5.373 12-12S18.63 0 12 0z"/>
-    </svg>
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.373 0 12c0 5.064 3.163 9.387 7.594 11.077-.105-.94-.2-2.39.042-3.423.217-.93 1.4-5.927 1.4-5.927s-.36-.723-.36-1.79c0-1.678.973-2.93 2.185-2.93 1.03 0 1.527.773 1.527 1.7 0 1.035-.66 2.583-1 4.018-.283 1.2.6 2.18 1.775 2.18 2.13 0 3.772-2.247 3.772-5.49 0-2.856-2.054-4.857-4.992-4.857-3.395 0-5.383 2.53-5.383 5.15 0 1.02.392 2.12.883 2.717a.355.355 0 0 1 .082.342c-.09.375-.29 1.2-.33 1.364-.05.218-.164.265-.38.16-1.42-.664-2.31-2.713-2.31-4.372 0-3.563 2.592-6.835 7.48-6.835 3.92 0 6.965 2.8 6.965 6.535 0 3.89-2.455 7.034-5.855 7.034-1.145 0-2.223-.593-2.592-1.296l-.705 2.682c-.255.992-.948 2.24-1.414 2.996 1.062.328 2.19.505 3.367.505 6.63 0 12-5.373 12-12S18.63 0 12 0z"/></svg>
     <div class="icon-glow" style="background: radial-gradient(circle, rgba(255,0,0,0.35), transparent 70%);"></div>
     <div class="premium-glow" style="background: radial-gradient(circle, rgba(255,0,0,0.55), transparent 75%); filter: blur(8px);"></div>
     <div class="tooltip">Pinterest</div>
@@ -344,9 +333,7 @@ a{text-decoration:none;color:inherit}
 
   <!-- Fiverr -->
   <a href="https://www.fiverr.com/r_kumar101/modern-instagram-posts-and-social-media-graphics" target="_blank" class="social-link fiverr" aria-label="Fiverr">
-    <svg viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 0C5.372 0 0 5.372 0 12c0 5.303 3.438 9.8 8.205 11.385.6.111.82-.261.82-.58 0-.286-.011-1.041-.017-2.045-3.338.726-4.042-1.612-4.042-1.612-.546-1.387-1.333-1.756-1.333-1.756-1.089-.744.082-.729.082-.729 1.205.085 1.838 1.238 1.838 1.238 1.07 1.835 2.807 1.305 3.492.998.108-.775.418-1.305.762-1.605-2.665-.304-5.466-1.335-5.466-5.936 0-1.31.468-2.382 1.235-3.222-.124-.303-.536-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.49 11.49 0 0 1 3-.404c1.02 0 2.047.137 3 .403 2.288-1.552 3.292-1.23 3.292-1.23.655 1.653.243 2.873.12 3.176.77.84 1.233 1.913 1.233 3.222 0 4.61-2.807 5.628-5.479 5.926.43.37.813 1.103.813 2.222 0 1.606-.015 2.898-.015 3.292 0 .32.218.694.825.577C20.565 21.796 24 17.302 24 12c0-6.628-5.372-12-12-12z"/>
-    </svg>
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12c0 5.303 3.438 9.8 8.205 11.385.6.111.82-.261.82-.58 0-.286-.011-1.041-.017-2.045-3.338.726-4.042-1.612-4.042-1.612-.546-1.387-1.333-1.756-1.333-1.756-1.089-.744.082-.729.082-.729 1.205.085 1.838 1.238 1.838 1.238 1.07 1.835 2.807 1.305 3.492.998.108-.775.418-1.305.762-1.605-2.665-.304-5.466-1.335-5.466-5.936 0-1.31.468-2.382 1.235-3.222-.124-.303-.536-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.49 11.49 0 0 1 3-.404c1.02 0 2.047.137 3 .403 2.288-1.552 3.292-1.23 3.292-1.23.655 1.653.243 2.873.12 3.176.77.84 1.233 1.913 1.233 3.222 0 4.61-2.807 5.628-5.479 5.926.43.37.813 1.103.813 2.222 0 1.606-.015 2.898-.015 3.292 0 .32.218.694.825.577C20.565 21.796 24 17.302 24 12c0-6.628-5.372-12-12-12z"/></svg>
     <div class="icon-glow" style="background: radial-gradient(circle, rgba(0,255,0,0.35), transparent 70%);"></div>
     <div class="premium-glow" style="background: radial-gradient(circle, rgba(0,255,0,0.55), transparent 75%); filter: blur(8px);"></div>
     <div class="tooltip">Fiverr</div>
@@ -384,6 +371,17 @@ a{text-decoration:none;color:inherit}
 </audio>
 
 <!-- SCRIPTS -->
+<!-- INCLUDE TILT.JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+<script>
+  VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
+    max: 15,
+    speed: 400,
+    scale: 1.05,
+    glare: true,
+    "max-glare": 0.3,
+  });
+</script>
 <script>
 /* HERO TYPE EFFECT */
 const text = "Clean, modern visual design for posters & social media.";
