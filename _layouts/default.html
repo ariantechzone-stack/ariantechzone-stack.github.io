@@ -377,7 +377,46 @@ a{text-decoration:none;color:inherit}
 </audio>
 
 <!-- SCRIPTS -->
-<!-- INCLUDE TILT.JS -->
+  
+<script>
+const socials = document.querySelectorAll('.social-link');
+
+socials.forEach(link => {
+  link.addEventListener('click', (e)=>{
+    e.preventDefault();
+    const type = link.classList.contains('instagram') ? 'instagram' :
+                 link.classList.contains('pinterest') ? 'pinterest' :
+                 link.classList.contains('fiverr') ? 'fiverr' :
+                 'github';
+
+    // Reset all
+    socials.forEach(l=>{
+      l.style.background = '#222';
+      l.querySelector('svg').style.fill = 'currentColor';
+    });
+
+    // Set active gradient
+    if(type==='instagram'){
+      link.style.background = 'linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf)';
+      link.querySelector('svg').style.fill = '#fff';
+    } else if(type==='pinterest'){
+      link.style.background = 'linear-gradient(45deg,#E60023,#FF4D6D)';
+      link.querySelector('svg').style.fill = '#fff';
+    } else if(type==='fiverr'){
+      link.style.background = 'linear-gradient(45deg,#1DBF73,#00C67B)';
+      link.querySelector('svg').style.fill = '#fff';
+    } else {
+      // github white
+      link.style.background = '#fff';
+      link.querySelector('svg').style.fill = '#111';
+    }
+
+    // Open link after 150ms
+    setTimeout(()=>window.open(link.href,'_blank'),150);
+  });
+});
+</script>
+  <!-- INCLUDE TILT.JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
 <script>
   VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
