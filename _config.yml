@@ -1,43 +1,55 @@
-# ─────────────────────────────────────────────
-# SITE SETTINGS
-# ─────────────────────────────────────────────
-title: ARIAN DESIGNS
-description: Modern, minimal, professional design portfolio
-
-url: ""   # 🔴 CHANGE this to your GitHub username
-baseurl: ""                             # keep empty for root site
-
-# ─────────────────────────────────────────────
-# BUILD SETTINGS
-# ─────────────────────────────────────────────
+# Site settings
+title: "ARIAN DESIGNS"
+description: "Clean, modern, professional portfolio showcasing posters, banners & social media creatives"
+baseurl: "" # leave blank if deploying to root
+url: "https://yourusername.github.io" # replace with your GitHub Pages URL
 theme: null
-markdown: kramdown
 
-# ─────────────────────────────────────────────
-# PLUGINS (GitHub Pages compatible)
-# ─────────────────────────────────────────────
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+paginate: 6 # optional if you have many projects, adjust as needed
+
+# Plugins
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-paginate
 
-# ─────────────────────────────────────────────
-# BRANDING & SEO
-# ─────────────────────────────────────────────
-author: ARIAN
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
 
-social:
-  name: ARIAN DESIGNS
-  links:
-    - https://github.com/ariantechzone-stack
-    - https://instagram.com/_arian.designs_
-    - https://pinterest.com/ariantech
-    - https://www.fiverr.com/r_kumar101/modern-instagram-posts-and-social-media-graphics
-# ─────────────────────────────────────────────
-# FILES TO EXCLUDE FROM BUILD
-# ─────────────────────────────────────────────
+# Include / Exclude
+include:
+  - _pages
 exclude:
-  - README.md
-  - node_modules
-  - vendor
   - Gemfile
   - Gemfile.lock
+  - node_modules
+  - vendor
+
+# Author info
+author:
+  name: "Arian"
+  email: "your-email@example.com"
+
+# Social links (optional)
+social:
+  github: "https://github.com/ariantechzone-stack"
+  instagram: "https://instagram.com/_arian.designs_"
+  pinterest: "https://pinterest.com/ariantech"
+  fiverr: "https://www.fiverr.com/r_kumar101/modern-instagram-posts-and-social-media-graphics"
+
+# Theme color (used for mobile/browser)
+theme_color: "#0f0f0f"
