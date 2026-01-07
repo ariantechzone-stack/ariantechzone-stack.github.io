@@ -425,6 +425,24 @@ window.addEventListener('scroll',()=>{
     if(revealTop<windowH-60){el.style.opacity=1;el.style.transform='translateY(0)';}
   });
 });
+  // Dynamic 3D tilt effect on project cards
+document.querySelectorAll('.project-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left; // Mouse X inside card
+    const y = e.clientY - rect.top;  // Mouse Y inside card
+    const cx = rect.width/2;
+    const cy = rect.height/2;
+    const dx = (x - cx) / cx; // -1 to 1
+    const dy = (y - cy) / cy; // -1 to 1
+    const maxTilt = 10; // max degrees
+    card.style.transform = `rotateY(${dx*maxTilt}deg) rotateX(${-dy*maxTilt}deg) scale(1.05)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'rotateY(0deg) rotateX(0deg) scale(1)';
+  });
+});
+
 </script>
 
 </body>
