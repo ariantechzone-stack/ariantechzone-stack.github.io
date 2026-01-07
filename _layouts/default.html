@@ -266,6 +266,110 @@ footer{
   color:#777;
   background:#111;
 }
+  /* ================= HERO UPGRADE ================= */
+
+/* Subtle animated background */
+.hero{
+  position:relative;
+  overflow:hidden;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,#111,#1a1a1a,#111);
+  background-size:200% 200%;
+  animation:hero-bg 18s ease infinite;
+  z-index:0;
+}
+
+@keyframes hero-bg{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+/* Bring content above animation */
+.hero h1,
+.hero p,
+.hero-cta{
+  position:relative;
+  z-index:1;
+}
+
+/* Floating text motion */
+.hero h1{
+  animation:float-text 6s ease-in-out infinite;
+}
+
+@keyframes float-text{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-4px)}
+}
+
+/* CTA Buttons */
+.hero-cta{
+  margin-top:40px;
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:14px 34px;
+  border-radius:999px;
+  font-weight:600;
+  font-size:.95rem;
+  transition:all .35s ease;
+  cursor:pointer;
+}
+
+/* Primary CTA */
+.btn.primary{
+  background:linear-gradient(135deg,#feda75,#fa7e1e,#d62976);
+  color:#111;
+  box-shadow:0 12px 30px rgba(214,41,118,.35);
+}
+
+.btn.primary:hover{
+  transform:translateY(-3px);
+  box-shadow:0 18px 45px rgba(214,41,118,.55);
+}
+
+/* Outline CTA */
+.btn.outline{
+  border:1.5px solid rgba(255,255,255,.35);
+  color:#fff;
+  background:transparent;
+}
+
+.btn.outline:hover{
+  background:rgba(255,255,255,.08);
+  box-shadow:0 0 0 6px rgba(255,255,255,.05);
+  transform:translateY(-3px);
+}
+
+/* Mobile spacing */
+@media(max-width:600px){
+  .hero h1{font-size:2.4rem}
+  .hero p{font-size:1.05rem}
+}
+.hero h1,
+.hero p,
+.hero-cta{
+  opacity:0;
+  animation:hero-fade 1.2s ease forwards;
+}
+
+.hero p{animation-delay:.2s}
+.hero-cta{animation-delay:.4s}
+
+@keyframes hero-fade{
+  to{opacity:1}
+}
+
 </style>
 </head>
 
@@ -276,13 +380,18 @@ footer{
   <h1>ARIAN DESIGNS</h1>
   <p id="hero-text"></p>
 </div>
+  
+  <div class="hero-cta">
+  <a href="#projects" class="btn primary">View Work</a>
+  <a href="https://www.fiverr.com/r_kumar101" target="_blank" class="btn outline">Hire Me</a>
+</div>
 
 <!-- PROJECTS -->
 <section>
 <h2>Projects</h2>
 <div class="project-grid">
 
-{% for project in site.data.projects %}
+{% for project in sit e.data.projects %}
 <div class="project-card">
   <h3>{{ project.title }}</h3>
   <p>{{ project.description }}</p>
