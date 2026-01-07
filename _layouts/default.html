@@ -111,6 +111,7 @@ footer p{ font-size:0.9rem; color:#777; }
   </div>
   {% endfor %}
 </div>
+
 </section>
 
 <!-- ABOUT -->
@@ -170,7 +171,11 @@ window.addEventListener('scroll',()=>{document.querySelector('.progress').style.
 
 // Page intro animation
 window.addEventListener('DOMContentLoaded',()=>{
-  document.querySelectorAll('.page-intro').forEach((el,i)=>setTimeout(()=>el.classList.add('fade-in'),i*200));
+  const cards = document.querySelectorAll('.project-card');
+  cards.forEach((el,i)=>{
+    setTimeout(()=> el.classList.add('fade-in'), i*150);
+  });
+});
   const heroText="Clean, modern visual design for posters, banners & social media.";
   const heroEl=document.getElementById("hero-text");
   if(heroEl){ let i=0; const ti=setInterval(()=>{heroEl.textContent+=heroText[i];i++;if(i>=heroText.length)clearInterval(ti);},35);}
