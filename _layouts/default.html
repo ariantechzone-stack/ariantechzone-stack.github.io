@@ -108,6 +108,48 @@ h2{text-align:center;margin-bottom:50px;font-size:2rem}
   transition:transform .3s ease,box-shadow .3s ease;
   overflow:visible;
 }
+/* ================= PLATFORM GLOW COLORS ================= */
+
+/* GitHub – clean white glow */
+.social-link.github .icon-glow,
+.social-link.github .premium-glow{
+  background:radial-gradient(circle,rgba(255,255,255,.6),transparent 70%);
+}
+
+/* Instagram – pink/purple gradient glow */
+.social-link.instagram .icon-glow,
+.social-link.instagram .premium-glow{
+  background:radial-gradient(circle at top left,
+    #feda75,
+    #fa7e1e,
+    #d62976,
+    #962fbf,
+    transparent 75%);
+}
+
+/* Pinterest – red glow */
+.social-link.pinterest .icon-glow,
+.social-link.pinterest .premium-glow{
+  background:radial-gradient(circle,rgba(230,0,35,.7),transparent 70%);
+}
+
+/* Fiverr – green glow */
+.social-link.fiverr .icon-glow,
+.social-link.fiverr .premium-glow{
+  background:radial-gradient(circle,rgba(29,191,115,.7),transparent 70%);
+}
+.social-link.github::before{
+  background:radial-gradient(circle,rgba(255,255,255,.4),transparent 70%);
+}
+.social-link.instagram::before{
+  background:radial-gradient(circle,rgba(214,41,118,.4),transparent 70%);
+}
+.social-link.pinterest::before{
+  background:radial-gradient(circle,rgba(230,0,35,.4),transparent 70%);
+}
+.social-link.fiverr::before{
+  background:radial-gradient(circle,rgba(29,191,115,.4),transparent 70%);
+}
 
 /* Pulse */
 .social-link::before{
