@@ -60,11 +60,11 @@ h2{text-align:center;font-size:2rem;margin-bottom:50px;font-weight:600;}
 .tilt-card:hover{ box-shadow: 0 25px 60px rgba(0,0,0,0.6); }
 @media (hover: none) { .project-card:active { transform: scale(1.03); box-shadow: 0 15px 30px rgba(0,0,0,0.4); } }
 
-/* ABOUT */
+/* ================= ABOUT ================= */
 .about{ text-align:center; padding:100px 20px; }
 .about p{ max-width:650px; margin:auto; color:#ccc; line-height:1.75; font-size:1.1rem; }
 
-/* FOOTER */
+/* ================= FOOTER ================= */
 footer{ padding:50px 20px; text-align:center; background:linear-gradient(to top, #111 0%, #1a1a1a 100%); border-top:2px solid #333; }
 footer p{ font-size:0.9rem; color:#777; }
 
@@ -93,7 +93,7 @@ footer p{ font-size:0.9rem; color:#777; }
 .icon-glow { position:absolute; inset:0; border-radius:50%; background:radial-gradient(circle,#fff 0%,transparent 70%); opacity:0.15; filter:blur(12px); z-index:0; transition: opacity 0.2s ease, transform 0.15s ease; }
 .tooltip { position:absolute; bottom:70px; left:50%; transform:translateX(-50%) translateY(0); padding:6px 12px; border-radius:6px; font-size:0.8rem; font-weight:600; white-space:nowrap; pointer-events:none; opacity:0; transition:opacity 0.3s ease, transform 0.15s ease; z-index:5; }
 .tooltip.show-text{ color:#fff; background:none; -webkit-background-clip:none; }
-.premium-glow { position:absolute; width:100px; height:100px; border-radius:50%; pointer-events:none; background:radial-gradient(circle,rgba(255,255,255,0.3) 0%,transparent 70%); animation:glowPulse 3s ease-in-out infinite; mix-blend-mode:screen; z-index:0; }
+.premium-glow { position:absolute; width:100px; height:100px; pointer-events:none; background:radial-gradient(circle,rgba(255,255,255,0.3) 0%,transparent 70%); animation:glowPulse 3s ease-in-out infinite; mix-blend-mode:screen; z-index:0; }
 @keyframes glowPulse{0%,100%{transform:scale(1);opacity:0.3;}50%{transform:scale(1.3);opacity:0.6;}}
 </style>
 </head>
@@ -134,7 +134,7 @@ footer p{ font-size:0.9rem; color:#777; }
 <p>{{ site.data.about.description }}</p>
 </section>
 
-<!-- SOCIAL ICONS -->
+<!-- SOCIALS -->
 <div class="socials">
   <!-- GitHub -->
   <a href="https://github.com/ariantechzone-stack" target="_blank" class="social-link github" aria-label="GitHub">
@@ -173,7 +173,6 @@ footer p{ font-size:0.9rem; color:#777; }
   </a>
 </div>
 
-
 <!-- FOOTER -->
 <footer class="page-intro"><p>© 2026 ARIAN DESIGNS</p></footer>
 
@@ -193,25 +192,40 @@ footer p{ font-size:0.9rem; color:#777; }
 </div>
 
 <script>
-// Cursor Glow & Scroll Progress
+// Cursor Glow
 const glow=document.querySelector('.cursor-glow');
 document.addEventListener('mousemove',e=>{glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px';});
+// Scroll Progress
 window.addEventListener('scroll',()=>{document.querySelector('.progress').style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';});
 
-// Project Card Tilt + Modal Slider
+// Page intro animation + fade-in project cards
+window.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('.page-intro').forEach((el,i)=>setTimeout(()=>el.classList.add('show'),i*200));
+
+  // Fade-in project cards
+  document.querySelectorAll('.project-card').forEach((card,i)=>{
+    setTimeout(()=>card.classList.add('fade-in'),i*150);
+  });
+
+  // Hero typing effect
+  const heroText="Clean, modern visual design for posters, banners & social media.";
+  const heroEl=document.getElementById("hero-text");
+  if(heroEl){ let i=0; const ti=setInterval(()=>{heroEl.textContent+=heroText[i];i++;if(i>=heroText.length)clearInterval(ti);},35);}
+});
+
+// 3D Tilt
 const maxTilt=10;
 document.querySelectorAll('.tilt-card').forEach(card=>{
-  const depth=maxTilt;
   card.addEventListener('mousemove',e=>{
     const r=card.getBoundingClientRect();
     const x=e.clientX - r.left - r.width/2;
     const y=e.clientY - r.top - r.height/2;
-    card.style.transform=`perspective(900px) rotateX(${(-y/r.height*depth)}deg) rotateY(${(x/r.width*depth)}deg) scale(1.04)`;
+    card.style.transform=`perspective(900px) rotateX(${(-y/r.height*maxTilt)}deg) rotateY(${(x/r.width*maxTilt)}deg) scale(1.04)`;
   });
   card.addEventListener('mouseleave',()=>{card.style.transform='perspective(900px) rotateX(0) rotateY(0) scale(1)';});
 });
 
-// Modal
+// Modal functionality
 const modal=document.getElementById('projectModal');
 const slider=document.getElementById('modalSlider');
 const title=document.getElementById('modalTitle');
@@ -224,37 +238,22 @@ document.querySelectorAll('.view-project').forEach(btn=>{
     desc.textContent=btn.dataset.description;
     images=btn.dataset.images.split(',').filter(Boolean);
     slider.innerHTML=images.map((s,i)=>`<img src="${s}" class="${i===0?'active':''}">`).join('');
-    currentSlide=0; modal.classList.add('active'); document.body.style.overflow='hidden';
+    currentSlide=0;
+    modal.classList.add('active');
+    document.body.style.overflow='hidden';
   });
 });
 document.getElementById('prevSlide').addEventListener('click',()=>{if(images.length<2)return;currentSlide=(currentSlide-1+images.length)%images.length;showSlide(currentSlide);});
 document.getElementById('nextSlide').addEventListener('click',()=>{if(images.length<2)return;currentSlide=(currentSlide+1)%images.length;showSlide(currentSlide);});
 modal.addEventListener('click',e=>{if(e.target.classList.contains('modal-overlay')||e.target.classList.contains('modal-close')){modal.classList.remove('active');document.body.style.overflow='';}});
 
-// Page intro animation
-window.addEventListener('DOMContentLoaded',()=>{
-  document.querySelectorAll('.page-intro').forEach((el,i)=>setTimeout(()=>el.classList.add('show'),i*200));
-  const heroText="Clean, modern visual design for posters, banners & social media.";
-  const heroEl=document.getElementById("hero-text");
-  if(heroEl){ let i=0; const ti=setInterval(()=>{heroEl.textContent+=heroText[i];i++;if(i>=heroText.length)clearInterval(ti);},35);}
-});
-
-// Auto-open project via URL
-const params=new URLSearchParams(window.location.search);
-if(params.has('project')){
-  const name=params.get('project');
-  const btn=Array.from(document.querySelectorAll('.view-project')).find(b=>b.dataset.title===name);
-  if(btn)btn.click();
-}
-
-// ---------------- SOCIAL ICONS ----------------
+// Social icons tilt + glow
 const socialMaxTilt=14, socialMaxGlow=0.6, socialMinGlow=0.15;
 document.querySelectorAll('.social-link').forEach(icon=>{
   const shadow=icon.querySelector('.icon-shadow');
   const glowEl=icon.querySelector('.icon-glow');
   const tip=icon.querySelector('.tooltip');
   const pulse=icon.querySelector('.premium-glow');
-
   icon.addEventListener('mousemove',e=>{
     const r=icon.getBoundingClientRect();
     const x=e.clientX-r.left-r.width/2;
@@ -263,14 +262,12 @@ document.querySelectorAll('.social-link').forEach(icon=>{
     const rotateY=(x/r.width)*socialMaxTilt;
     const distance=Math.sqrt(x*x+y*y)/(r.width/2);
     const glowOpacity=Math.min(socialMaxGlow, socialMinGlow+(1-distance)*(socialMaxGlow-socialMinGlow));
-
     icon.style.transform=`perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.15)`;
     if(shadow) shadow.style.transform=`translateZ(0) rotateX(${rotateX*0.3}deg) rotateY(${rotateY*0.3}deg)`;
     if(glowEl) glowEl.style.opacity=glowOpacity;
     if(pulse) pulse.style.opacity=glowOpacity;
     if(tip) tip.style.transform=`translateX(-50%) translateY(-6px) rotateX(${rotateX*0.4}deg) rotateY(${rotateY*0.4}deg)`;
   });
-
   icon.addEventListener('mouseleave',()=>{
     icon.style.transform='perspective(900px) rotateX(0) rotateY(0) scale(1)';
     if(shadow) shadow.style.transform='translateZ(0)';
@@ -282,4 +279,3 @@ document.querySelectorAll('.social-link').forEach(icon=>{
 </script>
 </body>
 </html>
-
