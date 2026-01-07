@@ -4,7 +4,7 @@
 title: ARIAN DESIGNS
 description: Modern, minimal, professional design portfolio
 
-url: "https://yourusername.github.io"   # 🔴 CHANGE this to your GitHub username
+url: "https://ariantechzone-stack.github.io"   # 🔴 CHANGE this to your GitHub username
 baseurl: ""                             # keep empty for root site
 
 # ─────────────────────────────────────────────
@@ -31,7 +31,7 @@ social:
     - https://github.com/ariantechzone-stack
     - https://instagram.com/_arian.designs_
     - https://pinterest.com/ariantech
-
+    - https://www.fiverr.com/r_kumar101/modern-instagram-posts-and-social-media-graphics
 # ─────────────────────────────────────────────
 # FILES TO EXCLUDE FROM BUILD
 # ─────────────────────────────────────────────
