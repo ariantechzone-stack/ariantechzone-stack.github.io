@@ -332,6 +332,31 @@ const t=setInterval(()=>{
   if(i>=text.length)clearInterval(t);
 },30);
 </script>
+  <script>
+/* SUBTLE HOVER SOUND */
+const hoverSound = document.getElementById("ui-hover-sound");
+hoverSound.volume = 0.15;
+
+document.querySelectorAll(".social-link").forEach(icon => {
+  let played = false;
+
+  icon.addEventListener("mouseenter", () => {
+    if (!played) {
+      hoverSound.currentTime = 0;
+      hoverSound.play().catch(() => {});
+      played = true;
+    }
+  });
+
+  icon.addEventListener("mouseleave", () => {
+    played = false;
+  });
+});
+</script>
+
+<audio id="ui-hover-sound" preload="auto">
+  <source src="hover.mp3" type="audio/mpeg">
+</audio>
 
 </body>
 </html>
