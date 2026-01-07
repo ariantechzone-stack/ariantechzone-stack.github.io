@@ -69,56 +69,26 @@ footer p{ font-size:0.9rem; color:#777; }
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #1a1a1a;  /* dark circle default */
-  color: #fff;           /* icon white default */
+  background: #1a1a1a;
+  color: #fff;
   position: relative;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease, background 0.3s ease;
 }
 
-.social-link:hover {
-  transform: scale(1.2);
-}
+.social-link:hover { transform: scale(1.2); }
 
-/* GitHub hover: white circle, black icon, white glow */
-.social-link.github:hover {
-  background: #fff;
-  color: #000;
-  box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
-}
-
-/* Instagram hover: gradient circle, white icon, glow */
-.social-link.instagram:hover {
-  background: linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);
-  color: #fff;
-  box-shadow: 0 0 25px rgba(214,41,118,0.6);
-}
-
-/* Pinterest hover: red circle, white icon, glow */
-.social-link.pinterest:hover {
-  background: #e60023;
-  color: #fff;
-  box-shadow: 0 0 25px rgba(230,0,35,0.6);
-}
-/* Fiverr hover: green circle, white icon, glow */
-.social-link.fiverr:hover {
-  background: #1dbf73;
-  color: #fff;
-  box-shadow: 0 0 25px rgba(29, 191, 115, 0.7);
-}
-
+/* GitHub hover */
+.social-link.github:hover { background: #fff; color: #000; box-shadow: 0 0 25px rgba(255,255,255,0.8); }
+/* Instagram hover */
+.social-link.instagram:hover { background: linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5); color:#fff; box-shadow:0 0 25px rgba(214,41,118,0.6); }
+/* Pinterest hover */
+.social-link.pinterest:hover { background: #e60023; color:#fff; box-shadow:0 0 25px rgba(230,0,35,0.6); }
+/* Fiverr hover */
+.social-link.fiverr:hover { background: #1dbf73; color:#fff; box-shadow:0 0 25px rgba(29,191,115,0.7); }
 /* Ripple effect */
-.social-link span.ripple {
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.4);
-  transform: scale(0);
-  animation: ripple 0.6s linear;
-  pointer-events: none;
-}
-
+.social-link span.ripple { position: absolute; border-radius: 50%; background: rgba(255,255,255,0.4); transform: scale(0); animation: ripple 0.6s linear; pointer-events: none; }
 @keyframes ripple { to { transform: scale(4); opacity: 0; } }
-
 .tooltip{ position:absolute; bottom:120%; left:50%; transform:translateX(-50%); padding:6px 12px; background:#222; color:#fff; font-size:0.8rem; border-radius:6px; opacity:0; pointer-events:none; transition:opacity 0.3s ease; }
 .social-link:hover .tooltip{ opacity:1; }
 
@@ -128,73 +98,19 @@ footer p{ font-size:0.9rem; color:#777; }
 /* ================= SCROLL BAR PROGRESS ================= */
 .progress{ position:fixed; top:0; left:0; height:4px; width:0%; background:linear-gradient(90deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5); z-index:999; transition:width 0.25s ease; }
 
-  /* =============== 3D TILT PROJECT CARDS =============== */
-.tilt-card {
-  position: relative;
-  transform-style: preserve-3d;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-  will-change: transform;
-}
+/* =============== 3D TILT PROJECT CARDS =============== */
+.tilt-card { position: relative; transform-style: preserve-3d; transition: transform 0.15s ease, box-shadow 0.15s ease; will-change: transform; }
+.tilt-card::before { content: ""; position: absolute; inset: 0; background: linear-gradient(120deg, rgba(255,255,255,0.15), transparent); opacity: 0; transition: opacity 0.3s ease; pointer-events: none; border-radius: inherit; }
+.tilt-card:hover::before { opacity: 1; }
+.tilt-card:hover { box-shadow: 0 25px 60px rgba(0,0,0,0.6); }
 
-.tilt-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(120deg, rgba(255,255,255,0.15), transparent);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-  border-radius: inherit;
-}
-
-.tilt-card:hover::before {
-  opacity: 1;
-}
-
-.tilt-card:hover {
-  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
-}
-.project-modal {
-  position: fixed;
-  inset: 0;
-  display: none;
-  z-index: 9999;
-}
-
-.project-modal.active {
-  display: block;
-}
-
-.modal-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.7);
-  backdrop-filter: blur(8px);
-}
-
-.modal-content {
-  position: relative;
-  max-width: 600px;
-  margin: 10vh auto;
-  background: #111;
-  padding: 25px;
-  border-radius: 20px;
-}
-
-.modal-close {
-  position: absolute;
-  top: 12px;
-  right: 18px;
-  background: none;
-  border: none;
-  font-size: 2rem;
-  color: white;
-  cursor: pointer;
-}
-
+/* =============== MODAL ================= */
+.project-modal { position: fixed; inset: 0; display: none; z-index: 9999; }
+.project-modal.active { display: block; }
+.modal-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(8px); }
+.modal-content { position: relative; max-width: 600px; margin: 10vh auto; background: #111; padding: 25px; border-radius: 20px; }
+.modal-close { position: absolute; top: 12px; right: 18px; background: none; border: none; font-size: 2rem; color: white; cursor: pointer; }
 </style>
-
-  
 </head>
 <body>
 <div class="cursor-glow"></div>
@@ -206,28 +122,28 @@ footer p{ font-size:0.9rem; color:#777; }
   <p id="hero-text"></p>
 </div>
 
-
+<!-- PROJECTS -->
 <!-- PROJECTS -->
 <section class="projects page-intro">
-<h2>Projects</h2>
-<div class="project-card tilt-card">
-  <div class="project-image">
-    <img src="{{ project.image }}" alt="{{ project.title }}">
+  <h2>Projects</h2>
+
+  <div class="project-grid">
+    {% for project in site.data.projects %}
+    <div class="project-card tilt-card">
+      <img src="{{ project.image }}" alt="{{ project.title }}">
+      <div class="project-content">
+        <h3>{{ project.title }}</h3>
+        <p>{{ project.description }}</p>
+        <button class="project-btn view-project"
+          data-title="{{ project.title }}"
+          data-image="{{ project.image }}"
+          data-description="{{ project.description }}">
+          View Project
+        </button>
+      </div>
+    </div>
+    {% endfor %}
   </div>
-
-  <div class="project-content">
-    <h3>{{ project.title }}</h3>
-    <p>{{ project.description }}</p>
-
-    <button class="project-btn view-project"
-      data-title="{{ project.title }}"
-      data-image="{{ project.image }}"
-      data-description="{{ project.description }}">
-      View Project
-    </button>
-  </div>
-</div>
-
 </section>
 
 
@@ -239,46 +155,44 @@ footer p{ font-size:0.9rem; color:#777; }
 
 <footer class="page-intro">
   <p>© 2026 ARIAN DESIGNS</p>
-
   <div class="socials">
-    <!-- GITHUB -->
+    <!-- GitHub -->
     <a href="https://github.com/ariantechzone-stack" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social-link github">
       <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
         <path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.5v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.2-1.7-1.2-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 .1 1.5-.7 1.8-1.1.1-.7.4-1.1.7-1.4-2.6-.3-5.3-1.3-5.3-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.3 11.3 0 016 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.2 0 4.6-2.7 5.6-5.3 5.9.4.4.8 1 .8 2.1v3.1c0 .3.2.6.8.5A11.5 11.5 0 0023.5 12C23.5 5.7 18.3.5 12 .5z"/>
       </svg>
     </a>
-
-    
-<a href="https://www.fiverr.com/r_kumar101/modern-instagram-posts-and-social-media-graphics"
-   target="_blank"
-   rel="noopener noreferrer sponsored"
-   aria-label="Hire me on Fiverr"
-   class="social-link fiverr">
-
-
-
-  <!-- Fiverr SVG Icon -->
-  <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-    <path d="M16.4 3.6c-2.5 0-4.4 1.4-5.2 3.5H9v3h1.9v8.3h3.3v-8.3h2.6l.5-3h-3.1c.3-.9 1.1-1.5 2.2-1.5.5 0 1 .1 1.4.3V3.8c-.4-.1-1-.2-1.4-.2z"/>
-  </svg>
-</a>
-
-    <!-- INSTAGRAM -->
+    <!-- Fiverr -->
+    <a href="https://www.fiverr.com/r_kumar101/modern-instagram-posts-and-social-media-graphics" target="_blank" rel="noopener noreferrer sponsored" aria-label="Hire me on Fiverr" class="social-link fiverr">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+        <path d="M16.4 3.6c-2.5 0-4.4 1.4-5.2 3.5H9v3h1.9v8.3h3.3v-8.3h2.6l.5-3h-3.1c.3-.9 1.1-1.5 2.2-1.5.5 0 1 .1 1.4.3V3.8c-.4-.1-1-.2-1.4-.2z"/>
+      </svg>
+    </a>
+    <!-- Instagram -->
     <a href="https://instagram.com/_arian.designs_" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-link instagram">
       <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
         <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.25-.75a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
       </svg>
     </a>
-
-    <!-- PINTEREST -->
+    <!-- Pinterest -->
     <a href="https://pinterest.com/ariantech" target="_blank" rel="noopener noreferrer" aria-label="Pinterest" class="social-link pinterest">
       <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-        <path d="M12 2C6.48 2 2 6.25 2 11.49c0 3.83 2.4 7.22 6.18 8.5-.09-.72-.17-1.83.03-2.62.18-.75 1.17-4.77 1.17-4.77s-.3-.6-.3-1.49c0-1.4.82-2.44 1.83-2.44.86 0 1.28.65 1.28 1.43 0 .87-.55 2.17-.84 3.38-.24 1.01.51 1.83 1.51 1.83 1.82 0 3.22-1.92 3.22-4.69 0-2.45-1.76-4.16-4.27-4.16-2.91 0-4.62 2.18-4.62 4.44 0 .88.34 1.83.76 2.34.08.1.09.19.07.29-.08.32-.26 1.01-.29 1.15-.05.18-.16.22-.37.13-1.38-.64-2.24-2.64-2.24-4.25 0-3.46 2.51-6.64 7.24-6.64 3.8 0 6.76 2.71 6.76 6.34 0 3.78-2.38 6.82-5.68 6.82-1.11 0-2.15-.58-2.51-1.26l-.68 2.6c-.25.96-.93 2.16-1.39 2.89.42.13.86.2 1.32.2 5.52 0 10-4.25 10-9.49C22 6.25 17.52 2 12 2z"/>
+        <path d="M12 2C6.48 2 2 6.25 2 11.49c0 3.83 2.4 7.22 6.18 8.5-.09-.72-.17-1.83.03-2.62.18-.75 1.17-4.77 1.17-4.77s-.3-.6-.3-1.49c0-1.4.82-2.44 1.83-2.44.86 0 1.28.65 1.28 1.43 0 .87-.55 2.17-.84 3.38-.24 1.01.51 1.83 1.51 1.83 1.82 0 3.22-1.92 3.22-4.69 0-2.45-1.76-4.16-4.27-4.16-2.91 0-4.62 2.18-4.62 4.44 0 .88.34 1.83.76 2.34.08.1.09.19.07.29-.08.32-.26 1.01-.29 1.15-.05.18-.16.22-.37.13-1.38-.64-2.24-2.66-2.24-4.28 0-3.48 2.53-6.69 7.29-6.69 3.82 0 6.79 2.73 6.79 6.37 0 3.78-2.38 6.82-5.68 6.82-1.11 0-2.16-.58-2.52-1.26l-.69 2.63c-.25.96-.93 2.16-1.39 2.88 1.04.32 2.15.5 3.31.5 5.52 0 10-4.25 10-9.49C22 6.25 17.52 2 12 2z"/>
       </svg>
     </a>
   </div>
 </footer>
 
+<!-- PROJECT MODAL -->
+<div class="project-modal" id="projectModal">
+  <div class="modal-overlay"></div>
+  <div class="modal-content">
+    <button class="modal-close">&times;</button>
+    <img id="modalImage" alt="">
+    <h3 id="modalTitle"></h3>
+    <p id="modalDescription"></p>
+  </div>
+</div>
 
 <script>
 // ===== REDUCED MOTION =====
@@ -286,128 +200,34 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
 
 // ===== CURSOR GLOW & SCROLL BAR =====
 const glow = document.querySelector('.cursor-glow');
-if(!reduceMotion){
-  document.addEventListener('mousemove', e=>{
-    glow.style.left = e.clientX+'px';
-    glow.style.top = e.clientY+'px';
-  });
-document.querySelectorAll('.social-link').forEach(btn => {
-  btn.addEventListener('click', e => {
-    const ripple = document.createElement('span');
-    ripple.className = 'ripple';
-    const rect = btn.getBoundingClientRect();
-    ripple.style.left = (e.clientX - rect.left) + 'px';
-    ripple.style.top = (e.clientY - rect.top) + 'px';
-    ripple.style.width = ripple.style.height = rect.width + 'px';
-    btn.appendChild(ripple);
-    setTimeout(() => ripple.remove(), 600);
-  });
-});
-  window.addEventListener('scroll', ()=>{
-    const scroll = (window.scrollY/(document.body.scrollHeight - innerHeight))*100;
-    document.querySelector('.progress').style.width = scroll+'%';
+if (!reduceMotion) {
+  document.addEventListener('mousemove', e => {
+    glow.style.left = e.clientX + 'px';
+    glow.style.top = e.clientY + 'px';
   });
 
-  // 3D TILT PROJECT CARDS
-  document.querySelectorAll('.project-card').forEach(card=>{
-    card.addEventListener('mousemove', e=>{
-      const r = card.getBoundingClientRect();
-      const x = e.clientX - r.left;
-      const y = e.clientY - r.top;
-      card.style.transform = `rotateX(${((y/r.height)-0.5)*10}deg) rotateY(${((x/r.width)-0.5)*-10}deg) scale(1.03)`;
-    });
-    card.addEventListener('mouseleave', ()=>{ card.style.transform='rotateX(0) rotateY(0) scale(1)'; });
-  });
-
-  // SOCIAL ICON RIPPLE EFFECT
-document.querySelectorAll('.social-link').forEach(btn=>{
-  btn.addEventListener('click', e=>{
-    const ripple=document.createElement('span');
-    ripple.className='ripple';
-    const rect=btn.getBoundingClientRect();
-    ripple.style.left=(e.clientX-rect.left)+'px';
-    ripple.style.top=(e.clientY-rect.top)+'px';
-    ripple.style.width=ripple.style.height=rect.width+'px';
-    btn.appendChild(ripple);
-    setTimeout(()=>ripple.remove(),600);
-  });
-});
-
-
-  // Cursor enlarges near interactive elements
-  document.querySelectorAll('a, .project-card, button').forEach(el=>{
-    el.addEventListener('mouseenter',()=>{ glow.style.width='50px'; glow.style.height='50px'; });
-    el.addEventListener('mouseleave',()=>{ glow.style.width='30px'; glow.style.height='30px'; });
+  window.addEventListener('scroll', () => {
+    const scroll = (window.scrollY / (document.body.scrollHeight - innerHeight)) * 100;
+    document.querySelector('.progress').style.width = scroll + '%';
   });
 }
 
-// ===== PAGE LOAD INTRO & TYPING HERO =====
-window.addEventListener('DOMContentLoaded', () => {
-  const introElements = document.querySelectorAll('.page-intro');
-  introElements.forEach((el, index) => {
-    setTimeout(() => { el.classList.add('show'); }, index * 200 + 100);
-  });
-
-  const heroText = "Clean, modern visual design for posters, banners & social media.";
-  const heroEl = document.getElementById("hero-text");
-  if(heroEl){
-    heroEl.textContent = "";
-    let i=0;
-    const typeInterval = setInterval(()=>{
-      heroEl.textContent += heroText[i];
-      i++;
-      if(i>=heroText.length) clearInterval(typeInterval);
-    },35);
-  }
-
-  // Fade-in project cards
-  const cards = document.querySelectorAll('.project-card');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('fade-in'); });
-  }, { threshold:0.2 });
-  cards.forEach(card => observer.observe(card));
-
-  // Mobile / Touch feedback
-  if('ontouchstart' in window){
-    document.querySelectorAll('.project-card').forEach(card=>{
-      card.addEventListener('touchstart', ()=>{ card.style.transform = 'scale(1.03)'; card.style.boxShadow='0 15px 30px rgba(0,0,0,0.4)'; });
-      card.addEventListener('touchend', ()=>{ card.style.transform='scale(1)'; card.style.boxShadow='0 0 0 rgba(0,0,0,0)'; });
-    });
-  }
-});
-  <script>
-/* ========= 3D TILT EFFECT ========= */
+// ===== 3D TILT (SINGLE VERSION) =====
 document.querySelectorAll('.tilt-card').forEach(card => {
   card.addEventListener('mousemove', e => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-
-    const rotateX = ((y - centerY) / centerY) * -8;
-    const rotateY = ((x - centerX) / centerX) * 8;
-
-    card.style.transform = `
-      perspective(900px)
-      rotateX(${rotateX}deg)
-      rotateY(${rotateY}deg)
-      scale(1.04)
-    `;
+    const r = card.getBoundingClientRect();
+    const x = e.clientX - r.left;
+    const y = e.clientY - r.top;
+    const rotateX = ((y / r.height) - 0.5) * -10;
+    const rotateY = ((x / r.width) - 0.5) * 10;
+    card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.04)`;
   });
-
   card.addEventListener('mouseleave', () => {
-    card.style.transform = `
-      perspective(900px)
-      rotateX(0deg)
-      rotateY(0deg)
-      scale(1)
-    `;
+    card.style.transform = `perspective(900px) rotateX(0deg) rotateY(0deg) scale(1)`;
   });
 });
 
-/* ========= PROJECT MODAL ========= */
+// ===== PROJECT MODAL =====
 const modal = document.getElementById('projectModal');
 const modalTitle = document.getElementById('modalTitle');
 const modalImage = document.getElementById('modalImage');
@@ -430,18 +250,5 @@ modal.addEventListener('click', e => {
   }
 });
 </script>
-
-</script>
-<!-- PROJECT MODAL -->
-<div class="project-modal" id="projectModal">
-  <div class="modal-overlay"></div>
-  <div class="modal-content">
-    <button class="modal-close">&times;</button>
-    <img id="modalImage" alt="">
-    <h3 id="modalTitle"></h3>
-    <p id="modalDescription"></p>
-  </div>
-</div>
-
 </body>
 </html>
