@@ -2,7 +2,7 @@ name: Deploy Jekyll site to Pages
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main"] # change to "master" if your branch is master
 
 permissions:
   contents: read
@@ -32,7 +32,7 @@ jobs:
       - name: Install Jekyll dependencies
         run: |
           gem install bundler
-          bundle install --jobs 4 --retry 3
+          bundle install
 
       - name: Build Jekyll site
         run: bundle exec jekyll build -d ./_site
