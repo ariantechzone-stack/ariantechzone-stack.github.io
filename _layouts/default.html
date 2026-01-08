@@ -455,10 +455,16 @@ h2{text-align:center;margin-bottom:50px;font-size:2rem}
   border-color:#1dbf73;
   box-shadow:0 0 20px rgba(29,191,115,.7);
 }
-
+.social-link.linkedin::after{
+  border-color:#0a66c2;
+  box-shadow:0 0 20px rgba(10,102,194,.7);
+}
 
 /* ================= PLATFORM GLOW COLORS ================= */
-
+.social-link.linkedin .icon-glow,
+.social-link.linkedin .premium-glow{
+  background:radial-gradient(circle,rgba(10,102,194,.7),transparent 70%);
+}
 /* GitHub – clean white glow */
 .social-link.github .icon-glow,
 .social-link.github .premium-glow{
@@ -499,7 +505,9 @@ h2{text-align:center;margin-bottom:50px;font-size:2rem}
 .social-link.fiverr::before{
   background:radial-gradient(circle,rgba(29,191,115,.4),transparent 70%);
 }
-
+.social-link.linkedin::before{
+  background:radial-gradient(circle,rgba(10,102,194,.4),transparent 70%);
+}
 /* Pulse */
 .social-link::before{
   content:"";
