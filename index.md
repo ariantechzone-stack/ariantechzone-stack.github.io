@@ -3,25 +3,14 @@ layout: default
 title: ARIAN DESIGNS
 ---
 
-<header class="site-header">
-  <nav class="nav">
-    <a href="#projects" class="nav-link">Projects</a>
-    <a href="#about" class="nav-link">About</a>
-    <a href="#contact" class="nav-link">Contact</a>
-    <button id="themeToggle" aria-label="Toggle theme">🌙</button>
-  </nav>
-</header>
-
 <!-- ================= HERO ================= -->
 <section class="hero" id="home">
   <h1>ARIAN DESIGNS</h1>
-  <p id="hero-text">Clean, modern visual design for posters & social media.</p>
+  <p id="hero-text">Clean, modern visual design for posters & social media</p>
 
   <div class="hero-actions">
     <a href="#projects" class="btn primary">View Work</a>
-    <a href="https://www.linkedin.com/in/arian-varx-0660b539b" target="_blank" class="btn outline">
-      Hire Me
-    </a>
+    <a href="https://www.linkedin.com/in/arian-varx-0660b539b" target="_blank" class="btn outline">Hire Me</a>
   </div>
 </section>
 
@@ -30,14 +19,14 @@ title: ARIAN DESIGNS
   <h2>Projects</h2>
   <div class="project-grid">
     {% for project in site.data.projects %}
-    <div class="project-card">
-     <img src="{{ project.image | relative_url }}" alt="{{ project.image_alt }}">
-      <div class="project-info">
-        <h3>{{ project.title }}</h3>
-        <p>{{ project.description }}</p>
-        <span class="project-tag">{{ project.category }}</span>
+      <div class="project-card">
+        <img src="{{ project.image }}" alt="{{ project.image_alt }}">
+        <div class="project-info">
+          <h3>{{ project.title }}</h3>
+          <p>{{ project.description }}</p>
+          <span class="project-tag">{{ project.category }}</span>
+        </div>
       </div>
-    </div>
     {% endfor %}
   </div>
 </section>
@@ -49,8 +38,31 @@ title: ARIAN DESIGNS
     I’m <strong>Arian</strong>, a detail-focused digital designer specializing in
     social media visuals, posters, and clean modern layouts.
   </p>
+
+  <div class="stats">
+    <div class="stat">
+      <h3>120+</h3>
+      <span>Designs Created</span>
+    </div>
+    <div class="stat">
+      <h3>3+</h3>
+      <span>Years Learning</span>
+    </div>
+    <div class="stat">
+      <h3>99%</h3>
+      <span>Accuracy</span>
+    </div>
+  </div>
 </section>
 
+<!-- ================= SOCIALS ================= -->
+<section class="socials">
+  <a href="https://github.com/ariantechzone-stack" target="_blank" class="social-link github" aria-label="GitHub"><span>GitHub</span></a>
+  <a href="https://instagram.com/_arian.designs_" target="_blank" class="social-link instagram" aria-label="Instagram"><span>Instagram</span></a>
+  <a href="https://pinterest.com/ariantech" target="_blank" class="social-link pinterest" aria-label="Pinterest"><span>Pinterest</span></a>
+  <a href="https://www.fiverr.com/r_kumar101/modern-instagram-posts-and-social-media-graphics" target="_blank" class="social-link fiverr" aria-label="Fiverr"><span>Fiverr</span></a>
+  <a href="https://www.linkedin.com/in/arian-varx-0660b539b" target="_blank" class="social-link linkedin" aria-label="LinkedIn"><span>LinkedIn</span></a>
+</section>
 
 <!-- ================= CONTACT ================= -->
 <section id="contact">
@@ -63,6 +75,10 @@ title: ARIAN DESIGNS
   </form>
 </section>
 
+<!-- ================= FOOTER ================= -->
 <footer class="site-footer">
   <p>© 2026 <strong>ARIAN DESIGNS</strong>. All rights reserved.</p>
 </footer>
+
+<!-- ================= MOBILE FLOAT ================= -->
+<a href="https://www.linkedin.com/in/arian-varx-0660b539b" class="mobile-float" aria-label="LinkedIn" target="_blank">in</a>
