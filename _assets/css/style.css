@@ -1,3 +1,7 @@
+.hero {
+  background: url("../images/hero-bg.svg") center / cover no-repeat;
+}
+
 /* ================= ROOT & THEME ================= */
 :root {
   --bg-dark: #0f0f0f;
