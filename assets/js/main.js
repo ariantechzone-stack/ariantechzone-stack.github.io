@@ -33,8 +33,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
         card.addEventListener('mouseleave', () => {
             card.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
+            
         });
     });
+/* --- Floating Particles in Hero --- */
+const hero = document.querySelector('.hero');
+
+for(let i = 0; i < 25; i++){ // number of particles
+  const particle = document.createElement('div');
+  particle.classList.add('particle');
+  
+  // Randomize starting position
+  particle.style.left = Math.random() * 100 + 'vw';
+  particle.style.top = Math.random() * 100 + 'vh';
+  
+  // Randomize size
+  const size = Math.random() * 6 + 4; // 4px to 10px
+  particle.style.width = size + 'px';
+  particle.style.height = size + 'px';
+  
+  // Randomize animation duration
+  particle.style.animationDuration = 10 + Math.random() * 20 + 's';
+  
+  hero.appendChild(particle);
+}
+    });
+ });
 
     /* --- Hero Parallax --- */
     const hero = document.querySelector('.hero');
