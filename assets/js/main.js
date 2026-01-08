@@ -1,22 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
-
   const hero = document.querySelector('.hero');
   const layers = hero.querySelectorAll('.parallax-layer');
 
   /* --- Hero Parallax --- */
   hero.addEventListener('mousemove', (e) => {
-      const rect = hero.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
+    const rect = hero.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
 
-      layers.forEach((layer, index) => {
-          const speed = (index + 1) * 7; // depth multiplier
-          const moveX = (x - centerX) / centerX * speed;
-          const moveY = (y - centerY) / centerY * speed;
-          layer.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
-      });
+    layers.forEach((layer, index) => {
+      const speed = (index + 1) * 7; // depth multiplier
+      const moveX = (x - centerX) / centerX * speed;
+      const moveY = (y - centerY) / centerY * speed;
+      layer.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
+    });
   });
 
   /* --- Floating Particles --- */
@@ -32,37 +31,33 @@ document.addEventListener('DOMContentLoaded', () => {
     hero.appendChild(particle);
   }
 
-  /* --- Animated Typing Text --- */
+  /* --- Typing Animation --- */
   const textEl = hero.querySelector('.animated-text');
   const phrases = ["UI/UX Designer", "Web Developer", "Brand Designer", "Creative Freelancer"];
-  let i = 0;
-  let j = 0;
-  let currentPhrase = '';
-  let deleting = false;
+  let i = 0, j = 0, current = '', deleting = false;
   const speed = 100;
 
   function type() {
     if(!deleting && j < phrases[i].length){
-      currentPhrase += phrases[i][j];
+      current += phrases[i][j];
       j++;
-      textEl.textContent = currentPhrase;
+      textEl.textContent = current;
       setTimeout(type, speed);
     } else if(deleting && j > 0){
-      currentPhrase = currentPhrase.slice(0, -1);
+      current = current.slice(0, -1);
       j--;
-      textEl.textContent = currentPhrase;
+      textEl.textContent = current;
       setTimeout(type, speed / 2);
     } else {
       deleting = !deleting;
-      if(!deleting){
-        i = (i + 1) % phrases.length;
-      }
+      if(!deleting) i = (i + 1) % phrases.length;
       setTimeout(type, 1000);
     }
   }
 
   type();
 });
+
 
 
     /* --- Hero Parallax --- */
