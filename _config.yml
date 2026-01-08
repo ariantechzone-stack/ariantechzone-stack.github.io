@@ -1,7 +1,7 @@
 title: ARIAN DESIGNS
 description: Clean, modern visual design for posters & social media
 url: "https://ariantechzone-stack.github.io"
-baseurl: ""   # ← THIS LINE IS THE FIX
+baseurl: "/demo-website" # ← THIS LINE IS THE FIX
 
 markdown: kramdown
 theme: null
