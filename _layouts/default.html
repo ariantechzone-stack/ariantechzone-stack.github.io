@@ -1027,6 +1027,11 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js',new Date());
 gtag('config','G-XXXXXXXX');
 </script>
+<script>
+  if(localStorage.getItem('theme')==='light'){
+    document.documentElement.classList.add('light');
+  }
+</script>
 
 </head>
 <header class="sticky-nav">
