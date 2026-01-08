@@ -23,6 +23,7 @@ title: "ARIAN DESIGNS"
   </nav>
 </div>
 
+
 <section class="projects">
   {% for project in site.data.projects %}
     <div class="project-card">
