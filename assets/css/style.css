@@ -28,60 +28,79 @@ body {
 
 /* --- Hero Section --- */
 .hero {
-    position: relative;
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    perspective: 1200px;
-    overflow: hidden;
-    text-align: center;
+  position: relative;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  perspective: 1200px;
+  overflow: hidden;
+  text-align: center;
 }
 
+/* Parallax layers */
 .parallax-layer {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0; left: 0;
-    pointer-events: none;
-    transition: transform 0.1s ease-out;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0; left: 0;
+  pointer-events: none;
+  transition: transform 0.1s ease-out;
 }
 
-/* Floating text */
-.hero h1, .hero p {
-    position: relative;
-    z-index: 5;
-    margin: 0;
-    text-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    transition: transform 0.3s ease;
+/* Animated Typing Text */
+.animated-text {
+  font-size: 1.5rem;
+  color: #f05a28;
+  font-weight: 500;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  min-height: 1.5em;
+  margin-top: 15px;
 }
 
-/* --- Social Icons --- */
+/* Social Icons */
 .social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    margin-top: 20px;
-    z-index: 10;
-    position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 20px;
+  z-index: 10;
+  position: relative;
 }
 
 .social-icons a {
-    text-decoration: none;
-    font-weight: bold;
-    color: #111;
-    padding: 12px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.2);
-    transition: all 0.3s ease;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  text-decoration: none;
+  font-weight: bold;
+  color: #111;
+  padding: 12px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 .social-icons a:hover {
-    transform: scale(1.4);
-    box-shadow: 0 0 20px #f05a28, 0 0 40px #f05a28;
-    color: #fff;
+  transform: scale(1.4);
+  box-shadow: 0 0 20px #f05a28, 0 0 40px #f05a28;
+  color: #fff;
+}
+
+/* Floating Particles */
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: rgba(240,90,40,0.7);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: floatParticle 15s linear infinite;
+}
+
+@keyframes floatParticle {
+  0% { transform: translateY(100vh) translateX(0) rotate(0deg); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-10vh) translateX(50px) rotate(360deg); opacity: 0; }
 }
 
 /* --- Project Card Image Overlay --- */
@@ -181,20 +200,4 @@ body.theme-light { background: var(--bg-light); color: var(--text-light); }
 .hero {
   position: relative;
   overflow: hidden;
-}
-
-.particle {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  background: rgba(240,90,40,0.7);
-  border-radius: 50%;
-  pointer-events: none;
-  animation: floatParticle 15s linear infinite;
-}
-
-@keyframes floatParticle {
-  0% { transform: translateY(100vh) translateX(0) rotate(0deg); opacity: 0; }
-  50% { opacity: 1; }
-  100% { transform: translateY(-10vh) translateX(50px) rotate(360deg); opacity: 0; }
 }
