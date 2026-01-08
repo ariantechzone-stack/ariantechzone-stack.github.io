@@ -3,17 +3,15 @@ layout: default
 title: "ARIAN DESIGNS"
 ---
 
+<!-- HERO SECTION -->
 <div class="hero">
-  <!-- Parallax Background Layer -->
   <div class="parallax-layer" style="z-index:1;">
     <img src="{{ '/assets/images/hero-bg.svg' | relative_url }}" alt="Hero Background">
   </div>
 
-  <!-- Floating text layers -->
   <h1 class="parallax-layer" style="z-index:2;">ARIAN DESIGNS</h1>
   <p class="parallax-layer animated-text" style="z-index:3;"></p>
 
-  <!-- Social Icons -->
   <nav class="social-icons">
     <a href="#" class="github">GitHub</a>
     <a href="#" class="instagram">Instagram</a>
@@ -23,13 +21,12 @@ title: "ARIAN DESIGNS"
   </nav>
 </div>
 
-
+<!-- PROJECTS SECTION -->
 <section class="projects">
   {% for project in site.data.projects %}
     <div class="project-card">
       <div class="card-image">
         <img src="{{ '/assets/images/' | append: project.image | relative_url }}" alt="{{ project.title }}">
-        <!-- Overlay for tech stack -->
         <div class="card-overlay">
           <p>{{ project.tech }}</p>
         </div>
@@ -40,3 +37,4 @@ title: "ARIAN DESIGNS"
     </div>
   {% endfor %}
 </section>
+
