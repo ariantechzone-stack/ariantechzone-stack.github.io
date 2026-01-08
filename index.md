@@ -1,26 +1,23 @@
 ---
 layout: default
-title: "ARIAN DESIGNS | Portfolio"
+title: "Home"
 ---
 
-<div class="hero">
-  <div class="parallax-layer">
-    <img src="{{ '/assets/images/hero-bg.svg' | relative_url }}" alt="Background">
-  </div>
-  <h1>ARIAN DESIGNS</h1>
-  <p class="animated-text"></p>
-</div>
+<section class="hero">
+  <h1>Welcome to Arian Designs</h1>
+  <p>Creating clean, modern, and professional designs.</p>
+</section>
 
-<section class="projects">
-  <h2>Selected Projects</h2>
-  <div class="project-grid">
+<section id="projects" class="projects">
+  <h2>My Projects</h2>
+  <div class="project-cards">
     {% for project in site.data.projects %}
-    <div class="project-card" data-tilt>
-      <img src="{{ '/assets/images/' | append: project.image | relative_url }}" alt="{{ project.title }}">
-      <h3>{{ project.title }}</h3>
-      <p>{{ project.tech }}</p>
-      <a href="{{ project.link }}" class="btn">View Project</a>
-    </div>
+      <div class="project-card">
+        <img src="{{ project.image }}" alt="{{ project.name }}">
+        <h3>{{ project.name }}</h3>
+        <p>{{ project.description }}</p>
+        <a href="{{ project.link }}">View Project</a>
+      </div>
     {% endfor %}
   </div>
 </section>
