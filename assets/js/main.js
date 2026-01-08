@@ -1,3 +1,9 @@
+VanillaTilt.init(document.querySelectorAll(".project-card"), {
+  max: 8,
+  speed: 600,
+  glare: true,
+  "max-glare": 0.15
+});
 // THEME TOGGLE
 const themeToggle = document.getElementById('themeToggle');
 const body = document.body;
