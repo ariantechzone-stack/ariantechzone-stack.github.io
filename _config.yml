@@ -1,0 +1,9 @@
+title: ARIAN DESIGNS
+description: Clean, modern visual design for posters & social media
+url: "https://ariantechzone-stack.github.io"
+baseurl: "/demo-website"
+
+markdown: kramdown
+theme: null
+
+plugins: []
