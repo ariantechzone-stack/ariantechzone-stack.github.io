@@ -173,3 +173,24 @@ body.theme-light { background: var(--bg-light); color: var(--text-light); }
 /* ========== MOBILE FLOAT ========== */
 .mobile-float { position:fixed; bottom:20px; right:20px; width:50px; height:50px; background:#0077b5; color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; text-decoration:none; font-weight:bold; transition:0.3s; }
 .mobile-float:hover { opacity:0.8; }
+/* --- Floating Particles Background --- */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: rgba(240,90,40,0.7); /* orange particle color */
+  border-radius: 50%;
+  pointer-events: none;
+  animation: floatParticle 15s linear infinite;
+}
+
+@keyframes floatParticle {
+  0% { transform: translateY(100vh) translateX(0) rotate(0deg); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-10vh) translateX(50px) rotate(360deg); opacity: 0; }
+}
