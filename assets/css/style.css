@@ -1,3 +1,58 @@
+.project-card {
+  background: var(--card-bg);
+  border-radius: 18px;
+  overflow: hidden;
+  transition: transform .4s ease, box-shadow .4s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 60px rgba(0,0,0,.35);
+}
+
+.project-card img {
+  width: 100%;
+  display: block;
+}
+
+.project-tag {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  margin-top: 10px;
+  background: rgba(255,255,255,.08);
+}
+
+body.theme-light .project-tag {
+  background: rgba(0,0,0,.08);
+}
+/* ===== BUTTONS ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all .3s ease;
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, #7f5af0, #00c6ff);
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(127,90,240,.35);
+}
+
+.btn.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(127,90,240,.55);
+}
+
+body.theme-light .btn.primary {
+  background: linear-gradient(135deg, #111, #333);
+}
 /* ================= GLOBAL ================= */
 :root {
   --color-bg-dark: #0f0f0f;
