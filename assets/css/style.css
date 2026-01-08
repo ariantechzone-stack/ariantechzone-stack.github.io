@@ -84,39 +84,36 @@ body {
     color: #fff;
 }
 
-/* --- Projects Section --- */
-.projects {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 30px;
-    padding: 60px 20px;
+/* --- Project Card Image Overlay --- */
+.card-image {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
-.project-card {
-    border-radius: 15px;
-    padding: 20px;
-    width: 260px;
-    text-align: center;
-    background: rgba(255,255,255,0.9);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    transform-style: preserve-3d;
-    cursor: pointer;
-    opacity: 0;
-    transform: translateY(50px);
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(240, 90, 40, 0.85); /* orange semi-transparent */
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 500;
+  font-size: 0.9rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  padding: 10px;
 }
 
-.project-card:hover {
-    transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+.card-image:hover .card-overlay {
+  opacity: 1;
 }
 
-.project-card img {
-    max-width: 100%;
-    border-radius: 12px;
-    margin-bottom: 15px;
-}
 
 .btn {
     display: inline-block;
