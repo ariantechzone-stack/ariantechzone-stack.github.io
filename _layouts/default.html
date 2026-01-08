@@ -237,12 +237,35 @@ a{text-decoration:none;color:inherit}
 .footer-btn{display:inline-block;padding:16px 40px;border-radius:14px;font-weight:600;background:linear-gradient(90deg,#feda75,#fa7e1e,#d62976);color:#111;box-shadow:0 12px 30px rgba(250,126,30,.3);transition:transform .3s ease,box-shadow .3s ease;margin-top:15px;}
 .footer-btn:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 20px 50px rgba(214,41,118,.45);}
 
-/* MOBILE FLOAT BUTTON */
+/* FLOATING LINKEDIN BUTTON */
 .mobile-float{
-  position:fixed;bottom:24px;right:24px;background:linear-gradient(135deg,#1dbf73,#28e28c);
-  color:#111;padding:16px 28px;border-radius:50px;font-weight:600;z-index:999;box-shadow:0 10px 25px rgba(0,0,0,.5);transition:all .3s ease;
+  position:fixed;
+  bottom:22px;
+  right:22px;
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  font-size:1.1rem;
+  z-index:999;
+  color:#fff;
+  text-decoration:none;
+  box-shadow:0 14px 35px rgba(0,0,0,.45);
+  transition:transform .3s ease, box-shadow .3s ease;
 }
-.mobile-float:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 16px 35px rgba(0,0,0,.6);}
+
+.linkedin-float{
+  background:linear-gradient(135deg,#0A66C2,#004182);
+}
+
+.mobile-float:hover{
+  transform:translateY(-6px) scale(1.08);
+  box-shadow:0 22px 50px rgba(10,102,194,.55);
+}
+
 </style>
 </head>
 <body>
@@ -351,16 +374,27 @@ a{text-decoration:none;color:inherit}
         Hire Me on Fiverr
       </a>
     </div>
+    <!-- LinkedIn -->
+<a href="https://www.linkedin.com/in/arian-varx-0660b539b" target="_blank" class="social-link linkedin" aria-label="LinkedIn">
+  <svg viewBox="0 0 24 24" fill="currentColor">
+    <path d="M20.447 20.452H17.21v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.94v5.666H9.09V9h3.104v1.561h.044c.432-.818 1.49-1.682 3.067-1.682 3.28 0 3.884 2.159 3.884 4.967v6.606zM5.337 7.433a1.804 1.804 0 1 1 0-3.607 1.804 1.804 0 0 1 0 3.607zM6.956 20.452H3.716V9h3.24v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.727v20.545C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.273V1.727C24 .774 23.2 0 22.222 0z"/>
+  </svg>
+  <div class="icon-glow"></div>
+  <div class="premium-glow"></div>
+  <div class="tooltip">LinkedIn</div>
+</a>
+
   </div>
 </footer>
 
-<!-- MOBILE FLOAT BUTTON -->
-<a href="https://www.fiverr.com/r_kumar101/modern-instagram-posts-and-social-media-graphics"
-   class="mobile-float"
+<!-- MOBILE FLOAT BUTTON : LINKEDIN -->
+<a href="https://www.linkedin.com/in/arian-varx-0660b539b"
+   class="mobile-float linkedin-float"
    target="_blank"
-   aria-label="Hire me on Fiverr">
-  💬 Hire Me
+   aria-label="Connect on LinkedIn">
+  in
 </a>
+
 
 <!-- AUDIO ELEMENTS -->
 <audio id="ui-hover-sound" preload="auto">
@@ -378,10 +412,13 @@ const socials = document.querySelectorAll('.social-link');
 socials.forEach(link => {
   link.addEventListener('click', (e)=>{
     e.preventDefault();
-    const type = link.classList.contains('instagram') ? 'instagram' :
-                 link.classList.contains('pinterest') ? 'pinterest' :
-                 link.classList.contains('fiverr') ? 'fiverr' :
-                 'github';
+   const type =
+  link.classList.contains('instagram') ? 'instagram' :
+  link.classList.contains('pinterest') ? 'pinterest' :
+  link.classList.contains('fiverr') ? 'fiverr' :
+  link.classList.contains('linkedin') ? 'linkedin' :
+  'github';
+
 
     // Reset all
     socials.forEach(l=>{
@@ -404,6 +441,11 @@ socials.forEach(link => {
       link.style.background = '#fff';
       link.querySelector('svg').style.fill = '#111';
     }
+    else if(type === 'linkedin'){
+  link.style.background = 'linear-gradient(45deg,#0A66C2,#004182)';
+  link.querySelector('svg').style.fill = '#fff';
+}
+
 
     // Open link after 150ms
     setTimeout(()=>window.open(link.href,'_blank'),150);
