@@ -1,3 +1,61 @@
+.socials {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.social-link {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.social-link svg {
+  width: 22px;
+  height: 22px;
+  z-index: 2;
+}
+
+.social-link:hover {
+  transform: translateY(-6px) scale(1.08);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+}
+
+/* Tooltip */
+.social-link .tooltip {
+  position: absolute;
+  bottom: -36px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.25s ease;
+  white-space: nowrap;
+}
+
+.social-link:hover .tooltip {
+  opacity: 1;
+}
+
+/* Brand colors */
+.social-link.github { background: #111; }
+.social-link.instagram {
+  background: radial-gradient(circle at 30% 110%,
+    #fdf497 0%, #fdf497 5%,
+    #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+.social-link.pinterest { background: #e60023; }
+.social-link.linkedin { background: #0a66c2; }
+.social-link.fiverr { background: #1dbf73; }
 
 
 .stat:hover {
