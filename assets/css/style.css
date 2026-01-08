@@ -150,12 +150,19 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   transform-style: preserve-3d;
 }
+@keyframes cardIdle {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
 
 .project-card:hover {
-  transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.25),
+    0 0 25px rgba(240,90,40,0.25);
 }
+
 
 .project-card img {
   max-width: 100%;
@@ -208,7 +215,15 @@ a { text-decoration:none; color:inherit; }
 /* ========== BODY ========== */
 body.theme-dark { background: var(--bg-dark); color: var(--text-dark); }
 body.theme-light { background: var(--bg-light); color: var(--text-light); }
-
+body.theme-dark .project-card {
+  background: linear-gradient(
+    135deg,
+    #111827,
+    #1f2933,
+    #111827
+  );
+  color: #e5e7eb;
+}
 
 /* ========== CONTACT FORM ========== */
 .contact-form { display:flex; flex-direction:column; max-width:500px; margin:30px auto; gap:15px; }
