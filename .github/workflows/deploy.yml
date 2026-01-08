@@ -2,7 +2,7 @@ name: Deploy Jekyll site to Pages
 
 on:
   push:
-    branches: ["main"] # Change this to "master" if your branch is named master
+    branches: ["main"] # Change to "master" if your default branch is master
 
 permissions:
   contents: read
@@ -17,28 +17,33 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      # Step 1: Checkout the repository
+      - name: Checkout repository
         uses: actions/checkout@v4
-      
+
+      # Step 2: Setup GitHub Pages
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      - name: Build with Jekyll
+      # Step 3: Install Ruby & Jekyll and build the site
+      - name: Build Jekyll site
         uses: actions/jekyll-build-pages@v1
         with:
-          source: ./
+          source: ./       # Your site root
           destination: ./_site
 
-      - name: Upload artifact
+      # Step 4: Upload the built site as artifact
+      - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
 
   deploy:
+    runs-on: ubuntu-latest
+    needs: build
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
     steps:
+      # Step 5: Deploy the artifact to GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
