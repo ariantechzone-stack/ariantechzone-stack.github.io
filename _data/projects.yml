@@ -1,0 +1,17 @@
+- title: Instagram Post Design
+  description: Clean and modern Instagram post design for brands.
+  category: Social Media
+  image: /demo-website/assets/images/project-1.svg
+  image_alt: Instagram Post Design
+
+- title: Poster Design
+  description: Eye-catching poster design with bold typography.
+  category: Poster
+  image: /demo-website/assets/images/project-2.svg
+  image_alt: Poster Design
+
+- title: Branding Visual
+  description: Minimal branding visual for digital platforms.
+  category: Branding
+  image: /demo-website/assets/images/project-3.svg
+  image_alt: Branding Visual
