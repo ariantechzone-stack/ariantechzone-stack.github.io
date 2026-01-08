@@ -28,6 +28,60 @@ gtag('config','G-XXXXXXXX');
 
 <style>
 
+  html.light .site-footer{
+  background:#fff;
+  color:#111;
+}
+
+html.light .site-footer p{
+  color:#444;
+}
+
+  html.light .social-icon{
+  color:#fff; /* keep icons visible */
+}  
+  .social-icon:hover{
+  transform:translateY(-4px);
+  box-shadow:0 0 18px rgba(0,0,0,.35);
+}
+
+  .social-icon.github{ background:#111; }
+.social-icon.instagram{
+  background:linear-gradient(135deg,#f9ce34,#ee2a7b,#6228d7);
+}
+.social-icon.pinterest{ background:#e60023; }
+.social-icon.fiverr{ background:#1dbf73; }
+.social-icon.linkedin{ background:#0a66c2; }
+
+  .social-icon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  font-size:18px;
+  color:#fff;
+  transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+}
+  html.light h1,
+html.light h2,
+html.light h3,
+html.light p{
+  color:#111;
+}
+
+html.light .muted,
+html.light .section-subtitle{
+  color:#444;
+}
+
+/* LIGHT MODE BASE */
+html.light body{
+  background:#f6f7f9;
+  color:#111;
+}
+
   /* NAV ACTIVE STATE */
 .nav-link{
   position:relative;
