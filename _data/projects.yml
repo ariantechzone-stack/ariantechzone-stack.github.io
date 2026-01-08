@@ -1,17 +1,12 @@
-- title: Instagram Post Design
-  description: Modern social media visuals
-  category: Social Media
-  image: /assets/images/project-1.svg
-  image_alt: Instagram design project
-
-- title: Poster Design
-  description: Clean poster layout
-  category: Poster
-  image: /assets/images/project-2.svg
-  image_alt: Poster design project
-
-- title: Branding Visual
-  description: Minimal brand identity
-  category: Branding
-  image: /assets/images/project-3.svg
-  image_alt: Branding project
+- title: "Project 1"
+  description: "UI/UX Design Work"
+  category: "Design"
+  image: "project-1.svg"
+- title: "Project 2"
+  description: "Photoshop & Social Media"
+  category: "Design"
+  image: "project-2.svg"
+- title: "Project 3"
+  description: "Website Mockup"
+  category: "UI/UX"
+  image: "project-3.svg"
