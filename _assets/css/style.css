@@ -1,219 +1,305 @@
-/* ================= VARIABLES ================= */
-:root{
-  --bg:#0f0f0f;
-  --bg-soft:#141414;
-  --card:#181818;
-  --text:#eaeaea;
-  --muted:#a0a0a0;
-  --border:rgba(255,255,255,.08);
-  --accent:linear-gradient(135deg,#feda75,#fa7e1e,#d62976);
+/* ================= ROOT & THEME ================= */
+:root {
+  --bg-dark: #0f0f0f;
+  --bg-light: #ffffff;
+
+  --text-dark: #ffffff;
+  --text-light: #111111;
+
+  --muted-dark: #bdbdbd;
+  --muted-light: #444444;
+
+  --card-dark: #111111;
+  --card-light: #f3f3f3;
+
+  --accent: linear-gradient(135deg,#feda75,#fa7e1e,#d62976);
 }
 
-html.light{
-  --bg:#f6f7f9;
-  --bg-soft:#ffffff;
-  --card:#ffffff;
-  --text:#111;
-  --muted:#444;
-  --border:rgba(0,0,0,.08);
+html {
+  scroll-behavior: smooth;
 }
 
-/* ================= RESET ================= */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  background: var(--bg-dark);
+  color: var(--text-dark);
+  transition: background .3s ease, color .3s ease;
 }
 
-body{
-  font-family:Inter,system-ui,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.6;
-  overflow-x:hidden;
+/* ================= LIGHT MODE ================= */
+html.light body {
+  background: var(--bg-light);
+  color: var(--text-light);
 }
 
-a{
-  text-decoration:none;
-  color:inherit;
+/* ================= HEADER / NAV ================= */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: rgba(15,15,15,.85);
+  backdrop-filter: blur(12px);
 }
 
-p{
-  color:var(--muted);
+html.light .site-header {
+  background: rgba(255,255,255,.85);
 }
 
-/* ================= NAV ================= */
-header{
-  position:fixed;
-  top:14px;
-  left:50%;
-  transform:translateX(-50%);
-  display:flex;
-  gap:22px;
-  padding:10px 22px;
-  background:rgba(15,15,15,.75);
-  backdrop-filter:blur(12px);
-  border-radius:999px;
-  z-index:1000;
+.nav {
+  max-width: 1100px;
+  margin: auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 26px;
 }
 
-html.light header{
-  background:rgba(255,255,255,.85);
+.nav-link {
+  color: var(--muted-dark);
+  font-weight: 500;
+  text-decoration: none;
+  position: relative;
 }
 
-.nav-link{
-  font-size:.85rem;
-  padding:6px 12px;
-  border-radius:999px;
-  color:var(--muted);
+.nav-link.active {
+  color: #fff;
 }
 
-.nav-link.active{
-  background:var(--accent);
-  color:#111;
-  font-weight:600;
+html.light .nav-link {
+  color: var(--muted-light);
 }
 
-html.light .nav-link.active{
-  color:#fff;
+html.light .nav-link.active {
+  color: #000;
 }
 
-#themeToggle{
-  background:none;
-  border:none;
-  font-size:18px;
-  cursor:pointer;
-  color:var(--text);
+#themeToggle {
+  margin-left: auto;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
 }
 
 /* ================= HERO ================= */
-.hero{
-  padding:130px 20px 100px;
-  text-align:center;
+.hero {
+  padding: 120px 20px;
+  text-align: center;
 }
 
-.hero h1{
-  font-size:3rem;
-  font-weight:800;
-  background:var(--accent);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  background: var(--accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.hero p{
-  margin-top:18px;
-  font-size:1.15rem;
-  color:#bbb;
+/* this text MUST be white in both themes */
+#hero-text {
+  margin-top: 16px;
+  font-size: 1.1rem;
+  color: #ffffff;
 }
 
-html.light .hero p{
-  color:#111;
+/* ================= BUTTONS ================= */
+.btn {
+  padding: 14px 32px;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
 }
 
-/* ================= SECTIONS ================= */
-section{
-  padding:110px 20px;
+.btn.primary {
+  background: var(--accent);
+  color: #111;
 }
 
-h2{
-  text-align:center;
-  margin-bottom:50px;
-  font-size:2rem;
+.btn.outline {
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+html.light .btn.outline {
+  border-color: #000;
+  color: #000;
 }
 
 /* ================= PROJECTS ================= */
-.project-grid{
-  max-width:1200px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:36px;
+section {
+  padding: 90px 20px;
 }
 
-.project-card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:18px;
-  overflow:hidden;
-  transition:.3s ease;
+section h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 50px;
+  color: #fff;
 }
 
-.project-card:hover{
-  transform:translateY(-6px);
+html.light section h2 {
+  color: #000;
 }
 
-.project-card img{
-  width:100%;
-  height:200px;
-  object-fit:cover;
+.project-grid {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+  gap: 30px;
 }
 
-.project-info{
-  padding:22px;
-  text-align:center;
+.project-card {
+  background: var(--card-dark);
+  border-radius: 18px;
+  overflow: hidden;
+  transition: transform .3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+}
+
+html.light .project-card {
+  background: var(--card-light);
+}
+
+.project-info {
+  padding: 22px;
+}
+
+.project-info h3 {
+  margin: 0 0 10px;
+  color: #fff;
+}
+
+html.light .project-info h3 {
+  color: #000;
+}
+
+.project-info p {
+  color: var(--muted-dark);
+}
+
+html.light .project-info p {
+  color: var(--muted-light);
+}
+
+/* ================= ABOUT TEXT COLORS (EXACT RULES) ================= */
+
+/* Always WHITE in both themes */
+.stat span,
+.stat h3,
+.about-text strong {
+  color: #ffffff;
+}
+
+html.light .stat span,
+html.light .stat h3,
+html.light .about-text strong {
+  color: #000000;
 }
 
 /* ================= SOCIAL ICONS ================= */
-.socials{
-  display:flex;
-  justify-content:center;
-  gap:34px;
-  margin:60px 0;
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 34px;
+  margin-top: 60px;
 }
 
-.social-link{
-  width:62px;
-  height:62px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  position:relative;
-  background:#222;
-  transition:.3s ease;
+.social-link {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: all .3s ease;
 }
 
-.social-link svg{
-  width:26px;
-  height:26px;
+html.light .social-link {
+  background: #eaeaea;
+  color: #000;
 }
 
-.social-link:hover{
-  transform:translateY(-6px) scale(1.1);
+.social-link.github.active {
+  background: #ffffff;
+  color: #000;
 }
 
-/* Platform colors */
-.github{background:#111;}
-.instagram{background:linear-gradient(135deg,#f9ce34,#ee2a7b,#6228d7);}
-.pinterest{background:#e60023;}
-.fiverr{background:#1dbf73;}
-.linkedin{background:#0a66c2;}
+.social-link.instagram.active {
+  background: linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf);
+  color: #fff;
+}
+
+.social-link.pinterest.active {
+  background: linear-gradient(45deg,#e60023,#ff4d6d);
+  color: #fff;
+}
+
+.social-link.fiverr.active {
+  background: linear-gradient(45deg,#1dbf73,#00c67b);
+  color: #fff;
+}
+
+.social-link.linkedin.active {
+  background: linear-gradient(45deg,#0a66c2,#004182);
+  color: #fff;
+}
+
+/* ================= CONTACT ================= */
+.contact-form {
+  max-width: 520px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  background: #1a1a1a;
+  color: #fff;
+}
+
+html.light .contact-form input,
+html.light .contact-form textarea {
+  background: #f2f2f2;
+  color: #000;
+}
 
 /* ================= FOOTER ================= */
-footer{
-  padding:80px 20px 40px;
-  background:#111;
-  text-align:center;
+.site-footer {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--muted-dark);
 }
 
-footer p{
-  color:#777;
+html.light .site-footer {
+  color: var(--muted-light);
 }
 
 /* ================= FLOATING LINKEDIN ================= */
-.mobile-float{
-  position:fixed;
-  bottom:22px;
-  right:22px;
-  width:56px;
-  height:56px;
-  border-radius:50%;
-  background:#0a66c2;
-  color:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:800;
-  box-shadow:0 15px 40px rgba(10,102,194,.45);
-  z-index:999;
+.mobile-float {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  background: #0a66c2;
+  color: #fff;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  text-decoration: none;
 }
