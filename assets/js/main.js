@@ -1,64 +1,69 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    const body = document.body;
+  const hero = document.querySelector('.hero');
+  const layers = hero.querySelectorAll('.parallax-layer');
 
-    /* --- Dark/Light Theme Toggle --- */
-    body.addEventListener('dblclick', () => {
-        body.classList.toggle('theme-light');
-        body.classList.toggle('theme-dark');
-    });
+  /* --- Hero Parallax --- */
+  hero.addEventListener('mousemove', (e) => {
+      const rect = hero.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
 
-    /* --- Project Card Tilt & Fade-In --- */
-    const cards = document.querySelectorAll('.project-card');
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if(entry.isIntersecting){
-                entry.target.style.opacity = 1;
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, { threshold: 0.2 });
+      layers.forEach((layer, index) => {
+          const speed = (index + 1) * 7; // depth multiplier
+          const moveX = (x - centerX) / centerX * speed;
+          const moveY = (y - centerY) / centerY * speed;
+          layer.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
+      });
+  });
 
-    cards.forEach(card => {
-        observer.observe(card);
+  /* --- Floating Particles --- */
+  for(let i = 0; i < 25; i++){
+    const particle = document.createElement('div');
+    particle.classList.add('particle');
+    particle.style.left = Math.random() * 100 + 'vw';
+    particle.style.top = Math.random() * 100 + 'vh';
+    const size = Math.random() * 6 + 4;
+    particle.style.width = size + 'px';
+    particle.style.height = size + 'px';
+    particle.style.animationDuration = 10 + Math.random() * 20 + 's';
+    hero.appendChild(particle);
+  }
 
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const rotX = ((rect.height / 2 - y) / rect.height) * 15;
-            const rotY = ((x - rect.width / 2) / rect.width) * 15;
-            card.style.transform = `translateY(0) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
-        });
+  /* --- Animated Typing Text --- */
+  const textEl = hero.querySelector('.animated-text');
+  const phrases = ["UI/UX Designer", "Web Developer", "Brand Designer", "Creative Freelancer"];
+  let i = 0;
+  let j = 0;
+  let currentPhrase = '';
+  let deleting = false;
+  const speed = 100;
 
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
-            
-        });
-    });
-/* --- Floating Particles in Hero --- */
-const hero = document.querySelector('.hero');
+  function type() {
+    if(!deleting && j < phrases[i].length){
+      currentPhrase += phrases[i][j];
+      j++;
+      textEl.textContent = currentPhrase;
+      setTimeout(type, speed);
+    } else if(deleting && j > 0){
+      currentPhrase = currentPhrase.slice(0, -1);
+      j--;
+      textEl.textContent = currentPhrase;
+      setTimeout(type, speed / 2);
+    } else {
+      deleting = !deleting;
+      if(!deleting){
+        i = (i + 1) % phrases.length;
+      }
+      setTimeout(type, 1000);
+    }
+  }
 
-for(let i = 0; i < 25; i++){ // number of particles
-  const particle = document.createElement('div');
-  particle.classList.add('particle');
-  
-  // Randomize starting position
-  particle.style.left = Math.random() * 100 + 'vw';
-  particle.style.top = Math.random() * 100 + 'vh';
-  
-  // Randomize size
-  const size = Math.random() * 6 + 4; // 4px to 10px
-  particle.style.width = size + 'px';
-  particle.style.height = size + 'px';
-  
-  // Randomize animation duration
-  particle.style.animationDuration = 10 + Math.random() * 20 + 's';
-  
-  hero.appendChild(particle);
-}
-    });
- });
+  type();
+});
+
 
     /* --- Hero Parallax --- */
     const hero = document.querySelector('.hero');
