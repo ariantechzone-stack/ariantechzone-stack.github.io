@@ -3,15 +3,17 @@ layout: default
 title: "ARIAN DESIGNS"
 ---
 
-<!-- HERO SECTION -->
 <div class="hero">
+  <!-- Parallax Background Layer -->
   <div class="parallax-layer" style="z-index:1;">
     <img src="{{ '/assets/images/hero-bg.svg' | relative_url }}" alt="Hero Background">
   </div>
 
+  <!-- Floating text layers -->
   <h1 class="parallax-layer" style="z-index:2;">ARIAN DESIGNS</h1>
-  <p class="parallax-layer" style="z-index:3;">Creative Design & Web Projects</p>
+  <p class="parallax-layer animated-text" style="z-index:3;"></p>
 
+  <!-- Social Icons -->
   <nav class="social-icons">
     <a href="#" class="github">GitHub</a>
     <a href="#" class="instagram">Instagram</a>
@@ -20,7 +22,6 @@ title: "ARIAN DESIGNS"
     <a href="#" class="fiverr">Fiverr</a>
   </nav>
 </div>
-
 
 <!-- PROJECTS SECTION -->
 <section class="projects">
