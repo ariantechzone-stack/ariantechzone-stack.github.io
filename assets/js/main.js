@@ -8,23 +8,35 @@ document.addEventListener('DOMContentLoaded', () => {
         body.classList.toggle('theme-dark');
     });
 
-    /* --- Project Card 3D Tilt --- */
+    /* --- Project Card Tilt & Fade-In --- */
     const cards = document.querySelectorAll('.project-card');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting){
+                entry.target.style.opacity = 1;
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.2 });
+
     cards.forEach(card => {
+        observer.observe(card);
+
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
             const rotX = ((rect.height / 2 - y) / rect.height) * 15;
             const rotY = ((x - rect.width / 2) / rect.width) * 15;
-            card.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg) translateZ(10px)`;
+            card.style.transform = `translateY(0) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
         });
+
         card.addEventListener('mouseleave', () => {
-            card.style.transform = 'rotateX(0deg) rotateY(0deg) translateZ(0)';
+            card.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
         });
     });
 
-    /* --- Multi-Depth Parallax Hero --- */
+    /* --- Hero Parallax --- */
     const hero = document.querySelector('.hero');
     const layers = hero.querySelectorAll('.parallax-layer');
 
@@ -36,12 +48,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const centerY = rect.height / 2;
 
         layers.forEach((layer, index) => {
-            const speed = (index + 1) * 5; // Different depth speed
+            const speed = (index + 1) * 7; // depth multiplier
             const moveX = (x - centerX) / centerX * speed;
             const moveY = (y - centerY) / centerY * speed;
             layer.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
         });
     });
+
+});
+
 
     /* --- Smooth Scroll Animation for Projects --- */
     const projectSection = document.querySelector('.projects');
