@@ -1,3 +1,163 @@
+
+
+
+/* --- Body & Theme --- */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    transition: background 0.5s, color 0.5s;
+    background: linear-gradient(135deg, #f0f0f0, #ffffff);
+}
+
+.theme-light {
+    background: linear-gradient(135deg, #f0f0f0, #ffffff);
+    color: #111;
+}
+
+.theme-dark {
+    background: linear-gradient(135deg, #111, #222);
+    color: #eee;
+}
+
+/* --- Hero Section --- */
+.hero {
+    position: relative;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    perspective: 1200px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.parallax-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0; left: 0;
+    pointer-events: none;
+    transition: transform 0.1s ease-out;
+}
+
+/* Floating text */
+.hero h1, .hero p {
+    position: relative;
+    z-index: 5;
+    margin: 0;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+}
+
+/* --- Social Icons --- */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 20px;
+    z-index: 10;
+    position: relative;
+}
+
+.social-icons a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #111;
+    padding: 12px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.social-icons a:hover {
+    transform: scale(1.4);
+    box-shadow: 0 0 20px #f05a28, 0 0 40px #f05a28;
+    color: #fff;
+}
+
+/* --- Projects Section --- */
+.projects {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 60px 20px;
+}
+
+.project-card {
+    border-radius: 15px;
+    padding: 20px;
+    width: 260px;
+    text-align: center;
+    background: rgba(255,255,255,0.9);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.project-card:hover {
+    transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.project-card img {
+    max-width: 100%;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px 20px;
+    background: #111;
+    color: #fff;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #f05a28;
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 25px;
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+/* --- Moving Background for Hero --- */
+.hero::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    background: radial-gradient(circle, rgba(240,90,40,0.2) 0%, transparent 70%);
+    animation: rotate-bg 30s linear infinite;
+    z-index: 1;
+}
+
+@keyframes rotate-bg {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+
+
+
 /* --- Basic Styles --- */
 body {
     font-family: 'Segoe UI', sans-serif;
