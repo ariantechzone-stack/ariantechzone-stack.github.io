@@ -27,6 +27,26 @@ gtag('config','G-XXXXXXXX');
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+
+  /* NAV ACTIVE STATE */
+.nav-link{
+  position:relative;
+  padding:6px 10px;
+  border-radius:999px;
+  transition:background .3s ease, color .3s ease;
+}
+
+.nav-link.active{
+  background:linear-gradient(135deg,#fa7e1e,#d62976);
+  color:#111;
+  font-weight:600;
+}
+  html.light .nav-link.active{
+  background:linear-gradient(135deg,#0A66C2,#004182);
+  color:#fff;
+}
+
+
 #themeToggle{
   background:none;
   border:none;
@@ -397,12 +417,14 @@ html{scroll-behavior:smooth;}
 </head>
 <body>
   
-<header class="sticky-nav"
-  <a href="#projects">Projects</a>
-  <a href="#about">About</a>
-  <a href="#contact">Contact</a>
-    <button id="themeToggle">🌙</button>
+<header class="sticky-nav">
+  <a href="#projects" class="nav-link">Projects</a>
+  <a href="#about" class="nav-link">About</a>
+  <a href="#contact" class="nav-link">Contact</a>
+
+  <button id="themeToggle" aria-label="Toggle theme">🌙</button>
 </header>
+
 
 <!-- HERO -->
 <div class="hero">
@@ -741,6 +763,34 @@ toggle.onclick=()=>{
   localStorage.setItem('theme',isLight?'light':'dark');
 };
 
+</script>
+<script>
+const sections=document.querySelectorAll('section[id]');
+const navLinks=document.querySelectorAll('.nav-link');
+
+function activateNav(){
+  let current='';
+
+  sections.forEach(section=>{
+    const sectionTop=section.offsetTop-120;
+    if(scrollY>=sectionTop){
+      current=section.getAttribute('id');
+    }
+  });
+
+  navLinks.forEach(link=>{
+    link.classList.remove('active');
+    if(link.getAttribute('href')==='#'+current){
+      link.classList.add('active');
+    }
+  });
+}
+
+// Run on scroll
+window.addEventListener('scroll',activateNav);
+
+// Run once on load
+activateNav();
 </script>
 
 </body>
