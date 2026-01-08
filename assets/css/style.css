@@ -134,18 +134,23 @@
 }
 
 .project-card {
-  border-radius: 15px;
+  border-radius: 16px;
   padding: 20px;
   width: 260px;
   text-align: center;
-  background: rgba(255,255,255,0.9);
+  background: linear-gradient(
+    135deg,
+    #ffffff,
+    #f4f4f4,
+    #ffffff
+  );
+  background-size: 200% 200%;
+  animation: cardIdle 12s ease infinite;
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   transform-style: preserve-3d;
-  cursor: pointer;
-  opacity: 0;
-  transform: translateY(50px);
 }
+
 
 .project-card:hover {
   transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
