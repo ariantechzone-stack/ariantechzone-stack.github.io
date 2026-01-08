@@ -1,6 +1,5 @@
-title: "ARIAN DESIGNS"
-description: "Clean, modern visual design for posters & social media"
-url: "https://ariantechzone-stack.github.io"
-baseurl: "/demo-website" # Keep this for GitHub, override locally as shown above
-markdown: kramdown
-theme: null
+title: "Arian Designs"
+description: "My portfolio website"
+baseurl: "" # Leave empty if deploying to root
+url: "https://ariantechzone-stack.github.io" # Replace with your GitHub username
+theme: minima
