@@ -42,17 +42,27 @@ gtag('config','G-XXXXXXXX');
 }
 
   
-  .light body{
+html.light body{
   background:#f5f5f5;
   color:#111;
 }
-.light .project-card,
-.light .modal-content,
-.light .contact-form input,
-.light .contact-form textarea{
-  background:#fff;
+
+html.light .project-card,
+html.light .modal-content,
+html.light .contact-form input,
+html.light .contact-form textarea{
+  background:#ffffff;
   color:#111;
 }
+
+html.light .sticky-nav{
+  background:rgba(255,255,255,.8);
+}
+
+html.light #themeToggle{
+  color:#111;
+}
+
 
 /* ================= RESET ================= */
 *{margin:0;padding:0;box-sizing:border-box;font-family:Inter,Arial,sans-serif}
@@ -716,6 +726,21 @@ toggle.onclick=()=>{
   document.documentElement.classList.toggle('light');
   toggle.textContent=document.documentElement.classList.contains('light') ? '☀️' : '🌙';
 };
+  const root=document.documentElement;
+const savedTheme=localStorage.getItem('theme');
+
+if(savedTheme==='light'){
+  root.classList.add('light');
+  toggle.textContent='☀️';
+}
+
+toggle.onclick=()=>{
+  root.classList.toggle('light');
+  const isLight=root.classList.contains('light');
+  toggle.textContent=isLight?'☀️':'🌙';
+  localStorage.setItem('theme',isLight?'light':'dark');
+};
+
 </script>
 
 </body>
