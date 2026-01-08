@@ -1,18 +1,23 @@
-
 - title: "Project One"
-  image: "project-1.svg"
+  slug: "project-one"
+  image: "https://via.placeholder.com/400x300?text=Project+One"
   description: "A modern UI/UX design project."
   tech: "Figma, Adobe XD, Photoshop"
-  link: "#"
+  link: "https://example.com"
+  featured: true
 
 - title: "Project Two"
-  image: "project-2.svg"
+  slug: "project-two"
+  image: "https://via.placeholder.com/400x300?text=Project+Two"
   description: "A web development project."
   tech: "HTML, CSS, JavaScript"
-  link: "#"
+  link: "https://example.com"
+  featured: true
 
 - title: "Project Three"
-  image: "project-3.svg"
+  slug: "project-three"
+  image: "https://via.placeholder.com/400x300?text=Project+Three"
   description: "A branding & design project."
   tech: "Illustrator, Photoshop, Canva"
-  link: "#"
+  link: "https://example.com"
+  featured: false
