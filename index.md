@@ -12,7 +12,6 @@ title: "ARIAN DESIGNS"
   <h1 class="parallax-layer" style="z-index:2;">ARIAN DESIGNS</h1>
   <p class="parallax-layer animated-text" style="z-index:3;"></p>
 
-  <!-- Social Icons -->
   <nav class="social-icons">
     <a href="#" class="github" aria-label="GitHub profile">GitHub</a>
     <a href="#" class="instagram" aria-label="Instagram profile">Instagram</a>
@@ -30,14 +29,14 @@ title: "ARIAN DESIGNS"
   {% for project in site.data.projects %}
     <div class="project-card reveal {% cycle 'reveal-left', 'reveal-right' %}">
       <div class="card-image">
-        <img src="{{ project.image }}" alt="{{ project.title }}">
+        <img src="{{ '/assets/images/' | append: project.image | relative_url }}" alt="{{ project.title }}">
         <div class="card-overlay">
           <p>{{ project.tech }}</p>
         </div>
       </div>
       <h3>{{ project.title }}</h3>
       <p>{{ project.description }}</p>
-      <a href="{{ project.link }}" class="btn magnetic">View Project</a>
+      <a href="{{ project.link }}" class="btn">View {{ project.title }}</a>
     </div>
   {% endfor %}
 </section>
