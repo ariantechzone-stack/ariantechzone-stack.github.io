@@ -2,24 +2,16 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Arian Designs | Social Media & Digital Designer</title>
-
+<title>{{ page.title | default: "ARIAN DESIGNS" }}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Clean, modern social media & digital design portfolio by Arian. Instagram posts, branding & visual identity.">
-<meta name="robots" content="index, follow">
-<meta name="author" content="Arian Designs">
+<meta name="description" content="{{ site.data.about.description | strip_newlines }}">
 
-<!-- Open Graph -->
-<meta property="og:title" content="Arian Designs – Modern Social Media Design">
-<meta property="og:description" content="Minimal, modern Instagram & digital design portfolio.">
-<meta property="og:type" content="website">
-<meta property="og:image" content="preview.jpg">
-
-<!-- Favicons -->
+<!-- FAVICONS -->
 <link rel="icon" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#0f0f0f">
 
-<!-- Font -->
+<!-- FONT -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -28,20 +20,20 @@
 /* ================= ROOT ================= */
 :root{
   --bg:#0f0f0f;
+  --bg-soft:#141414;
   --card:#181818;
-  --text:#fff;
-  --muted:#aaa;
-  --accent:linear-gradient(135deg,#feda75,#fa7e1e,#d62976);
+  --text:#eaeaea;
+  --muted:#a0a0a0;
+  --border:rgba(255,255,255,.08);
 }
-
 html.light{
   --bg:#f6f7f9;
+  --bg-soft:#fff;
   --card:#fff;
   --text:#111;
-  --muted:#555;
+  --muted:#444;
+  --border:rgba(0,0,0,.08);
 }
-
-/* ================= RESET ================= */
 *{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif}
 body{background:var(--bg);color:var(--text);overflow-x:hidden}
 a{text-decoration:none;color:inherit}
@@ -50,20 +42,26 @@ html{scroll-behavior:smooth}
 /* ================= NAV ================= */
 .sticky-nav{
   position:fixed;
-  top:16px;
+  top:14px;
   left:50%;
   transform:translateX(-50%);
   display:flex;
   gap:22px;
   padding:10px 22px;
   border-radius:999px;
+  background:rgba(15,15,15,.75);
   backdrop-filter:blur(12px);
-  background:rgba(0,0,0,.55);
   z-index:999;
 }
-.nav-link{opacity:.8;font-size:.85rem}
-.nav-link.active{opacity:1;font-weight:600}
-#themeToggle{background:none;border:none;font-size:18px;cursor:pointer}
+.nav-link{font-size:.85rem;opacity:.75}
+.nav-link.active{
+  opacity:1;
+  background:linear-gradient(135deg,#fa7e1e,#d62976);
+  color:#111;
+  padding:6px 12px;
+  border-radius:999px;
+}
+#themeToggle{background:none;border:none;font-size:18px;cursor:pointer;color:var(--text)}
 
 /* ================= HERO ================= */
 .hero{
@@ -86,27 +84,32 @@ html{scroll-behavior:smooth}
   100%{background-position:0% 50%}
 }
 .hero *{position:relative;z-index:1}
-
 .hero h1{
   font-size:3rem;
-  background:var(--accent);
+  font-weight:800;
+  background:linear-gradient(90deg,#feda75,#fa7e1e,#d62976,#962fbf);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
-.hero p{margin-top:16px;color:var(--muted)}
+.hero p{margin-top:18px;color:#bbb}
 .hero-cta{margin-top:40px;display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
-
 .btn{
-  padding:14px 36px;
+  padding:14px 34px;
   border-radius:999px;
   font-weight:600;
   cursor:pointer;
+  transition:.3s;
 }
-.btn.primary{background:var(--accent);color:#111}
-.btn.outline{border:1px solid rgba(255,255,255,.3)}
+.btn.primary{
+  background:linear-gradient(135deg,#feda75,#fa7e1e,#d62976);
+  color:#111;
+}
+.btn.outline{
+  border:1.5px solid rgba(255,255,255,.35);
+}
 
 /* ================= SECTIONS ================= */
-section{padding:100px 20px}
+section{padding:110px 20px}
 h2{text-align:center;margin-bottom:50px;font-size:2rem}
 
 /* ================= PROJECTS ================= */
@@ -114,25 +117,32 @@ h2{text-align:center;margin-bottom:50px;font-size:2rem}
   max-width:1200px;
   margin:auto;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  grid-template-columns:repeat(3,1fr);
   gap:40px;
 }
+@media(max-width:900px){.project-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.project-grid{grid-template-columns:1fr}}
+
 .project-card{
   background:var(--card);
+  border:1px solid var(--border);
   border-radius:16px;
   overflow:hidden;
   transition:.4s;
 }
 .project-card:hover{transform:translateY(-6px)}
-.project-media img{width:100%;height:200px;object-fit:cover}
-.project-info{padding:22px;text-align:center}
+.project-media{height:200px;overflow:hidden}
+.project-media img{width:100%;height:100%;object-fit:cover;transition:.6s}
+.project-card:hover img{transform:scale(1.1)}
+.project-info{padding:26px;text-align:center}
+.project-tags{display:flex;gap:10px;justify-content:center;margin-bottom:10px}
 .project-tags span{
   font-size:.7rem;
   padding:4px 10px;
   border-radius:999px;
   background:rgba(255,255,255,.08);
-  margin:0 4px;
 }
+.project-btn{margin-top:14px}
 
 /* ================= ABOUT ================= */
 .about-wrap{
@@ -143,10 +153,10 @@ h2{text-align:center;margin-bottom:50px;font-size:2rem}
   gap:60px;
 }
 @media(max-width:900px){.about-wrap{grid-template-columns:1fr}}
-
+.about-stats{display:flex;gap:20px;margin-top:30px;flex-wrap:wrap}
 .stat{
   background:rgba(255,255,255,.05);
-  padding:18px;
+  padding:20px;
   border-radius:14px;
   text-align:center;
 }
@@ -167,43 +177,24 @@ h2{text-align:center;margin-bottom:50px;font-size:2rem}
   background:#1a1a1a;
   color:#fff;
 }
-.contact-form textarea{min-height:120px}
-
-/* ================= SOCIALS ================= */
-.socials{
-  display:flex;
-  justify-content:center;
-  gap:28px;
-  margin-top:60px;
-}
-.social-link{
-  width:56px;
-  height:56px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  transition:.3s;
-}
-.social-link:hover{transform:translateY(-6px) scale(1.1)}
 
 /* ================= FOOTER ================= */
 .site-footer{
-  padding:80px 20px 40px;
   background:#111;
+  padding:80px 20px 40px;
   text-align:center;
   color:#777;
 }
 
-/* ================= FLOATING LINKEDIN ================= */
+/* FLOATING LINKEDIN */
 .mobile-float{
   position:fixed;
-  bottom:20px;
-  right:20px;
+  bottom:22px;
+  right:22px;
   width:56px;
   height:56px;
   border-radius:50%;
-  background:#0a66c2;
+  background:linear-gradient(135deg,#0A66C2,#004182);
   color:#fff;
   display:flex;
   align-items:center;
@@ -216,15 +207,15 @@ h2{text-align:center;margin-bottom:50px;font-size:2rem}
 
 <body>
 
-<header class="sticky-nav" role="navigation">
+<header class="sticky-nav">
   <a href="#projects" class="nav-link">Projects</a>
   <a href="#about" class="nav-link">About</a>
   <a href="#contact" class="nav-link">Contact</a>
-  <button id="themeToggle" aria-label="Toggle theme">🌙</button>
+  <button id="themeToggle">🌙</button>
 </header>
 
 <!-- HERO -->
-<div class="hero" role="banner">
+<div class="hero">
   <h1>ARIAN DESIGNS</h1>
   <p id="hero-text"></p>
   <div class="hero-cta">
@@ -233,47 +224,38 @@ h2{text-align:center;margin-bottom:50px;font-size:2rem}
   </div>
 </div>
 
-<!-- PROJECTS -->
+<!-- PROJECTS (ONLY 3) -->
 <section id="projects">
 <h2>Projects</h2>
 <div class="project-grid">
 
 <div class="project-card">
-  <div class="project-media">
-    <img src="project1.jpg" alt="Instagram Campaign">
-  </div>
+  <div class="project-media"><img src="project1.jpg" alt=""></div>
   <div class="project-info">
-    <div class="project-tags">
-      <span>Instagram</span><span>Branding</span>
-    </div>
+    <div class="project-tags"><span>Instagram</span><span>Branding</span></div>
     <h3>Instagram Campaign</h3>
-    <p>Minimal social media visuals.</p>
+    <p>Clean, minimal social media visuals.</p>
+    <button class="btn outline project-btn">View Project</button>
   </div>
 </div>
 
 <div class="project-card">
-  <div class="project-media">
-    <img src="project2.jpg" alt="Poster Design">
-  </div>
+  <div class="project-media"><img src="project2.jpg" alt=""></div>
   <div class="project-info">
-    <div class="project-tags">
-      <span>Poster</span><span>Typography</span>
-    </div>
+    <div class="project-tags"><span>Poster</span><span>Typography</span></div>
     <h3>Poster Design</h3>
-    <p>Bold typography layouts.</p>
+    <p>Bold layouts with strong hierarchy.</p>
+    <button class="btn outline project-btn">View Project</button>
   </div>
 </div>
 
 <div class="project-card">
-  <div class="project-media">
-    <img src="project3.jpg" alt="Brand Visual">
-  </div>
+  <div class="project-media"><img src="project3.jpg" alt=""></div>
   <div class="project-info">
-    <div class="project-tags">
-      <span>Branding</span><span>Visual</span>
-    </div>
+    <div class="project-tags"><span>Branding</span><span>Visual</span></div>
     <h3>Brand Visual</h3>
-    <p>Clean brand visuals.</p>
+    <p>Balanced identity-focused designs.</p>
+    <button class="btn outline project-btn">View Project</button>
   </div>
 </div>
 
@@ -285,10 +267,10 @@ h2{text-align:center;margin-bottom:50px;font-size:2rem}
 <div class="about-wrap">
   <div>
     <h2>About Me</h2>
-    <p>I’m <strong>Arian</strong>, a detail-focused digital designer creating clean, modern visuals for brands.</p>
+    <p>I’m <strong>Arian</strong>, a digital designer focused on modern, clean social media visuals.</p>
     <div class="about-stats">
       <div class="stat"><h3>120+</h3><span>Designs</span></div>
-      <div class="stat"><h3>3+</h3><span>Years Learning</span></div>
+      <div class="stat"><h3>3+</h3><span>Years</span></div>
       <div class="stat"><h3>99%</h3><span>Accuracy</span></div>
     </div>
   </div>
@@ -298,52 +280,42 @@ h2{text-align:center;margin-bottom:50px;font-size:2rem}
 <!-- CONTACT -->
 <section id="contact">
 <h2>Contact Me</h2>
-<form id="contactForm" class="contact-form" novalidate>
+<form class="contact-form" action="https://formspree.io/f/XXXXXX" method="POST">
   <input type="text" name="name" placeholder="Your Name" required>
   <input type="email" name="email" placeholder="Your Email" required>
   <textarea name="message" placeholder="Your Message" required></textarea>
   <button class="btn primary">Send Message</button>
-  <p id="formStatus"></p>
 </form>
 </section>
 
-<!-- FOOTER -->
 <footer class="site-footer">
-  © 2026 <strong>Arian Designs</strong> — All rights reserved.
+© 2026 <strong>ARIAN DESIGNS</strong> — All rights reserved.
 </footer>
 
-<!-- FLOATING LINKEDIN -->
-<a href="https://www.linkedin.com/in/arian-varx-0660b539b" target="_blank" class="mobile-float" aria-label="LinkedIn">in</a>
+<a href="https://www.linkedin.com/in/arian-varx-0660b539b" target="_blank" class="mobile-float">in</a>
 
 <script>
 /* HERO TYPE */
-const text="Clean, modern visual design for social media.";
+const text="Clean, modern visual design for posters & social media.";
 let i=0;
 const el=document.getElementById("hero-text");
-setInterval(()=>{if(i<text.length)el.textContent+=text[i++]},30);
+const t=setInterval(()=>{
+  el.textContent+=text[i++];
+  if(i>=text.length)clearInterval(t);
+},30);
 
 /* THEME */
 const toggle=document.getElementById('themeToggle');
 toggle.onclick=()=>{
   document.documentElement.classList.toggle('light');
-  toggle.textContent=document.documentElement.classList.contains('light')?'☀️':'🌙';
+  const isLight=document.documentElement.classList.contains('light');
+  toggle.textContent=isLight?'☀️':'🌙';
+  localStorage.setItem('theme',isLight?'light':'dark');
 };
-
-/* CONTACT AJAX */
-document.getElementById('contactForm').addEventListener('submit',async e=>{
-  e.preventDefault();
-  const status=document.getElementById('formStatus');
-  status.textContent="Sending...";
-  try{
-    const res=await fetch('https://formspree.io/f/XXXXXX',{
-      method:'POST',
-      body:new FormData(e.target),
-      headers:{Accept:'application/json'}
-    });
-    status.textContent=res.ok?"Message sent ✔":"Failed to send";
-    if(res.ok)e.target.reset();
-  }catch{status.textContent="Error occurred";}
-});
+if(localStorage.getItem('theme')==='light'){
+  document.documentElement.classList.add('light');
+  toggle.textContent='☀️';
+}
 </script>
 
 </body>
