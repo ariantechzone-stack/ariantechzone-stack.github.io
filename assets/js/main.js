@@ -1,158 +1,158 @@
-document.addEventListener('DOMContentLoaded', () => {
+/* =================================
+   SHARED STATE
+================================= */
+const mouse = { x: 0, y: 0 };
+let scrollY = 0;
+let ticking = false;
 
-  const hero = document.querySelector('.hero');
-  const layers = hero.querySelectorAll('.parallax-layer');
+/* =================================
+   ELEMENTS
+================================= */
+const hero = document.querySelector('.hero');
+const layers = hero ? hero.querySelectorAll('.parallax-layer') : [];
+const progressBar = document.getElementById('scroll-progress');
+const spotlight = document.createElement('div');
+spotlight.className = 'cursor-spotlight';
+document.body.appendChild(spotlight);
 
-  /* --- Hero Parallax --- */
-  hero.addEventListener('mousemove', (e) => {
-    const rect = hero.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
+/* =================================
+   MOUSE TRACKING (ONE LISTENER)
+================================= */
+document.addEventListener('mousemove', e => {
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
+});
 
-    layers.forEach((layer, index) => {
-      const speed = (index + 1) * 7;
-      const moveX = (x - centerX) / centerX * speed;
-      const moveY = (y - centerY) / centerY * speed;
-      layer.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
-    });
+/* =================================
+   SCROLL TRACKING (ONE LISTENER)
+================================= */
+window.addEventListener('scroll', () => {
+  scrollY = window.scrollY;
+
+  if (!ticking) {
+    requestAnimationFrame(updateOnScroll);
+    ticking = true;
+  }
+});
+
+/* =================================
+   SCROLL UPDATE
+================================= */
+function updateOnScroll() {
+  ticking = false;
+
+  if (!progressBar) return;
+  const docHeight =
+    document.documentElement.scrollHeight - window.innerHeight;
+  progressBar.style.width = (scrollY / docHeight) * 100 + '%';
+}
+
+/* =================================
+   ANIMATION LOOP (ONE RAF)
+================================= */
+let spotX = 0, spotY = 0;
+
+function animate() {
+  /* Cursor Spotlight */
+  spotX += (mouse.x - spotX) * 0.08;
+  spotY += (mouse.y - spotY) * 0.08;
+  spotlight.style.transform = `translate(${spotX}px, ${spotY}px)`;
+
+  /* Hero Parallax */
+  layers.forEach((layer, i) => {
+    const speed = (i + 1) * 6;
+    const x =
+      (mouse.x - window.innerWidth / 2) /
+      window.innerWidth *
+      speed;
+    const y =
+      (mouse.y - window.innerHeight / 2) /
+      window.innerHeight *
+      speed;
+
+    layer.style.transform = `translate3d(${x}px, ${y}px, 0)`;
   });
 
-  /* --- Floating Particles --- */
-  for(let i = 0; i < 25; i++){
-    const particle = document.createElement('div');
-    particle.classList.add('particle');
-    particle.style.left = Math.random() * 100 + 'vw';
-    particle.style.top = Math.random() * 100 + 'vh';
-    const size = Math.random() * 6 + 4;
-    particle.style.width = size + 'px';
-    particle.style.height = size + 'px';
-    particle.style.animationDuration = 10 + Math.random() * 20 + 's';
-    hero.appendChild(particle);
-  }
+  requestAnimationFrame(animate);
+}
+animate();
 
-  /* --- Typing Animation --- */
-  const textEl = hero.querySelector('.animated-text');
-  const phrases = ["UI/UX Designer", "Web Developer", "Brand Designer", "Creative Freelancer"];
-  let i = 0, j = 0, current = '', deleting = false;
-  const speed = 100;
-
-  function type() {
-    if(!deleting && j < phrases[i].length){
-      current += phrases[i][j];
-      j++;
-      textEl.textContent = current;
-      setTimeout(type, speed);
-    } else if(deleting && j > 0){
-      current = current.slice(0, -1);
-      j--;
-      textEl.textContent = current;
-      setTimeout(type, speed / 2);
-    } else {
-      deleting = !deleting;
-      if(!deleting) i = (i + 1) % phrases.length;
-      setTimeout(type, 1000);
-    }
-  }
-  type();
-
-  /* --- Project Cards Tilt + Fade-In --- */
-  const cards = document.querySelectorAll('.project-card');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.style.opacity = 1;
-        entry.target.style.transform = 'translateY(0)';
+/* =================================
+   REVEAL ANIMATIONS
+================================= */
+const revealObserver = new IntersectionObserver(
+  entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('show');
+        revealObserver.unobserve(e.target);
       }
     });
-  }, { threshold: 0.2 });
+  },
+  { threshold: 0.2 }
+);
 
-  cards.forEach(card => {
-    observer.observe(card);
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const rotX = ((rect.height / 2 - y) / rect.height) * 15;
-      const rotY = ((x - rect.width / 2) / rect.width) * 15;
-      card.style.transform = `translateY(0) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
-    });
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
-    });
-  });
+document
+  .querySelectorAll('.reveal')
+  .forEach(el => revealObserver.observe(el));
 
+/* =================================
+   MAGNETIC EFFECT
+================================= */
+document.addEventListener('mousemove', e => {
+  const el = e.target.closest('.magnetic');
+  if (!el) return;
+
+  const r = el.getBoundingClientRect();
+  const x = e.clientX - r.left - r.width / 2;
+  const y = e.clientY - r.top - r.height / 2;
+  const strength = el.classList.contains('project-card') ? 0.15 : 0.25;
+
+  el.style.transform = `translate(${x * strength}px, ${y * strength}px)`;
 });
 
-    /* --- Hero Parallax --- */
-    const hero = document.querySelector('.hero');
-    const layers = hero.querySelectorAll('.parallax-layer');
-
-    hero.addEventListener('mousemove', (e) => {
-        const rect = hero.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-
-        layers.forEach((layer, index) => {
-            const speed = (index + 1) * 7; // depth multiplier
-            const moveX = (x - centerX) / centerX * speed;
-            const moveY = (y - centerY) / centerY * speed;
-            layer.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
-        });
-    });
-
+document.addEventListener('mouseleave', () => {
+  document
+    .querySelectorAll('.magnetic')
+    .forEach(el => (el.style.transform = 'translate(0,0)'));
 });
 
+/* =================================
+   TYPING EFFECT
+================================= */
+const textEl = document.querySelector('.animated-text');
+if (textEl) {
+  const words = [
+    'UI/UX Designer',
+    'Web Developer',
+    'Brand Designer',
+    'Creative Freelancer'
+  ];
+  let i = 0, j = 0, del = false;
 
-    /* --- Smooth Scroll Animation for Projects --- */
-    const projectSection = document.querySelector('.projects');
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if(entry.isIntersecting){
-                entry.target.style.transform = 'translateY(0)';
-                entry.target.style.opacity = 1;
-            }
-        });
-    }, { threshold: 0.2 });
+  function type() {
+    textEl.textContent = words[i].slice(0, j);
 
-    cards.forEach(card => {
-        card.style.transform = 'translateY(50px)';
-        card.style.opacity = 0;
-        observer.observe(card);
-    });
-});
-// ====== THEME TOGGLE ======
-const themeToggle = document.getElementById('themeToggle');
-themeToggle.addEventListener('click', () => {
-  document.body.classList.toggle('theme-dark');
-  document.body.classList.toggle('theme-light');
-});
+    if (!del && j++ === words[i].length) {
+      del = true;
+      setTimeout(type, 1000);
+      return;
+    }
+    if (del && j-- === 0) {
+      del = false;
+      i = (i + 1) % words.length;
+    }
+    setTimeout(type, del ? 50 : 100);
+  }
+  type();
+}
 
-// ====== NAV ACTIVE LINK ======
-const navLinks = document.querySelectorAll('.nav-link');
-navLinks.forEach(link => {
-  link.addEventListener('click', (e) => {
-    navLinks.forEach(l => l.classList.remove('active'));
-    e.target.classList.add('active');
-  });
-});
-
-// ====== SMOOTH SCROLL ======
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if(target) target.scrollIntoView({ behavior: 'smooth' });
-  });
-});
-
-// ====== VANILLA TILT ======
-VanillaTilt.init(document.querySelectorAll(".project-card"), {
+/* =================================
+   VANILLA TILT (SAFE)
+================================= */
+VanillaTilt.init(document.querySelectorAll('.project-card'), {
   max: 10,
   speed: 400,
   glare: true,
-  "max-glare": 0.2,
+  'max-glare': 0.2
 });
