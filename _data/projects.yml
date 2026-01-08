@@ -1,17 +1,17 @@
-- title: Instagram Post Design
-  description: Clean and modern Instagram post design for brands.
+- title: Project One
+  description: A modern Instagram post design with minimal typography.
   category: Social Media
-  image: /demo-website/assets/images/project-1.svg
-  image_alt: Instagram Post Design
+  image: /images/project-1.jpg
+  image_alt: Project One
 
-- title: Poster Design
-  description: Eye-catching poster design with bold typography.
+- title: Project Two
+  description: Clean and professional poster layout for events.
   category: Poster
-  image: /demo-website/assets/images/project-2.svg
-  image_alt: Poster Design
+  image: /images/project-2.jpg
+  image_alt: Project Two
 
-- title: Branding Visual
-  description: Minimal branding visual for digital platforms.
-  category: Branding
-  image: /demo-website/assets/images/project-3.svg
-  image_alt: Branding Visual
+- title: Project Three
+  description: Eye-catching social media graphics for brands.
+  category: Social Media
+  image: /images/project-3.jpg
+  image_alt: Project Three
