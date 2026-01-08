@@ -6,24 +6,19 @@ title: "ARIAN DESIGNS"
 <!-- HERO SECTION -->
 <div class="hero" id="hero">
   <div class="parallax-layer" style="z-index:1;">
-    <img
-      src="{{ '/assets/images/hero-bg.svg' | relative_url }}"
-      alt="Arian Designs hero background"
-      loading="eager"
-    >
+    <img src="{{ '/assets/images/hero-bg.svg' | relative_url }}" alt="Hero Background">
   </div>
 
   <h1 class="parallax-layer" style="z-index:2;">ARIAN DESIGNS</h1>
-  <p class="parallax-layer animated-text" style="z-index:3;">
-    Creative Design & Web Projects
-  </p>
+  <p class="parallax-layer animated-text" style="z-index:3;"></p>
 
+  <!-- Social Icons -->
   <nav class="social-icons">
-    <a href="https://github.com/yourusername" target="_blank" rel="noopener" aria-label="GitHub profile">GitHub</a>
-    <a href="#" aria-label="Instagram profile">Instagram</a>
-    <a href="#" aria-label="Pinterest profile">Pinterest</a>
-    <a href="#" aria-label="LinkedIn profile">LinkedIn</a>
-    <a href="#" aria-label="Fiverr profile">Fiverr</a>
+    <a href="#" class="github" aria-label="GitHub profile">GitHub</a>
+    <a href="#" class="instagram" aria-label="Instagram profile">Instagram</a>
+    <a href="#" class="pinterest" aria-label="Pinterest profile">Pinterest</a>
+    <a href="#" class="linkedin" aria-label="LinkedIn profile">LinkedIn</a>
+    <a href="#" class="fiverr" aria-label="Fiverr profile">Fiverr</a>
   </nav>
 </div>
 
@@ -32,27 +27,17 @@ title: "ARIAN DESIGNS"
   <h2 class="reveal reveal-left">Projects</h2>
   <p class="reveal reveal-right">Selected works</p>
 
-  <div class="projects-grid">
-    {% for project in site.data.projects %}
-      <div class="project-card reveal {% cycle 'reveal-left', 'reveal-right' %}">
-        <div class="card-image">
-          <img
-            src="{{ '/assets/images/' | append: project.image | relative_url }}"
-            alt="{{ project.title }} preview"
-            loading="lazy"
-          >
-          <div class="card-overlay">
-            <p>{{ project.tech }}</p>
-          </div>
+  {% for project in site.data.projects %}
+    <div class="project-card reveal {% cycle 'reveal-left', 'reveal-right' %}">
+      <div class="card-image">
+        <img src="{{ project.image }}" alt="{{ project.title }}">
+        <div class="card-overlay">
+          <p>{{ project.tech }}</p>
         </div>
-
-        <h3>{{ project.title }}</h3>
-        <p>{{ project.description }}</p>
-
-        <a href="{{ project.link }}" class="btn">
-          View Project
-        </a>
       </div>
-    {% endfor %}
-  </div>
+      <h3>{{ project.title }}</h3>
+      <p>{{ project.description }}</p>
+      <a href="{{ project.link }}" class="btn magnetic">View Project</a>
+    </div>
+  {% endfor %}
 </section>
