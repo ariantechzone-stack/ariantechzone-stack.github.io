@@ -4,136 +4,28 @@
   <meta charset="UTF-8">
   <title>{{ page.title | default: "ARIAN DESIGNS" }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="{{ site.data.about.description | strip_newlines }}">
+  <meta name="description" content="{{ site.description }}">
   <meta name="theme-color" content="#0f0f0f">
 
   <!-- FAVICONS -->
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-  <link rel="shortcut icon" href="/assets/favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/favicon.png' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ '/favicon-16x16.png' | relative_url }}">
+  <link rel="apple-touch-icon" href="{{ '/apple-touch-icon.png' | relative_url }}">
 
   <!-- FONT -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-<link rel="stylesheet" href="assets/css/style.css">
 
+  <!-- CSS -->
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 </head>
 
-<body>
+<body class="theme-dark">
 
-<header role="navigation" aria-label="Main Navigation">
-  <a href="#projects" class="nav-link">Projects</a>
-  <a href="#about" class="nav-link">About</a>
-  <a href="#contact" class="nav-link">Contact</a>
-  <button id="themeToggle" aria-label="Toggle theme">🌙</button>
-</header>
+  {{ content }}
 
-<main>
-
-  <section class="hero" id="home">
-    <h1>ARIAN DESIGNS</h1>
-    <p id="hero-text">Clean, modern visual design for posters & social media</p>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="project-grid">
-      {% for project in site.data.projects %}
-      <div class="project-card">
-        <img src="{{ project.image }}" alt="{{ project.title }}">
-        <div class="project-info">
-          <h3>{{ project.title }}</h3>
-          <p>{{ project.description }}</p>
-        </div>
-      </div>
-      {% endfor %}
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p style="max-width:650px;margin:auto">
-      I’m <strong>Arian</strong>, a detail-focused digital designer specializing in social media visuals and clean layouts.
-    </p>
-  </section>
-
-  <!-- SOCIALS -->
-  <div class="socials">
-  
- <!-- GitHub -->
-  <a href="https://github.com/ariantechzone-stack" target="_blank" class="social-link github" aria-label="GitHub">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.74.5 12.02c0 5.1 3.29 9.42 7.86 10.95.57.1.78-.25.78-.55v-2.02c-3.2.7-3.87-1.55-3.87-1.55-.52-1.33-1.27-1.69-1.27-1.69-1.04-.72.08-.71.08-.71 1.15.08 1.76 1.19 1.76 1.19 1.02 1.75 2.68 1.25 3.33.96.1-.74.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.45.11-3.02 0 0 .97-.31 3.18 1.18a10.9 10.9 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.57.24 2.73.12 3.02.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.4-5.25 5.69.41.36.78 1.08.78 2.18v3.23c0 .3.2.66.79.55 4.56-1.53 7.84-5.86 7.84-10.95C23.5 5.74 18.27.5 12 .5z"/></svg>
-    <div class="icon-shadow"></div>
-    <div class="icon-glow"></div>
-    <div class="premium-glow"></div>
-    <div class="tooltip show-text">GitHub</div>
-  </a>
-
-  <!-- Instagram -->
-  <a href="https://instagram.com/_arian.designs_" target="_blank" class="social-link instagram" aria-label="Instagram">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10zm-5 3.5A4.5 4.5 0 1 0 16.5 12 4.51 4.51 0 0 0 12 7.5zm0 7.3A2.8 2.8 0 1 1 14.8 12 2.8 2.8 0 0 1 12 14.8zM17.5 6.3a1.05 1.05 0 1 0 1.05 1.05 1.05 1.05 0 0 0-1.05-1.05z"/></svg>
-    <div class="icon-shadow"></div>
-    <div class="icon-glow"></div>
-    <div class="premium-glow"></div>
-    <div class="tooltip show-text">Instagram</div>
-  </a>
-
-  <!-- Pinterest -->
-  <a href="https://pinterest.com/ariantech" target="_blank" class="social-link pinterest" aria-label="Pinterest">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.5 6.08 2.5 11.47c0 4.01 2.53 7.43 6.1 8.75-.08-.74-.16-1.88.03-2.69.17-.73 1.1-4.65 1.1-4.65s-.28-.56-.28-1.39c0-1.3.75-2.27 1.68-2.27.79 0 1.17.59 1.17 1.3 0 .79-.5 1.97-.76 3.06-.22.92.46 1.67 1.36 1.67 1.63 0 2.88-1.72 2.88-4.2 0-2.2-1.58-3.74-3.84-3.74-2.62 0-4.16 1.96-4.16 3.99 0 .79.3 1.64.69 2.1a.28.28 0 0 1 .06.27c-.07.3-.24.92-.27 1.05-.04.17-.14.2-.32.12-1.2-.56-1.95-2.33-1.95-3.75 0-3.05 2.21-5.86 6.38-5.86 3.35 0 5.96 2.39 5.96 5.59 0 3.33-2.1 6.01-5.01 6.01-1 0-1.94-.52-2.26-1.13l-.61 2.33c-.22.85-.82 1.92-1.22 2.57.92.29 1.9.45 2.93.45 5.46 0 9.54-4.08 9.54-9.47C21.5 6.08 17.5 2 12.04 2z"/></svg>
-    <div class="icon-shadow"></div>
-    <div class="icon-glow"></div>
-    <div class="premium-glow"></div>
-    <div class="tooltip show-text">Pinterest</div>
-  </a>
-
-  <!-- Fiverr -->
-  <a href="https://www.fiverr.com/r_kumar101/modern-instagram-posts-and-social-media-graphics" target="_blank" class="social-link fiverr" aria-label="Fiverr">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 3.6c-2.5 0-4.4 1.4-5.2 3.5H9v3h1.9v8.3h3.3v-8.3h2.6l.5-3h-3.1c.3-.9 1.1-1.5 2.2-1.5.5 0 1 .1 1.4.3V3.8c-.4-.1-1-.2-1.4-.2z"/></svg>
-    <div class="icon-shadow"></div>
-    <div class="icon-glow"></div>
-    <div class="premium-glow"></div>
-    <div class="tooltip show-text">Fiverr</div>
-  </a>
-    <!-- LinkedIn -->
-<a href="https://www.linkedin.com/in/arian-varx-0660b539b" target="_blank" class="social-link linkedin" aria-label="LinkedIn">
-  <svg viewBox="0 0 24 24" fill="currentColor">
-    <path d="M20.447 20.452H17.21v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.94v5.666H9.09V9h3.104v1.561h.044c.432-.818 1.49-1.682 3.067-1.682 3.28 0 3.884 2.159 3.884 4.967v6.606zM5.337 7.433a1.804 1.804 0 1 1 0-3.607 1.804 1.804 0 0 1 0 3.607zM6.956 20.452H3.716V9h3.24v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.727v20.545C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.273V1.727C24 .774 23.2 0 22.222 0z"/>
-  </svg>
-  <div class="icon-shadow"></div>
-  <div class="icon-glow"></div>
-  <div class="premium-glow"></div>
-  <div class="tooltip show-text">LinkedIn</div>
-</a>
-
-  </div>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <form action="https://formspree.io/f/XXXXXX" method="POST" class="contact-form">
-      <input required placeholder="Your Name">
-      <input required type="email" placeholder="Your Email">
-      <textarea required placeholder="Your Message"></textarea>
-      <button class="btn primary">Send Message</button>
-    </form>
-  </section>
-
-</main>
-
-<footer>
-  <p>© 2026 <strong>ARIAN DESIGNS</strong>. All rights reserved.</p>
-</footer>
-
-<a href="https://www.linkedin.com/in/arian-varx-0660b539b" class="mobile-float" aria-label="LinkedIn">in</a>
-  
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
-
-  <script src="assets/js/main.js" defer></script>
+  <!-- JS -->
+  <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
 </body>
 </html>
