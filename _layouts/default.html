@@ -3,19 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title | default: site.title }}</title>
+  <title>{{ page.title }} | {{ site.title }}</title>
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <!-- FAVICONS -->
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ 'favicon.png' | relative_url }}">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ 'favicon-16x16.png' | relative_url }}">
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ 'apple-touch-icon.png' | relative_url }}">
+  <!-- ================= FAVICONS ================= -->
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="shortcut icon" href="/assets/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 </head>
-<body class="theme-dark">
-  <main id="main-content">
-    {{ content }}
-  </main>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
-  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+<body>
+
+<header>
+  <nav>
+    <h2>{{ site.title }}</h2>
+    <ul>
+      <li><a href="{{ '/' | relative_url }}">Home</a></li>
+      <li><a href="#projects">Projects</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  {{ content }}
+</main>
+
+<footer>
+  <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }}. All rights reserved.</p>
+</footer>
+
+<script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 </body>
 </html>
+
