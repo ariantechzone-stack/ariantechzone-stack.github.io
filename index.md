@@ -75,10 +75,5 @@ title: ARIAN DESIGNS
   </form>
 </section>
 
-<!-- ================= FOOTER ================= -->
-<footer class="site-footer">
-  <p>© 2026 <strong>ARIAN DESIGNS</strong>. All rights reserved.</p>
-</footer>
-
 <!-- ================= MOBILE FLOAT ================= -->
 <a href="https://www.linkedin.com/in/arian-varx-0660b539b" class="mobile-float" aria-label="LinkedIn" target="_blank">in</a>
