@@ -5,6 +5,14 @@
 <title>ARIAN DESIGNS</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Clean, modern social media & digital design">
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXX"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-XXXXXXXX');
+</script>
 
 <!-- FAVICONS -->
 <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
@@ -19,6 +27,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+  .light body{
+  background:#f5f5f5;
+  color:#111;
+}
+.light .project-card,
+.light .modal-content,
+.light .contact-form input,
+.light .contact-form textarea{
+  background:#fff;
+  color:#111;
+}
+
 /* ================= RESET ================= */
 *{margin:0;padding:0;box-sizing:border-box;font-family:Inter,Arial,sans-serif}
 body{background:#0f0f0f;color:#fff;overflow-x:hidden}
@@ -265,10 +285,99 @@ a{text-decoration:none;color:inherit}
   transform:translateY(-6px) scale(1.08);
   box-shadow:0 22px 50px rgba(10,102,194,.55);
 }
+  
+/* PROJECT MODAL */
+.project-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:1000;
+}
+.project-modal.show{display:flex;}
+.modal-content{
+  max-width:520px;
+  width:92%;
+  background:#111;
+  border-radius:16px;
+  padding:24px;
+  text-align:center;
+  animation:scaleIn .3s ease;
+}
+@keyframes scaleIn{
+  from{transform:scale(.9);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+.modal-content img{
+  width:100%;
+  border-radius:12px;
+  margin-bottom:18px;
+}
+.modal-close{
+  position:absolute;
+  top:18px;
+  right:22px;
+  font-size:1.8rem;
+  cursor:pointer;
+}
+.modalTag{
+  display:inline-block;
+  margin-top:12px;
+  padding:6px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.1);
+  font-size:.75rem;
+}
+  
+.contact-form{
+  max-width:460px;
+  margin:40px auto 0;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+.contact-form input,
+.contact-form textarea{
+  padding:14px 16px;
+  border-radius:12px;
+  border:none;
+  background:#1a1a1a;
+  color:#fff;
+}
+.contact-form textarea{min-height:120px;}
+html{scroll-behavior:smooth;}
+
+.sticky-nav{
+  position:fixed;
+  top:14px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:22px;
+  padding:10px 20px;
+  background:rgba(15,15,15,.7);
+  backdrop-filter:blur(10px);
+  border-radius:999px;
+  z-index:999;
+}
+.sticky-nav a{
+  font-size:.85rem;
+  opacity:.85;
+}
+.sticky-nav a:hover{opacity:1;}
 
 </style>
 </head>
 <body>
+  
+<header class="sticky-nav"
+  <button id="themeToggle">🌙</button>
+  <a href="#projects">Projects</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+</header>
 
 <!-- HERO -->
 <div class="hero">
@@ -296,7 +405,15 @@ a{text-decoration:none;color:inherit}
         </div>
         <h3>{{ project.title }}</h3>
         <p>{{ project.description }}</p>
-        <button class="project-btn" style="background:#fa7e1e; color:#111; padding:12px 28px; border-radius:12px; font-weight:600; font-size:1rem;">View Project</button>
+     <button class="project-btn"
+  data-title="{{ project.title }}"
+  data-desc="{{ project.description }}"
+  data-img="{{ project.image }}"
+  data-tag="{{ project.category }}">
+  View Project
+</button>
+
+
       </div>
     </div>
     {% endfor %}
@@ -371,6 +488,15 @@ a{text-decoration:none;color:inherit}
   <div class="tooltip">LinkedIn</div>
 </a>
 </div>
+<section id="contact" style="padding:90px 20px;text-align:center;">
+  <h2>Contact Me</h2>
+  <form action="https://formspree.io/f/XXXXXX" method="POST" class="contact-form">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" placeholder="Your Message" required></textarea>
+    <button class="btn primary">Send Message</button>
+  </form>
+</section>
 
 <!-- FOOTER -->
 <footer class="site-footer reveal">
@@ -532,8 +658,43 @@ document.querySelectorAll('.project-card').forEach(card => {
     card.style.transform = 'rotateY(0deg) rotateX(0deg) scale(1)';
   });
 });
+const modal=document.getElementById('projectModal');
+const modalImg=document.getElementById('modalImg');
+const modalTitle=document.getElementById('modalTitle');
+const modalDesc=document.getElementById('modalDesc');
+const modalTag=document.getElementById('modalTag');
+
+document.querySelectorAll('.project-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    modalImg.src=btn.dataset.img;
+    modalTitle.textContent=btn.dataset.title;
+    modalDesc.textContent=btn.dataset.desc;
+    modalTag.textContent=btn.dataset.tag;
+    modal.classList.add('show');
+  });
+});
+
+document.querySelector('.modal-close').onclick=()=>modal.classList.remove('show');
+modal.onclick=e=>{ if(e.target===modal) modal.classList.remove('show'); };
+  
+const toggle=document.getElementById('themeToggle');
+toggle.onclick=()=>{
+  document.documentElement.classList.toggle('light');
+  toggle.textContent=document.documentElement.classList.contains('light')?'☀️':'🌙';
+};
 
 </script>
+  
+<!-- PROJECT MODAL -->
+<div id="projectModal" class="project-modal">
+  <div class="modal-content">
+    <span class="modal-close">&times;</span>
+    <img id="modalImg" alt="">
+    <h3 id="modalTitle"></h3>
+    <p id="modalDesc"></p>
+    <span class="modalTag" id="modalTag"></span>
+  </div>
+</div>
 
 </body>
 </html>
