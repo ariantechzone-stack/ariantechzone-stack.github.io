@@ -1,8 +1,6 @@
 title: "ARIAN DESIGNS"
 description: "Clean, modern visual design for posters & social media"
 url: "https://ariantechzone-stack.github.io"
-baseurl: "/demo-website"
-
+baseurl: "/demo-website" # Keep this for GitHub, override locally as shown above
 markdown: kramdown
 theme: null
-plugins: []
