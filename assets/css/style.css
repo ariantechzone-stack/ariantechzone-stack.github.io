@@ -1,3 +1,46 @@
+
+
+.stat:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 40px rgba(0,0,0,.25);
+}
+
+
+.mobile-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #0a66c2;
+  color: #fff;
+  padding: 14px 18px;
+  border-radius: 50%;
+  font-weight: 700;
+  box-shadow: 0 10px 30px rgba(10,102,194,.45);
+  z-index: 999;
+}
+
+.mobile-float:hover {
+  transform: scale(1.1);
+}
+
+.social-link {
+  transition: transform .3s ease, color .3s ease;
+}
+
+.social-link:hover {
+  transform: translateY(-4px);
+}
+
+.social-link.github:hover { color: #fff; }
+.social-link.instagram:hover {
+  background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.social-link.pinterest:hover { color: #e60023; }
+.social-link.linkedin:hover { color: #0a66c2; }
+
+
 .project-card {
   background: var(--card-bg);
   border-radius: 18px;
