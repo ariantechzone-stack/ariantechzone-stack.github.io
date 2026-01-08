@@ -183,6 +183,10 @@ body.theme-light header {
   background: url("../images/hero-bg.svg") center / cover no-repeat;
 }
 
+.hero {
+  background: url("/assets/images/hero-bg.svg") center/cover no-repeat;
+}
+
 .hero h1 {
   font-size: 3rem;
   margin-bottom: 10px;
