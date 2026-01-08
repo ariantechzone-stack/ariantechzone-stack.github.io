@@ -4,9 +4,14 @@ title: ARIAN DESIGNS
 ---
 
 <!-- HERO SECTION -->
+
 <section class="hero" id="home">
-  <h1>ARIAN DESIGNS</h1>
-  <p id="hero-text">Clean, modern visual design for posters & social media</p>
+ <div class="hero">
+    <img src="{{ '/assets/images/hero-bg.svg' | relative_url }}" alt="Hero Background" class="parallax-layer" style="z-index:1;">
+    <h1 class="parallax-layer" style="z-index:2;">{{ site.title }}</h1>
+    <p class="parallax-layer" style="z-index:3;">Creative Design & Web Projects</p>
+</div>
+
   <div class="hero-actions">
     <a href="#projects" class="btn primary">View Work</a>
     <a href="https://www.linkedin.com/in/arian-varx-0660b539b" target="_blank" class="btn outline">Hire Me</a>
