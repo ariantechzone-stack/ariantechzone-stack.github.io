@@ -51,13 +51,6 @@ title: ARIAN DESIGNS
   </p>
 </section>
 
-<!-- ================= SOCIALS ================= -->
-<section class="socials">
-  <a href="https://github.com/ariantechzone-stack" target="_blank" class="social-link github">GitHub</a>
-  <a href="https://instagram.com/_arian.designs_" target="_blank" class="social-link instagram">Instagram</a>
-  <a href="https://pinterest.com/ariantech" target="_blank" class="social-link pinterest">Pinterest</a>
-  <a href="https://www.linkedin.com/in/arian-varx-0660b539b" target="_blank" class="social-link linkedin">LinkedIn</a>
-</section>
 
 <!-- ================= CONTACT ================= -->
 <section id="contact">
