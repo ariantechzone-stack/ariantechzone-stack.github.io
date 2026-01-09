@@ -18,35 +18,6 @@ body {
 }
 
 /* ===============================
-   HEADER / NAV
-================================ */
-header {
-  padding: 1.2rem 1.5rem;
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-}
-
-nav {
-  max-width: 1100px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-nav h2 { font-size: 1.1rem; letter-spacing: 0.08em; }
-
-nav ul { display: flex; gap: 1.4rem; list-style: none; }
-
-nav a {
-  text-decoration: none;
-  font-size: 0.85rem;
-  color: #333;
-  opacity: 0.8;
-}
-
-nav a:hover { opacity: 1; }
-
-/* ===============================
    MAIN
 ================================ */
 main { padding-bottom: 160px; }
@@ -56,23 +27,23 @@ main { padding-bottom: 160px; }
 ================================ */
 .site-footer {
   position: fixed;
-  bottom: -200px; /* hidden offscreen initially */
+  bottom: -200px; /* hidden initially */
   left: 0;
   width: 100%;
   max-height: 520px;
   background: rgba(15,15,18,0.88);
   backdrop-filter: blur(14px) saturate(140%);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
-  border-top: 1px solid rgba(255,255,255,.08);
+  border-top: 1px solid rgba(255,255,255,0.08);
   color: #e6e6e6;
   z-index: 20;
   overflow: hidden;
-  transition: bottom 0.7s ease-in-out, opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
   transform: translateY(40px);
   opacity: 0;
+  transition: bottom 0.7s ease-in-out, transform 0.7s ease-in-out, opacity 0.7s ease-in-out;
 }
 
-/* footer visible */
+/* Footer visible */
 .site-footer.show-footer {
   bottom: 0;
   transform: translateY(0);
@@ -89,29 +60,14 @@ main { padding-bottom: 160px; }
   text-align: center;
   opacity: 0;
   transform: translateY(20px);
-  transition: transform 0.6s ease, opacity 0.6s ease;
+  transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
 }
 
-/* show footer container when footer is visible */
+/* Show container with footer */
 .site-footer.show-footer .footer-container {
   opacity: 1;
   transform: translateY(0);
 }
-
-/* ===============================
-   FOOTER COPY
-================================ */
-.footer-copy-static {
-  font-size: 0.75rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  opacity: 0.6;
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  pointer-events: none;
-}
-
-.footer-copy-static.hide { opacity: 0; transform: translateY(24px); }
-.footer-copy-static.show { opacity: 0.6; transform: translateY(0); }
 
 /* ===============================
    CONTACT BUTTON
@@ -132,7 +88,9 @@ main { padding-bottom: 160px; }
   opacity: 0;
 }
 
-.site-footer.show-footer .contact-btn {
+/* Make contact button visible with footer or active state */
+.site-footer.show-footer .contact-btn,
+.site-footer.active .contact-btn {
   opacity: 1;
 }
 
@@ -152,10 +110,6 @@ main { padding-bottom: 160px; }
   100% { transform: scale(1); }
 }
 
-.btn-icon { display: none; }
-.site-footer.active .btn-text { display: none; }
-.site-footer.active .btn-icon { display: inline; }
-
 /* ===============================
    CONTACT REVEAL
 ================================ */
@@ -163,7 +117,7 @@ main { padding-bottom: 160px; }
   margin-top: 2.2rem;
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
   pointer-events: none;
 }
 
@@ -184,7 +138,6 @@ main { padding-bottom: 160px; }
   text-decoration: none;
   opacity: 0.85;
 }
-
 .footer-email:hover { opacity: 1; }
 
 /* ===============================
@@ -212,7 +165,6 @@ main { padding-bottom: 160px; }
               box-shadow 0.45s ease,
               background 0.45s ease,
               color 0.45s ease;
-  position: relative;
 }
 
 .footer-socials a:active { transform: scale(0.92); }
