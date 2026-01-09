@@ -168,3 +168,18 @@ document.querySelectorAll('.project-card').forEach(card => {
     card.style.transform = '';
   });
 });
+// ===============================
+// Random project images on reload
+// ===============================
+const projectImages = [
+  '/assets/images/projects/p1.jpg',
+  '/assets/images/projects/p2.jpg',
+  '/assets/images/projects/p3.jpg',
+  '/assets/images/projects/p4.jpg',
+  '/assets/images/projects/p5.jpg'
+];
+
+document.querySelectorAll('.project-card img').forEach(img => {
+  const randomImg = projectImages[Math.floor(Math.random() * projectImages.length)];
+  img.src = randomImg;
+});
