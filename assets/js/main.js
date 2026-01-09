@@ -16,3 +16,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       contactBtn.textContent = isActive ? "Close" : "Contact Me";
     });
   }
+const contactBtn = document.querySelector('.contact-btn');
+  const reveal = document.querySelector('.contact-reveal');
+  const footer = document.querySelector('.site-footer');
+
+  contactBtn.addEventListener('click', () => {
+    reveal.classList.toggle('active');
+    footer.classList.toggle('active');
+  });
