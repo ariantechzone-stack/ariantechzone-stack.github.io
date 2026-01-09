@@ -207,4 +207,35 @@ window.addEventListener('scroll', () => {
   hero.style.transform =
     `translateY(${window.scrollY * 0.12}px)`;
 });
+if (scrollY + windowH >= docH - 60) {
+    footer.classList.add('footer-ready');
+    footerAllowed = true;
+} else {
+    footer.classList.remove('footer-ready');
+    footer.classList.remove('active');
+    footerAllowed = false;
+}
+// ===============================
+// Show footer even on short pages
+// ===============================
+function checkFooterReady() {
+  const scrollY = window.scrollY;
+  const windowH = window.innerHeight;
+  const docH = document.body.scrollHeight;
+
+  if (scrollY + windowH >= docH - 60 || docH <= windowH) {
+    footer.classList.add('footer-ready');
+    footerAllowed = true;
+  } else {
+    footer.classList.remove('footer-ready');
+    footer.classList.remove('active');
+    footerAllowed = false;
+  }
+}
+
+window.addEventListener('scroll', checkFooterReady);
+window.addEventListener('resize', checkFooterReady); // recalc if window resized
+
+// Initial check
+checkFooterReady();
 
