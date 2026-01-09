@@ -108,3 +108,27 @@ window.addEventListener('scroll', () => {
     bodyEl.style.setProperty('--dynamic-blur', `${blur}px`);
   }
 });
+// Floating LinkedIn reveal on skills
+const linkedin = document.querySelector('.floating-linkedin');
+const skillsSection = document.querySelector('#skills');
+
+window.addEventListener('scroll', () => {
+  if (!skillsSection) return;
+  const rect = skillsSection.getBoundingClientRect();
+  linkedin.classList.toggle('show', rect.top < window.innerHeight * 0.6);
+});
+
+// Project 3D tilt
+document.querySelectorAll('.project-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    const x = e.clientX - r.left;
+    const y = e.clientY - r.top;
+    const rx = ((y / r.height) - 0.5) * 10;
+    const ry = ((x / r.width) - 0.5) * -10;
+    card.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+  });
+});
