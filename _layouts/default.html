@@ -58,7 +58,12 @@
   =========================== -->
   <footer id="contact" class="site-footer">
     <div class="footer-container">
+      
+<div class="footer-copy-static" id="footerCopy">
+        © {{ site.time | date: "%Y" }} Arian Designs. All rights reserved.
+      </p>
 
+    </div>
       <!-- Contact Button -->
     <button class="contact-btn" id="contactToggle" aria-label="Contact">
   <span class="btn-text">Contact Me</span>
@@ -96,11 +101,6 @@
         </div>
       </div>
       
-      <div class="footer-copy-static" id="footerCopy">
-        © {{ site.time | date: "%Y" }} Arian Designs. All rights reserved.
-      </p>
-
-    </div>
   </footer>
 <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
 
