@@ -56,21 +56,27 @@ main { padding-bottom: 160px; }
 ================================ */
 .site-footer {
   position: fixed;
-  bottom: -40px;
+  bottom: -160px; /* hidden offscreen initially */
   left: 0;
   width: 100%;
-  max-height: 110px;
-  background: rgba(15,15,18,0.55);
+  max-height: 160px;
+  background: rgba(15,15,18,0.85);
   backdrop-filter: blur(14px) saturate(140%);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
-  border-top: 1px solid rgba(255,255,255,0.08);
+  border-top: 1px solid rgba(255,255,255,.08);
   color: #e6e6e6;
   z-index: 20;
   overflow: hidden;
-  opacity: 0.85;
+  transition: bottom 0.8s ease-in-out, opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
   transform: translateY(40px);
-  transition: bottom 0.8s ease, opacity 0.8s ease, max-height 0.8s ease, background 0.6s ease, transform 0.6s ease;
+  opacity: 0;
 }
+.site-footer.show-footer {
+  bottom: 0;
+  transform: translateY(0);
+  opacity: 1;
+}
+
 
 .site-footer.scroll-active {
   bottom: 0;
