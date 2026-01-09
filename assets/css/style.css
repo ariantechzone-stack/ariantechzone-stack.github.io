@@ -7,13 +7,11 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #ffffff;
+  background: #fff;
   color: #111;
   min-height: 100vh;
   --dynamic-blur: 0px;
@@ -35,16 +33,9 @@ nav {
   align-items: center;
 }
 
-nav h2 {
-  font-size: 1.1rem;
-  letter-spacing: 0.08em;
-}
+nav h2 { font-size: 1.1rem; letter-spacing: 0.08em; }
 
-nav ul {
-  display: flex;
-  gap: 1.4rem;
-  list-style: none;
-}
+nav ul { display: flex; gap: 1.4rem; list-style: none; }
 
 nav a {
   text-decoration: none;
@@ -53,16 +44,12 @@ nav a {
   opacity: 0.8;
 }
 
-nav a:hover {
-  opacity: 1;
-}
+nav a:hover { opacity: 1; }
 
 /* ===============================
    MAIN
 ================================ */
-main {
-  padding-bottom: 160px; /* space for footer */
-}
+main { padding-bottom: 160px; }
 
 /* ===============================
    FOOTER BASE
@@ -73,16 +60,16 @@ main {
   left: 0;
   width: 100%;
   max-height: 110px;
-  background: rgba(15,15,18,.55);
+  background: rgba(15,15,18,0.55);
   backdrop-filter: blur(14px) saturate(140%);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
-  border-top: 1px solid rgba(255,255,255,.08);
+  border-top: 1px solid rgba(255,255,255,0.08);
   color: #e6e6e6;
   z-index: 20;
   overflow: hidden;
   opacity: 0.85;
-  transition: bottom 0.8s ease, opacity 0.8s ease, max-height 0.8s ease, background 0.6s ease, transform 0.6s ease;
   transform: translateY(40px);
+  transition: bottom 0.8s ease, opacity 0.8s ease, max-height 0.8s ease, background 0.6s ease, transform 0.6s ease;
 }
 
 .site-footer.scroll-active {
@@ -91,10 +78,7 @@ main {
   opacity: 1;
 }
 
-.site-footer.active {
-  max-height: 520px;
-  background: rgba(10,10,14,0.88);
-}
+.site-footer.active { max-height: 520px; background: rgba(10,10,14,0.88); }
 
 /* ===============================
    FOOTER CONTAINER
@@ -113,16 +97,10 @@ main {
 .site-footer.active .footer-container {
   transform: translateY(0);
   opacity: 1;
-  animation: footerSlideFade 0.6s ease forwards;
-}
-
-@keyframes footerSlideFade {
-  0% { transform: translateY(20px); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
 }
 
 /* ===============================
-   FOOTER COPY (YEAR)
+   FOOTER COPY
 ================================ */
 .footer-copy-static {
   font-size: 0.75rem;
@@ -133,15 +111,8 @@ main {
   pointer-events: none;
 }
 
-.footer-copy-static.hide {
-  opacity: 0;
-  transform: translateY(24px);
-}
-
-.footer-copy-static.show {
-  opacity: 0.6;
-  transform: translateY(0);
-}
+.footer-copy-static.hide { opacity: 0; transform: translateY(24px); }
+.footer-copy-static.show { opacity: 0.6; transform: translateY(0); }
 
 /* ===============================
    CONTACT BUTTON
@@ -161,9 +132,7 @@ main {
   transition: transform 0.15s ease, background 0.3s ease;
 }
 
-.contact-btn:hover {
-  background: rgba(255,255,255,0.14);
-}
+.contact-btn:hover { background: rgba(255,255,255,0.14); }
 
 .contact-btn:active {
   transform: scale(0.94);
@@ -219,6 +188,7 @@ main {
   display: flex;
   justify-content: center;
   gap: 1.4rem;
+  position: relative;
 }
 
 .footer-socials a {
@@ -236,39 +206,27 @@ main {
               box-shadow 0.45s ease,
               background 0.45s ease,
               color 0.45s ease;
+  position: relative;
 }
 
 .footer-socials a:active { transform: scale(0.92); }
 .footer-socials a:hover { transform: translateY(-4px) rotateX(8deg); }
 
-/* Platform colors */
-.footer-socials a[aria-label="Instagram"]:hover {
-  background: radial-gradient(circle at top left,#feda75,#d62976,#962fbf);
-  box-shadow: 0 0 18px rgba(214,41,118,0.8);
-}
-.footer-socials a[aria-label="Pinterest"]:hover {
-  background: #e60023;
-  box-shadow: 0 0 18px rgba(230,0,35,0.8);
-}
-.footer-socials a[aria-label="GitHub"]:hover {
-  background: #fff; color:#000;
-  box-shadow:0 0 18px rgba(255,255,255,0.8);
-}
-.footer-socials a[aria-label="LinkedIn"]:hover {
-  background:#0a66c2; box-shadow:0 0 18px rgba(10,102,194,0.8);
-}
-.footer-socials a.fiverr-icon:hover {
-  background:#1dbf73; box-shadow:0 0 18px rgba(29,191,115,0.8);
-}
+/* Platform hover colors */
+.footer-socials a[aria-label="Instagram"]:hover { background: radial-gradient(circle at top left,#feda75,#d62976,#962fbf); box-shadow: 0 0 18px rgba(214,41,118,0.8);}
+.footer-socials a[aria-label="Pinterest"]:hover { background: #e60023; box-shadow:0 0 18px rgba(230,0,35,0.8);}
+.footer-socials a[aria-label="GitHub"]:hover { background:#fff; color:#000; box-shadow:0 0 18px rgba(255,255,255,0.8);}
+.footer-socials a[aria-label="LinkedIn"]:hover { background:#0a66c2; box-shadow:0 0 18px rgba(10,102,194,0.8);}
+.footer-socials a.fiverr-icon:hover { background:#1dbf73; box-shadow:0 0 18px rgba(29,191,115,0.8);}
 .fiverr-icon { font-weight:700; font-size:1.1rem; font-family:system-ui,sans-serif; }
 
-/* Idle pulse glow */
+/* Idle pulse glow animation */
 .site-footer.active .footer-socials a {
   animation: idlePulse 3.2s ease-in-out infinite;
 }
 @keyframes idlePulse {
   0%,100%{box-shadow:0 0 0 rgba(255,255,255,0);}
-  50% { box-shadow:0 0 12px rgba(255,255,255,0.15);}
+  50%{box-shadow:0 0 12px rgba(255,255,255,0.15);}
 }
 .footer-socials a:hover { animation:none; }
 
@@ -276,7 +234,7 @@ main {
    MOBILE
 ================================ */
 @media (max-width:600px){
-  .footer-socials{flex-direction:column;gap:1.2rem;}
+  .footer-socials{flex-direction:column; gap:1.2rem;}
   .footer-socials a{width:56px;height:56px;font-size:1.4rem;}
   .footer-email{margin-bottom:2.2rem;font-size:0.95rem;}
   .contact-btn{margin-top:1.2rem;}
@@ -286,24 +244,25 @@ main {
 /* ===============================
    FOOTER GLOW
 ================================ */
-.site-footer::after{
+.site-footer::after {
   content:"";
   position:absolute;
   left:50%;
   bottom:-35px;
   transform:translateX(-50%);
-  width:80%;height:70px;
+  width:80%; height:70px;
   background:radial-gradient(ellipse at center,rgba(240,90,40,0.35),rgba(221,42,123,0.25),transparent 70%);
   filter:blur(26px);
   opacity:0;
   transition:opacity 0.6s ease;
+  z-index:1;
 }
-.site-footer.active::after{ opacity:1; }
+.site-footer.active::after { opacity:1; }
 
 /* ===============================
    BACKGROUND BLUR
 ================================ */
-body::before{
+body::before {
   content:"";
   position:fixed;
   inset:0;
@@ -314,7 +273,7 @@ body::before{
   transition:opacity 0.6s ease, backdrop-filter 0.3s ease;
   z-index:10;
 }
-body.footer-open::before{
+body.footer-open::before {
   opacity:1;
   pointer-events:auto;
 }
@@ -322,9 +281,10 @@ body.footer-open::before{
 /* ===============================
    CURSOR GLOW
 ================================ */
-.cursor-glow{
+.cursor-glow {
   position:fixed;
-  width:26px;height:26px;
+  width:26px;
+  height:26px;
   border-radius:50%;
   pointer-events:none;
   z-index:9999;
@@ -335,21 +295,9 @@ body.footer-open::before{
 }
 
 /* ===============================
-   SCROLL FOOTER LIFT
-================================ */
-.site-footer{
-  transform:translateY(40px);
-  opacity:0.85;
-}
-.site-footer.scroll-active{
-  transform:translateY(0);
-  opacity:1;
-}
-
-/* ===============================
    NOISE OVERLAY
 ================================ */
-.site-footer::before{
+.site-footer::before {
   content:"";
   position:absolute;
   inset:0;
