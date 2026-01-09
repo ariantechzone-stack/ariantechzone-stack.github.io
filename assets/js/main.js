@@ -1,37 +1,21 @@
-/* ================================
-   Smooth Scroll for Anchor Links
-================================ */
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    const targetId = this.getAttribute('href');
-    if (targetId.length > 1) {
-      const target = document.querySelector(targetId);
-      if (!target) return;
 
-      e.preventDefault();
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
 
-      target.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
+    // Contact button toggle
+    const contactBtn = document.getElementById('contactToggle');
+    const contactReveal = document.getElementById('contactReveal');
+
+    if (contactBtn && contactReveal) {
+      contactBtn.addEventListener('click', () => {
+        const isActive = contactReveal.classList.toggle('active');
+        contactBtn.textContent = isActive ? "Close" : "Contact Me";
       });
     }
-  });
-});
-
-/* ================================
-   Footer Contact Reveal
-================================ */
-const contactBtn = document.getElementById('contactToggle');
-const contactReveal = document.getElementById('contactReveal');
-
-if (contactBtn && contactReveal) {
-  contactBtn.addEventListener('click', () => {
-    // Toggle reveal
-    const isActive = contactReveal.classList.toggle('active');
-
-    // Change button text dynamically
-    contactBtn.textContent = isActive ? "Close" : "Contact Me";
-  });
-}
-
-
+  
