@@ -24,11 +24,9 @@ const contactBtn = document.getElementById('contactToggle');
 const contactReveal = document.getElementById('contactReveal');
 const footer = document.querySelector('.site-footer');
 
-if (contactBtn && contactReveal && footer) {
-  contactBtn.addEventListener('click', () => {
-    const isActive = contactReveal.classList.toggle('active');
-    footer.classList.toggle('active');
+contactBtn.addEventListener('click', () => {
+  footer.classList.toggle('active');
+  contactReveal.classList.toggle('active');
+  contactBtn.classList.toggle('active');
+});
 
-    contactBtn.textContent = isActive ? 'Close' : 'Contact Me';
-  });
-}
