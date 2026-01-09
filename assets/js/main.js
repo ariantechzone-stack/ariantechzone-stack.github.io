@@ -191,3 +191,18 @@ document.querySelectorAll('.project-card img').forEach(img => {
   const randomImg = projectImages[Math.floor(Math.random() * projectImages.length)];
   img.src = randomImg;
 });
+// ===============================
+// Subtle section reveal
+// ===============================
+const reveals = document.querySelectorAll('.reveal');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.18 });
+
+reveals.forEach(el => observer.observe(el));
+
