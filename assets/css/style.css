@@ -214,10 +214,11 @@ main {
   text-decoration: none;
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.12);
-  transition:
-    transform 0.18s ease,
-    box-shadow 0.4s ease,
-    background 0.4s ease;
+ transition:
+    transform 0.55s cubic-bezier(.22,1.28,.36,1),
+    box-shadow 0.45s ease,
+    background 0.45s ease,
+    color 0.45s ease;
 }
 
 /* Micro press */
@@ -315,4 +316,27 @@ body::before {
 body.footer-open::before {
   opacity: 1;
   pointer-events: auto;
+}
+/* ===============================
+   IDLE PULSE GLOW (SUBTLE)
+================================ */
+.site-footer.active .footer-socials a {
+  animation: idlePulse 3.2s ease-in-out infinite;
+}
+
+@keyframes idlePulse {
+  0% {
+    box-shadow: 0 0 0 rgba(255,255,255,0.0);
+  }
+  50% {
+    box-shadow: 0 0 12px rgba(255,255,255,0.15);
+  }
+  100% {
+    box-shadow: 0 0 0 rgba(255,255,255,0.0);
+  }
+}
+
+/* Stop pulse while hovering (feels premium) */
+.footer-socials a:hover {
+  animation: none;
 }
