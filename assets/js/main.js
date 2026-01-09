@@ -46,3 +46,22 @@ document.addEventListener('keydown', (e) => {
     footerCopy.classList.add('show');
   }
 });
+// ===============================
+// Magnetic Cursor (Icons)
+// ===============================
+document.querySelectorAll('.footer-socials a').forEach(icon => {
+  icon.addEventListener('mousemove', (e) => {
+    const rect = icon.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+
+    icon.style.transform = `
+      translate(${x * 0.18}px, ${y * 0.18}px)
+      scale(1.15)
+    `;
+  });
+
+  icon.addEventListener('mouseleave', () => {
+    icon.style.transform = '';
+  });
+});
