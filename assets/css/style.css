@@ -56,35 +56,28 @@ main { padding-bottom: 160px; }
 ================================ */
 .site-footer {
   position: fixed;
-  bottom: -160px; /* hidden offscreen initially */
+  bottom: -200px; /* hidden offscreen initially */
   left: 0;
   width: 100%;
-  max-height: 160px;
-  background: rgba(15,15,18,0.85);
+  max-height: 520px;
+  background: rgba(15,15,18,0.88);
   backdrop-filter: blur(14px) saturate(140%);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
   border-top: 1px solid rgba(255,255,255,.08);
   color: #e6e6e6;
   z-index: 20;
   overflow: hidden;
-  transition: bottom 0.8s ease-in-out, opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+  transition: bottom 0.7s ease-in-out, opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
   transform: translateY(40px);
   opacity: 0;
 }
+
+/* footer visible */
 .site-footer.show-footer {
   bottom: 0;
   transform: translateY(0);
   opacity: 1;
 }
-
-
-.site-footer.scroll-active {
-  bottom: 0;
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.site-footer.active { max-height: 520px; background: rgba(10,10,14,0.88); }
 
 /* ===============================
    FOOTER CONTAINER
@@ -94,15 +87,15 @@ main { padding-bottom: 160px; }
   margin: auto;
   padding: 1.6rem 1rem 2.2rem;
   text-align: center;
-  position: relative;
-  transform: translateY(20px);
   opacity: 0;
+  transform: translateY(20px);
   transition: transform 0.6s ease, opacity 0.6s ease;
 }
 
-.site-footer.active .footer-container {
-  transform: translateY(0);
+/* show footer container when footer is visible */
+.site-footer.show-footer .footer-container {
   opacity: 1;
+  transform: translateY(0);
 }
 
 /* ===============================
@@ -135,10 +128,17 @@ main { padding-bottom: 160px; }
   align-items: center;
   gap: 0.5rem;
   font-size: 0.9rem;
-  transition: transform 0.15s ease, background 0.3s ease;
+  transition: transform 0.15s ease, background 0.3s ease, opacity 0.6s ease;
+  opacity: 0;
 }
 
-.contact-btn:hover { background: rgba(255,255,255,0.14); }
+.site-footer.show-footer .contact-btn {
+  opacity: 1;
+}
+
+.contact-btn:hover {
+  background: rgba(255,255,255,0.14);
+}
 
 .contact-btn:active {
   transform: scale(0.94);
