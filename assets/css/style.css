@@ -1,3 +1,6 @@
+.site-footer.active::after {
+  opacity: 1;
+}
 .contact-btn {
   position: relative;
   padding: 0.65rem 1.6rem;
