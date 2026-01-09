@@ -1,4 +1,4 @@
-// Smooth scroll for anchor links
+
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
     e.preventDefault();
@@ -6,9 +6,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-/* ================================
-   Smooth Scroll Fallback
-================================ */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     const targetId = this.getAttribute('href');
@@ -26,3 +23,16 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
+const contactBtn = document.getElementById('contactToggle');
+const contactReveal = document.getElementById('contactReveal');
+
+if (contactBtn && contactReveal) {
+  contactBtn.addEventListener('click', () => {
+    contactBtn.classList.add('hide');
+
+    setTimeout(() => {
+      contactReveal.classList.add('active');
+    }, 200);
+  });
+}
