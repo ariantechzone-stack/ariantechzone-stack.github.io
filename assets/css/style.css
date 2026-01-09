@@ -87,21 +87,8 @@ main { padding-bottom: 160px; }
   transition: transform 0.15s ease, background 0.3s ease, opacity 0.6s ease;
   opacity: 0;
 }
-
-/* Make contact button visible with footer or active state */
-.site-footer.show-footer .contact-btn,
-.site-footer.active .contact-btn {
-  opacity: 1;
-}
-
-.contact-btn:hover {
-  background: rgba(255,255,255,0.14);
-}
-
-.contact-btn:active {
-  transform: scale(0.94);
-  animation: buttonBounce 0.42s cubic-bezier(.34,1.56,.64,1);
-}
+.site-footer.show-footer .contact-btn { opacity: 1; }
+.contact-btn:active { transform: scale(0.94); }
 
 @keyframes buttonBounce {
   0% { transform: scale(1.05); }
