@@ -14,26 +14,43 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  const contactBtn = document.querySelector(".contact-btn");
-  const footer = document.querySelector(".site-footer");
-  const footerText = document.querySelector(".footer-copy-static");
+const footer = document.getElementById("contact");
+const toggleBtn = document.getElementById("contactToggle");
+const footerCopy = document.getElementById("footerCopy");
 
-  if (!contactBtn || !footer || !footerText) return;
+function openFooter() {
+  footer.classList.add("active");
+  document.body.classList.add("footer-open");
+  footerCopy.classList.remove("show");
+  footerCopy.classList.add("hide");
+}
 
-  // Open contact
-  contactBtn.addEventListener("click", () => {
-    footer.classList.add("active");
-    footerText.classList.remove("show");
-    footerText.classList.add("hide");
-  });
+function closeFooter() {
+  footer.classList.remove("active");
+  document.body.classList.remove("footer-open");
+  footerCopy.classList.remove("hide");
+  footerCopy.classList.add("show");
+}
 
-  // Close on ESC
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      footer.classList.remove("active");
-      footerText.classList.remove("hide");
-      footerText.classList.add("show");
-    }
-  });
+toggleBtn.addEventListener("click", () => {
+  footer.classList.contains("active") ? closeFooter() : openFooter();
 });
+
+/* ESC key close */
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && footer.classList.contains("active")) {
+    closeFooter();
+  }
+});
+
+/* Outside click close */
+document.body.addEventListener("click", (e) => {
+  if (
+    footer.classList.contains("active") &&
+    !footer.contains(e.target) &&
+    !toggleBtn.contains(e.target)
+  ) {
+    closeFooter();
+  }
+});
+
