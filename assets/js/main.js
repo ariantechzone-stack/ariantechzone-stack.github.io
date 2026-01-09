@@ -45,3 +45,17 @@ const contactBtn = document.querySelector('.contact-btn');
       toggleFooter();
     }
   });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const footer = document.querySelector('.site-footer');
+      const contactBtn = document.querySelector('.contact-btn');
+      const reveal = document.querySelector('.contact-reveal');
+
+      if (footer && footer.classList.contains('active')) {
+        footer.classList.remove('active');
+        contactBtn.classList.remove('active');
+        reveal.classList.remove('active');
+        document.body.classList.remove('footer-open');
+      }
+    }
+  });
