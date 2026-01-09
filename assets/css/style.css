@@ -1,3 +1,51 @@
+header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  backdrop-filter: blur(18px);
+  background: var(--header-bg);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+nav h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+nav a {
+  color: var(--text-main);
+  opacity: 0.9;
+}
+
+nav a::after {
+  background: var(--accent);
+}
+.hero {
+  padding: 140px 20px 120px;
+  text-align: center;
+  background: transparent;
+}
+
+.hero h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 16px;
+}
+
+.hero p {
+  color: var(--text-muted);
+  max-width: 680px;
+  margin: auto;
+  font-size: 1.05rem;
+}
+
 :root {
   --bg-main: radial-gradient(1200px 600px at top,#0f172a,#020617);
   --header-bg: linear-gradient(135deg,#0f172a,#020617);
@@ -142,4 +190,17 @@
 .footer-socials a.fiverr-icon::after {
   background: var(--social-grad);
 }
-
+body {
+  font-family: 'Lato', sans-serif;
+  background: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+body {
+  font-family: 'Lato', sans-serif;
+  background: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
