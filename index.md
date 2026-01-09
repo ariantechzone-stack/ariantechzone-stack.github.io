@@ -68,7 +68,7 @@ description: "Portfolio of Arian – modern design, social media creatives, and 
         {% endif %}
         <h3>{{ project.name }}</h3>
         <p>{{ project.description }}</p>
-        <a href="{{ project.link }}" rel="noopener noreferrer" class="btn">
+        <a href="{{ project.link }}" target="_blank" rel="noopener noreferrer" class="btn">
           View Project
         </a>
       </div>
