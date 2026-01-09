@@ -98,3 +98,21 @@ function handleFooterReveal() {
 }
 window.addEventListener('scroll', handleFooterReveal);
 handleFooterReveal();
+
+const footer = document.querySelector('.site-footer');
+let lastScroll = 0;
+
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  const windowH = window.innerHeight;
+  const docH = document.body.scrollHeight;
+
+  // If user reaches near bottom
+  if (scrollY + windowH >= docH - 50) {
+    footer.classList.add('show-footer');
+  } else {
+    footer.classList.remove('show-footer');
+  }
+
+  lastScroll = scrollY;
+});
