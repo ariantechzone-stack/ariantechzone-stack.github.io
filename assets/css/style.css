@@ -561,8 +561,9 @@ main { padding-bottom: 160px; }
   z-index: 1;
 }
 
-.site-footer.active::after {
-  opacity: 1;
+.site-footer.active .footer-copy-static,
+.site-footer.active .contact-reveal {
+  display: block;
 }
 
 /* Footer small default text */
