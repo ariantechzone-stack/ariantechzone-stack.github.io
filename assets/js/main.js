@@ -1,4 +1,13 @@
 // ===============================
+// Variables
+// ===============================
+const footer = document.querySelector('.site-footer');
+const contactBtn = document.getElementById('contactToggle');
+const footerCopy = document.getElementById('footerCopy');
+const contactReveal = document.getElementById('contactReveal');
+const bodyEl = document.body;
+
+// ===============================
 // Smooth anchor scroll
 // ===============================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -11,15 +20,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
-
-// ===============================
-// Footer & contact button
-// ===============================
-const footer = document.querySelector('.site-footer');
-const contactBtn = document.querySelector('.contact-btn');
-const contactReveal = document.querySelector('.contact-reveal');
-const footerCopy = document.querySelector('.footer-copy-static');
-const bodyEl = document.body;
 
 // ===============================
 // Cursor glow
@@ -37,9 +37,7 @@ document.addEventListener('mousemove', e => {
 // Social icons hover tilt & cursor glow
 // ===============================
 document.querySelectorAll('.footer-socials a').forEach(icon => {
-  icon.addEventListener('mouseenter', () => {
-    cursorGlow.style.opacity = '1';
-  });
+  icon.addEventListener('mouseenter', () => { cursorGlow.style.opacity = '1'; });
   icon.addEventListener('mouseleave', () => { 
     cursorGlow.style.opacity = '0'; 
     icon.style.transform = ''; 
@@ -59,20 +57,12 @@ contactBtn.addEventListener('click', () => {
   const isOpen = footer.classList.toggle('active');
   bodyEl.classList.toggle('footer-open', isOpen);
 
-  // Footer copy visibility
   footerCopy.classList.toggle('hide', isOpen);
   footerCopy.classList.toggle('show', !isOpen);
 
-  // Contact reveal animation
-  if (isOpen) {
-    contactReveal.style.pointerEvents = 'auto';
-    contactReveal.style.opacity = '1';
-    contactReveal.style.transform = 'translateY(0)';
-  } else {
-    contactReveal.style.pointerEvents = 'none';
-    contactReveal.style.opacity = '0';
-    contactReveal.style.transform = 'translateY(20px)';
-  }
+  contactReveal.style.pointerEvents = isOpen ? 'auto' : 'none';
+  contactReveal.style.opacity = isOpen ? '1' : '0';
+  contactReveal.style.transform = isOpen ? 'translateY(0)' : 'translateY(20px)';
 });
 
 // ===============================
@@ -98,7 +88,6 @@ function closeFooter() {
 // ===============================
 // Footer scroll animation with lift/fade
 // ===============================
-let lastScroll = 0;
 window.addEventListener('scroll', () => {
   const scrollY = window.scrollY;
   const windowH = window.innerHeight;
@@ -112,12 +101,10 @@ window.addEventListener('scroll', () => {
     footer.classList.remove('active'); // hide contact reveal
   }
 
-  // Dynamic blur effect
+  // Dynamic blur effect when contact is open
   if (bodyEl.classList.contains('footer-open')) {
     const maxBlur = 8;
     const blur = Math.min(maxBlur, (scrollY / (docH - windowH)) * maxBlur);
     bodyEl.style.setProperty('--dynamic-blur', `${blur}px`);
   }
-
-  lastScroll = scrollY;
 });
