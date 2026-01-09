@@ -241,7 +241,12 @@ main { padding-bottom: 160px; }
    MOBILE
 ================================ */
 @media (max-width:600px){
-  .footer-socials{flex-direction:column; gap:1.2rem;}
+ .footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 1.4rem;
+  margin-top: 1rem;   /* spacing from contact button */
+}
   .footer-socials a{width:56px;height:56px;font-size:1.4rem;}
   .footer-email{margin-bottom:2.2rem;font-size:0.95rem;}
   .contact-btn{margin-top:1.2rem;}
