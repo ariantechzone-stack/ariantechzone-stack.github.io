@@ -340,3 +340,40 @@ body.footer-open::before {
 .footer-socials a:hover {
   animation: none;
 }
+/* ===============================
+   MOBILE STACKED LAYOUT
+================================ */
+@media (max-width: 600px) {
+
+  .site-footer {
+    max-height: 130px;
+  }
+
+  .site-footer.active {
+    max-height: 620px;
+  }
+
+  .footer-container {
+    padding: 1.8rem 1rem 2.6rem;
+  }
+
+  .footer-socials {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .footer-socials a {
+    width: 56px;
+    height: 56px;
+    font-size: 1.4rem;
+  }
+
+  .footer-email {
+    margin-bottom: 2.2rem;
+    font-size: 0.95rem;
+  }
+
+  .contact-btn {
+    margin-top: 1.2rem;
+  }
+}
