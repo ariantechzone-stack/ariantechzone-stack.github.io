@@ -27,46 +27,57 @@ main { padding-bottom: 160px; }
 ================================ */
 .site-footer {
   position: fixed;
-  bottom: -200px; /* hidden initially */
+  bottom: -200px;
   left: 0;
   width: 100%;
   max-height: 520px;
   background: rgba(15,15,18,0.88);
   backdrop-filter: blur(14px) saturate(140%);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
-  border-top: 1px solid rgba(255,255,255,0.08);
+  border-top: 1px solid rgba(255,255,255,.08);
   color: #e6e6e6;
   z-index: 20;
   overflow: hidden;
-  transform: translateY(40px);
   opacity: 0;
-  transition: bottom 0.7s ease-in-out, transform 0.7s ease-in-out, opacity 0.7s ease-in-out;
+  transform: translateY(40px);
+  transition: bottom 0.7s ease-in-out, opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
+}
+
+/* Ambient animated gradient behind footer */
+.site-footer::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  background: linear-gradient(120deg, #f05a28, #dd2a7b, #feda75, #962fbf);
+  background-size: 400% 400%;
+  filter: blur(48px);
+  opacity: 0.25;
+  pointer-events: none;
+  animation: gradientFlow 20s ease infinite;
+}
+
+/* Gradient animation */
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* Footer visible */
 .site-footer.show-footer {
   bottom: 0;
-  transform: translateY(0);
-  opacity: 1;
-}
-
-/* ===============================
-   FOOTER CONTAINER
-================================ */
-.footer-container {
-  max-width: 900px;
-  margin: auto;
-  padding: 1.6rem 1rem 2.2rem;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
-}
-
-/* Show container with footer */
-.site-footer.show-footer .footer-container {
   opacity: 1;
   transform: translateY(0);
+  animation: footerLiftFade 0.7s ease forwards;
+  z-index: 20;
+}
+
+/* Footer lift/fade animation */
+@keyframes footerLiftFade {
+  0% { transform: translateY(40px); opacity: 0; }
+  60% { transform: translateY(-10px); opacity: 1; }
+  100% { transform: translateY(0); opacity: 1; }
 }
 
 /* ===============================
@@ -84,19 +95,23 @@ main { padding-bottom: 160px; }
   align-items: center;
   gap: 0.5rem;
   font-size: 0.9rem;
-  transition: transform 0.15s ease, background 0.3s ease, opacity 0.6s ease;
+  transition: transform 0.15s ease, background 0.3s ease, opacity 0.6s ease, box-shadow 0.4s ease;
   opacity: 0;
 }
-.site-footer.show-footer .contact-btn { opacity: 1; }
-.contact-btn:active { transform: scale(0.94); }
 
-@keyframes buttonBounce {
-  0% { transform: scale(1.05); }
-  40% { transform: scale(0.95); }
-  70% { transform: scale(1.02); }
-  100% { transform: scale(1); }
+.site-footer.show-footer .contact-btn {
+  opacity: 1;
+  box-shadow: 0 0 24px rgba(255,255,255,0.15);
 }
 
+.contact-btn:hover {
+  background: rgba(255,255,255,0.14);
+  box-shadow: 0 0 28px rgba(255,255,255,0.25);
+}
+
+.contact-btn:active {
+  transform: scale(0.94);
+}
 /* ===============================
    CONTACT REVEAL
 ================================ */
@@ -135,6 +150,7 @@ main { padding-bottom: 160px; }
   justify-content: center;
   gap: 1.4rem;
   position: relative;
+  z-index: 5; /* above ambient gradient */
 }
 
 .footer-socials a {
@@ -152,10 +168,34 @@ main { padding-bottom: 160px; }
               box-shadow 0.45s ease,
               background 0.45s ease,
               color 0.45s ease;
+  position: relative;
+  overflow: hidden;
 }
+
+.footer-socials a::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 80%);
+  opacity:0;
+  transition: opacity 0.4s ease;
+}
+
+.footer-socials a:hover::after { opacity:1; }
 
 .footer-socials a:active { transform: scale(0.92); }
 .footer-socials a:hover { transform: translateY(-4px) rotateX(8deg); }
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width:600px){
+  .footer-socials{flex-direction:column; gap:1.2rem;}
+  .footer-socials a{width:56px; height:56px; font-size:1.4rem;}
+  .contact-btn{margin-top:1.2rem;}
+  .footer-container{padding-bottom:3rem;}
+}
 
 /* Platform hover colors */
 .footer-socials a[aria-label="Instagram"]:hover { background: radial-gradient(circle at top left,#feda75,#d62976,#962fbf); box-shadow: 0 0 18px rgba(214,41,118,0.8);}
