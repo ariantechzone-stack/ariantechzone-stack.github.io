@@ -222,19 +222,22 @@ footer {
 
 .contact-btn {
   display: inline-block;
-  padding: 0.75rem 1.8rem;
-  background: #f05a28;
-  color: #fff;
-  text-decoration: none;
+  margin-top: 0.8rem;
+  padding: 0.55rem 1.4rem;
+  font-size: 0.85rem;
   font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #f05a28, #ff784e);
   border-radius: 30px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .contact-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(240,90,40,0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(240, 90, 40, 0.35);
 }
+
 
 .site-footer {
   background: #0f0f0f;
