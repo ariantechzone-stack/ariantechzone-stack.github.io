@@ -332,9 +332,19 @@ header nav ul li a:hover {
   perspective: 1000px;
 }
 
+.fiverr-icon {
+  font-family: Arial, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  font-size: 1.4rem;
+  text-transform: lowercase;
+}
+
 /* Pulse keyframes */
 @keyframes pulse-instagram { 0% { box-shadow: 0 0 6px #f58529,0 0 12px #dd2a7b,0 0 18px #feda77; } 50% { box-shadow:0 0 12px #f58529,0 0 20px #dd2a7b,0 0 28px #feda77;} 100%{box-shadow:0 0 6px #f58529,0 0 12px #dd2a7b,0 0 18px #feda77;}}
 @keyframes pulse-pinterest {0%{box-shadow:0 0 6px #e60023,0 0 12px #ff3d5f;}50%{box-shadow:0 0 12px #e60023,0 0 20px #ff3d5f;}100%{box-shadow:0 0 6px #e60023,0 0 12px #ff3d5f;}}
 @keyframes pulse-github {0%{box-shadow:0 0 6px #fff,0 0 12px #ccc;}50%{box-shadow:0 0 12px #fff,0 0 20px #ccc;}100%{box-shadow:0 0 6px #fff,0 0 12px #ccc;}}
 @keyframes pulse-fiverr {0%{box-shadow:0 0 6px #1dbf73,0 0 12px #0da06b;}50%{box-shadow:0 0 12px #1dbf73,0 0 20px #0da06b;}100%{box-shadow:0 0 6px #1dbf73,0 0 12px #0da06b;}}
 @keyframes pulse-linkedin {0%{box-shadow:0 0 6px #0077b5,0 0 12px #00a0dc;}50%{box-shadow:0 0 12px #0077b5,0 0 20px #00a0dc;}100%{box-shadow:0 0 6px #0077b5,0 0 12px #00a0dc;}}
+/* Fiverr text logo (minimal & brand-correct) */
+
