@@ -1,69 +1,66 @@
 // ===============================
-// VARIABLES
+// ELEMENTS
 // ===============================
-const bodyEl = document.body;
+const body = document.body;
 const footer = document.querySelector('.site-footer');
 const contactBtn = document.getElementById('contactToggle');
-const footerCopy = document.getElementById('footerCopy');
-const contactReveal = document.getElementById('contactReveal');
+const contactReveal = document.querySelector('.contact-reveal');
 const linkedin = document.querySelector('.floating-linkedin');
 const skillsSection = document.querySelector('#skills');
+const hero = document.querySelector('.hero');
 
-let footerAllowed = false;
+// Safety check
+if (!footer || !contactBtn) {
+  console.warn('Footer or Contact Button missing');
+}
+
+// ===============================
+// FOOTER STATE
+// ===============================
 let footerOpen = false;
 
 // ===============================
-// SMOOTH ANCHOR SCROLL
+// FOOTER VISIBILITY (SCROLL)
 // ===============================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', e => {
-    const id = anchor.getAttribute('href');
-    const target = document.querySelector(id);
-    if (!target) return;
-    e.preventDefault();
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-});
+function handleFooterVisibility() {
+  const scrollBottom =
+    window.scrollY + window.innerHeight >=
+    document.documentElement.scrollHeight - 40;
 
-// ===============================
-// FOOTER VISIBILITY
-// ===============================
-function checkFooterReady() {
-  const scrollY = window.scrollY;
-  const windowH = window.innerHeight;
-  const docH = document.body.scrollHeight;
+  // If page is short, allow footer always
+  const shortPage =
+    document.documentElement.scrollHeight <= window.innerHeight + 40;
 
-  if (scrollY + windowH >= docH - 60 || docH <= windowH) {
+  if (scrollBottom || shortPage) {
     footer.classList.add('footer-ready');
-    footerAllowed = true;
   } else {
     footer.classList.remove('footer-ready', 'footer-open');
     footerOpen = false;
-    bodyEl.classList.remove('footer-open');
-    footerAllowed = false;
   }
 }
 
-window.addEventListener('scroll', checkFooterReady);
-window.addEventListener('resize', checkFooterReady);
-checkFooterReady();
+window.addEventListener('scroll', handleFooterVisibility);
+window.addEventListener('resize', handleFooterVisibility);
+handleFooterVisibility();
 
 // ===============================
 // CONTACT BUTTON TOGGLE
 // ===============================
 contactBtn.addEventListener('click', e => {
   e.stopPropagation();
-  if (!footerAllowed) return;
 
   footerOpen = !footerOpen;
   footer.classList.toggle('footer-open', footerOpen);
-  bodyEl.classList.toggle('footer-open', footerOpen);
+  body.classList.toggle('footer-open', footerOpen);
+
   contactBtn.setAttribute('aria-expanded', footerOpen);
-  contactReveal.setAttribute('aria-hidden', !footerOpen);
+  if (contactReveal) {
+    contactReveal.setAttribute('aria-hidden', !footerOpen);
+  }
 });
 
 // ===============================
-// CLOSE ON OUTSIDE CLICK / ESC
+// CLOSE FOOTER (ESC / OUTSIDE)
 // ===============================
 document.addEventListener('click', e => {
   if (footerOpen && !footer.contains(e.target)) closeFooter();
@@ -76,106 +73,63 @@ document.addEventListener('keydown', e => {
 function closeFooter() {
   footerOpen = false;
   footer.classList.remove('footer-open');
-  bodyEl.classList.remove('footer-open');
+  body.classList.remove('footer-open');
   contactBtn.setAttribute('aria-expanded', 'false');
-  contactReveal.setAttribute('aria-hidden', 'true');
+  if (contactReveal) {
+    contactReveal.setAttribute('aria-hidden', 'true');
+  }
 }
 
 // ===============================
-// CURSOR GLOW
+// MICRO SPRING (CONTACT BUTTON)
 // ===============================
-const cursorGlow = document.createElement('div');
-cursorGlow.className = 'cursor-glow';
-document.body.appendChild(cursorGlow);
-
-document.addEventListener('mousemove', e => {
-  cursorGlow.style.transform =
-    `translate3d(${e.clientX - 12}px, ${e.clientY - 12}px, 0)`;
+contactBtn.addEventListener('mousedown', () => {
+  contactBtn.style.transform = 'scale(0.94)';
+});
+contactBtn.addEventListener('mouseup', () => {
+  contactBtn.style.transform = 'scale(1)';
+});
+contactBtn.addEventListener('mouseleave', () => {
+  contactBtn.style.transform = 'scale(1)';
 });
 
 // ===============================
-// SOCIAL ICON TILT + GLOW
-// ===============================
-document.querySelectorAll('.footer-socials a').forEach(icon => {
-  icon.addEventListener('mouseenter', () => cursorGlow.style.opacity = '1');
-  icon.addEventListener('mouseleave', () => {
-    cursorGlow.style.opacity = '0';
-    icon.style.transform = '';
-  });
-  icon.addEventListener('mousemove', e => {
-    const r = icon.getBoundingClientRect();
-    const x = e.clientX - r.left - r.width / 2;
-    const y = e.clientY - r.top - r.height / 2;
-    icon.style.transform = `translate(${x*0.15}px, ${y*0.15}px) scale(1.15)`;
-  });
-});
-
-// ===============================
-// FLOATING LINKEDIN (SKILLS)
-// ===============================
-window.addEventListener('scroll', () => {
-  if (!skillsSection) return;
-  const rect = skillsSection.getBoundingClientRect();
-  linkedin.classList.toggle('show', rect.top < window.innerHeight * 0.6);
-});
-
-// ===============================
-// 3D PROJECT CARD TILT
+// PROJECT CARD TILT (CLEAN)
 // ===============================
 document.querySelectorAll('.project-card').forEach(card => {
   card.addEventListener('mousemove', e => {
     const r = card.getBoundingClientRect();
     const x = e.clientX - r.left - r.width / 2;
     const y = e.clientY - r.top - r.height / 2;
-    card.style.transform = `rotateX(${-y/20}deg) rotateY(${x/20}deg) translateY(-6px)`;
+
+    card.style.transform =
+      `rotateX(${-y / 18}deg) rotateY(${x / 18}deg) translateY(-6px)`;
   });
-  card.addEventListener('mouseleave', () => card.style.transform = '');
-});
 
-// ===============================
-// RANDOM PROJECT IMAGES
-// ===============================
-const projectImages = [
-  '/assets/images/projects/p1.jpg',
-  '/assets/images/projects/p2.jpg',
-  '/assets/images/projects/p3.jpg',
-  '/assets/images/projects/p4.jpg',
-  '/assets/images/projects/p5.jpg'
-];
-
-document.querySelectorAll('.project-card img').forEach(img => {
-  const rand = projectImages[Math.floor(Math.random()*projectImages.length)];
-  img.src = rand;
-});
-
-// ===============================
-// SECTION REVEAL
-// ===============================
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
   });
-}, { threshold: 0.18 });
-
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// ===============================
-// MICRO SPRING BOUNCE (CONTACT BTN)
-// ===============================
-contactBtn.addEventListener('mousedown', () => contactBtn.style.transform = 'scale(0.92)');
-contactBtn.addEventListener('mouseup', () => contactBtn.style.transform = 'scale(1)');
-
-// ===============================
-// FOOTER PHYSICS EASING
-// ===============================
-footer.addEventListener('transitionend', () => footer.style.willChange = 'auto');
-window.addEventListener('scroll', () => footer.style.willChange = 'transform');
-
-// ===============================
-// SUBTLE PARALLAX HERO
-// ===============================
-const hero = document.querySelector('.hero');
-window.addEventListener('scroll', () => {
-  if (!hero) return;
-  hero.style.transform = `translateY(${window.scrollY * 0.12}px)`;
 });
+
+// ===============================
+// FLOATING LINKEDIN
+// ===============================
+if (linkedin && skillsSection) {
+  window.addEventListener('scroll', () => {
+    const rect = skillsSection.getBoundingClientRect();
+    linkedin.classList.toggle(
+      'show',
+      rect.top < window.innerHeight * 0.6
+    );
+  });
+}
+
+// ===============================
+// HERO PARALLAX (SUBTLE)
+// ===============================
+if (hero) {
+  window.addEventListener('scroll', () => {
+    hero.style.transform =
+      `translateY(${window.scrollY * 0.08}px)`;
+  });
+}
