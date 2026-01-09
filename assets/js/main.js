@@ -1,112 +1,102 @@
-/* ======================================================
-   GLOBAL ELEMENTS
-====================================================== */
-const body = document.body;
+// ===============================
+// VARIABLES
+// ===============================
+const bodyEl = document.body;
 const footer = document.querySelector('.site-footer');
 const contactBtn = document.getElementById('contactToggle');
 const footerCopy = document.getElementById('footerCopy');
 const contactReveal = document.getElementById('contactReveal');
+const linkedin = document.querySelector('.floating-linkedin');
+const skillsSection = document.querySelector('#skills');
 
-/* ======================================================
-   FOOTER STATE
-====================================================== */
 let footerAllowed = false;
 let footerOpen = false;
 
-/* ======================================================
-   SHOW FOOTER ONLY AT PAGE BOTTOM
-====================================================== */
-function handleFooterVisibility() {
-  const scrollBottom =
-    window.scrollY + window.innerHeight >=
-    document.documentElement.scrollHeight - 80;
-
-  if (scrollBottom) {
-    footer.classList.add('footer-visible');
-    footerAllowed = true;
-  } else {
-    footer.classList.remove('footer-visible');
-    footer.classList.remove('footer-open');
-    body.classList.remove('footer-open');
-    footerAllowed = false;
-    footerOpen = false;
-  }
-}
-
-window.addEventListener('scroll', handleFooterVisibility);
-
-/* ======================================================
-   CONTACT BUTTON TOGGLE
-====================================================== */
-contactBtn.addEventListener('click', e => {
-  e.stopPropagation();
-  if (!footerAllowed) return;
-
-  footerOpen = !footerOpen;
-  footer.classList.toggle('footer-open', footerOpen);
-  body.classList.toggle('footer-open', footerOpen);
-
-  contactBtn.setAttribute('aria-expanded', footerOpen);
-
-  if (footerCopy) footerCopy.style.display = footerOpen ? 'block' : 'none';
-  if (contactReveal) {
-    contactReveal.style.opacity = footerOpen ? '1' : '0';
-    contactReveal.style.transform = footerOpen
-      ? 'translateY(0)'
-      : 'translateY(18px)';
-    contactReveal.style.pointerEvents = footerOpen ? 'auto' : 'none';
-  }
-});
-
-/* ======================================================
-   CLOSE FOOTER ON OUTSIDE CLICK
-====================================================== */
-document.addEventListener('click', e => {
-  if (!footer.contains(e.target) && footerOpen) {
-    footer.classList.remove('footer-open');
-    body.classList.remove('footer-open');
-    footerOpen = false;
-  }
-});
-
-/* ======================================================
-   ESC KEY CLOSE
-====================================================== */
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && footerOpen) {
-    footer.classList.remove('footer-open');
-    body.classList.remove('footer-open');
-    footerOpen = false;
-  }
-});
-
-/* ======================================================
-   SMOOTH ANCHOR SCROLL
-====================================================== */
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-  link.addEventListener('click', e => {
-    const target = document.querySelector(link.getAttribute('href'));
+// ===============================
+// SMOOTH ANCHOR SCROLL
+// ===============================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', e => {
+    const id = anchor.getAttribute('href');
+    const target = document.querySelector(id);
     if (!target) return;
     e.preventDefault();
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
 
-/* ======================================================
-   CURSOR GLOW
-====================================================== */
+// ===============================
+// FOOTER VISIBILITY (BOTTOM ONLY)
+// ===============================
+window.addEventListener('scroll', () => {
+  const atBottom =
+    window.scrollY + window.innerHeight >=
+    document.body.scrollHeight - 60;
+
+  if (atBottom) {
+    footer.classList.add('footer-ready');
+    footerAllowed = true;
+  } else {
+    footer.classList.remove('footer-ready', 'footer-open');
+    footerAllowed = false;
+    footerOpen = false;
+    bodyEl.classList.remove('footer-open');
+  }
+});
+
+// ===============================
+// CONTACT BUTTON TOGGLE
+// ===============================
+contactBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  if (!footerAllowed) return;
+
+  footerOpen = !footerOpen;
+  footer.classList.toggle('footer-open', footerOpen);
+  bodyEl.classList.toggle('footer-open', footerOpen);
+
+  contactBtn.setAttribute('aria-expanded', footerOpen);
+  contactReveal.setAttribute('aria-hidden', !footerOpen);
+});
+
+// ===============================
+// CLOSE ON OUTSIDE CLICK / ESC
+// ===============================
+document.addEventListener('click', e => {
+  if (footerOpen && !footer.contains(e.target)) {
+    closeFooter();
+  }
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && footerOpen) {
+    closeFooter();
+  }
+});
+
+function closeFooter() {
+  footerOpen = false;
+  footer.classList.remove('footer-open');
+  bodyEl.classList.remove('footer-open');
+  contactBtn.setAttribute('aria-expanded', 'false');
+  contactReveal.setAttribute('aria-hidden', 'true');
+}
+
+// ===============================
+// CURSOR GLOW
+// ===============================
 const cursorGlow = document.createElement('div');
 cursorGlow.className = 'cursor-glow';
 document.body.appendChild(cursorGlow);
 
 document.addEventListener('mousemove', e => {
-  cursorGlow.style.left = `${e.clientX - 14}px`;
-  cursorGlow.style.top = `${e.clientY - 14}px`;
+  cursorGlow.style.transform =
+    `translate(${e.clientX - 12}px, ${e.clientY - 12}px)`;
 });
 
-/* ======================================================
-   SOCIAL ICON HOVER EFFECT
-====================================================== */
+// ===============================
+// SOCIAL ICON TILT + GLOW
+// ===============================
 document.querySelectorAll('.footer-socials a').forEach(icon => {
   icon.addEventListener('mouseenter', () => {
     cursorGlow.style.opacity = '1';
@@ -121,36 +111,33 @@ document.querySelectorAll('.footer-socials a').forEach(icon => {
     const r = icon.getBoundingClientRect();
     const x = e.clientX - r.left - r.width / 2;
     const y = e.clientY - r.top - r.height / 2;
-    icon.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px) scale(1.12)`;
+    icon.style.transform =
+      `translate(${x * 0.15}px, ${y * 0.15}px) scale(1.15)`;
   });
 });
 
-/* ======================================================
-   FLOATING LINKEDIN (SHOW ON SKILLS)
-====================================================== */
-const linkedin = document.querySelector('.floating-linkedin');
-const skills = document.getElementById('skills');
+// ===============================
+// FLOATING LINKEDIN (SKILLS)
+// ===============================
+window.addEventListener('scroll', () => {
+  if (!skillsSection || !linkedin) return;
+  const rect = skillsSection.getBoundingClientRect();
+  linkedin.classList.toggle(
+    'show',
+    rect.top < window.innerHeight * 0.6
+  );
+});
 
-if (linkedin && skills) {
-  window.addEventListener('scroll', () => {
-    const rect = skills.getBoundingClientRect();
-    linkedin.classList.toggle(
-      'show',
-      rect.top < window.innerHeight * 0.65
-    );
-  });
-}
-
-/* ======================================================
-   PROJECT CARD 3D TILT
-====================================================== */
+// ===============================
+// 3D PROJECT CARD TILT
+// ===============================
 document.querySelectorAll('.project-card').forEach(card => {
   card.addEventListener('mousemove', e => {
     const r = card.getBoundingClientRect();
     const x = e.clientX - r.left - r.width / 2;
     const y = e.clientY - r.top - r.height / 2;
     card.style.transform =
-      `rotateX(${ -y / 18 }deg) rotateY(${ x / 18 }deg) translateY(-6px)`;
+      `rotateX(${-y / 20}deg) rotateY(${x / 20}deg) translateY(-6px)`;
   });
 
   card.addEventListener('mouseleave', () => {
@@ -158,9 +145,9 @@ document.querySelectorAll('.project-card').forEach(card => {
   });
 });
 
-/* ======================================================
-   RANDOM PROJECT IMAGES
-====================================================== */
+// ===============================
+// RANDOM PROJECT IMAGES
+// ===============================
 const projectImages = [
   '/assets/images/projects/p1.jpg',
   '/assets/images/projects/p2.jpg',
@@ -170,23 +157,22 @@ const projectImages = [
 ];
 
 document.querySelectorAll('.project-card img').forEach(img => {
-  img.src = projectImages[Math.floor(Math.random() * projectImages.length)];
+  const rand =
+    projectImages[Math.floor(Math.random() * projectImages.length)];
+  img.src = rand;
 });
 
-/* ======================================================
-   SECTION REVEAL
-====================================================== */
-const revealObserver = new IntersectionObserver(
-  entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  },
-  { threshold: 0.18 }
-);
+// ===============================
+// SECTION REVEAL
+// ===============================
+const reveals = document.querySelectorAll('.reveal');
 
-document.querySelectorAll('.reveal').forEach(el => {
-  revealObserver.observe(el);
-});
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.18 });
+
+reveals.forEach(el => observer.observe(el));
