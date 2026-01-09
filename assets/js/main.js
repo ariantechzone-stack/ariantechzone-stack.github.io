@@ -176,3 +176,35 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.18 });
 
 reveals.forEach(el => observer.observe(el));
+// ===============================
+// MICRO SPRING BOUNCE (CONTACT BTN)
+// ===============================
+contactBtn.addEventListener('mousedown', () => {
+  contactBtn.style.transform = 'scale(0.92)';
+});
+
+contactBtn.addEventListener('mouseup', () => {
+  contactBtn.style.transform = 'scale(1)';
+});
+
+// ===============================
+// FOOTER PHYSICS EASING
+// ===============================
+footer.addEventListener('transitionend', () => {
+  footer.style.willChange = 'auto';
+});
+
+window.addEventListener('scroll', () => {
+  footer.style.willChange = 'transform';
+});
+
+// ===============================
+// SUBTLE PARALLAX HERO
+// ===============================
+const hero = document.querySelector('.hero');
+window.addEventListener('scroll', () => {
+  if (!hero) return;
+  hero.style.transform =
+    `translateY(${window.scrollY * 0.12}px)`;
+});
+
