@@ -7,6 +7,21 @@ title: "Home"
   <h1>Welcome to Arian Designs</h1>
   <p>Creating clean, modern, and professional designs.</p>
 </section>
+<section id="about" class="about">
+  <div class="about-container">
+    <h2>About Me</h2>
+    <p>
+      Hi, I’m <strong>Arian</strong> — a creative designer focused on building clean,
+      modern, and user-friendly digital experiences.
+      I enjoy working on visual design, layouts, and branding that feel simple,
+      professional, and effective.
+    </p>
+    <p>
+      I’m continuously learning and improving my skills, with a strong interest
+      in design systems, social media graphics, and web aesthetics.
+    </p>
+  </div>
+</section>
 
 <section id="projects" class="projects">
   <h2>My Projects</h2>
