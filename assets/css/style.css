@@ -434,3 +434,15 @@ body.footer-open::before {
 .footer-socials a:active::before {
   opacity: 0.85;
 }
+/* ===============================
+   SCROLL FOOTER LIFT
+================================ */
+.site-footer {
+  transform: translateY(40px);
+  opacity: 0.85;
+}
+
+.site-footer.scroll-active {
+  transform: translateY(0);
+  opacity: 1;
+}
