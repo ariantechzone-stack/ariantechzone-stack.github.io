@@ -1,4 +1,48 @@
 /* ==============================
+   Footer Soft Pulsing Glow (Active Only)
+============================== */
+.site-footer::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -30px;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 60px;
+  border-radius: 50%;
+
+  background: radial-gradient(
+    ellipse at center,
+    rgba(240, 90, 40, 0.35),
+    rgba(221, 42, 123, 0.25),
+    transparent 70%
+  );
+  filter: blur(22px);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.6s ease;
+}
+
+/* Pulse animation keyframes */
+@keyframes footer-glow-pulse {
+  0% {
+    box-shadow: 0 0 6px rgba(240,90,40,0.35), 0 0 14px rgba(221,42,123,0.25);
+  }
+  50% {
+    box-shadow: 0 0 14px rgba(240,90,40,0.35), 0 0 28px rgba(221,42,123,0.25);
+  }
+  100% {
+    box-shadow: 0 0 6px rgba(240,90,40,0.35), 0 0 14px rgba(221,42,123,0.25);
+  }
+}
+
+/* Active footer glow */
+.site-footer.active::after {
+  opacity: 1;
+  animation: footer-glow-pulse 1.8s ease-in-out infinite;
+}
+/* ==============================
    Footer Copy Animations
 ============================== */
 .footer-copy-static {
