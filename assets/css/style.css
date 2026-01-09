@@ -287,7 +287,7 @@ header nav ul li a:hover {
 .footer-socials a:nth-child(1):hover { 
   background: linear-gradient(45deg,#f58529,#dd2a7b,#feda77);
   color:#fff;
-  animation: pulse-instagram 1s infinite alternate;
+  animation: pulse-instagram 2s infinite alternate;
 }
 .footer-socials a:nth-child(2):hover { 
   background: #e60023;
