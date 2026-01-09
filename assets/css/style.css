@@ -1,448 +1,73 @@
-/* ===============================
-   RESET + BASE
-================================ */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* =============================== RESET + BASE =============================== */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#fff;color:#111;min-height:100vh}
 
-html {
-  scroll-behavior: smooth;
-}
+/* =============================== HEADER =============================== */
+header{padding:1.2rem 1.5rem;border-bottom:1px solid rgba(0,0,0,0.06)}
+nav{max-width:1100px;margin:auto;display:flex;justify-content:space-between;align-items:center}
+nav h2{font-size:1.1rem;letter-spacing:.08em}
+nav ul{display:flex;gap:1.4rem;list-style:none}
+nav a{text-decoration:none;font-size:.85rem;color:#333;opacity:.8}
+nav a:hover{opacity:1}
 
-body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #ffffff;
-  color: #111;
-  min-height: 100vh;
-}
+/* =============================== MAIN =============================== */
+main{padding-bottom:160px}
 
-/* ===============================
-   HEADER / NAV
-================================ */
-header {
-  padding: 1.2rem 1.5rem;
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-}
+/* =============================== FOOTER =============================== */
+.site-footer{position:fixed;bottom:0;left:0;width:100%;background:rgba(15,15,18,.55);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-top:1px solid rgba(255,255,255,.08);color:#e6e6e6;z-index:20;overflow:hidden;max-height:110px;transition:max-height .8s ease,background .6s ease;transform:translateY(40px);opacity:.85}
+.site-footer.active{max-height:520px;background:rgba(10,10,14,.88)}
+.site-footer.scroll-active{transform:translateY(0);opacity:1}
+.footer-container{max-width:900px;margin:auto;padding:1.6rem 1rem 2.2rem;text-align:center;position:relative}
+.footer-copy-static{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;opacity:.6;transition:opacity .6s ease,transform .6s ease;pointer-events:none}
+.footer-copy-static.hide{opacity:0;transform:translateY(24px)}
+.footer-copy-static.show{opacity:.6;transform:translateY(0)}
+.contact-btn{margin-top:1rem;padding:.65rem 1.6rem;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#fff;cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;font-size:.9rem;transition:transform .15s ease,background .3s ease}
+.contact-btn:hover{background:rgba(255,255,255,.14)}
+.contact-btn:active{transform:scale(.94)}
+.btn-icon{display:none}
+.site-footer.active .btn-text{display:none}
+.site-footer.active .btn-icon{display:inline}
+.contact-reveal{margin-top:2.2rem;opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;pointer-events:none}
+.site-footer.active .contact-reveal{opacity:1;transform:translateY(0);pointer-events:auto}
+.footer-email{display:block;margin-bottom:1.8rem;color:#fff;font-size:.9rem;text-decoration:none;opacity:.85}
+.footer-email:hover{opacity:1}
 
-nav {
-  max-width: 1100px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+/* SOCIAL ICONS */
+.footer-socials{display:flex;justify-content:center;gap:1.4rem}
+.footer-socials a{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-size:1.3rem;color:#fff;text-decoration:none;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);transition:transform .55s cubic-bezier(.22,1.28,.36,1),box-shadow .45s ease,background .45s ease,color .45s ease}
+.footer-socials a:active{transform:scale(.92);animation:springBounce .42s cubic-bezier(.34,1.56,.64,1);filter:brightness(1.2) contrast(1.15)}
+.footer-socials a:hover{transform:translateY(-4px) rotateX(8deg)}
+@keyframes springBounce{0%{transform:scale(1.15)}40%{transform:scale(.88)}70%{transform:scale(1.08)}100%{transform:scale(1)}}
 
-nav h2 {
-  font-size: 1.1rem;
-  letter-spacing: 0.08em;
-}
+/* GLOW */
+.site-footer.active .footer-socials a{animation:idlePulse 3.2s ease-in-out infinite}
+@keyframes idlePulse{0%,100%{box-shadow:0 0 0 rgba(255,255,255,0)}50%{box-shadow:0 0 12px rgba(255,255,255,.15)}}
+.footer-socials a:hover{animation:none}
+/* Platform colors */
+.footer-socials a[aria-label="Instagram"]:hover{background:radial-gradient(circle at top left,#feda75,#d62976,#962fbf);box-shadow:0 0 18px rgba(214,41,118,.8)}
+.footer-socials a[aria-label="Pinterest"]:hover{background:#e60023;box-shadow:0 0 18px rgba(230,0,35,.8)}
+.footer-socials a[aria-label="GitHub"]:hover{background:#fff;color:#000;box-shadow:0 0 18px rgba(255,255,255,.8)}
+.footer-socials a[aria-label="LinkedIn"]:hover{background:#0a66c2;box-shadow:0 0 18px rgba(10,102,194,.8)}
+.fiverr-icon{font-weight:700;font-size:1.1rem;font-family:system-ui,sans-serif}
+.footer-socials a.fiverr-icon:hover{background:#1dbf73;box-shadow:0 0 18px rgba(29,191,115,.8)}
 
-nav ul {
-  display: flex;
-  gap: 1.4rem;
-  list-style: none;
-}
+/* FOOTER GLOW */
+.site-footer::after{content:"";position:absolute;left:50%;bottom:-35px;transform:translateX(-50%);width:80%;height:70px;background:radial-gradient(ellipse at center,rgba(240,90,40,.35),rgba(221,42,123,.25),transparent 70%);filter:blur(26px);opacity:0;transition:opacity .6s ease}
+.site-footer.active::after{opacity:1}
 
-nav a {
-  text-decoration: none;
-  font-size: 0.85rem;
-  color: #333;
-  opacity: 0.8;
-}
+/* BACKDROP BLUR */
+body::before{content:"";position:fixed;inset:0;background:rgba(0,0,0,.22);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .6s ease;z-index:10}
+body.footer-open::before{opacity:1;pointer-events:auto}
 
-nav a:hover {
-  opacity: 1;
-}
+/* MOBILE */
+@media(max-width:600px){.site-footer{max-height:130px}.site-footer.active{max-height:620px}.footer-container{padding:1.8rem 1rem 2.6rem}.footer-socials{flex-direction:column;gap:1.2rem}.footer-socials a{width:56px;height:56px;font-size:1.4rem}.footer-email{margin-bottom:2.2rem;font-size:.95rem}.contact-btn{margin-top:1.2rem}}
 
-/* ===============================
-   MAIN
-================================ */
-main {
-  padding-bottom: 160px; /* space for footer */
-}
+/* NOISE */
+.site-footer::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:2;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");mix-blend-mode:overlay}
 
-/* ===============================
-   FOOTER BASE
-================================ */
-.site-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: rgba(15, 15, 18, 0.55);
-  backdrop-filter: blur(14px) saturate(140%);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
-  border-top: 1px solid rgba(255,255,255,0.08);
-  color: #e6e6e6;
-  z-index: 20;
-  overflow: hidden;
-  max-height: 110px;
-  transition: max-height 0.8s ease, background 0.6s ease;
-}
+/* CURSOR GLOW */
+.cursor-glow{position:fixed;width:26px;height:26px;border-radius:50%;pointer-events:none;z-index:9999;background:radial-gradient(circle,var(--cursor-glow) 0%,transparent 70%);filter:blur(10px);opacity:0;transition:opacity .2s ease}
 
-.site-footer.active {
-  max-height: 520px;
-  background: rgba(10,10,14,0.88);
-}
-
-/* ===============================
-   FOOTER CONTAINER
-================================ */
-.footer-container {
-  max-width: 900px;
-  margin: auto;
-  padding: 1.6rem 1rem 2.2rem;
-  text-align: center;
-  position: relative;
-}
-
-/* ===============================
-   FOOTER COPY (YEAR)
-================================ */
-.footer-copy-static {
-  font-size: 0.75rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  opacity: 0.6;
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  pointer-events: none;
-}
-
-.footer-copy-static.hide {
-  opacity: 0;
-  transform: translateY(24px);
-}
-
-.footer-copy-static.show {
-  opacity: 0.6;
-  transform: translateY(0);
-}
-
-/* ===============================
-   CONTACT BUTTON
-================================ */
-.contact-btn {
-  margin-top: 1rem;
-  padding: 0.65rem 1.6rem;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.18);
-  color: #fff;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.9rem;
-  transition: transform 0.15s ease, background 0.3s ease;
-}
-
-.contact-btn:hover {
-  background: rgba(255,255,255,0.14);
-}
-
-.contact-btn:active {
-  transform: scale(0.94);
-}
-
-.btn-icon {
-  display: none;
-}
-
-.site-footer.active .btn-text {
-  display: none;
-}
-
-.site-footer.active .btn-icon {
-  display: inline;
-}
-
-/* ===============================
-   CONTACT REVEAL
-================================ */
-.contact-reveal {
-  margin-top: 2.2rem;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  pointer-events: none;
-}
-
-.site-footer.active .contact-reveal {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-/* ===============================
-   EMAIL
-================================ */
-.footer-email {
-  display: block;
-  margin-bottom: 1.8rem;
-  color: #fff;
-  font-size: 0.9rem;
-  text-decoration: none;
-  opacity: 0.85;
-}
-
-.footer-email:hover {
-  opacity: 1;
-}
-
-/* ===============================
-   SOCIAL ICONS LAYOUT
-================================ */
-.footer-socials {
-  display: flex;
-  justify-content: center;
-  gap: 1.4rem;
-}
-
-/* ===============================
-   SOCIAL ICON BASE
-================================ */
-.footer-socials a {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  font-size: 1.3rem;
-  color: #fff;
-  text-decoration: none;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
- transition:
-    transform 0.55s cubic-bezier(.22,1.28,.36,1),
-    box-shadow 0.45s ease,
-    background 0.45s ease,
-    color 0.45s ease;
-}
-
-/* Micro press */
-.footer-socials a:active {
-  transform: scale(0.92);
-}
-
-/* Hover tilt */
-.footer-socials a:hover {
-  transform: translateY(-4px) rotateX(8deg);
-}
-
-/* ===============================
-   PLATFORM COLORS + GLOW
-================================ */
-
-/* Instagram */
-.footer-socials a[aria-label="Instagram"]:hover {
-  background: radial-gradient(circle at top left, #feda75, #d62976, #962fbf);
-  box-shadow: 0 0 18px rgba(214,41,118,0.8);
-}
-
-/* Pinterest */
-.footer-socials a[aria-label="Pinterest"]:hover {
-  background: #e60023;
-  box-shadow: 0 0 18px rgba(230,0,35,0.8);
-}
-
-/* GitHub */
-.footer-socials a[aria-label="GitHub"]:hover {
-  background: #ffffff;
-  color: #000;
-  box-shadow: 0 0 18px rgba(255,255,255,0.8);
-}
-
-/* LinkedIn */
-.footer-socials a[aria-label="LinkedIn"]:hover {
-  background: #0a66c2;
-  box-shadow: 0 0 18px rgba(10,102,194,0.8);
-}
-
-/* Fiverr */
-.fiverr-icon {
-  font-weight: 700;
-  font-size: 1.1rem;
-  font-family: system-ui, sans-serif;
-}
-
-.footer-socials a.fiverr-icon:hover {
-  background: #1dbf73;
-  box-shadow: 0 0 18px rgba(29,191,115,0.8);
-}
-
-/* ===============================
-   FOOTER GLOW
-================================ */
-.site-footer::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -35px;
-  transform: translateX(-50%);
-  width: 80%;
-  height: 70px;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(240,90,40,0.35),
-    rgba(221,42,123,0.25),
-    transparent 70%
-  );
-  filter: blur(26px);
-  opacity: 0;
-  transition: opacity 0.6s ease;
-}
-
-.site-footer.active::after {
-  opacity: 1;
-}
-
-/* ===============================
-   BACKGROUND BLUR
-================================ */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.22);
-  backdrop-filter: blur(4px);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.6s ease;
-  z-index: 10;
-}
-
-body.footer-open::before {
-  opacity: 1;
-  pointer-events: auto;
-}
-/* ===============================
-   IDLE PULSE GLOW (SUBTLE)
-================================ */
-.site-footer.active .footer-socials a {
-  animation: idlePulse 3.2s ease-in-out infinite;
-}
-
-@keyframes idlePulse {
-  0% {
-    box-shadow: 0 0 0 rgba(255,255,255,0.0);
-  }
-  50% {
-    box-shadow: 0 0 12px rgba(255,255,255,0.15);
-  }
-  100% {
-    box-shadow: 0 0 0 rgba(255,255,255,0.0);
-  }
-}
-
-/* Stop pulse while hovering (feels premium) */
-.footer-socials a:hover {
-  animation: none;
-}
-/* ===============================
-   MOBILE STACKED LAYOUT
-================================ */
-@media (max-width: 600px) {
-
-  .site-footer {
-    max-height: 130px;
-  }
-
-  .site-footer.active {
-    max-height: 620px;
-  }
-
-  .footer-container {
-    padding: 1.8rem 1rem 2.6rem;
-  }
-
-  .footer-socials {
-    flex-direction: column;
-    gap: 1.2rem;
-  }
-
-  .footer-socials a {
-    width: 56px;
-    height: 56px;
-    font-size: 1.4rem;
-  }
-
-  .footer-email {
-    margin-bottom: 2.2rem;
-    font-size: 0.95rem;
-  }
-
-  .contact-btn {
-    margin-top: 1.2rem;
-  }
-}
-/* ===============================
-   NOISE GRAIN OVERLAY
-================================ */
-.site-footer::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 2;
-
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-  mix-blend-mode: overlay;
-}
-/* ===============================
-   CURSOR GLOW FOLLOW
-================================ */
-.cursor-glow {
-  position: fixed;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-
-  background: radial-gradient(
-    circle,
-    var(--cursor-glow) 0%,
-    transparent 70%
-  );
-
-  filter: blur(10px);
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-/* ===============================
-   SPRING CLICK BOUNCE
-================================ */
-.footer-socials a:active {
-  animation: springBounce 420ms cubic-bezier(.34,1.56,.64,1);
-}
-
-@keyframes springBounce {
-  0%   { transform: scale(1.15); }
-  40%  { transform: scale(0.88); }
-  70%  { transform: scale(1.08); }
-  100% { transform: scale(1); }
-}
-/* ===============================
-   HAPTIC ILLUSION
-================================ */
-.footer-socials a:active {
-  filter: brightness(1.2) contrast(1.15);
-}
-
-.footer-socials a:active::before {
-  opacity: 0.85;
-}
-/* ===============================
-   SCROLL FOOTER LIFT
-================================ */
-.site-footer {
-  transform: translateY(40px);
-  opacity: 0.85;
-}
-
-.site-footer.scroll-active {
-  transform: translateY(0);
-  opacity: 1;
-}
+/* REDUCED MOTION SUPPORT */
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
