@@ -59,3 +59,52 @@ const contactBtn = document.querySelector('.contact-btn');
       }
     }
   });
+const contactBtn = document.querySelector('.contact-btn');
+const reveal = document.querySelector('#contactReveal');
+const footer = document.querySelector('.site-footer');
+const footerCopy = document.querySelector('#footerCopy');
+
+function openFooter() {
+  // Slide out footer copy
+  footerCopy.classList.add('hide');
+  footerCopy.classList.remove('show');
+
+  // Show contact reveal + glow
+  reveal.classList.add('active');
+  footer.classList.add('active');
+  contactBtn.classList.add('active');
+}
+
+function closeFooter() {
+  // Slide in footer copy
+  footerCopy.classList.remove('hide');
+  footerCopy.classList.add('show');
+
+  // Hide contact reveal + glow
+  reveal.classList.remove('active');
+  footer.classList.remove('active');
+  contactBtn.classList.remove('active');
+}
+
+// Button click toggles
+contactBtn.addEventListener('click', () => {
+  if (reveal.classList.contains('active')) {
+    closeFooter();
+  } else {
+    openFooter();
+  }
+});
+
+// Close on outside click
+document.addEventListener('click', (e) => {
+  if (!footer.contains(e.target) && reveal.classList.contains('active')) {
+    closeFooter();
+  }
+});
+
+// Close on ESC
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && reveal.classList.contains('active')) {
+    closeFooter();
+  }
+});
