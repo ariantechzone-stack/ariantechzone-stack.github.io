@@ -38,17 +38,20 @@
     color 0.6s ease;
 }
 
-/* Activated footer */
 .site-footer.active {
-  background: linear-gradient(
-    135deg,
-    #0b0b0d,
-    #121218,
-    #0b0b0d
-  );
-  color: #ccc;
+  background:
+    radial-gradient(
+      circle at top center,
+      rgba(255,255,255,0.04),
+      transparent 55%
+    ),
+    linear-gradient(
+      135deg,
+      #0b0b0d,
+      #121218,
+      #0b0b0d
+    );
 }
-
 
 .site-footer {
   padding-top: 2rem;
