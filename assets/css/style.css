@@ -284,33 +284,45 @@ header nav ul li a:hover {
 }
 
 /* Individual icon glow + pulse + background color */
-.footer-socials a:nth-child(1):hover { 
-  background: linear-gradient(45deg,#f58529,#dd2a7b,#feda77);
-  color:#fff;
-  animation: pulse-instagram 2s infinite alternate;
-}
-.footer-socials a:nth-child(2):hover { 
-  background: #e60023;
-  color:#fff;
-  animation: pulse-pinterest 1s infinite alternate;
-}
-.footer-socials a:nth-child(3):hover { 
-  background: #fff;
-  color:#000;
-  animation: pulse-github 1s infinite alternate;
+.footer-socials a:hover {
+  animation: soft-pulse 1.4s ease-in-out infinite;
 }
 
+/* Instagram */
+.footer-socials a:nth-child(1):hover {
+  --glow: #dd2a7b;
+  background: linear-gradient(45deg,#f58529,#dd2a7b,#feda77);
+  color: #fff;
+}
+
+/* Pinterest */
+.footer-socials a:nth-child(2):hover {
+  --glow: #e60023;
+  background: #e60023;
+  color: #fff;
+}
+
+/* GitHub */
+.footer-socials a:nth-child(3):hover {
+  --glow: #ffffff;
+  background: #ffffff;
+  color: #000;
+}
+
+/* Fiverr */
 .footer-socials a.fiverr-icon:hover {
+  --glow: #1dbf73;
   background: #1dbf73;
   color: #fff;
-  animation: pulse-fiverr 1s infinite alternate;
 }
 
-.footer-socials a:nth-child(5):hover { 
+/* LinkedIn */
+.footer-socials a:nth-child(5):hover {
+  --glow: #0077b5;
   background: #0077b5;
-  color:#fff;
-  animation: pulse-linkedin 1s infinite alternate;
+  color: #fff;
 }
+
 /* Base social icon button */
 .footer-socials a {
   width: 64px;              /* BIG, premium size */
@@ -342,11 +354,19 @@ header nav ul li a:hover {
   text-transform: lowercase;
 }
 
-/* Pulse keyframes */
-@keyframes pulse-instagram { 0% { box-shadow: 0 0 6px #f58529,0 0 12px #dd2a7b,0 0 18px #feda77; } 50% { box-shadow:0 0 12px #f58529,0 0 20px #dd2a7b,0 0 28px #feda77;} 100%{box-shadow:0 0 6px #f58529,0 0 12px #dd2a7b,0 0 18px #feda77;}}
-@keyframes pulse-pinterest {0%{box-shadow:0 0 6px #e60023,0 0 12px #ff3d5f;}50%{box-shadow:0 0 12px #e60023,0 0 20px #ff3d5f;}100%{box-shadow:0 0 6px #e60023,0 0 12px #ff3d5f;}}
-@keyframes pulse-github {0%{box-shadow:0 0 6px #fff,0 0 12px #ccc;}50%{box-shadow:0 0 12px #fff,0 0 20px #ccc;}100%{box-shadow:0 0 6px #fff,0 0 12px #ccc;}}
-@keyframes pulse-fiverr {0%{box-shadow:0 0 6px #1dbf73,0 0 12px #0da06b;}50%{box-shadow:0 0 12px #1dbf73,0 0 20px #0da06b;}100%{box-shadow:0 0 6px #1dbf73,0 0 12px #0da06b;}}
-@keyframes pulse-linkedin {0%{box-shadow:0 0 6px #0077b5,0 0 12px #00a0dc;}50%{box-shadow:0 0 12px #0077b5,0 0 20px #00a0dc;}100%{box-shadow:0 0 6px #0077b5,0 0 12px #00a0dc;}}
-/* Fiverr text logo (minimal & brand-correct) */
+@keyframes soft-pulse {
+  0% {
+    box-shadow: 0 0 6px var(--glow),
+                0 0 14px var(--glow);
+  }
+  50% {
+    box-shadow: 0 0 14px var(--glow),
+                0 0 28px var(--glow);
+  }
+  100% {
+    box-shadow: 0 0 6px var(--glow),
+                0 0 14px var(--glow);
+  }
+}
+
 
