@@ -165,14 +165,15 @@ body {
 
 .project-card h3 {
   font-family: 'Poppins', sans-serif;
-  margin: 1rem 0 .3rem;
+  font-weight: 500;
+  margin: 1rem 0 .4rem;
 }
 
 .project-card p {
-  font-size: .9rem;
-  color: var(--text-soft);
-  padding: 0 1rem 1rem;
+  font-size: .88rem;
+  color: rgba(255,255,255,0.72);
 }
+
 .floating-linkedin {
   position: fixed;
   left: 24px;
