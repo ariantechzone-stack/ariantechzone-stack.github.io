@@ -118,8 +118,10 @@ body {
   background: var(--accent-grad);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: .8rem;
+  margin-bottom: .9rem;
+  filter: drop-shadow(0 6px 14px rgba(255,120,80,0.35));
 }
+
 
 .skill-card h3 {
   font-family: 'Poppins', sans-serif;
