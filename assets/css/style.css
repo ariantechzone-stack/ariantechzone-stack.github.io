@@ -42,12 +42,13 @@ body {
 
 .hero h1 {
   font-family: 'Poppins', sans-serif;
-  font-size: clamp(2.6rem, 5vw, 4rem);
-  background: var(--accent-grad);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  background: linear-gradient(120deg,#ffb347,#ff6a00,#ee0979);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: heroPop 1.1s cubic-bezier(.22,1,.36,1);
 }
+
 
 .hero p {
   max-width: 560px;
