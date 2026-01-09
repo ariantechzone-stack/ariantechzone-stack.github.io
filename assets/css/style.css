@@ -304,14 +304,14 @@ body {
 ================================ */
 header {
   padding: 1.2rem 1.5rem;
-  background: linear-gradient(90deg, #ff6a00, #ee0979); /* vibrant gradient */
+  background: linear-gradient(90deg, #0b0d13, #141826); /* vibrant gradient */
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: sticky;
   top: 0;
   z-index: 100;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
 header h2 {
