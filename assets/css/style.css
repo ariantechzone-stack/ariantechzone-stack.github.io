@@ -34,6 +34,29 @@ header nav ul li a {
   color: #fff;
 }
 
+.about {
+  padding: 4rem 1rem;
+  background: #ffffff;
+}
+
+.about-container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.about p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
 .projects {
   padding: 2rem 1rem;
 }
@@ -75,9 +98,7 @@ footer {
   color: #fff;
   margin-top: 2rem;
 }
-/* ================================
-   Social Icons
-================================ */
+
 .site-footer {
   background: #111;
   color: #fff;
