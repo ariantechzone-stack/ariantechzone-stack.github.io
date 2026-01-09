@@ -291,19 +291,30 @@ section h2 {
 }
 
 .footer-socials a {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  color: white;
-  background: rgba(255,255,255,0.08);
-  transition: box-shadow 0.3s ease;
+  position: relative;
+  isolation: isolate;
+  transition:
+    transform .45s cubic-bezier(.22,1,.36,1),
+    box-shadow .45s ease,
+    background .45s ease,
+    color .45s ease;
 }
 
-.footer-socials a:hover {
-  box-shadow: 0 0 30px var(--glow);
+.footer-socials a::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: inherit;
+  opacity: 0;
+  filter: blur(18px);
+  transition: opacity .45s ease;
+  z-index: -1;
 }
+
+.footer-socials a:hover::after {
+  opacity: 1;
+}
+
 
 /* ===============================
    CURSOR GLOW
@@ -318,4 +329,87 @@ section h2 {
   mix-blend-mode: screen;
   opacity: 0;
   transition: opacity 0.3s ease;
+}
+.footer-socials a[aria-label="Instagram"] {
+  --social-grad: radial-gradient(
+    circle at 30% 30%,
+    #feda75,
+    #fa7e1e,
+    #d62976,
+    #962fbf,
+    #4f5bd5
+  );
+}
+
+.footer-socials a[aria-label="Instagram"]:hover {
+  background: var(--social-grad);
+  box-shadow:
+    0 0 18px rgba(214,41,118,.85),
+    0 0 42px rgba(214,41,118,.55);
+  transform: translateY(-5px) scale(1.14);
+}
+
+.footer-socials a[aria-label="Instagram"]::after {
+  background: var(--social-grad);
+}
+.footer-socials a[aria-label="Pinterest"] {
+  --social-grad: radial-gradient(circle, #ff4b4b, #e60023);
+}
+
+.footer-socials a[aria-label="Pinterest"]:hover {
+  background: #e60023;
+  box-shadow:
+    0 0 18px rgba(230,0,35,.9),
+    0 0 42px rgba(230,0,35,.55);
+  transform: translateY(-5px) scale(1.14);
+}
+
+.footer-socials a[aria-label="Pinterest"]::after {
+  background: #e60023;
+}
+.footer-socials a[aria-label="GitHub"] {
+  --social-grad: radial-gradient(circle, #ffffff, #cfcfcf);
+}
+
+.footer-socials a[aria-label="GitHub"]:hover {
+  background: #ffffff;
+  color: #000;
+  box-shadow:
+    0 0 20px rgba(255,255,255,.9),
+    0 0 44px rgba(255,255,255,.55);
+  transform: translateY(-5px) scale(1.14);
+}
+
+.footer-socials a[aria-label="GitHub"]::after {
+  background: radial-gradient(circle, rgba(255,255,255,.8), transparent 65%);
+}
+.footer-socials a[aria-label="LinkedIn"] {
+  --social-grad: radial-gradient(circle, #0a66c2, #004182);
+}
+
+.footer-socials a[aria-label="LinkedIn"]:hover {
+  background: #0a66c2;
+  box-shadow:
+    0 0 18px rgba(10,102,194,.9),
+    0 0 42px rgba(10,102,194,.55);
+  transform: translateY(-5px) scale(1.14);
+}
+
+.footer-socials a[aria-label="LinkedIn"]::after {
+  background: #0a66c2;
+}
+.footer-socials a.fiverr-icon {
+  --social-grad: radial-gradient(circle, #1dbf73, #0fa958);
+}
+
+.footer-socials a.fiverr-icon:hover {
+  background: #1dbf73;
+  box-shadow:
+    0 0 18px rgba(29,191,115,.9),
+    0 0 42px rgba(29,191,115,.55);
+  transform: translateY(-5px) scale(1.14);
+}
+
+.footer-socials a.fiverr-icon::after {
+  background: #1dbf73;
 }
