@@ -24,3 +24,10 @@ const contactBtn = document.querySelector('.contact-btn');
     reveal.classList.toggle('active');
     footer.classList.toggle('active');
   });
+background: radial-gradient(
+  ellipse at center,
+  rgba(240,90,40,0.35),
+  rgba(221,42,123,0.25),
+  transparent 70%
+);
+});
