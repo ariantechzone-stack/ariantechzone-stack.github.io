@@ -20,13 +20,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 /* ==============================
    Contact Footer Toggle
 =============================== */
-const contactBtn = document.getElementById('contactToggle');
-const contactReveal = document.getElementById('contactReveal');
-const footer = document.querySelector('.site-footer');
+ const contactBtn = document.querySelector('.contact-btn');
+  const footer = document.querySelector('.site-footer');
+  const reveal = document.querySelector('.contact-reveal');
 
-contactBtn.addEventListener('click', () => {
-  footer.classList.toggle('active');
-  contactReveal.classList.toggle('active');
-  contactBtn.classList.toggle('active');
-});
+  contactBtn.addEventListener('click', () => {
+    contactBtn.classList.toggle('active');
+    footer.classList.toggle('active');
+    reveal.classList.toggle('active');
+  });
 
