@@ -185,3 +185,45 @@ footer {
   transform: translateY(-6px);
   box-shadow: 0 12px 25px rgba(0,0,0,0.08);
 }
+/* ================================
+   Contact Section
+================================ */
+.contact {
+  padding: 4rem 1rem;
+  background: #111;
+  color: #fff;
+}
+
+.contact-container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.contact p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: #ddd;
+}
+
+.contact-btn {
+  display: inline-block;
+  padding: 0.75rem 1.8rem;
+  background: #f05a28;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 30px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(240,90,40,0.4);
+}
