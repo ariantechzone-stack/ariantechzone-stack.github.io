@@ -1,181 +1,145 @@
-// ===============================
-// VARIABLES
-// ===============================
-const bodyEl = document.body;
-const footer = document.querySelector('.site-footer');
-const contactBtn = document.getElementById('contactToggle');
-const footerCopy = document.getElementById('footerCopy');
-const contactReveal = document.getElementById('contactReveal');
-const linkedin = document.querySelector('.floating-linkedin');
-const skillsSection = document.querySelector('#skills');
-
-let footerAllowed = false;
-let footerOpen = false;
-
-// ===============================
-// SMOOTH ANCHOR SCROLL
-// ===============================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', e => {
-    const id = anchor.getAttribute('href');
-    const target = document.querySelector(id);
-    if (!target) return;
-    e.preventDefault();
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-});
-
-// ===============================
-// FOOTER VISIBILITY
-// ===============================
-function checkFooterReady() {
-  const scrollY = window.scrollY;
-  const windowH = window.innerHeight;
-  const docH = document.body.scrollHeight;
-
-  if (scrollY + windowH >= docH - 60 || docH <= windowH) {
-    footer.classList.add('footer-ready');
-    footerAllowed = true;
-  } else {
-    footer.classList.remove('footer-ready', 'footer-open');
-    footerOpen = false;
-    bodyEl.classList.remove('footer-open');
-    footerAllowed = false;
-  }
+:root {
+  --bg-main: radial-gradient(1200px 600px at top,#0f172a,#020617);
+  --header-bg: linear-gradient(135deg,#0f172a,#020617);
+  --brand-gradient: linear-gradient(135deg,#7dd3fc,#38bdf8,#818cf8);
+  --accent: #38bdf8;
+  --accent-grad: linear-gradient(135deg, #38bdf8, #818cf8);
+  --text-main: #fff;
+  --text-muted: #94a3b8;
+  --glass: rgba(255,255,255,0.06);
+  --blur: blur(16px);
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --card-border: rgba(255,255,255,0.12);
 }
 
-window.addEventListener('scroll', checkFooterReady);
-window.addEventListener('resize', checkFooterReady);
-checkFooterReady();
-
-// ===============================
-// CONTACT BUTTON TOGGLE
-// ===============================
-contactBtn.addEventListener('click', e => {
-  e.stopPropagation();
-  if (!footerAllowed) return;
-
-  footerOpen = !footerOpen;
-  footer.classList.toggle('footer-open', footerOpen);
-  bodyEl.classList.toggle('footer-open', footerOpen);
-  contactBtn.setAttribute('aria-expanded', footerOpen);
-  contactReveal.setAttribute('aria-hidden', !footerOpen);
-});
-
-// ===============================
-// CLOSE ON OUTSIDE CLICK / ESC
-// ===============================
-document.addEventListener('click', e => {
-  if (footerOpen && !footer.contains(e.target)) closeFooter();
-});
-
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && footerOpen) closeFooter();
-});
-
-function closeFooter() {
-  footerOpen = false;
-  footer.classList.remove('footer-open');
-  bodyEl.classList.remove('footer-open');
-  contactBtn.setAttribute('aria-expanded', 'false');
-  contactReveal.setAttribute('aria-hidden', 'true');
+/* ===============================
+   Project Card
+================================ */
+.project-card {
+  background: linear-gradient(160deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--card-border);
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(.22,.61,.36,1), box-shadow 0.4s ease;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.6rem;
 }
 
-// ===============================
-// CURSOR GLOW
-// ===============================
-const cursorGlow = document.createElement('div');
-cursorGlow.className = 'cursor-glow';
-document.body.appendChild(cursorGlow);
+.project-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 1rem;
+}
 
-document.addEventListener('mousemove', e => {
-  cursorGlow.style.transform =
-    `translate3d(${e.clientX - 12}px, ${e.clientY - 12}px, 0)`;
-});
+.project-card h3,
+.project-card p {
+  margin-bottom: 0.8rem;
+}
 
-// ===============================
-// SOCIAL ICON TILT + GLOW
-// ===============================
-document.querySelectorAll('.footer-socials a').forEach(icon => {
-  icon.addEventListener('mouseenter', () => cursorGlow.style.opacity = '1');
-  icon.addEventListener('mouseleave', () => {
-    cursorGlow.style.opacity = '0';
-    icon.style.transform = '';
-  });
-  icon.addEventListener('mousemove', e => {
-    const r = icon.getBoundingClientRect();
-    const x = e.clientX - r.left - r.width / 2;
-    const y = e.clientY - r.top - r.height / 2;
-    icon.style.transform = `translate(${x*0.15}px, ${y*0.15}px) scale(1.15)`;
-  });
-});
+/* Button inside card */
+.project-card a {
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  background: var(--accent-grad);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-top: auto; /* push button to bottom */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-// ===============================
-// FLOATING LINKEDIN (SKILLS)
-// ===============================
-window.addEventListener('scroll', () => {
-  if (!skillsSection) return;
-  const rect = skillsSection.getBoundingClientRect();
-  linkedin.classList.toggle('show', rect.top < window.innerHeight * 0.6);
-});
+.project-card a:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
 
-// ===============================
-// 3D PROJECT CARD TILT
-// ===============================
-document.querySelectorAll('.project-card').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const r = card.getBoundingClientRect();
-    const x = e.clientX - r.left - r.width / 2;
-    const y = e.clientY - r.top - r.height / 2;
-    card.style.transform = `rotateX(${-y/20}deg) rotateY(${x/20}deg) translateY(-6px)`;
-  });
-  card.addEventListener('mouseleave', () => card.style.transform = '');
-});
+/* ===============================
+   Footer Socials
+================================ */
+.footer-socials a {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
 
-// ===============================
-// RANDOM PROJECT IMAGES
-// ===============================
-const projectImages = [
-  '/assets/images/projects/p1.jpg',
-  '/assets/images/projects/p2.jpg',
-  '/assets/images/projects/p3.jpg',
-  '/assets/images/projects/p4.jpg',
-  '/assets/images/projects/p5.jpg'
-];
+/* Example: Instagram */
+.footer-socials a[aria-label="Instagram"] {
+  --social-grad: radial-gradient(circle, #E1306C, #C13584);
+}
+.footer-socials a[aria-label="Instagram"]:hover {
+  background: var(--social-grad);
+  box-shadow: 0 0 18px rgba(225,48,108,.85), 0 0 42px rgba(225,48,108,.55);
+  transform: translateY(-5px) scale(1.14);
+}
+.footer-socials a[aria-label="Instagram"]::after {
+  background: var(--social-grad);
+}
+/* Pinterest */
+.footer-socials a[aria-label="Pinterest"] {
+  --social-grad: radial-gradient(circle, #ff4b4b, #e60023);
+}
+.footer-socials a[aria-label="Pinterest"]:hover {
+  background: var(--social-grad);
+  box-shadow: 0 0 18px rgba(230,0,35,.9), 0 0 42px rgba(230,0,35,.55);
+  transform: translateY(-5px) scale(1.14);
+}
+.footer-socials a[aria-label="Pinterest"]::after {
+  background: var(--social-grad);
+}
 
-document.querySelectorAll('.project-card img').forEach(img => {
-  const rand = projectImages[Math.floor(Math.random()*projectImages.length)];
-  img.src = rand;
-});
+/* GitHub */
+.footer-socials a[aria-label="GitHub"] {
+  --social-grad: radial-gradient(circle, #ffffff, #cfcfcf);
+}
+.footer-socials a[aria-label="GitHub"]:hover {
+  background: #ffffff;
+  color: #000;
+  box-shadow: 0 0 20px rgba(255,255,255,.9), 0 0 44px rgba(255,255,255,.55);
+  transform: translateY(-5px) scale(1.14);
+}
+.footer-socials a[aria-label="GitHub"]::after {
+  background: radial-gradient(circle, rgba(255,255,255,.8), transparent 65%);
+}
 
-// ===============================
-// SECTION REVEAL
-// ===============================
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
-  });
-}, { threshold: 0.18 });
+/* LinkedIn */
+.footer-socials a[aria-label="LinkedIn"] {
+  --social-grad: radial-gradient(circle, #0a66c2, #004182);
+}
+.footer-socials a[aria-label="LinkedIn"]:hover {
+  background: #0a66c2;
+  box-shadow: 0 0 18px rgba(10,102,194,.9), 0 0 42px rgba(10,102,194,.55);
+  transform: translateY(-5px) scale(1.14);
+}
+.footer-socials a[aria-label="LinkedIn"]::after {
+  background: #0a66c2;
+}
 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+/* Fiverr */
+.footer-socials a.fiverr-icon {
+  --social-grad: radial-gradient(circle, #1dbf73, #0fa958);
+}
+.footer-socials a.fiverr-icon:hover {
+  background: var(--social-grad);
+  box-shadow: 0 0 18px rgba(29,191,115,.9), 0 0 42px rgba(29,191,115,.55);
+  transform: translateY(-5px) scale(1.14);
+}
+.footer-socials a.fiverr-icon::after {
+  background: var(--social-grad);
+}
 
-// ===============================
-// MICRO SPRING BOUNCE (CONTACT BTN)
-// ===============================
-contactBtn.addEventListener('mousedown', () => contactBtn.style.transform = 'scale(0.92)');
-contactBtn.addEventListener('mouseup', () => contactBtn.style.transform = 'scale(1)');
-
-// ===============================
-// FOOTER PHYSICS EASING
-// ===============================
-footer.addEventListener('transitionend', () => footer.style.willChange = 'auto');
-window.addEventListener('scroll', () => footer.style.willChange = 'transform');
-
-// ===============================
-// SUBTLE PARALLAX HERO
-// ===============================
-const hero = document.querySelector('.hero');
-window.addEventListener('scroll', () => {
-  if (!hero) return;
-  hero.style.transform = `translateY(${window.scrollY * 0.12}px)`;
-});
