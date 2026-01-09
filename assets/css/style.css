@@ -259,22 +259,19 @@ header nav ul li a:hover {
 /* ==============================
    Social Icons
 =============================== */
-.footer-socials a {
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #1a1a1a; /* default dark circle */
-  border-radius: 50%;
-  color: #fff;
-  font-size: 1.3rem;
-  text-decoration: none;
-  transition: transform 0.35s ease, box-shadow 0.35s ease, color 0.35s ease, background 0.35s ease;
-  perspective: 1000px;
-  opacity: 0;
-  transform: translateY(6px);
+/* ==============================
+   Footer Social Icons - Horizontal Layout
+=============================== */
+.footer-socials {
+  display: flex;           /* horizontal layout */
+  flex-direction: row;     /* ensure row direction */
+  justify-content: center; /* center horizontally */
+  align-items: center;     /* center vertically */
+  gap: 1.5rem;             /* equal spacing between icons */
+  margin: 0.8rem 0;
+  flex-wrap: wrap;         /* wrap on very small screens */
 }
+
 
 /* Staggered reveal */
 .contact-reveal.active .footer-socials a:nth-child(1){transition-delay:0.1s;opacity:1;transform:translateY(0);}
