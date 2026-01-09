@@ -14,43 +14,35 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-const footer = document.getElementById("contact");
-const toggleBtn = document.getElementById("contactToggle");
-const footerCopy = document.getElementById("footerCopy");
+// ===============================
+// Footer Spring Motion + Control
+// ===============================
+const footer = document.querySelector('.site-footer');
+const contactBtn = document.getElementById('contactToggle');
+const contactReveal = document.getElementById('contactReveal');
+const footerCopy = document.getElementById('footerCopy');
 
-function openFooter() {
-  footer.classList.add("active");
-  document.body.classList.add("footer-open");
-  footerCopy.classList.remove("show");
-  footerCopy.classList.add("hide");
-}
+contactBtn.addEventListener('click', () => {
+  footer.classList.toggle('active');
+  document.body.classList.toggle('footer-open');
 
-function closeFooter() {
-  footer.classList.remove("active");
-  document.body.classList.remove("footer-open");
-  footerCopy.classList.remove("hide");
-  footerCopy.classList.add("show");
-}
+  const isOpen = footer.classList.contains('active');
 
-toggleBtn.addEventListener("click", () => {
-  footer.classList.contains("active") ? closeFooter() : openFooter();
-});
-
-/* ESC key close */
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && footer.classList.contains("active")) {
-    closeFooter();
+  if (isOpen) {
+    footerCopy.classList.add('hide');
+    footerCopy.classList.remove('show');
+  } else {
+    footerCopy.classList.remove('hide');
+    footerCopy.classList.add('show');
   }
 });
 
-/* Outside click close */
-document.body.addEventListener("click", (e) => {
-  if (
-    footer.classList.contains("active") &&
-    !footer.contains(e.target) &&
-    !toggleBtn.contains(e.target)
-  ) {
-    closeFooter();
+// ESC key close
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && footer.classList.contains('active')) {
+    footer.classList.remove('active');
+    document.body.classList.remove('footer-open');
+    footerCopy.classList.remove('hide');
+    footerCopy.classList.add('show');
   }
 });
-
