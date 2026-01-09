@@ -474,12 +474,13 @@ section p {
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #fff;
-  color: #111;
+  font-family: 'Lato', system-ui, sans-serif;
+  background: radial-gradient(circle at top, #1b1f2e, #0b0d13 70%);
+  color: var(--text-main);
   min-height: 100vh;
-  --dynamic-blur: 0px;
+  line-height: 1.6;
 }
+
 
 /* ===============================
    MAIN
