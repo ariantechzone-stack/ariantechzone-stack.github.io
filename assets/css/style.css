@@ -69,7 +69,7 @@ main {
 ================================ */
 .site-footer {
   position: fixed;
-  bottom: -40px; /* start hidden offscreen */
+  bottom: -40px;
   left: 0;
   width: 100%;
   max-height: 110px;
@@ -80,9 +80,9 @@ main {
   color: #e6e6e6;
   z-index: 20;
   overflow: hidden;
-  opacity: 0.85; /* hidden initially */
-  transition: bottom 0.8s ease, opacity 0.8s ease, max-height 0.8s ease, background 0.6s ease;
-  transform: translateY(0);
+  opacity: 0.85;
+  transition: bottom 0.8s ease, opacity 0.8s ease, max-height 0.8s ease, background 0.6s ease, transform 0.6s ease;
+  transform: translateY(40px);
 }
 
 .site-footer.scroll-active {
@@ -177,10 +177,7 @@ main {
   100% { transform: scale(1); }
 }
 
-.btn-icon {
-  display: none;
-}
-
+.btn-icon { display: none; }
 .site-footer.active .btn-text { display: none; }
 .site-footer.active .btn-icon { display: inline; }
 
@@ -213,9 +210,7 @@ main {
   opacity: 0.85;
 }
 
-.footer-email:hover {
-  opacity: 1;
-}
+.footer-email:hover { opacity: 1; }
 
 /* ===============================
    SOCIAL ICONS
@@ -285,6 +280,7 @@ main {
   .footer-socials a{width:56px;height:56px;font-size:1.4rem;}
   .footer-email{margin-bottom:2.2rem;font-size:0.95rem;}
   .contact-btn{margin-top:1.2rem;}
+  .footer-container{padding-bottom:3rem;}
 }
 
 /* ===============================
