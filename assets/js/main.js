@@ -13,10 +13,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ==============================
-// Footer & Contact Elements
+// Elements
 // ==============================
 const footer = document.querySelector('.site-footer');
-const footerContainer = document.querySelector('.footer-container');
 const contactBtn = document.getElementById('contactToggle');
 const contactReveal = document.getElementById('contactReveal');
 const footerCopy = document.querySelector('.footer-copy-static');
@@ -35,7 +34,7 @@ document.addEventListener('mousemove', e => {
 });
 
 // ==============================
-// Social Icon Hover + Tilt
+// Social Icon Hover & Tilt
 // ==============================
 document.querySelectorAll('.footer-socials a').forEach(icon => {
   icon.addEventListener('mouseenter', () => {
@@ -51,7 +50,7 @@ document.querySelectorAll('.footer-socials a').forEach(icon => {
     const rect = icon.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
-    icon.style.transform = `translate(${x * 0.18}px, ${y * 0.18}px) scale(1.15)`;
+    icon.style.transform = `translate(${x*0.18}px, ${y*0.18}px) scale(1.15)`;
   });
 });
 
@@ -62,7 +61,6 @@ contactBtn.addEventListener('click', () => {
   const isOpen = footer.classList.toggle('active');
   bodyEl.classList.toggle('footer-open', isOpen);
   contactBtn.setAttribute('aria-expanded', isOpen);
-
   if (isOpen) openContact();
   else closeContact();
 });
@@ -90,15 +88,10 @@ function closeContact() {
 
 // ESC key + click outside
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && footer.classList.contains('active')) {
-    toggleFooter(false);
-  }
+  if (e.key === 'Escape' && footer.classList.contains('active')) toggleFooter(false);
 });
-
 document.addEventListener('click', e => {
-  if (!footer.contains(e.target) && footer.classList.contains('active')) {
-    toggleFooter(false);
-  }
+  if (!footer.contains(e.target) && footer.classList.contains('active')) toggleFooter(false);
 });
 
 function toggleFooter(open) {
@@ -109,9 +102,10 @@ function toggleFooter(open) {
 }
 
 // ==============================
-// Scroll Reveal Footer
+// Scroll Footer Show/Hide + Dynamic Blur
 // ==============================
-let lastScrollY = 0;
+let lastScrollY = window.scrollY;
+
 window.addEventListener('scroll', () => {
   const scrollY = window.scrollY;
   const windowH = window.innerHeight;
@@ -122,11 +116,16 @@ window.addEventListener('scroll', () => {
     footer.classList.add('show-footer');
   } else {
     footer.classList.remove('show-footer');
-    // Also hide contact if open
     if (footer.classList.contains('active')) closeContact();
   }
 
-  // Dynamic blur
+  // Slide down when scrolling up
+  if (scrollY < lastScrollY) {
+    footer.classList.remove('show-footer');
+    if (footer.classList.contains('active')) closeContact();
+  }
+
+  // Dynamic blur when contact is open
   if (bodyEl.classList.contains('footer-open')) {
     const maxBlur = 8;
     const blur = Math.min(maxBlur, (scrollY / (docH - windowH)) * maxBlur);
