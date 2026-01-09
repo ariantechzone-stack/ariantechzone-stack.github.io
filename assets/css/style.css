@@ -250,30 +250,27 @@ header nav ul li a:hover {
   font-weight: 600;
   text-decoration: none;
 }
-
+/* Footer copy */
+.footer-copy {
+  font-size: 0.75rem;
+  opacity: 0.55;
+  margin-top: 0.6rem;
+}
 /* ==============================
    Social Icons
 =============================== */
-.footer-socials {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  margin: 0.8rem 0;
-  position: relative;
-}
-
 .footer-socials a {
   width: 48px;
   height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #1a1a1a;
+  background: #1a1a1a; /* default dark circle */
   border-radius: 50%;
   color: #fff;
   font-size: 1.3rem;
   text-decoration: none;
-  transition: transform 0.35s ease, box-shadow 0.35s ease, color 0.35s ease;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, color 0.35s ease, background 0.35s ease;
   perspective: 1000px;
   opacity: 0;
   transform: translateY(6px);
@@ -286,52 +283,41 @@ header nav ul li a:hover {
 .contact-reveal.active .footer-socials a:nth-child(4){transition-delay:0.4s;opacity:1;transform:translateY(0);}
 .contact-reveal.active .footer-socials a:nth-child(5){transition-delay:0.5s;opacity:1;transform:translateY(0);}
 
-/* Hover: Tilt + Rotate + Scale + Glow + Pulse */
+/* Hover: Tilt + Rotate + Scale + Glow + Pulse + background color change */
 .footer-socials a:hover {
   transform: rotateX(10deg) rotateY(10deg) rotateZ(3deg) scale(1.2);
 }
 
-/* Individual icon glow + pulse */
-.footer-socials a:nth-child(1):hover { animation: pulse-instagram 1s infinite alternate; }
-.footer-socials a:nth-child(2):hover { animation: pulse-pinterest 1s infinite alternate; }
-.footer-socials a:nth-child(3):hover { animation: pulse-github 1s infinite alternate; }
-.footer-socials a:nth-child(4):hover { animation: pulse-fiverr 1s infinite alternate; }
-.footer-socials a:nth-child(5):hover { animation: pulse-linkedin 1s infinite alternate; }
+/* Individual icon glow + pulse + background color */
+.footer-socials a:nth-child(1):hover { 
+  background: linear-gradient(45deg,#f58529,#dd2a7b,#feda77);
+  color:#fff;
+  animation: pulse-instagram 1s infinite alternate;
+}
+.footer-socials a:nth-child(2):hover { 
+  background: #e60023;
+  color:#fff;
+  animation: pulse-pinterest 1s infinite alternate;
+}
+.footer-socials a:nth-child(3):hover { 
+  background: #fff;
+  color:#000;
+  animation: pulse-github 1s infinite alternate;
+}
+.footer-socials a:nth-child(4):hover { 
+  background: #1dbf73; /* Fiverr green circle */
+  color:#fff; /* F inside white */
+  animation: pulse-fiverr 1s infinite alternate;
+}
+.footer-socials a:nth-child(5):hover { 
+  background: #0077b5;
+  color:#fff;
+  animation: pulse-linkedin 1s infinite alternate;
+}
 
 /* Pulse keyframes */
-@keyframes pulse-instagram {
-  0% { box-shadow: 0 0 6px #f58529,0 0 12px #dd2a7b,0 0 18px #feda77; }
-  50% { box-shadow: 0 0 12px #f58529,0 0 20px #dd2a7b,0 0 28px #feda77; }
-  100% { box-shadow: 0 0 6px #f58529,0 0 12px #dd2a7b,0 0 18px #feda77; }
-}
-
-@keyframes pulse-pinterest {
-  0% { box-shadow:0 0 6px #e60023,0 0 12px #ff3d5f; }
-  50% { box-shadow:0 0 12px #e60023,0 0 20px #ff3d5f; }
-  100% { box-shadow:0 0 6px #e60023,0 0 12px #ff3d5f; }
-}
-
-@keyframes pulse-github {
-  0% { box-shadow:0 0 6px #fff,0 0 12px #ccc; }
-  50% { box-shadow:0 0 12px #fff,0 0 20px #ccc; }
-  100% { box-shadow:0 0 6px #fff,0 0 12px #ccc; }
-}
-
-@keyframes pulse-fiverr {
-  0% { box-shadow:0 0 6px #1dbf73,0 0 12px #0da06b; }
-  50% { box-shadow:0 0 12px #1dbf73,0 0 20px #0da06b; }
-  100% { box-shadow:0 0 6px #1dbf73,0 0 12px #0da06b; }
-}
-
-@keyframes pulse-linkedin {
-  0% { box-shadow:0 0 6px #0077b5,0 0 12px #00a0dc; }
-  50% { box-shadow:0 0 12px #0077b5,0 0 20px #00a0dc; }
-  100% { box-shadow:0 0 6px #0077b5,0 0 12px #00a0dc; }
-}
-
-/* Footer copy */
-.footer-copy {
-  font-size: 0.75rem;
-  opacity: 0.55;
-  margin-top: 0.6rem;
-}
+@keyframes pulse-instagram { 0% { box-shadow: 0 0 6px #f58529,0 0 12px #dd2a7b,0 0 18px #feda77; } 50% { box-shadow:0 0 12px #f58529,0 0 20px #dd2a7b,0 0 28px #feda77;} 100%{box-shadow:0 0 6px #f58529,0 0 12px #dd2a7b,0 0 18px #feda77;}}
+@keyframes pulse-pinterest {0%{box-shadow:0 0 6px #e60023,0 0 12px #ff3d5f;}50%{box-shadow:0 0 12px #e60023,0 0 20px #ff3d5f;}100%{box-shadow:0 0 6px #e60023,0 0 12px #ff3d5f;}}
+@keyframes pulse-github {0%{box-shadow:0 0 6px #fff,0 0 12px #ccc;}50%{box-shadow:0 0 12px #fff,0 0 20px #ccc;}100%{box-shadow:0 0 6px #fff,0 0 12px #ccc;}}
+@keyframes pulse-fiverr {0%{box-shadow:0 0 6px #1dbf73,0 0 12px #0da06b;}50%{box-shadow:0 0 12px #1dbf73,0 0 20px #0da06b;}100%{box-shadow:0 0 6px #1dbf73,0 0 12px #0da06b;}}
+@keyframes pulse-linkedin {0%{box-shadow:0 0 6px #0077b5,0 0 12px #00a0dc;}50%{box-shadow:0 0 12px #0077b5,0 0 20px #00a0dc;}100%{box-shadow:0 0 6px #0077b5,0 0 12px #00a0dc;}}
