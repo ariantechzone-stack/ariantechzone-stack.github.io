@@ -26,8 +26,12 @@ const contactReveal = document.getElementById('contactReveal');
 
 if (contactBtn && contactReveal) {
   contactBtn.addEventListener('click', () => {
-    // Toggle reveal active class
-    contactReveal.classList.toggle('active');
+    // Toggle reveal
+    const isActive = contactReveal.classList.toggle('active');
+
+    // Change button text dynamically
+    contactBtn.textContent = isActive ? "Close" : "Contact Me";
   });
 }
+
 
