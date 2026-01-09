@@ -27,15 +27,14 @@ function handleFooterVisibility() {
     window.scrollY + window.innerHeight >=
     document.documentElement.scrollHeight - 40;
 
-  // If page is short, allow footer always
   const shortPage =
     document.documentElement.scrollHeight <= window.innerHeight + 40;
 
   if (scrollBottom || shortPage) {
     footer.classList.add('footer-ready');
   } else {
-    footer.classList.remove('footer-ready', 'footer-open');
-    footerOpen = false;
+    footer.classList.remove('footer-ready');
+    closeFooter(); // <-- THIS IS THE KEY
   }
 }
 
@@ -73,12 +72,10 @@ document.addEventListener('keydown', e => {
 function closeFooter() {
   footerOpen = false;
   footer.classList.remove('footer-open');
-  body.classList.remove('footer-open');
+  document.body.classList.remove('footer-open');
   contactBtn.setAttribute('aria-expanded', 'false');
-  if (contactReveal) {
-    contactReveal.setAttribute('aria-hidden', 'true');
-  }
 }
+
 
 // ===============================
 // MICRO SPRING (CONTACT BUTTON)
