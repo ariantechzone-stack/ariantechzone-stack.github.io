@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>{{ page.title | default: site.title }} | {{ site.title }}</title>
-
-  <!-- SEO -->
   <meta name="description" content="{{ page.description | default: site.description }}">
   <meta name="author" content="{{ site.author }}">
 
@@ -26,10 +24,8 @@
   <!-- Icons + CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-
   <link rel="icon" href="{{ '/favicon.png' | relative_url }}">
 </head>
-
 <body>
 
 <!-- ================= HEADER ================= -->
@@ -61,7 +57,7 @@
     </div>
 
     <!-- Contact Button -->
-    <button class="contact-btn" id="contactToggle" aria-label="Contact">
+    <button class="contact-btn" id="contactToggle" aria-label="Contact" aria-expanded="false">
       <span class="btn-text">Contact Me</span>
       <span class="btn-icon">✕</span>
     </button>
@@ -73,22 +69,23 @@
       </a>
 
       <div class="footer-socials">
-        <a href="https://instagram.com/_arian.designs_" target="_blank" aria-label="Instagram">
+        <a href="https://instagram.com/_arian.designs_" target="_blank" aria-label="Instagram" style="--glow:#d62976">
           <i class="fab fa-instagram"></i>
         </a>
-        <a href="https://pinterest.com/ariantech" target="_blank" aria-label="Pinterest">
+        <a href="https://pinterest.com/ariantech" target="_blank" aria-label="Pinterest" style="--glow:#e60023">
           <i class="fab fa-pinterest"></i>
         </a>
-        <a href="https://github.com/ariantechzone-stack" target="_blank" aria-label="GitHub">
+        <a href="https://github.com/ariantechzone-stack" target="_blank" aria-label="GitHub" style="--glow:#ffffff">
           <i class="fab fa-github"></i>
         </a>
         <a href="https://www.fiverr.com/r_kumar101/modern-instagram-posts-and-social-media-graphics"
            target="_blank"
            aria-label="Fiverr"
-           class="fiverr-icon">fi</a>
+           class="fiverr-icon" style="--glow:#1dbf73">fi</a>
         <a href="https://www.linkedin.com/in/arian-varx-0660b539b/"
            target="_blank"
-           aria-label="LinkedIn">
+           aria-label="LinkedIn"
+           style="--glow:#0a66c2">
           <i class="fab fa-linkedin"></i>
         </a>
       </div>
