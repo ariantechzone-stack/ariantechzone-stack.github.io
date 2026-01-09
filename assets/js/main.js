@@ -65,25 +65,61 @@ contactBtn.addEventListener('click', () => {
   contactReveal.style.transform = isOpen ? 'translateY(0)' : 'translateY(20px)';
 });
 
+const footer = document.querySelector('.site-footer');
+const contactBtn = document.getElementById('contactToggle');
+const footerCopy = document.getElementById('footerCopy');
+const contactReveal = document.getElementById('contactReveal');
+
+let footerAllowed = false;
+
 // ===============================
-// Close footer on ESC or click outside
+// Show footer ONLY at bottom
 // ===============================
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && footer.classList.contains('active')) closeFooter();
-});
-document.addEventListener('click', e => {
-  if (!footer.contains(e.target) && footer.classList.contains('active')) closeFooter();
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  const windowH = window.innerHeight;
+  const docH = document.body.scrollHeight;
+
+  if (scrollY + windowH >= docH - 60) {
+    footer.classList.add('footer-ready');
+    footerAllowed = true;
+  } else {
+    footer.classList.remove('footer-ready');
+    footer.classList.remove('active');
+    footerAllowed = false;
+  }
 });
 
-function closeFooter() {
-  footer.classList.remove('active');
-  bodyEl.classList.remove('footer-open');
-  footerCopy.classList.remove('hide'); 
-  footerCopy.classList.add('show');
-  contactReveal.style.opacity = '0'; 
-  contactReveal.style.pointerEvents = 'none';
-  contactReveal.style.transform = 'translateY(20px)';
-}
+// ===============================
+// Contact button toggle
+// ===============================
+contactBtn.addEventListener('click', () => {
+  if (!footerAllowed) return;
+
+  const isOpen = footer.classList.toggle('active');
+  contactBtn.setAttribute('aria-expanded', isOpen);
+
+  if (isOpen) {
+    footerCopy.style.display = 'block';
+    contactReveal.style.display = 'block';
+    document.body.classList.add('footer-open');
+  } else {
+    footerCopy.style.display = 'none';
+    contactReveal.style.display = 'none';
+    document.body.classList.remove('footer-open');
+  }
+});
+
+// ===============================
+// ESC to close
+// ===============================
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    footer.classList.remove('active');
+    document.body.classList.remove('footer-open');
+  }
+});
+
 
 // ===============================
 // Footer scroll animation with lift/fade
