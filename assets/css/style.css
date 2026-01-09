@@ -1,3 +1,32 @@
+.floating-linkedin {
+  position: fixed;
+  left: 18px;
+  bottom: 50%;
+  transform: translateY(50%);
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #0a66c2;
+  color: #fff;
+  font-size: 1.4rem;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0 0 22px rgba(10,102,194,.6);
+  transition: opacity .6s ease, transform .6s ease;
+  z-index: 40;
+}
+
+.floating-linkedin.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(50%) scale(1);
+}
+
+.floating-linkedin:hover {
+  box-shadow: 0 0 35px rgba(10,102,194,.9);
+}
 .project-card {
   background: linear-gradient(145deg, #0e0f14, #161823);
   border-radius: 18px;
