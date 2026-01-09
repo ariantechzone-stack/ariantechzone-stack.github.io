@@ -20,13 +20,28 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 /* ==============================
    Contact Footer Toggle
 =============================== */
- const contactBtn = document.querySelector('.contact-btn');
+const contactBtn = document.querySelector('.contact-btn');
   const footer = document.querySelector('.site-footer');
   const reveal = document.querySelector('.contact-reveal');
 
-  contactBtn.addEventListener('click', () => {
+  function toggleFooter() {
     contactBtn.classList.toggle('active');
     footer.classList.toggle('active');
     reveal.classList.toggle('active');
+    document.body.classList.toggle('footer-open');
+  }
+
+  contactBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); // prevent outside click trigger
+    toggleFooter();
   });
 
+  footer.addEventListener('click', (e) => {
+    e.stopPropagation(); // clicking inside footer won't close it
+  });
+
+  document.addEventListener('click', () => {
+    if (footer.classList.contains('active')) {
+      toggleFooter();
+    }
+  });
