@@ -428,7 +428,10 @@ main { padding-bottom: 160px; }
   transform: translateY(140px);
   opacity: 0;
 }
-
+.site-footer.footer-ready {
+  transform: translateY(0);
+  opacity: 1;
+}
 
 /* Footer expanded */
 .site-footer.active {
