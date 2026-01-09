@@ -78,13 +78,17 @@
 
 .site-footer {
   position: relative;
-  transform: translateY(40px);
-  opacity: 0;
-  max-height: 0;
-  overflow: hidden;
+  padding: 2.5rem 1rem;
+
+  /* visible by default */
+  max-height: 120px;
+  opacity: 1;
+  transform: translateY(0);
 
   background: #ffffff;
   color: #333;
+
+  overflow: hidden;
 
   transition:
     max-height 0.8s ease,
@@ -94,24 +98,6 @@
     color 0.6s ease;
 }
 
-.site-footer.active {
-  max-height: 600px; /* safe height */
-  transform: translateY(0);
-  opacity: 1;
-
-  background: linear-gradient(
-    135deg,
-    #0b0b0d,
-    #121218,
-    #0b0b0d
-  );
-  color: #ccc;
-}
-
-.site-footer {
-  padding-top: 2rem;
-  padding-bottom: 1.8rem;
-}
 
 .footer-copy {
   margin-top: 0.4rem;
