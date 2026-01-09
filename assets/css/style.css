@@ -110,3 +110,7 @@ footer {
   transform: translateY(-3px);
   background: #f05a28;
 }
+.fiverr-icon img {
+  width: 20px;
+  height: 20px;
+}
