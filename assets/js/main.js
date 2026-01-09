@@ -34,7 +34,7 @@ function handleFooterVisibility() {
     footer.classList.add('footer-ready');
   } else {
     footer.classList.remove('footer-ready');
-    closeFooter(); // <-- THIS IS THE KEY
+    closeFooter();
   }
 }
 
@@ -45,8 +45,11 @@ handleFooterVisibility();
 // ===============================
 // CONTACT BUTTON TOGGLE
 // ===============================
-contactBtn.addEventListener('click', e => {
+contactBtn?.addEventListener('click', e => {
   e.stopPropagation();
+
+  // Prevent opening if footer not allowed
+  if (!footer.classList.contains('footer-ready')) return;
 
   footerOpen = !footerOpen;
   footer.classList.toggle('footer-open', footerOpen);
@@ -72,21 +75,23 @@ document.addEventListener('keydown', e => {
 function closeFooter() {
   footerOpen = false;
   footer.classList.remove('footer-open');
-  document.body.classList.remove('footer-open');
+  body.classList.remove('footer-open');
   contactBtn.setAttribute('aria-expanded', 'false');
+  if (contactReveal) {
+    contactReveal.setAttribute('aria-hidden', 'true');
+  }
 }
-
 
 // ===============================
 // MICRO SPRING (CONTACT BUTTON)
 // ===============================
-contactBtn.addEventListener('mousedown', () => {
+contactBtn?.addEventListener('mousedown', () => {
   contactBtn.style.transform = 'scale(0.94)';
 });
-contactBtn.addEventListener('mouseup', () => {
+contactBtn?.addEventListener('mouseup', () => {
   contactBtn.style.transform = 'scale(1)';
 });
-contactBtn.addEventListener('mouseleave', () => {
+contactBtn?.addEventListener('mouseleave', () => {
   contactBtn.style.transform = 'scale(1)';
 });
 
@@ -122,11 +127,18 @@ if (linkedin && skillsSection) {
 }
 
 // ===============================
-// HERO PARALLAX (SUBTLE)
+// HERO PARALLAX (PERFORMANCE SAFE)
 // ===============================
 if (hero) {
+  let ticking = false;
   window.addEventListener('scroll', () => {
-    hero.style.transform =
-      `translateY(${window.scrollY * 0.08}px)`;
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        hero.style.transform =
+          `translateY(${window.scrollY * 0.08}px)`;
+        ticking = false;
+      });
+      ticking = true;
+    }
   });
 }
