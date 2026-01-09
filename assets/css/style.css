@@ -214,29 +214,55 @@ header nav ul li a {
   text-decoration: none;
 }
 
+/* Container for all social icons */
 .footer-socials {
   display: flex;
-  justify-content: center;
-  gap: 1.2rem;
+  justify-content: center; /* centers icons */
+  gap: 1.5rem; /* equal spacing between all icons */
   margin: 0.8rem 0;
 }
 
+/* Individual icon style */
 .footer-socials a {
-  font-size: 1.2rem;
-  color: #ccc;
-  transition: transform 0.25s ease, color 0.25s ease;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1a1a1a;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.3rem;
+  text-decoration: none;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, color 0.35s ease;
+  perspective: 1000px; /* for tilt effect */
 }
 
+/* Hover effect: tilt + glow + scale */
 .footer-socials a:hover {
-  color: #f05a28;
-  transform: translateY(-3px);
+  transform: rotateX(10deg) rotateY(10deg) scale(1.15);
+  box-shadow: 0 8px 20px rgba(240, 90, 40, 0.45);
+  color: #f05a28; /* icon color change */
+  background: #111; /* subtle background change */
 }
 
-.footer-copy {
-  font-size: 0.75rem;
-  opacity: 0.55;
-  margin-top: 0.6rem;
+/* Optional: smooth glow animation on hover */
+.footer-socials a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  box-shadow: 0 0 0px rgba(240,90,40,0);
+  transition: box-shadow 0.35s ease;
 }
+
+.footer-socials a:hover::after {
+  box-shadow: 0 0 12px rgba(240,90,40,0.6);
+}
+
 
 /* ================================
    Contact Button
