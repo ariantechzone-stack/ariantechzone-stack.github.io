@@ -51,7 +51,9 @@
 <main>
   {{ content }}
 </main>
-
+<footer id="contact" class="site-footer">
+  <div class="footer-container">
+    
     <div class="footer-socials">
       <a href="https://instagram.com/_arian.designs_" target="_blank" aria-label="Instagram">
         <i class="fab fa-instagram"></i>
@@ -69,29 +71,20 @@
         <i class="fab fa-linkedin"></i>
       </a>
     </div>
-  
-  <footer id="contact" class="site-footer">
-  <div class="footer-container">
 
-    <h2>Contact Me</h2>
+    <hr class="footer-divider"> <h2>Contact Me</h2>
     <p>Let’s work together or just say hi 👋</p>
 
     <a href="mailto:ariantechzone@gmail.com" class="footer-email">
       ariantechzone@gmail.com
     </a>
 
-    <a href="mailto:yourmail@gmail.com" class="contact-btn">
-      Contact Me
-    </a>
-
-    <div class="footer-socials">
-      ...
+    <div class="contact-action">
+       <a href="mailto:yourmail@gmail.com" class="contact-btn">
+         Contact Me
+       </a>
     </div>
 
-  </div>
-</footer>
-
-    
     <p class="footer-copy">
       © {{ site.time | date: "%Y" }} Arian Designs. All rights reserved.
     </p>
