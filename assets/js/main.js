@@ -88,3 +88,21 @@ document.querySelectorAll('.footer-socials a').forEach(icon => {
     cursorGlow.style.opacity = '0';
   });
 });
+// ===============================
+// Scroll-Based Footer Reveal
+// ===============================
+const footer = document.querySelector('.site-footer');
+
+function handleFooterReveal() {
+  const rect = footer.getBoundingClientRect();
+  const windowHeight = window.innerHeight;
+
+  if (rect.top < windowHeight - 120) {
+    footer.classList.add('scroll-active');
+  } else {
+    footer.classList.remove('scroll-active');
+  }
+}
+
+window.addEventListener('scroll', handleFooterReveal);
+handleFooterReveal();
