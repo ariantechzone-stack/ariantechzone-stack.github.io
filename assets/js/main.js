@@ -101,3 +101,16 @@ function handleFooterReveal(){
 }
 window.addEventListener('scroll',handleFooterReveal);
 handleFooterReveal();
+const bodyBefore = document.querySelector('body::before'); // can't select pseudo directly
+const bodyEl = document.body;
+
+window.addEventListener('scroll', () => {
+  if(!bodyEl.classList.contains('footer-open')) return;
+
+  const scrollY = window.scrollY;
+  const maxBlur = 8; // max blur in px
+  const docHeight = document.body.scrollHeight - window.innerHeight;
+  const blur = Math.min(maxBlur, (scrollY / docHeight) * maxBlur);
+
+  bodyEl.style.setProperty('--dynamic-blur', `${blur}px`);
+});
