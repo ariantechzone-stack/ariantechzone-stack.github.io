@@ -93,7 +93,7 @@ main { padding-bottom: 160px; }
    CONTACT BUTTON
 ================================ */
 .contact-btn {
-  margin-top: 1rem;
+  margin: 0;           /* remove margin-top if container gap handles spacing */
   padding: 0.65rem 1.6rem;
   border-radius: 999px;
   background: rgba(255,255,255,0.08);
@@ -102,11 +102,13 @@ main { padding-bottom: 160px; }
   cursor: pointer;
   display: inline-flex;
   align-items: center;
+  justify-content: center; /* center content inside button */
   gap: 0.5rem;
   font-size: 0.9rem;
-  transition: transform 0.15s ease, background 0.3s ease, opacity 0.6s ease, box-shadow 0.4s ease;
+  transition: transform 0.15s ease, background 0.3s ease, opacity 0.6s ease;
   opacity: 0;
 }
+
 
 .site-footer.show-footer .contact-btn {
   opacity: 1;
@@ -203,7 +205,18 @@ main { padding-bottom: 160px; }
   .footer-socials{flex-direction:column; gap:1.2rem;}
   .footer-socials a{width:56px; height:56px; font-size:1.4rem;}
   .contact-btn{margin-top:1.2rem;}
-  .footer-container{padding-bottom:3rem;}
+ .footer-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 1.6rem 1rem 2.2rem;
+  text-align: center;      /* center text & inline elements */
+  display: flex;           /* make container flex */
+  flex-direction: column;  /* stack elements vertically */
+  align-items: center;     /* center horizontally */
+  gap: 1rem;               /* spacing between footer copy, button, and reveal */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: transform 0.6s ease, opacity 0.6s ease;
 }
 
 /* Platform hover colors */
