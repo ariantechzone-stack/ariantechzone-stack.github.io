@@ -26,23 +26,27 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ===============================
-// FOOTER VISIBILITY (BOTTOM ONLY)
+// FOOTER VISIBILITY
 // ===============================
-window.addEventListener('scroll', () => {
-  const atBottom =
-    window.scrollY + window.innerHeight >=
-    document.body.scrollHeight - 60;
+function checkFooterReady() {
+  const scrollY = window.scrollY;
+  const windowH = window.innerHeight;
+  const docH = document.body.scrollHeight;
 
-  if (atBottom) {
+  if (scrollY + windowH >= docH - 60 || docH <= windowH) {
     footer.classList.add('footer-ready');
     footerAllowed = true;
   } else {
     footer.classList.remove('footer-ready', 'footer-open');
-    footerAllowed = false;
     footerOpen = false;
     bodyEl.classList.remove('footer-open');
+    footerAllowed = false;
   }
-});
+}
+
+window.addEventListener('scroll', checkFooterReady);
+window.addEventListener('resize', checkFooterReady);
+checkFooterReady();
 
 // ===============================
 // CONTACT BUTTON TOGGLE
@@ -54,7 +58,6 @@ contactBtn.addEventListener('click', e => {
   footerOpen = !footerOpen;
   footer.classList.toggle('footer-open', footerOpen);
   bodyEl.classList.toggle('footer-open', footerOpen);
-
   contactBtn.setAttribute('aria-expanded', footerOpen);
   contactReveal.setAttribute('aria-hidden', !footerOpen);
 });
@@ -63,15 +66,11 @@ contactBtn.addEventListener('click', e => {
 // CLOSE ON OUTSIDE CLICK / ESC
 // ===============================
 document.addEventListener('click', e => {
-  if (footerOpen && !footer.contains(e.target)) {
-    closeFooter();
-  }
+  if (footerOpen && !footer.contains(e.target)) closeFooter();
 });
 
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && footerOpen) {
-    closeFooter();
-  }
+  if (e.key === 'Escape' && footerOpen) closeFooter();
 });
 
 function closeFooter() {
@@ -91,37 +90,29 @@ document.body.appendChild(cursorGlow);
 
 document.addEventListener('mousemove', e => {
   cursorGlow.style.transform =
-    `translate(${e.clientX - 12}px, ${e.clientY - 12}px)`;
+    `translate3d(${e.clientX - 12}px, ${e.clientY - 12}px, 0)`;
 });
 
 // ===============================
 // SOCIAL ICON TILT + GLOW
 // ===============================
 document.querySelectorAll('.footer-socials a').forEach(icon => {
-  icon.addEventListener('mouseenter', () => {
-    cursorGlow.style.opacity = '1';
-  });
-
+  icon.addEventListener('mouseenter', () => cursorGlow.style.opacity = '1');
   icon.addEventListener('mouseleave', () => {
     cursorGlow.style.opacity = '0';
     icon.style.transform = '';
   });
-
   icon.addEventListener('mousemove', e => {
     const r = icon.getBoundingClientRect();
     const x = e.clientX - r.left - r.width / 2;
     const y = e.clientY - r.top - r.height / 2;
-    icon.style.transform =
-      `translate(${x * 0.15}px, ${y * 0.15}px) scale(1.15)`;
+    icon.style.transform = `translate(${x*0.15}px, ${y*0.15}px) scale(1.15)`;
   });
 });
 
 // ===============================
 // FLOATING LINKEDIN (SKILLS)
 // ===============================
-const linkedin = document.querySelector('.floating-linkedin');
-const skillsSection = document.querySelector('#skills');
-
 window.addEventListener('scroll', () => {
   if (!skillsSection) return;
   const rect = skillsSection.getBoundingClientRect();
@@ -136,13 +127,9 @@ document.querySelectorAll('.project-card').forEach(card => {
     const r = card.getBoundingClientRect();
     const x = e.clientX - r.left - r.width / 2;
     const y = e.clientY - r.top - r.height / 2;
-    card.style.transform =
-      `rotateX(${-y / 20}deg) rotateY(${x / 20}deg) translateY(-6px)`;
+    card.style.transform = `rotateX(${-y/20}deg) rotateY(${x/20}deg) translateY(-6px)`;
   });
-
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = '';
-  });
+  card.addEventListener('mouseleave', () => card.style.transform = '');
 });
 
 // ===============================
@@ -157,46 +144,32 @@ const projectImages = [
 ];
 
 document.querySelectorAll('.project-card img').forEach(img => {
-  const rand =
-    projectImages[Math.floor(Math.random() * projectImages.length)];
+  const rand = projectImages[Math.floor(Math.random()*projectImages.length)];
   img.src = rand;
 });
 
 // ===============================
 // SECTION REVEAL
 // ===============================
-const reveals = document.querySelectorAll('.reveal');
-
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
+    if (entry.isIntersecting) entry.target.classList.add('visible');
   });
 }, { threshold: 0.18 });
 
-reveals.forEach(el => observer.observe(el));
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
 // ===============================
 // MICRO SPRING BOUNCE (CONTACT BTN)
 // ===============================
-contactBtn.addEventListener('mousedown', () => {
-  contactBtn.style.transform = 'scale(0.92)';
-});
-
-contactBtn.addEventListener('mouseup', () => {
-  contactBtn.style.transform = 'scale(1)';
-});
+contactBtn.addEventListener('mousedown', () => contactBtn.style.transform = 'scale(0.92)');
+contactBtn.addEventListener('mouseup', () => contactBtn.style.transform = 'scale(1)');
 
 // ===============================
 // FOOTER PHYSICS EASING
 // ===============================
-footer.addEventListener('transitionend', () => {
-  footer.style.willChange = 'auto';
-});
-
-window.addEventListener('scroll', () => {
-  footer.style.willChange = 'transform';
-});
+footer.addEventListener('transitionend', () => footer.style.willChange = 'auto');
+window.addEventListener('scroll', () => footer.style.willChange = 'transform');
 
 // ===============================
 // SUBTLE PARALLAX HERO
@@ -204,38 +177,5 @@ window.addEventListener('scroll', () => {
 const hero = document.querySelector('.hero');
 window.addEventListener('scroll', () => {
   if (!hero) return;
-  hero.style.transform =
-    `translateY(${window.scrollY * 0.12}px)`;
+  hero.style.transform = `translateY(${window.scrollY * 0.12}px)`;
 });
-if (scrollY + windowH >= docH - 60) {
-    footer.classList.add('footer-ready');
-    footerAllowed = true;
-} else {
-    footer.classList.remove('footer-ready');
-    footer.classList.remove('active');
-    footerAllowed = false;
-}
-// ===============================
-// Show footer even on short pages
-// ===============================
-function checkFooterReady() {
-  const scrollY = window.scrollY;
-  const windowH = window.innerHeight;
-  const docH = document.body.scrollHeight;
-
-  if (scrollY + windowH >= docH - 60 || docH <= windowH) {
-    footer.classList.add('footer-ready');
-    footerAllowed = true;
-  } else {
-    footer.classList.remove('footer-ready');
-    footer.classList.remove('active');
-    footerAllowed = false;
-  }
-}
-
-window.addEventListener('scroll', checkFooterReady);
-window.addEventListener('resize', checkFooterReady); // recalc if window resized
-
-// Initial check
-checkFooterReady();
-
