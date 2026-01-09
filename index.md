@@ -64,7 +64,7 @@ title: "Home"
       Feel free to reach out — I’d be happy to connect.
     </p>
 
-    <a href="mailto:yourname@email.com" class="contact-btn">
+    <a href="mailto:ariantech@gmail.com" class="contact-btn">
       Contact Me
     </a>
   </div>
