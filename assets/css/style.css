@@ -1,3 +1,46 @@
+/* Footer copy visible initially */
+.footer-copy-static {
+  text-align: center;
+  padding: 0.8rem 0;
+  color: #666;
+  font-size: 0.75rem;
+  background: #fff;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+/* Fade + slide out when contact active */
+.footer-copy-static.hide {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* Fade + slide in when contact closes */
+.footer-copy-static.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Contact reveal slide-up */
+.contact-reveal {
+  transform: translateY(40px);
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: transform 0.6s ease, opacity 0.6s ease, max-height 0.6s ease;
+}
+
+.contact-reveal.active {
+  transform: translateY(0);
+  opacity: 1;
+  max-height: 600px;
+}
+
+/* Footer background glow */
+.site-footer::after {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
 .site-footer.active::after {
   opacity: 1;
 }
