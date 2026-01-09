@@ -1,4 +1,80 @@
 /* ==============================
+   Glassmorphism Footer
+============================== */
+.site-footer {
+  position: relative;
+  background: rgba(15, 15, 18, 0.55);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+  color: #e6e6e6;
+  transition: background 0.6s ease, box-shadow 0.6s ease;
+}
+
+/* Active (Contact Open) */
+.site-footer.active {
+  background: rgba(10, 10, 14, 0.75);
+  box-shadow:
+    0 -20px 60px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* Footer container spacing */
+.footer-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 1.8rem 1rem;
+}
+
+/* Footer copy text (2026 ARIAN DESIGNS) */
+.footer-copy-static {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Hide on contact open */
+.footer-copy-static.hide {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Show when closed */
+.footer-copy-static.show {
+  opacity: 0.6;
+  transform: translateY(0);
+}
+
+/* Soft ambient glow under footer */
+.site-footer::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -35px;
+  transform: translateX(-50%);
+  width: 85%;
+  height: 70px;
+
+  background: radial-gradient(
+    ellipse at center,
+    rgba(240, 90, 40, 0.35),
+    rgba(221, 42, 123, 0.25),
+    transparent 70%
+  );
+
+  filter: blur(28px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+
+.site-footer.active::after {
+  opacity: 1;
+}
+/* ==============================
    Footer Copy Animations
 ============================== */
 .footer-copy-static {
