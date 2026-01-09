@@ -221,102 +221,80 @@ main { padding-bottom: 160px; }
 ================================ */
 .site-footer {
   position: fixed;
-  bottom: -200px;
+  bottom: 0;
   left: 0;
   width: 100%;
-  max-height: 520px;
-  background: rgba(15,15,18,0.88);
-  backdrop-filter: blur(14px) saturate(140%);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
-  border-top: 1px solid rgba(255,255,255,.08);
-  color: #e6e6e6;
-  z-index: 20;
+  max-height: 80px; /* small default */
+  background: rgba(15,15,18,0.6);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  color: #fff;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.6s ease-in-out;
   overflow: hidden;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: bottom 0.7s ease-in-out, opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
 }
 
-/* Ambient animated gradient behind footer */
-.site-footer::after {
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:0;
-  background: linear-gradient(120deg, #f05a28, #dd2a7b, #feda75, #962fbf);
-  background-size: 400% 400%;
-  filter: blur(48px);
-  opacity: 0.25;
-  pointer-events: none;
-  animation: gradientFlow 20s ease infinite;
+/* Footer expanded */
+.site-footer.active {
+  max-height: 400px;
+  background: rgba(10,10,14,0.95);
 }
 
-/* Gradient animation */
-@keyframes gradientFlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Footer visible */
-.site-footer.show-footer {
-  bottom: 0;
+/* Footer container */
+.footer-container {
+  text-align: center;
+  transition: all 0.6s ease-in-out;
   opacity: 1;
-  transform: translateY(0);
-  animation: footerLiftFade 0.7s ease forwards;
-  z-index: 20;
 }
 
-/* Footer lift/fade animation */
-@keyframes footerLiftFade {
-  0% { transform: translateY(40px); opacity: 0; }
-  60% { transform: translateY(-10px); opacity: 1; }
-  100% { transform: translateY(0); opacity: 1; }
+/* Footer main text */
+.footer-main-text {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 1.25rem;
+  background: linear-gradient(90deg, #ff6a00, #ee0979, #ffb347);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+  display: none; /* visible only on expand */
 }
 
-/* ===============================
-   CONTACT BUTTON
-================================ */
+/* Show main text when footer active */
+.site-footer.active .footer-main-text {
+  display: block;
+}
+
+/* Contact button */
 .contact-btn {
-  margin: 0;           /* remove margin-top if container gap handles spacing */
   padding: 0.65rem 1.6rem;
-  border-radius: 999px;
+  border-radius: 50px;
   background: rgba(255,255,255,0.08);
   border: 1px solid rgba(255,255,255,0.18);
   color: #fff;
+  font-weight: 600;
   cursor: pointer;
+  transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
-  justify-content: center; /* center content inside button */
   gap: 0.5rem;
-  font-size: 0.9rem;
-  transition: transform 0.15s ease, background 0.3s ease, opacity 0.6s ease;
-  opacity: 0;
-}
-
-
-.site-footer.show-footer .contact-btn {
-  opacity: 1;
-  box-shadow: 0 0 24px rgba(255,255,255,0.15);
 }
 
 .contact-btn:hover {
-  background: rgba(255,255,255,0.14);
-  box-shadow: 0 0 28px rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }
 
-.contact-btn:active {
-  transform: scale(0.94);
-}
-/* ===============================
-   CONTACT REVEAL
-================================ */
+/* Contact reveal */
 .contact-reveal {
-  margin-top: 2.2rem;
+  margin-top: 1.8rem;
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
   pointer-events: none;
+  transition: all 0.6s ease;
 }
 
 .site-footer.active .contact-reveal {
@@ -324,6 +302,85 @@ main { padding-bottom: 160px; }
   transform: translateY(0);
   pointer-events: auto;
 }
+
+/* Footer social icons */
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+
+.footer-socials a {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 1.3rem;
+  color: #fff;
+  text-decoration: none;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  transition: all 0.4s ease;
+}
+
+.footer-socials a:hover {
+  transform: translateY(-4px) scale(1.1);
+}
+
+/* Gradient hover colors for icons */
+.footer-socials a[aria-label="Instagram"]:hover {
+  background: radial-gradient(circle at top left,#feda75,#d62976,#962fbf);
+  box-shadow: 0 0 18px rgba(214,41,118,0.8);
+}
+.footer-socials a[aria-label="Pinterest"]:hover {
+  background: #e60023;
+  box-shadow: 0 0 18px rgba(230,0,35,0.8);
+}
+.footer-socials a[aria-label="GitHub"]:hover {
+  background: #fff;
+  color: #000;
+  box-shadow: 0 0 18px rgba(255,255,255,0.8);
+}
+.footer-socials a[aria-label="LinkedIn"]:hover {
+  background: #0a66c2;
+  box-shadow: 0 0 18px rgba(10,102,194,0.8);
+}
+.footer-socials a.fiverr-icon:hover {
+  background: #1dbf73;
+  box-shadow: 0 0 18px rgba(29,191,115,0.8);
+}
+
+/* Footer small glow at bottom */
+.site-footer::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -20px;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 50px;
+  background: radial-gradient(ellipse at center, rgba(240,90,40,0.25), rgba(221,42,123,0.2), transparent 70%);
+  filter: blur(18px);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  z-index: 1;
+}
+
+.site-footer.active::after {
+  opacity: 1;
+}
+
+/* Footer small default text */
+.footer-copy-static {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-right: 1rem;
+}
+
 
 /* ===============================
    EMAIL
