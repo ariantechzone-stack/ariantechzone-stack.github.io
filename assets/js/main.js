@@ -1,6 +1,4 @@
-// ==============================
-// Smooth Anchor Scroll
-// ==============================
+// Smooth anchor scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', e => {
     const id = anchor.getAttribute('href');
@@ -12,18 +10,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// ==============================
-// Elements
-// ==============================
+// Footer & contact button
 const footer = document.querySelector('.site-footer');
-const contactBtn = document.getElementById('contactToggle');
-const contactReveal = document.getElementById('contactReveal');
+const contactBtn = document.querySelector('.contact-btn');
+const contactReveal = document.querySelector('.contact-reveal');
 const footerCopy = document.querySelector('.footer-copy-static');
 const bodyEl = document.body;
 
-// ==============================
-// Cursor Glow
-// ==============================
+// Cursor glow
 const cursorGlow = document.createElement('div');
 cursorGlow.className = 'cursor-glow';
 document.body.appendChild(cursorGlow);
@@ -33,104 +27,83 @@ document.addEventListener('mousemove', e => {
   cursorGlow.style.top = `${e.clientY - 13}px`;
 });
 
-// ==============================
-// Social Icon Hover & Tilt
-// ==============================
+// Social icon hover tilt & cursor glow
 document.querySelectorAll('.footer-socials a').forEach(icon => {
   icon.addEventListener('mouseenter', () => {
-    const glow = getComputedStyle(icon).getPropertyValue('--glow') || '#f05a28';
-    cursorGlow.style.setProperty('--cursor-glow', glow);
     cursorGlow.style.opacity = '1';
   });
-  icon.addEventListener('mouseleave', () => { 
-    cursorGlow.style.opacity = '0'; 
-    icon.style.transform = '';
-  });
+  icon.addEventListener('mouseleave', () => { cursorGlow.style.opacity = '0'; icon.style.transform = ''; });
   icon.addEventListener('mousemove', e => {
     const rect = icon.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
-    icon.style.transform = `translate(${x*0.18}px, ${y*0.18}px) scale(1.15)`;
+    icon.style.transform = `translate(${x*0.18}px,${y*0.18}px) scale(1.15)`;
   });
 });
 
-// ==============================
-// Contact Toggle
-// ==============================
+// Toggle contact section
 contactBtn.addEventListener('click', () => {
   const isOpen = footer.classList.toggle('active');
   bodyEl.classList.toggle('footer-open', isOpen);
-  contactBtn.setAttribute('aria-expanded', isOpen);
-  if (isOpen) openContact();
-  else closeContact();
-});
+  
+  // Footer copy
+  footerCopy.classList.toggle('hide', isOpen);
+  footerCopy.classList.toggle('show', !isOpen);
 
-function openContact() {
-  footerCopy.classList.add('hide');
-  footerCopy.classList.remove('show');
-  contactReveal.style.opacity = '0';
-  contactReveal.style.pointerEvents = 'none';
-  requestAnimationFrame(() => {
-    contactReveal.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  // Contact reveal
+  if(isOpen){
+    contactReveal.style.pointerEvents = 'auto';
     contactReveal.style.opacity = '1';
     contactReveal.style.transform = 'translateY(0)';
-    contactReveal.style.pointerEvents = 'auto';
-  });
-}
+  } else {
+    contactReveal.style.pointerEvents = 'none';
+    contactReveal.style.opacity = '0';
+    contactReveal.style.transform = 'translateY(20px)';
+  }
+});
 
-function closeContact() {
-  footerCopy.classList.remove('hide');
-  footerCopy.classList.add('show');
-  contactReveal.style.opacity = '0';
-  contactReveal.style.pointerEvents = 'none';
+// Close footer on ESC or click outside
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape' && footer.classList.contains('active')){
+    closeFooter();
+  }
+});
+document.addEventListener('click', e => {
+  if(!footer.contains(e.target) && footer.classList.contains('active')){
+    closeFooter();
+  }
+});
+function closeFooter(){
+  footer.classList.remove('active');
+  bodyEl.classList.remove('footer-open');
+  footerCopy.classList.remove('hide'); footerCopy.classList.add('show');
+  contactReveal.style.opacity = '0'; contactReveal.style.pointerEvents = 'none';
   contactReveal.style.transform = 'translateY(20px)';
 }
 
-// ESC key + click outside
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && footer.classList.contains('active')) toggleFooter(false);
-});
-document.addEventListener('click', e => {
-  if (!footer.contains(e.target) && footer.classList.contains('active')) toggleFooter(false);
-});
-
-function toggleFooter(open) {
-  footer.classList.toggle('active', open);
-  bodyEl.classList.toggle('footer-open', open);
-  contactBtn.setAttribute('aria-expanded', open);
-  if (!open) closeContact();
-}
-
-// ==============================
-// Scroll Footer Show/Hide + Dynamic Blur
-// ==============================
-let lastScrollY = window.scrollY;
-
+// ===============================
+// Footer scroll animation
+// ===============================
+let lastScroll = 0;
 window.addEventListener('scroll', () => {
   const scrollY = window.scrollY;
   const windowH = window.innerHeight;
   const docH = document.body.scrollHeight;
 
-  // Show footer when near bottom
-  if (scrollY + windowH >= docH - 50) {
+  // If user reaches near bottom
+  if(scrollY + windowH >= docH - 50){
     footer.classList.add('show-footer');
   } else {
     footer.classList.remove('show-footer');
-    if (footer.classList.contains('active')) closeContact();
+    footer.classList.remove('active'); // hide contact reveal if scrolling up
   }
 
-  // Slide down when scrolling up
-  if (scrollY < lastScrollY) {
-    footer.classList.remove('show-footer');
-    if (footer.classList.contains('active')) closeContact();
-  }
+  lastScroll = scrollY;
 
-  // Dynamic blur when contact is open
-  if (bodyEl.classList.contains('footer-open')) {
+  // Dynamic blur effect
+  if(bodyEl.classList.contains('footer-open')){
     const maxBlur = 8;
     const blur = Math.min(maxBlur, (scrollY / (docH - windowH)) * maxBlur);
     bodyEl.style.setProperty('--dynamic-blur', `${blur}px`);
   }
-
-  lastScrollY = scrollY;
 });
