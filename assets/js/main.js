@@ -14,45 +14,26 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-/* ==============================
-   Footer Contact Logic
-============================== */
-const contactBtn = document.getElementById('contactToggle');
-const footer = document.querySelector('.site-footer');
-const reveal = document.getElementById('contactReveal');
-const footerCopy = document.getElementById('footerCopy');
+document.addEventListener("DOMContentLoaded", () => {
+  const contactBtn = document.querySelector(".contact-btn");
+  const footer = document.querySelector(".site-footer");
+  const footerText = document.querySelector(".footer-copy-static");
 
-function openFooter() {
-  footer.classList.add('active');
-  reveal.classList.add('active');
-  contactBtn.classList.add('active');
-  footerCopy.classList.add('hide');
-  footerCopy.classList.remove('show');
-  document.body.classList.add('footer-open');
-}
+  if (!contactBtn || !footer || !footerText) return;
 
-function closeFooter() {
-  footer.classList.remove('active');
-  reveal.classList.remove('active');
-  contactBtn.classList.remove('active');
-  footerCopy.classList.remove('hide');
-  footerCopy.classList.add('show');
-  document.body.classList.remove('footer-open');
-}
+  // Open contact
+  contactBtn.addEventListener("click", () => {
+    footer.classList.add("active");
+    footerText.classList.remove("show");
+    footerText.classList.add("hide");
+  });
 
-contactBtn.addEventListener('click', e => {
-  e.stopPropagation();
-  reveal.classList.contains('active') ? closeFooter() : openFooter();
-});
-
-footer.addEventListener('click', e => e.stopPropagation());
-
-document.addEventListener('click', () => {
-  if (reveal.classList.contains('active')) closeFooter();
-});
-
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && reveal.classList.contains('active')) {
-    closeFooter();
-  }
+  // Close on ESC
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      footer.classList.remove("active");
+      footerText.classList.remove("hide");
+      footerText.classList.add("show");
+    }
+  });
 });
