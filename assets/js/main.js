@@ -119,13 +119,13 @@ document.querySelectorAll('.footer-socials a').forEach(icon => {
 // ===============================
 // FLOATING LINKEDIN (SKILLS)
 // ===============================
+const linkedin = document.querySelector('.floating-linkedin');
+const skillsSection = document.querySelector('#skills');
+
 window.addEventListener('scroll', () => {
-  if (!skillsSection || !linkedin) return;
+  if (!skillsSection) return;
   const rect = skillsSection.getBoundingClientRect();
-  linkedin.classList.toggle(
-    'show',
-    rect.top < window.innerHeight * 0.6
-  );
+  linkedin.classList.toggle('show', rect.top < window.innerHeight * 0.6);
 });
 
 // ===============================
