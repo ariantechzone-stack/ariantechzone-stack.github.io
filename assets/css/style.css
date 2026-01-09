@@ -1,3 +1,22 @@
+section {
+  position: relative;
+}
+
+section::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -60px;
+  width: 70%;
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.12),
+    transparent
+  );
+}
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Lato:wght@300;400;500&display=swap');
 
 :root {
