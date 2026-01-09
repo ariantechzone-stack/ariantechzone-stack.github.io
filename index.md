@@ -57,20 +57,6 @@ description: "Portfolio of Arian – modern design, social media creatives, and 
   </div>
 </section>
 
-<section id="contact" class="contact">
-  <div class="contact-container">
-    <h2>Contact</h2>
-    <p>
-      Have a project in mind or want to work together?
-      Feel free to reach out — I’d be happy to connect.
-    </p>
-
-    <a href="mailto:ariantech@gmail.com" class="contact-btn">
-      Contact Me
-    </a>
-  </div>
-</section>
-
 <section id="projects" class="projects">
   <h2>My Projects</h2>
   <div class="project-cards">
