@@ -375,15 +375,16 @@ section h2 {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
-.footer-socials a[aria-label="Instagram"] {
-  --social-grad: radial-gradient(
-    circle at 30% 30%,
-    #feda75,
-    #fa7e1e,
-    #d62976,
-    #962fbf,
-    #4f5bd5
-  );
+.footer-socials a {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 
 .footer-socials a[aria-label="Instagram"]:hover {
