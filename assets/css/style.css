@@ -416,22 +416,19 @@ main { padding-bottom: 160px; }
 ================================ */
 .site-footer {
   position: fixed;
-  bottom: 0;
   left: 0;
+  bottom: -140px;
   width: 100%;
-  max-height: 80px; /* small default */
-  background: rgba(15,15,18,0.6);
-  backdrop-filter: blur(12px) saturate(140%);
-  -webkit-backdrop-filter: blur(12px) saturate(140%);
-  border-top: 1px solid rgba(255,255,255,0.08);
-  color: #fff;
+  background: rgba(15,15,18,0.88);
+  backdrop-filter: blur(16px) saturate(140%);
+  border-top: 1px solid rgba(255,255,255,.08);
   z-index: 50;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.6s ease-in-out;
-  overflow: hidden;
+  transition: transform .7s cubic-bezier(.22,1,.36,1),
+              opacity .6s ease;
+  transform: translateY(140px);
+  opacity: 0;
 }
+
 
 /* Footer expanded */
 .site-footer.active {
