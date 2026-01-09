@@ -227,3 +227,51 @@ footer {
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(240,90,40,0.4);
 }
+
+.site-footer {
+  background: #0f0f0f;
+  color: #ccc;
+  padding: 4rem 1.5rem;
+  text-align: center;
+}
+
+.footer-container {
+  max-width: 900px;
+  margin: auto;
+}
+
+.site-footer h2 {
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.footer-email {
+  display: inline-block;
+  margin: 1rem 0;
+  color: #f05a28;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.footer-socials a {
+  font-size: 1.4rem;
+  color: #ccc;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.footer-socials a:hover {
+  color: #f05a28;
+  transform: translateY(-4px);
+}
+
+.footer-copy {
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
