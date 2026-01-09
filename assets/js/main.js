@@ -1,4 +1,51 @@
 // ===============================
+// FOOTER SCROLL LOGIC
+// ===============================
+const footer = document.querySelector('.site-footer');
+const contactBtn = document.getElementById('contactToggle');
+
+let footerOpen = false;
+
+window.addEventListener('scroll', () => {
+  const scrollBottom =
+    window.scrollY + window.innerHeight >=
+    document.body.scrollHeight - 60;
+
+  if (scrollBottom) {
+    footer.classList.add('footer-visible');
+  } else {
+    footer.classList.remove('footer-visible');
+    footer.classList.remove('footer-open');
+    footerOpen = false;
+  }
+});
+
+// ===============================
+// CONTACT BUTTON TOGGLE
+// ===============================
+contactBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  footerOpen = !footerOpen;
+  footer.classList.toggle('footer-open', footerOpen);
+});
+
+// ===============================
+// CLOSE ON OUTSIDE CLICK / ESC
+// ===============================
+document.addEventListener('click', e => {
+  if (!footer.contains(e.target)) {
+    footer.classList.remove('footer-open');
+    footerOpen = false;
+  }
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    footer.classList.remove('footer-open');
+    footerOpen = false;
+  }
+});
+// ===============================
 // Variables
 // ===============================
 const footer = document.querySelector('.site-footer');
