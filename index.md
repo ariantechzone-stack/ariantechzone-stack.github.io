@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Home"
+description: "Portfolio of Arian – modern design, social media creatives, and clean web layouts."
 ---
 
 <section class="hero">
