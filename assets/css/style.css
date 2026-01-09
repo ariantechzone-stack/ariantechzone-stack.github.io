@@ -261,19 +261,24 @@ header nav ul li a {
 /* ================================
    Contact Reveal Animation
 ================================ */
+/* Hidden by default */
 .contact-reveal {
   opacity: 0;
   transform: translateY(12px);
   pointer-events: none;
   transition: opacity 0.45s ease, transform 0.45s ease;
   margin-top: 0.9rem;
+  display: none; /* ✅ hide completely until active */
 }
 
+/* Visible state when button clicked */
 .contact-reveal.active {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
+  display: block; /* ✅ show */
 }
+
 
 .contact-btn.hide {
   opacity: 0;
