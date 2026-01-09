@@ -1,3 +1,40 @@
+/* ==============================
+   Soft Ambient Footer Glow
+=============================== */
+.site-footer {
+  position: relative;
+  overflow: visible;
+}
+
+/* Glow layer */
+.site-footer::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -30px;
+  transform: translateX(-50%);
+
+  width: 80%;
+  height: 60px;
+
+  background: radial-gradient(
+    ellipse at center,
+    rgba(240, 90, 40, 0.35),
+    rgba(240, 90, 40, 0.15),
+    transparent 70%
+  );
+
+  filter: blur(22px);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+
+/* Glow visible only when footer is active */
+.site-footer.active::after {
+  opacity: 1;
+}
+
 .site-footer {
   background: #ffffff;
   color: #333;
