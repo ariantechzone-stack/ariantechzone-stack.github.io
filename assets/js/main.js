@@ -26,12 +26,8 @@ const contactReveal = document.getElementById('contactReveal');
 
 if (contactBtn && contactReveal) {
   contactBtn.addEventListener('click', () => {
-    // Hide button
-    contactBtn.classList.add('hide');
-
-    // Reveal email + social icons
-    setTimeout(() => {
-      contactReveal.classList.add('active');
-    }, 200);
+    // Toggle reveal active class
+    contactReveal.classList.toggle('active');
   });
 }
+
