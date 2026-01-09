@@ -62,7 +62,10 @@ description: "Portfolio of Arian – modern design, social media creatives, and 
   <div class="project-cards">
     {% for project in site.data.projects %}
       <div class="project-card">
-        <div class="project-preview"></div>
+        <div <img src="https://via.placeholder.com/400x180?text=Project+1" alt="Project 1" />
+<img src="https://via.placeholder.com/400x180?text=Project+2" alt="Project 2" />
+<img src="https://via.placeholder.com/400x180?text=Project+3" alt="Project 3" />
+</div>
         <h3>{{ project.name }}</h3>
         <p>{{ project.description }}</p>
         <a href="{{ project.link }}">View Project</a>
