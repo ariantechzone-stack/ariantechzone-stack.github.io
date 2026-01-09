@@ -52,27 +52,43 @@
   {{ content }}
 </main>
 
-<footer class="site-footer">
-  <div class="social-icons">
-    <a href="https://instagram.com/_arian.designs_" target="_blank" aria-label="Instagram">
-      <i class="fab fa-instagram"></i>
-    </a>
-    <a href="https://pinterest.com/ariantech" target="_blank" aria-label="Pinterest">
-      <i class="fab fa-pinterest"></i>
-    </a>
-    <a href="https://github.com/ariantechzone-stack" target="_blank" aria-label="GitHub">
-      <i class="fab fa-github"></i>
-    </a>
-   <a href="https://www.fiverr.com/r_kumar101/modern-instagram-posts-and-social-media-graphics" target="_blank" aria-label="Fiverr" class="fiverr-icon">
-  <img src="{{ '/assets/images/fiverr.svg' | relative_url }}" alt="Fiverr">
-</a>
-    <a href="https://linkedin.com/in/arian-varx-0660b539b" target="_blank" aria-label="LinkedIn">
-      <i class="fab fa-linkedin"></i>
-    </a>
-  </div>
+<footer id="contact" class="site-footer">
+  <div class="footer-container">
 
-  <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }}. All rights reserved.</p>
+    <h2>Contact Me</h2>
+    <p>Let’s work together or just say hi 👋</p>
+
+    <!-- Email -->
+    <a href="mailto:yourmail@gmail.com" class="footer-email">
+      yourmail@gmail.com
+    </a>
+
+    <!-- Social Icons -->
+    <div class="footer-socials">
+      <a href="https://instagram.com/_arian.designs_" target="_blank" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://pinterest.com/ariantech" target="_blank" aria-label="Pinterest">
+        <i class="fab fa-pinterest"></i>
+      </a>
+      <a href="https://github.com/ariantechzone-stack" target="_blank" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://www.fiverr.com/r_kumar101/modern-instagram-posts-and-social-media-graphics" target="_blank" aria-label="Fiverr">
+        <i class="fab fa-fiverr"></i>
+      </a>
+      <a href="https://linkedin.com/in/arian-varx-0660b539b" target="_blank" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </div>
+
+    <p class="footer-copy">
+      © {{ site.time | date: "%Y" }} Arian Designs. All rights reserved.
+    </p>
+
+  </div>
 </footer>
+
 
 
 <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
