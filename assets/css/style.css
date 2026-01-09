@@ -1,3 +1,12 @@
+.project-card:nth-child(1) .project-preview {
+  background: radial-gradient(circle at top left,#ffb347,#ff6a00,#0b0d13);
+}
+.project-card:nth-child(2) .project-preview {
+  background: radial-gradient(circle at top right,#00c6ff,#0072ff,#0b0d13);
+}
+.project-card:nth-child(3) .project-preview {
+  background: radial-gradient(circle at bottom left,#7f00ff,#e100ff,#0b0d13);
+}
 /* ===============================
    GOOGLE FONTS
 ================================ */
@@ -219,11 +228,47 @@ section h2 {
   transition: transform 0.4s ease;
 }
 
-.project-card img {
-  width: 100%;
+/* ===============================
+   PROJECT PREVIEW (NO IMAGES)
+================================ */
+.project-preview {
+  height: 180px;
   border-radius: 14px;
-  margin-bottom: 14px;
+  background:
+    linear-gradient(120deg,
+      rgba(255,255,255,0.08),
+      rgba(255,255,255,0.02)
+    ),
+    radial-gradient(circle at top right,#ff6a00,#ee0979,transparent 70%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.12),
+    0 18px 40px rgba(0,0,0,0.35);
+  margin-bottom: 1rem;
+  position: relative;
+  overflow: hidden;
 }
+
+/* animated light sweep */
+.project-preview::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255,255,255,0.18),
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  animation: previewShine 6s ease-in-out infinite;
+}
+
+@keyframes previewShine {
+  0% { transform: translateX(-100%); }
+  40% { transform: translateX(100%); }
+  100% { transform: translateX(100%); }
+}
+
 
 .project-card h3 {
   font-family: 'Poppins', sans-serif;
