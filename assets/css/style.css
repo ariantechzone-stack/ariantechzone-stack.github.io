@@ -299,11 +299,13 @@ header nav ul li a:hover {
   color:#000;
   animation: pulse-github 1s infinite alternate;
 }
-.footer-socials a:nth-child(4):hover { 
-  background: #1dbf73; /* Fiverr green circle */
-  color:#fff; /* F inside white */
+
+.footer-socials a.fiverr-icon:hover {
+  background: #1dbf73;
+  color: #fff;
   animation: pulse-fiverr 1s infinite alternate;
 }
+
 .footer-socials a:nth-child(5):hover { 
   background: #0077b5;
   color:#fff;
