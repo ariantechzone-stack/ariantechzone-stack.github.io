@@ -424,3 +424,13 @@ body.footer-open::before {
   70%  { transform: scale(1.08); }
   100% { transform: scale(1); }
 }
+/* ===============================
+   HAPTIC ILLUSION
+================================ */
+.footer-socials a:active {
+  filter: brightness(1.2) contrast(1.15);
+}
+
+.footer-socials a:active::before {
+  opacity: 0.85;
+}
