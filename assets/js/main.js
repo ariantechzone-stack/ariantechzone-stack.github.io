@@ -65,3 +65,26 @@ document.querySelectorAll('.footer-socials a').forEach(icon => {
     icon.style.transform = '';
   });
 });
+// ===============================
+// Cursor Glow (Color follows icon)
+// ===============================
+const cursorGlow = document.createElement('div');
+cursorGlow.className = 'cursor-glow';
+document.body.appendChild(cursorGlow);
+
+document.addEventListener('mousemove', e => {
+  cursorGlow.style.left = `${e.clientX - 13}px`;
+  cursorGlow.style.top = `${e.clientY - 13}px`;
+});
+
+document.querySelectorAll('.footer-socials a').forEach(icon => {
+  icon.addEventListener('mouseenter', () => {
+    const glow = getComputedStyle(icon).getPropertyValue('--glow') || '#f05a28';
+    cursorGlow.style.setProperty('--cursor-glow', glow);
+    cursorGlow.style.opacity = '1';
+  });
+
+  icon.addEventListener('mouseleave', () => {
+    cursorGlow.style.opacity = '0';
+  });
+});
