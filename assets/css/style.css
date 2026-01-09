@@ -30,21 +30,26 @@
   pointer-events: none;
 }
 
-/* Glow visible only when footer is active */
-.site-footer.active::after {
-  opacity: 1;
+.site-footer {
+  background: #ffffff;
+  color: #333;
+  transition: 
+    background 0.6s ease,
+    color 0.6s ease;
 }
 
-.site-footer {
-  background: #ffffff;
-  color: #333;
-  transition: background 0.6s ease, color 0.6s ease;
+/* Activated footer */
+.site-footer.active {
+  background: linear-gradient(
+    135deg,
+    #0b0b0d,
+    #121218,
+    #0b0b0d
+  );
+  color: #ccc;
 }
-.site-footer {
-  background: #ffffff;
-  color: #333;
-  transition: background 0.6s ease, color 0.6s ease;
-}
+
+
 .site-footer {
   padding-top: 2rem;
   padding-bottom: 1.8rem;
