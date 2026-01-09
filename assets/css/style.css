@@ -1,6 +1,22 @@
-/* ================================
-   Reduced Motion
-================================ */
+.site-footer {
+  background: #ffffff;
+  color: #333;
+  transition: background 0.6s ease, color 0.6s ease;
+}
+.site-footer {
+  background: #ffffff;
+  color: #333;
+  transition: background 0.6s ease, color 0.6s ease;
+}
+.site-footer {
+  padding-top: 2rem;
+  padding-bottom: 1.8rem;
+}
+
+.footer-copy {
+  margin-top: 0.4rem;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
