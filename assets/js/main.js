@@ -142,3 +142,46 @@ if (hero) {
     }
   });
 }
+// ===============================
+// SWIPE DOWN TO CLOSE (MOBILE)
+// ===============================
+let touchStartY = 0;
+let touchCurrentY = 0;
+let isSwipingFooter = false;
+
+if (footer) {
+  footer.addEventListener('touchstart', e => {
+    if (!footerOpen) return;
+
+    touchStartY = e.touches[0].clientY;
+    isSwipingFooter = true;
+  }, { passive: true });
+
+  footer.addEventListener('touchmove', e => {
+    if (!isSwipingFooter || !footerOpen) return;
+
+    touchCurrentY = e.touches[0].clientY;
+    const deltaY = touchCurrentY - touchStartY;
+
+    if (deltaY > 0) {
+      footer.style.transform = `translateY(${deltaY}px)`;
+    }
+  }, { passive: true });
+
+  footer.addEventListener('touchend', () => {
+    if (!isSwipingFooter || !footerOpen) return;
+
+    const swipeDistance = touchCurrentY - touchStartY;
+
+    footer.style.transform = '';
+
+    // Threshold to close
+    if (swipeDistance > 80) {
+      closeFooter();
+    }
+
+    isSwipingFooter = false;
+    touchStartY = 0;
+    touchCurrentY = 0;
+  });
+}
