@@ -1,4 +1,14 @@
 /* ===============================
+   GLOBAL CONTAINER
+================================ */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: center; /* center content by default */
+   
+}
+/* ===============================
    ROOT VARIABLES
 ================================ */
 :root {
@@ -98,143 +108,152 @@ nav a:hover::after {
    HERO
 ================================ */
 .hero {
-  padding: 140px 20px 120px;
-  text-align: center;
+  padding: 120px 20px 80px;
 }
 
 .hero h1 {
   font-family: 'Poppins', sans-serif;
   font-size: clamp(2.4rem, 6vw, 3.6rem);
-  background: var(--brand-gradient);
+  background: linear-gradient(135deg,#7dd3fc,#38bdf8,#818cf8);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 16px;
 }
 
 .hero p {
-  max-width: 680px;
-  margin: auto;
-  color: var(--text-muted);
   font-size: 1.05rem;
+  color: #94a3b8;
+  max-width: 680px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+/* ===============================
+   ABOUT
+================================ */
+.about {
+  padding: 80px 0;
+}
+
+.about h2 {
+  font-size: 2rem;
+  margin-bottom: 24px;
+}
+
+.about p {
+  color: #cbd5e1;
+  max-width: 750px;
+  margin: 12px auto;
+  line-height: 1.7;
 }
 
 /* ===============================
-   SKILL CARDS
+   SKILLS
 ================================ */
+.skills {
+  padding: 80px 0;
+}
+
+.skills h2 {
+  font-size: 2rem;
+  margin-bottom: 32px;
+}
+
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 24px;
-  margin-top: 24px;
+  gap: 32px;
+  justify-items: center;
 }
 
 .skill-card {
-  background: rgba(255,255,255,0.06);
-  border-radius: var(--radius-md);
-  padding: 16px;
-  text-align: center;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  background: rgba(255,255,255,0.05);
+  padding: 24px;
+  border-radius: 16px;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .skill-card i {
-  font-size: 2rem;
-  margin-bottom: 10px;
-  background: var(--brand-gradient);
+  font-size: 2.4rem;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg,#38bdf8,#818cf8);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
+.skill-card h3 {
+  margin: 8px 0;
+  font-size: 1.2rem;
+}
+
+.skill-card p {
+  color: #94a3b8;
+  font-size: 0.95rem;
+}
 /* ===============================
-   PROJECT CARDS
+   PROJECTS
 ================================ */
+.projects {
+  padding: 80px 0;
+}
+
+.projects h2 {
+  font-size: 2rem;
+  margin-bottom: 32px;
+}
+
 .project-cards {
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 20px clamp(140px, 20vh, 220px);
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 32px;
+  justify-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .project-card {
-  position: relative;
   background: linear-gradient(160deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-lg);
-  padding: 1.6rem;
+  border-radius: 20px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  transition: transform 0.4s cubic-bezier(.22,.61,.36,1),
-              box-shadow 0.4s ease;
-}
-
-.project-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 40px rgba(0,0,0,0.35);
-}
-
-/* Image wrapper for gradient overlay */
-.project-card .image-wrapper {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  margin-bottom: 1rem;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .project-card img {
   width: 100%;
-  height: 100%;
+  height: 180px;
   object-fit: cover;
-  display: block;
-  transition: transform 0.5s ease;
+  border-radius: 16px;
 }
 
-.project-card:hover img {
-  transform: scale(1.05);
-}
-
-/* Gradient overlay */
-.project-card .image-wrapper::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(56,189,248,0.4), rgba(129,140,248,0.4));
-  transition: background 0.4s ease, opacity 0.4s ease;
-  pointer-events: none;
-  mix-blend-mode: overlay;
-}
-
-/* Card content */
 .project-card h3 {
-  margin: 8px 0;
+  margin: 12px 0 8px;
   font-size: 1.2rem;
-  color: var(--text-main);
 }
 
 .project-card p {
-  color: var(--text-muted);
+  color: #94a3b8;
   margin-bottom: 16px;
-  flex-grow: 1;
 }
 
-/* View Project button */
 .project-card a {
   margin-top: auto;
   padding: 10px 20px;
-  text-align: center;
-  background: var(--accent);
-  color: #fff;
   border-radius: 999px;
-  text-decoration: none;
+  background: linear-gradient(135deg,#38bdf8,#818cf8);
+  color: #000;
   font-weight: 600;
+  text-decoration: none;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-card a:hover {
-  transform: translateY(-3px) scale(1.05);
+  transform: translateY(-2px) scale(1.05);
   box-shadow: 0 12px 28px rgba(56,189,248,0.4);
 }
 
@@ -272,18 +291,15 @@ body.footer-open {
 }
 
 .contact-btn {
-  display: inline-block;
-  margin: 0 auto 20px; /* space below button */
   padding: 14px 38px;
   border-radius: 999px;
   border: none;
   background: linear-gradient(135deg,#38bdf8,#818cf8);
   color: #000;
   font-weight: 600;
-  font-size: 0.95rem;
   cursor: pointer;
   box-shadow: 0 18px 46px rgba(56,189,248,0.45);
-  transition: transform .25s ease, box-shadow .25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .contact-btn:hover {
@@ -316,6 +332,15 @@ body.footer-open {
 
 .footer-socials a:hover {
   transform: translateY(-5px) scale(1.12);
+}
+.footer-email {
+  color: #94a3b8;
+  text-decoration: none;
+}
+
+.footer-main-text {
+  color: #94a3b8;
+  font-size: 0.9rem;
 }
 
 /* Individual platform colors */
@@ -373,19 +398,17 @@ body.footer-open {
 ================================ */
 .floating-linkedin {
   position: fixed;
-  bottom: 120px; /* above footer */
-  right: 20px; /* right side */
-  z-index: 10000; /* always above footer */
-  width: 48px;
-  height: 48px;
+  right: 20px;
+  bottom: 120px;
+  width: 50px;
+  height: 50px;
+  background: #0a66c2;
+  border-radius: 50%;
   display: grid;
   place-items: center;
-  border-radius: 50%;
-  background: #0a66c2;
+  z-index: 10001; /* above footer */
   color: #fff;
   text-decoration: none;
-  box-shadow: 0 6px 20px rgba(10,102,194,0.6);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .floating-linkedin:hover {
