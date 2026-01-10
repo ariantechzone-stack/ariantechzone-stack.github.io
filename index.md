@@ -76,13 +76,3 @@ description: "Portfolio of Arian – modern design, social media creatives, and 
     </div>
   </div>
 </section>
-
-<!-- CONTACT SECTION -->
-<section id="contact" class="contact">
-  <div class="container" style="text-align:center; padding: 100px 20px;">
-    <button class="contact-btn" id="contactToggle">Contact Me</button>
-    <p style="margin-top:16px; color: var(--text-muted);">
-      Or email me at <a href="mailto:ariantechzone@gmail.com" style="color:var(--accent);">ariantechzone@gmail.com</a>
-    </p>
-  </div>
-</section>
