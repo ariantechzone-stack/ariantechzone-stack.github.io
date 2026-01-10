@@ -114,4 +114,18 @@ window.addEventListener('scroll', () => {
     floatingContact.classList.remove('show');
   }
 });
+const linkedin = document.querySelector('.floating-linkedin');
+const skillsSection = document.querySelector('#skills');
+
+window.addEventListener('scroll', () => {
+  if (!linkedin || !skillsSection) return;
+
+  const rect = skillsSection.getBoundingClientRect();
+  
+  if (rect.top < window.innerHeight * 0.6) {
+    linkedin.classList.add('show'); // show LinkedIn
+  } else {
+    linkedin.classList.remove('show'); // hide LinkedIn
+  }
+});
 
