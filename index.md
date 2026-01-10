@@ -62,35 +62,52 @@ description: "Portfolio of Arian – modern design, social media creatives, and 
 ================================ -->
 <section id="skills" class="skills">
   <div class="container">
-    <h2>Skills</h2>
+
+    <div class="section-header">
+      <h2>Skills</h2>
+      <p class="section-subtitle">
+        Tools and abilities I use to create clean, effective digital experiences.
+      </p>
+    </div>
 
     <div class="skills-grid">
+
       <div class="skill-card">
-        <i class="fas fa-paint-brush" aria-hidden="true"></i>
+        <div class="skill-icon">
+          <i class="fas fa-paint-brush"></i>
+        </div>
         <h3>Graphic Design</h3>
-        <p>Modern layouts, branding, and visual design.</p>
+        <p>Modern layouts, branding systems, and visual storytelling.</p>
       </div>
 
       <div class="skill-card">
-        <i class="fas fa-image" aria-hidden="true"></i>
+        <div class="skill-icon">
+          <i class="fas fa-image"></i>
+        </div>
         <h3>Social Media Design</h3>
-        <p>Instagram posts, carousels, and creatives.</p>
+        <p>Instagram posts, carousels, and platform-ready creatives.</p>
       </div>
 
       <div class="skill-card">
-        <i class="fas fa-code" aria-hidden="true"></i>
+        <div class="skill-icon">
+          <i class="fas fa-code"></i>
+        </div>
         <h3>Basic Web Design</h3>
-        <p>Clean HTML, CSS, and Jekyll layouts.</p>
+        <p>Clean HTML, CSS, and structured Jekyll layouts.</p>
       </div>
 
       <div class="skill-card">
-        <i class="fas fa-file-excel" aria-hidden="true"></i>
+        <div class="skill-icon">
+          <i class="fas fa-file-excel"></i>
+        </div>
         <h3>Data Entry</h3>
-        <p>Accurate data handling and Excel formatting.</p>
+        <p>Accurate data handling, formatting, and organization.</p>
       </div>
+
     </div>
   </div>
 </section>
+
 
 <!-- ===============================
      PROJECTS SECTION
