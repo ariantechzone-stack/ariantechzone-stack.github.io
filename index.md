@@ -62,9 +62,11 @@ description: "Portfolio of Arian – modern design, social media creatives, and 
     <h2>My Projects</h2>
     <div class="project-cards">
       {% for project in site.data.projects %}
-        <div class="project-card">
-          {% if project.image %}
-            <img src="{{ project.image | relative_url }}" alt="{{ project.name }}">
+       <div class="project-card">
+  {% if project.image %}
+    <div class="image-wrapper">
+      <img src="{{ project.image | relative_url }}" alt="{{ project.name }}">
+    </div>
           {% endif %}
           <h3>{{ project.name }}</h3>
           <p>{{ project.description }}</p>
