@@ -9,10 +9,15 @@ description: "Portfolio of Arian – modern design, social media creatives, and 
 ================================ -->
 <section class="hero">
   <div class="hero-inner">
-    <h1>Welcome to Arian Designs</h1>
-    <p>Creating clean, modern, and professional designs.</p>
+    <h1>
+      Welcome to <span class="brand-text">Arian Designs</span>
+    </h1>
+    <p class="hero-subtext">
+      Creating clean, modern, and professional digital designs.
+    </p>
   </div>
 </section>
+
 
 <!-- ===============================
      ABOUT SECTION
