@@ -5,19 +5,18 @@
   width: 100%;
   display: flex;
   justify-content: space-between; /* left & right */
-  align-items: center;            /* vertical center */
-  flex-wrap: wrap;                /* responsive wrap on small screens */
+  align-items: center;            /* vertical alignment */
   box-sizing: border-box;
 }
 
 .footer-left {
   display: flex;
-  align-items: center; /* vertically align logo + text */
-  gap: 12px;           /* space between logo & text */
+  align-items: center;
+  gap: 12px;
 }
 
 .footer-logo {
-  width: 32px;   /* adjust logo size */
+  width: 32px;
   height: auto;
 }
 
@@ -25,17 +24,16 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  flex-wrap: wrap; /* wrap on very small screens */
 }
 
-/* Circle icons */
+/* Circle social icons */
 .footer-socials a {
   width: 60px;
   height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;          /* perfect circle */
+  border-radius: 50%;
   font-size: 2rem;
   text-decoration: none;
   color: #fff;
@@ -44,7 +42,6 @@
 
 .footer-socials a i {
   font-size: 2rem;
-  line-height: 1;
 }
 
 .footer-socials a:hover {
