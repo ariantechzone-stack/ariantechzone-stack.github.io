@@ -294,7 +294,7 @@ body.footer-open {
 
 /* Individual platform colors */
 .footer-socials a[aria-label="Instagram"]:hover {
-  background: radial-gradient(circle, #E1306C, #C13584);
+  background: radial-gradient(circle at 30% 30%, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
   box-shadow: 0 0 18px rgba(225,48,108,.8);
 }
 
