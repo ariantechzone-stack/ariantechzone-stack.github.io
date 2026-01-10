@@ -29,6 +29,10 @@
   pointer-events: auto;
 }
 
+body.footer-open .floating-contact {
+  bottom: 300px; /* same as before, above footer */
+}
+
 /* ===============================
    FOOTER SOCIAL ICONS - BRAND COLORS
 ================================ */
