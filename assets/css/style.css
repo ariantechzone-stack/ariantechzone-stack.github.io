@@ -1,42 +1,36 @@
 /* ===============================
-   FOOTER SOCIAL ICONS (FIXED)
+   FOOTER SOCIAL ICONS - BRAND COLORS
 ================================ */
-
 .footer-socials {
   display: flex;
   justify-content: center;
   gap: 20px;
   margin-top: 28px;
-  pointer-events: auto;
 }
 
-/* Circle */
+/* Circle wrapper for all icons */
 .footer-socials a {
-  width: 64px;
+  width: 64px;                 /* Circle size */
   height: 64px;
-
   display: flex;
   align-items: center;
   justify-content: center;
 
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.12);
-
+  border-radius: 50%;           /* Perfect circle */
   text-decoration: none;
-  color: #fff;
-
-  pointer-events: auto;
+  color: #fff;                  /* default icon color */
+  font-size: 1.8rem;            /* icon size */
   cursor: pointer;
 
   transition:
-    transform 0.25s ease,
-    background 0.25s ease,
-    box-shadow 0.25s ease;
+    transform 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
-/* IMPORTANT — scale the ICON */
+/* Scale icon inside */
 .footer-socials a i {
-  font-size: 1.9rem;   /* THIS is what was missing */
+  font-size: 1.8rem;
   line-height: 1;
 }
 
@@ -44,13 +38,39 @@
 .footer-socials a.fiverr-icon {
   font-size: 1.2rem;
   font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: #1dbf73; /* Fiverr green */
 }
 
-/* Hover */
+/* Brand colors for each platform */
+.footer-socials a.instagram {
+  background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af);
+  color: #fff;
+}
+
+.footer-socials a.pinterest {
+  background: #e60023; /* Pinterest red */
+  color: #fff;
+}
+
+.footer-socials a.github {
+  background: #000; /* GitHub black */
+  color: #fff;
+}
+
+.footer-socials a.linkedin {
+  background: #0a66c2; /* LinkedIn blue */
+  color: #fff;
+}
+
+/* Hover effect for all icons */
 .footer-socials a:hover {
-  transform: translateY(-6px) scale(1.08);
-  background: rgba(255, 255, 255, 0.22);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  transform: translateY(-6px) scale(1.1);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+  filter: brightness(1.2); /* brightens colors slightly */
 }
 
 /* ===============================
