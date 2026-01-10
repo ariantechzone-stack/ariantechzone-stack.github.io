@@ -238,32 +238,7 @@ nav ul {
   object-fit: cover;
   border-radius: 14px;
 }
-/* ===============================
-   FLOATING CONTACT BUTTON
-================================ */
-.floating-contact {
-  position: fixed;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 100;
-   
-transition:
-    bottom 0.45s ease,
-    transform 0.3s ease,
-    box-shadow 0.3s ease; 
-   
-  padding: 14px 28px;
-  border-radius: 999px;
-  border: none;
-  background: var(--brand-gradient);
-  color: #000;
-  font-weight: 600;
-  cursor: pointer;
-}
 
-body.footer-open .floating-contact {
-  bottom: 280px;
 /* ================= FOOTER ================= */
 .site-footer {
   position: relative; /* NOT fixed */
@@ -342,23 +317,3 @@ body.footer-open .floating-contact {
   filter: brightness(1.2);
 }
 
-/* RIGHT: Floating Contact Button */
-.floating-contact {
-  padding: 14px 28px;
-  border-radius: 999px;
-  border: none;
-  background: var(--brand-gradient);
-  color: #000;
-  font-weight: 600;
-  cursor: pointer;
-
-  opacity: 0;           /* hidden initially */
-  pointer-events: none; /* not clickable until shown */
-  transition: opacity 0.6s ease, transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Show button dynamically */
-.floating-contact.show {
-  opacity: 1;
-  pointer-events: auto;
-}
