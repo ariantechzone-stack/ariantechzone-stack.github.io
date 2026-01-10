@@ -1,3 +1,42 @@
+/* ===============================
+   FLOATING LINKEDIN
+================================ */
+.floating-linkedin {
+  position: fixed;
+  right: 20px;
+  bottom: 120px;           /* start a bit above bottom */
+  width: 60px;             /* circle size */
+  height: 60px;
+  background: #0a66c2;     /* LinkedIn blue */
+  border-radius: 50%;      /* perfect circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 2rem;         /* icon size */
+  text-decoration: none;
+
+  opacity: 0;               /* initially hidden */
+  transform: translateY(20px) scale(0.9); /* start lower and smaller */
+  transition: 
+    all 0.5s ease;         /* smooth slide and scale */
+  z-index: 10001;
+  cursor: pointer;
+}
+
+/* Show state - appears smoothly */
+.floating-linkedin.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Hover effect */
+.floating-linkedin:hover {
+  transform: translateY(-4px) scale(1.1);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+  filter: brightness(1.2); /* slightly brighten */
+}
+
 /* Floating Contact Button - initially hidden */
 .floating-contact {
   position: fixed;
