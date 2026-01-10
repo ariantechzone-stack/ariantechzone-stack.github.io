@@ -55,34 +55,18 @@ description: "Portfolio of Arian – modern design, social media creatives, and 
 
 <section id="projects" class="projects">
   <h2>My Projects</h2>
-<div class="project-cards">
-  {% if site.data.projects and site.data.projects.size > 0 %}
+  <div class="project-cards">
     {% for project in site.data.projects %}
       <div class="project-card">
         {% if project.image %}
-          <img 
-            src="{{ project.image | relative_url }}" 
-            alt="{{ project.name | default: 'Project preview' }}">
+          <img src="{{ project.image | relative_url }}" alt="{{ project.name }}">
         {% endif %}
         <h3>{{ project.name }}</h3>
         <p>{{ project.description }}</p>
         {% if project.link %}
-          <a 
-            href="{{ project.link }}" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            class="btn">
-            View Project
-          </a>
+          <a href="{{ project.link }}" target="_blank" rel="noopener noreferrer">View Project</a>
         {% endif %}
       </div>
     {% endfor %}
-  {% else %}
-    <p style="text-align:center; opacity:0.7;">
-      Projects coming soon.
-    </p>
-  {% endif %}
-</div>
-
+  </div>
 </section>
-
