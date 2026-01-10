@@ -1,3 +1,7 @@
+body {
+  padding-bottom: 280px; /* same as footer height */
+}
+
 /* Floating Contact Button - initially hidden */
 .floating-contact {
   position: fixed;
