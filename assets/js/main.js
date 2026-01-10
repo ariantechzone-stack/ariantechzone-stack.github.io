@@ -18,7 +18,10 @@ function toggleFooter(force = null) {
   footerOpen = force === null ? !footerOpen : force;
   footer.classList.toggle('footer-open', footerOpen);
   body.classList.toggle('footer-open', footerOpen);
-  if (contactBtn) contactBtn.textContent = footerOpen ? 'Close' : 'Contact Me';
+
+  if (contactBtn) {
+    contactBtn.textContent = footerOpen ? 'Close' : 'Contact Me';
+  }
 }
 
 contactBtn?.addEventListener('click', () => toggleFooter());
@@ -28,13 +31,6 @@ navContact?.addEventListener('click', e => {
   contactBtn?.scrollIntoView({ behavior: 'smooth' });
 });
 
-// Close on outside click / ESC
-document.addEventListener('click', e => {
-  if (!footerOpen) return;
-  if (footer.contains(e.target)) return;
-  if (contactBtn?.contains(e.target)) return;
-  toggleFooter(false);
-});
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') toggleFooter(false);
 });
