@@ -126,13 +126,8 @@ description: "Portfolio of Arian – modern design, social media creatives, and 
       {% for project in site.data.projects %}
       <article class="project-card">
 
-        {% if project.image %}
-        <div class="project-image">
-          <img
-            src="{{ project.image | relative_url }}"
-            alt="{{ project.name }} preview">
-        </div>
-        {% endif %}
+    <div class="project-image gradient-{{ forloop.index }}"></div>
+
 
         <div class="project-content">
           <h3>{{ project.name }}</h3>
