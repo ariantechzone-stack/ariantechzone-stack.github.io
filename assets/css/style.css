@@ -1,6 +1,7 @@
 body.footer-open {
   padding-bottom: 260px;
 }
+
 /* ===============================
    ROOT VARIABLES
 ================================ */
@@ -131,12 +132,10 @@ nav a:hover::after {
 .project-cards {
   max-width: 1200px;
   margin: auto;
-  padding: 0 20px 120px;
+  padding: 0 20px clamp(140px, 20vh, 220px);
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 32px;
-  padding-bottom: clamp(140px, 20vh, 220px);
-}
 }
 
 .project-card {
@@ -163,36 +162,8 @@ nav a:hover::after {
   margin-bottom: 1rem;
 }
 
-.project-card h3 {
-  margin-bottom: 0.6rem;
-}
-
-.project-card p {
-  color: var(--text-muted);
-  margin-bottom: 1.2rem;
-}
-
-.project-card a {
-  margin-top: auto;
-  align-self: center;
-  padding: 0.65rem 1.6rem;
-  border-radius: 999px;
-  background: var(--accent-grad);
-  color: #fff;
-  font-weight: 600;
-  font-size: 0.9rem;
-  text-decoration: none;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-box-shadow: 0 6px 18px rgba(56,189,248,0.35);
-}
-
-.project-card a:hover {
- transform: translateY(-3px) scale(1.04);
-  box-shadow: 0 14px 36px rgba(56,189,248,0.55);
-}
-
 /* ===============================
-   FOOTER BASE (HIDDEN)
+   FOOTER
 ================================ */
 .site-footer {
   position: fixed;
@@ -201,147 +172,18 @@ box-shadow: 0 6px 18px rgba(56,189,248,0.35);
   width: 100%;
   background: rgba(2, 6, 23, 0.88);
   backdrop-filter: blur(22px);
-  transform: translateY(100%); /* fully hidden */
+  transform: translateY(100%);
   transition: transform 0.55s cubic-bezier(.22,.61,.36,1);
   z-index: 9999;
   pointer-events: none;
-  touch-action: pan-y;
 }
 
-}
-
-/* ===============================
-   FOOTER READY (peek state)
-   → shows Contact button only
-================================ */
 .site-footer.footer-ready {
   transform: translateY(calc(100% - 90px));
   pointer-events: auto;
 }
 
-/* ===============================
-   FOOTER OPEN (full reveal)
-================================ */
 .site-footer.footer-open {
   transform: translateY(0);
   pointer-events: auto;
-}
-
-/* ===============================
-   FOOTER INNER
-================================ */
-.footer-container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 28px 20px 36px;
-  text-align: center;
-}
-
-/* ===============================
-   CONTACT BUTTON
-================================ */
-.contact-btn {
-  display: inline-block;
-  margin: 0 auto 18px;
-  padding: 14px 38px;
-  border-radius: 999px;
-  border: none;
-  background: linear-gradient(135deg, #38bdf8, #818cf8);
-  color: #000;
-  font-weight: 600;
-  font-size: 0.95rem;
-  cursor: pointer;
-  box-shadow: 0 18px 46px rgba(56,189,248,.45);
-  transition: transform .25s ease, box-shadow .25s ease;
-}
-
-.contact-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 24px 60px rgba(56,189,248,.6);
-}
-
-/* ===============================
-   CONTACT REVEAL (HIDDEN BY DEFAULT)
-================================ */
-.contact-reveal {
-  opacity: 0;
-  transform: translateY(16px);
-  pointer-events: none;
-  transition: opacity .35s ease, transform .35s ease;
-}
-
-/* SHOW WHEN FOOTER OPEN */
-.site-footer.footer-open .contact-reveal {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-
-/* ===============================
-   SOCIAL ICONS
-================================ */
-.footer-socials {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 22px;
-}
-
-main {
-  padding-bottom: 160px;
-}
-
-.footer-socials a {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  background: rgba(255,255,255,0.06);
-  color: #fff;
-  text-decoration: none;
-  transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
-}
-
-/* Individual platform glow */
-.footer-socials a:hover {
-  transform: translateY(-5px) scale(1.12);
-}
-
-/* Instagram */
-.footer-socials a[aria-label="Instagram"]:hover {
-  background: radial-gradient(circle, #E1306C, #C13584);
-  box-shadow: 0 0 18px rgba(225,48,108,.8);
-}
-
-/* Pinterest */
-.footer-socials a[aria-label="Pinterest"]:hover {
-  background: radial-gradient(circle, #ff4b4b, #e60023);
-  box-shadow: 0 0 18px rgba(230,0,35,.85);
-}
-
-/* GitHub */
-.footer-socials a[aria-label="GitHub"]:hover {
-  background: #ffffff;
-  color: #000;
-  box-shadow: 0 0 22px rgba(255,255,255,.9);
-}
-
-/* LinkedIn */
-.footer-socials a[aria-label="LinkedIn"]:hover {
-  background: #0a66c2;
-  box-shadow: 0 0 18px rgba(10,102,194,.9);
-}
-
-/* Fiverr */
-.footer-socials a.fiverr-icon:hover {
-  background: radial-gradient(circle, #1dbf73, #0fa958);
-  box-shadow: 0 0 18px rgba(29,191,115,.9);
-}
-
-/* ===============================
-   SMALL HEIGHT FIX
-================================ */
-@media (max-height: 700px) {
 }
