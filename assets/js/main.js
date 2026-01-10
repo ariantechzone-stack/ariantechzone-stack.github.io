@@ -4,72 +4,65 @@
 const body = document.body;
 const footer = document.querySelector('.site-footer');
 const contactBtn = document.getElementById('contactToggle');
-const contactReveal = document.querySelector('.contact-reveal');
 const navContact = document.querySelector('nav a[href="#contact"]');
 const linkedin = document.querySelector('.floating-linkedin');
 const skillsSection = document.querySelector('#skills');
-const hero = document.querySelector('.hero');
+const heroInner = document.querySelector('.hero-inner');
 
 let footerOpen = false;
 
 // ===============================
-// FOOTER TOGGLE FUNCTION
+// FOOTER TOGGLE
 // ===============================
-function toggleFooter(open = null) {
-  footerOpen = open === null ? !footerOpen : open;
+function toggleFooter(force = null) {
+  footerOpen = force === null ? !footerOpen : force;
   footer.classList.toggle('footer-open', footerOpen);
   body.classList.toggle('footer-open', footerOpen);
-  if (contactReveal) contactReveal.setAttribute('aria-hidden', !footerOpen);
   if (contactBtn) contactBtn.textContent = footerOpen ? 'Close' : 'Contact Me';
 }
 
-// ===============================
-// CONTACT BUTTON & NAV LINK
-// ===============================
 contactBtn?.addEventListener('click', () => toggleFooter());
 navContact?.addEventListener('click', e => {
   e.preventDefault();
   toggleFooter(true);
-  contactBtn.scrollIntoView({ behavior: 'smooth' });
+  contactBtn?.scrollIntoView({ behavior: 'smooth' });
 });
 
-// ===============================
-// CLOSE FOOTER (ESC / CLICK OUTSIDE)
-// ===============================
+// Close on outside click / ESC
 document.addEventListener('click', e => {
-  if (footerOpen && !footer.contains(e.target) && e.target !== contactBtn) toggleFooter(false);
+  if (!footerOpen) return;
+  if (footer.contains(e.target)) return;
+  if (contactBtn?.contains(e.target)) return;
+  toggleFooter(false);
 });
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') toggleFooter(false);
 });
 
 // ===============================
-// MICRO SPRING EFFECT FOR BUTTON
+// TILT EFFECT (CSS VARIABLE SAFE)
 // ===============================
-contactBtn?.addEventListener('mousedown', () => contactBtn.style.transform = 'scale(0.94)');
-contactBtn?.addEventListener('mouseup', () => contactBtn.style.transform = 'scale(1)');
-contactBtn?.addEventListener('mouseleave', () => contactBtn.style.transform = 'scale(1)');
-
-// ===============================
-// 3D TILT EFFECT
-// ===============================
-function addTiltEffect(selector, translateY = 0) {
+function addTilt(selector, strength = 18) {
   document.querySelectorAll(selector).forEach(card => {
     card.addEventListener('mousemove', e => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
-      card.style.transform = `rotateX(${-y/18}deg) rotateY(${x/18}deg) translateY(${translateY}px)`;
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left - r.width / 2) / strength;
+      const y = (e.clientY - r.top - r.height / 2) / strength;
+      card.style.setProperty('--tilt-x', `${-y}deg`);
+      card.style.setProperty('--tilt-y', `${x}deg`);
     });
-    card.addEventListener('mouseleave', () => card.style.transform = '');
+    card.addEventListener('mouseleave', () => {
+      card.style.setProperty('--tilt-x', `0deg`);
+      card.style.setProperty('--tilt-y', `0deg`);
+    });
   });
 }
 
-addTiltEffect('.project-card', -6);
-addTiltEffect('.skill-card', -4);
+addTilt('.project-card');
+addTilt('.skill-card', 22);
 
 // ===============================
-// FLOATING LINKEDIN
+// FLOATING LINKEDIN VISIBILITY
 // ===============================
 if (linkedin && skillsSection) {
   window.addEventListener('scroll', () => {
@@ -79,14 +72,14 @@ if (linkedin && skillsSection) {
 }
 
 // ===============================
-// HERO PARALLAX
+// HERO PARALLAX (SAFE)
 // ===============================
-if (hero) {
+if (heroInner) {
   let ticking = false;
   window.addEventListener('scroll', () => {
     if (!ticking) {
-      window.requestAnimationFrame(() => {
-        hero.style.transform = `translateY(${window.scrollY * 0.08}px)`;
+      requestAnimationFrame(() => {
+        heroInner.style.transform = `translateY(${window.scrollY * 0.06}px)`;
         ticking = false;
       });
       ticking = true;
