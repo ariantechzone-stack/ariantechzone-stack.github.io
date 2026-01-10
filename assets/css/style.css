@@ -492,20 +492,20 @@ nav ul {
 
 /* Different gradients per card */
 .gradient-1 {
-  background-image: linear-gradient(135deg, #7dd3fc, #818cf8);
+  background: linear-gradient(135deg, #833ab4, #fd1d1d);
 }
 
 .gradient-2 {
-  background-image: linear-gradient(135deg, #f472b6, #fb7185);
+  background: linear-gradient(135deg, #405de6, #5851db);
 }
 
 .gradient-3 {
-  background-image: linear-gradient(135deg, #34d399, #22d3ee);
+  background: linear-gradient(135deg, #f77737, #fcaf45);
+}
+.project-card:hover .project-image {
+  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
 }
 
-.gradient-4 {
-  background-image: linear-gradient(135deg, #facc15, #fb923c);
-}
 
 /* Smooth gradient animation */
 @keyframes gradientMove {
