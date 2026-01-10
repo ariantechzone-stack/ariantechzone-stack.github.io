@@ -152,15 +152,12 @@ nav ul {
 
 .footer-logo {
   width: 32px;
-  height: auto;
 }
 
 .footer-right {
   display: flex;
-  gap: 16px;
   align-items: center;
-  flex-wrap: wrap;
-  justify-content: flex-end; /* ensures icons stick to right */
+  gap: 16px;
 }
 
 /* Circle social icons */
@@ -193,3 +190,13 @@ nav ul {
 .footer-right a.github { background: #000; }
 .footer-right a.linkedin { background: #0a66c2; }
 .footer-right a.fiverr-icon { background: #1dbf73; font-weight: 800; }
+
+.footer-container {
+  max-width: 1200px;          /* SAME as navbar */
+  margin: 0 auto;             /* centers content */
+  padding: 20px 24px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
