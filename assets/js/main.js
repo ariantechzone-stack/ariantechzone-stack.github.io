@@ -23,6 +23,8 @@ let footerOpen = false;
 // FOOTER VISIBILITY (SCROLL)
 // ===============================
 function handleFooterVisibility() {
+  if (!footer) return;
+
   const scrollBottom =
     window.scrollY + window.innerHeight >=
     document.documentElement.scrollHeight - 40;
@@ -48,8 +50,7 @@ handleFooterVisibility();
 contactBtn?.addEventListener('click', e => {
   e.stopPropagation();
 
-  // Prevent opening if footer not allowed
-  if (!footer.classList.contains('footer-ready')) return;
+  if (!footer?.classList.contains('footer-ready')) return;
 
   footerOpen = !footerOpen;
   footer.classList.toggle('footer-open', footerOpen);
@@ -65,7 +66,14 @@ contactBtn?.addEventListener('click', e => {
 // CLOSE FOOTER (ESC / OUTSIDE)
 // ===============================
 document.addEventListener('click', e => {
-  if (footerOpen && !footer.contains(e.target)) closeFooter();
+  if (
+    footerOpen &&
+    footer &&
+    e.target !== contactBtn &&
+    !footer.contains(e.target)
+  ) {
+    closeFooter();
+  }
 });
 
 document.addEventListener('keydown', e => {
@@ -74,6 +82,8 @@ document.addEventListener('keydown', e => {
 
 function closeFooter() {
   footerOpen = false;
+  if (!footer || !contactBtn) return;
+
   footer.classList.remove('footer-open');
   body.classList.remove('footer-open');
   contactBtn.setAttribute('aria-expanded', 'false');
@@ -105,7 +115,7 @@ document.querySelectorAll('.project-card').forEach(card => {
     const y = e.clientY - r.top - r.height / 2;
 
     card.style.transform =
-      `rotateX(${-y / 18}deg) rotateY(${x / 18}deg) translateY(-6px)`;
+      `rotateX(${-y / 18}deg) rotateY(${x / 18}deg)`; // removed translateY to avoid CSS conflict
   });
 
   card.addEventListener('mouseleave', () => {
@@ -119,10 +129,7 @@ document.querySelectorAll('.project-card').forEach(card => {
 if (linkedin && skillsSection) {
   window.addEventListener('scroll', () => {
     const rect = skillsSection.getBoundingClientRect();
-    linkedin.classList.toggle(
-      'show',
-      rect.top < window.innerHeight * 0.6
-    );
+    linkedin.classList.toggle('show', rect.top < window.innerHeight * 0.6);
   });
 }
 
@@ -134,14 +141,14 @@ if (hero) {
   window.addEventListener('scroll', () => {
     if (!ticking) {
       window.requestAnimationFrame(() => {
-        hero.style.transform =
-          `translateY(${window.scrollY * 0.08}px)`;
+        hero.style.transform = `translateY(${window.scrollY * 0.08}px)`;
         ticking = false;
       });
       ticking = true;
     }
   });
 }
+
 // ===============================
 // SWIPE DOWN TO CLOSE (MOBILE)
 // ===============================
@@ -152,14 +159,12 @@ let isSwipingFooter = false;
 if (footer) {
   footer.addEventListener('touchstart', e => {
     if (!footerOpen) return;
-
     touchStartY = e.touches[0].clientY;
     isSwipingFooter = true;
   }, { passive: true });
 
   footer.addEventListener('touchmove', e => {
     if (!isSwipingFooter || !footerOpen) return;
-
     touchCurrentY = e.touches[0].clientY;
     const deltaY = touchCurrentY - touchStartY;
 
@@ -170,15 +175,13 @@ if (footer) {
 
   footer.addEventListener('touchend', () => {
     if (!isSwipingFooter || !footerOpen) return;
-
     const swipeDistance = touchCurrentY - touchStartY;
 
-    footer.style.transform = '';
+    // Reset transform safely
+    footer.style.transform = footerOpen ? 'translateY(0)' : '';
 
-    // Threshold to close
-    if (swipeDistance > 80) {
-      closeFooter();
-    }
+    // Close if swipe passed threshold
+    if (swipeDistance > 80) closeFooter();
 
     isSwipingFooter = false;
     touchStartY = 0;
