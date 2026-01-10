@@ -114,31 +114,44 @@ description: "Portfolio of Arian – modern design, social media creatives, and 
 ================================ -->
 <section id="projects" class="projects">
   <div class="container">
-    <h2>My Projects</h2>
 
-    <div class="project-cards">
+    <div class="section-header">
+      <h2>Projects</h2>
+      <p class="section-subtitle">
+        A selection of my recent design and web work.
+      </p>
+    </div>
+
+    <div class="projects-grid">
       {% for project in site.data.projects %}
-        <div class="project-card">
-          {% if project.image %}
-            <img
-              src="{{ project.image | relative_url }}"
-              alt="{{ project.name }} project preview">
-          {% endif %}
+      <article class="project-card">
 
+        {% if project.image %}
+        <div class="project-image">
+          <img
+            src="{{ project.image | relative_url }}"
+            alt="{{ project.name }} preview">
+        </div>
+        {% endif %}
+
+        <div class="project-content">
           <h3>{{ project.name }}</h3>
           <p>{{ project.description }}</p>
 
           {% if project.link %}
-            <a
-              href="{{ project.link }}"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="View {{ project.name }} project">
-              View Project
-            </a>
+          <a
+            href="{{ project.link }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-link">
+            View Project →
+          </a>
           {% endif %}
         </div>
+
+      </article>
       {% endfor %}
     </div>
+
   </div>
 </section>
