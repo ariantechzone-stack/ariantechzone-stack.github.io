@@ -4,15 +4,16 @@
   padding: 20px 40px;
   width: 100%;
   display: flex;
-  justify-content: space-between; /* left & right */
+  justify-content: space-between; /* left & right sections */
   align-items: center;            /* vertical alignment */
   box-sizing: border-box;
+  flex-wrap: wrap;                /* allows wrapping on very small screens */
 }
 
 .footer-left {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 12px; /* space between logo and copyright */
 }
 
 .footer-logo {
@@ -20,14 +21,15 @@
   height: auto;
 }
 
-.footer-socials {
+.footer-right {
   display: flex;
-  align-items: center;
   gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 /* Circle social icons */
-.footer-socials a {
+.footer-right a {
   width: 60px;
   height: 60px;
   display: flex;
@@ -40,22 +42,22 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
 }
 
-.footer-socials a i {
+.footer-right a i {
   font-size: 2rem;
 }
 
-.footer-socials a:hover {
+.footer-right a:hover {
   transform: translateY(-6px) scale(1.1);
   box-shadow: 0 12px 30px rgba(0,0,0,0.35);
   filter: brightness(1.2);
 }
 
 /* Brand colors */
-.footer-socials a.instagram { background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af); }
-.footer-socials a.pinterest { background: #e60023; }
-.footer-socials a.github { background: #000; }
-.footer-socials a.linkedin { background: #0a66c2; }
-.footer-socials a.fiverr-icon { background: #1dbf73; font-weight: 800; }
+.footer-right a.instagram { background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af); }
+.footer-right a.pinterest { background: #e60023; }
+.footer-right a.github { background: #000; }
+.footer-right a.linkedin { background: #0a66c2; }
+.footer-right a.fiverr-icon { background: #1dbf73; font-weight: 800; }
 
 
 /* ===============================
