@@ -23,19 +23,39 @@ description: "Portfolio of Arian – modern design, social media creatives, and 
      ABOUT SECTION
 ================================ -->
 <section id="about" class="about">
-  <div class="container">
-    <h2>About Me</h2>
-    <p>
-      Hi, I’m <strong>Arian</strong> — a creative designer focused on building clean,
-      modern, and user-friendly digital experiences.
-    </p>
-    <p>
-      I enjoy working on visual design, layouts, and branding that feel simple,
-      professional, and effective. I’m continuously learning and improving my skills,
-      with a strong interest in design systems, social media graphics, and web aesthetics.
-    </p>
+  <div class="container about-grid">
+
+    <!-- Left: Text -->
+    <div class="about-text">
+      <h2>About Me</h2>
+
+      <p class="about-intro">
+        Hi, I’m <strong>Arian</strong> — a creative designer focused on building
+        clean, modern, and user-friendly digital experiences.
+      </p>
+
+      <p>
+        I enjoy working on visual design, layouts, and branding that feel simple,
+        professional, and effective. I’m continuously learning and improving my
+        skills, with a strong interest in design systems, social media graphics,
+        and web aesthetics.
+      </p>
+    </div>
+
+    <!-- Right: Highlight Card -->
+    <div class="about-card">
+      <h3>What I Do</h3>
+      <ul>
+        <li>🎨 Graphic & Social Media Design</li>
+        <li>🧱 Clean Layout & Visual Systems</li>
+        <li>💻 Basic Web Design (HTML, CSS, Jekyll)</li>
+        <li>📊 Accurate Data Entry & Formatting</li>
+      </ul>
+    </div>
+
   </div>
 </section>
+
 
 <!-- ===============================
      SKILLS SECTION
