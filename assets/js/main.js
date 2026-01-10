@@ -85,3 +85,15 @@ if (heroInner) {
 body.footer-open .floating-contact {
   bottom: 300px; /* same as before, above footer */
 }
+// Show contact button after reaching Skills section
+window.addEventListener('scroll', () => {
+  if (!contactBtn || !skillsSection) return;
+
+  const rect = skillsSection.getBoundingClientRect();
+  // Show when top of skills section is inside 60% of viewport
+  if (rect.top < window.innerHeight * 0.6) {
+    contactBtn.classList.add('show');
+  } else {
+    contactBtn.classList.remove('show');
+  }
+});
