@@ -82,3 +82,6 @@ if (heroInner) {
     }
   });
 }
+body.footer-open .floating-contact {
+  bottom: 300px; /* same as before, above footer */
+}
