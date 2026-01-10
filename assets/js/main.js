@@ -97,7 +97,7 @@ window.addEventListener('scroll', () => {
     contactBtn.classList.remove('show');
   }
 });
-// Floating contact button appears after skills section
+
 const floatingContact = document.querySelector('.floating-contact');
 const skillsSection = document.querySelector('#skills');
 
@@ -105,9 +105,13 @@ window.addEventListener('scroll', () => {
   if (!floatingContact || !skillsSection) return;
 
   const rect = skillsSection.getBoundingClientRect();
+
   if (rect.top < window.innerHeight * 0.6) {
+    // Slide in smoothly
     floatingContact.classList.add('show');
   } else {
+    // Slide out smoothly
     floatingContact.classList.remove('show');
   }
 });
+
