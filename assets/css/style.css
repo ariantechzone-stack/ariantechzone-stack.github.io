@@ -1,4 +1,72 @@
 /* ===============================
+   ABOUT SECTION
+================================ */
+
+.about {
+  padding: 100px 0;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 48px;
+  align-items: center;
+}
+
+/* Text side */
+.about-text h2 {
+  font-size: 2.2rem;
+  margin-bottom: 16px;
+}
+
+.about-intro {
+  font-size: 1.05rem;
+  color: var(--text-main);
+  margin-bottom: 14px;
+}
+
+.about-text p {
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* Card side */
+.about-card {
+  background: rgba(255,255,255,0.06);
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
+
+.about-card h3 {
+  margin-bottom: 16px;
+  font-size: 1.3rem;
+}
+
+.about-card ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.about-card li {
+  font-size: 0.95rem;
+  color: var(--text-main);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .about-card {
+    margin-top: 24px;
+  }
+}
+/* ===============================
    HERO SECTION
 ================================ */
 
