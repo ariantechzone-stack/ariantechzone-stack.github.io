@@ -337,3 +337,27 @@ transition:
 body.footer-open .floating-contact {
   bottom: 300px; /* slightly higher than footer height */
 }
+.footer-container {
+  display: flex;
+  justify-content: space-between; /* left & right blocks */
+  align-items: center;            /* vertical alignment */
+  padding: 20px 40px;
+  flex-wrap: wrap;                /* responsive for small screens */
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* space between logo and text */
+}
+
+.footer-logo {
+  width: 32px; /* adjust logo size */
+  height: auto;
+}
+
+.footer-right {
+  display: flex;
+  gap: 16px; /* spacing between social icons */
+  align-items: center;
+}
