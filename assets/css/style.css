@@ -208,8 +208,13 @@ body.footer-open {
   left: 50%;
   transform: translateX(-50%);
   z-index: 10002;
-  transition: bottom 0.45s ease;
-  padding: 14px 36px;
+   
+transition:
+    bottom 0.45s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease; 
+   
+  padding: 14px 28px;
   border-radius: 999px;
   border: none;
   background: var(--brand-gradient);
