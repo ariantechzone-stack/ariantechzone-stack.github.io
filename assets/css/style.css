@@ -135,20 +135,15 @@ nav ul {
 .site-footer {
   background: rgba(2,6,23,0.9);
   backdrop-filter: blur(20px);
-  padding: 20px 40px;
   width: 100%;
-  display: flex;
-  justify-content: space-between; /* left & right sections */
-  align-items: center;            /* vertically center items */
-  box-sizing: border-box;
-  flex-wrap: wrap;                /* responsive wrap */
 }
 
 .footer-left {
   display: flex;
   align-items: center;
-  gap: 12px; /* space between logo and text */
+  gap: 12px;               /* space between logo & text */
 }
+
 
 .footer-logo {
   width: 32px;
@@ -157,7 +152,7 @@ nav ul {
 .footer-right {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 16px;               /* space between icons */
 }
 
 /* Circle social icons */
@@ -192,11 +187,12 @@ nav ul {
 .footer-right a.fiverr-icon { background: #1dbf73; font-weight: 800; }
 
 .footer-container {
-  max-width: 1200px;          /* SAME as navbar */
-  margin: 0 auto;             /* centers content */
+  max-width: 1200px;        /* same as navbar */
+  margin: 0 auto;           /* center content */
   padding: 20px 24px;
 
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* ⬅️ creates the big gap */
   align-items: center;
 }
+
