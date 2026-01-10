@@ -496,7 +496,7 @@ nav ul {
 }
 
 .gradient-2 {
-  background: linear-gradient(135deg, #405de6, #5851db);
+  background: linear-gradient(#ffffff, #ffffff, #0052D4);
 }
 
 .gradient-3 {
@@ -505,7 +505,6 @@ nav ul {
 .project-card:hover .project-image {
   box-shadow: 0 20px 40px rgba(0,0,0,0.35);
 }
-
 
 /* Smooth gradient animation */
 @keyframes gradientMove {
