@@ -145,6 +145,7 @@ body.footer-open {
   text-align: center;
   padding: 28px 20px 36px;
   z-index: 9999;
+  height: 260px;
 }
 
 .site-footer.footer-ready {
@@ -207,6 +208,7 @@ body.footer-open {
   left: 50%;
   transform: translateX(-50%);
   z-index: 10002;
+  transition: bottom 0.45s ease;
   padding: 14px 36px;
   border-radius: 999px;
   border: none;
@@ -214,4 +216,8 @@ body.footer-open {
   color: #000;
   font-weight: 600;
   cursor: pointer;
+}
+/* When footer is open, lift button above it */
+body.footer-open .floating-contact {
+  bottom: 300px; /* slightly higher than footer height */
 }
