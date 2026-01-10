@@ -10,5 +10,5 @@
 
 - name: "Web UI Design"
   description: "Clean HTML & CSS layouts"
-  image: "https://github.com/ariantechzone-stack"
-
+  image: "/assets/images/p3.jpg"   # must be an actual image
+  link: "https://github.com/ariantechzone-stack"
