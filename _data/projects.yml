@@ -1,14 +1,14 @@
 - name: "Instagram Creatives"
   description: "Modern Instagram posts and carousels"
-  image: "/assets/images/p1.jpg"
+  image: "https://placeholdpicsum.dev/600x400"
   link: "https://www.fiverr.com/r_kumar101/modern-instagram-posts-and-social-media-graphics"
 
 - name: "Pinterest Designs"
   description: "Clean Pinterest pin designs"
-  image: "/assets/images/p2.jpg"
+  image: "https://placeholdpicsum.dev/610x410"
   link: "https://pinterest.com/ariantech"
 
 - name: "Web UI Design"
   description: "Clean HTML & CSS layouts"
-  image: "/assets/images/p3.jpg"   # must be an actual image
+  image: "https://placeholdpicsum.dev/620x420"
   link: "https://github.com/ariantechzone-stack"
