@@ -496,11 +496,11 @@ nav ul {
 }
 
 .gradient-2 {
-  background: linear-gradient(135deg, #833ab4, #fd1d1d);
+  background: linear-gradient(135deg, #ff00cc, #333399);
 }
 
 .gradient-3 {
-  background: linear-gradient(135deg, #ff00cc, #333399);
+  background: linear-gradient(135deg, #833ab4, #fd1d1d);
 }
 .project-card:hover .project-image {
   box-shadow: 0 20px 40px rgba(0,0,0,0.35);
