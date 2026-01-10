@@ -212,7 +212,7 @@ nav a:hover::after {
    FOOTER
 ================================ */
 body.footer-open {
-  padding-bottom: 280px;
+  padding-bottom: 280px; /* adjusts space when footer is open */
 }
 
 .site-footer {
@@ -231,6 +231,7 @@ body.footer-open {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 16px; /* space between button, icons, and text */
 }
 
 .site-footer.footer-ready {
@@ -243,10 +244,11 @@ body.footer-open {
   pointer-events: auto;
 }
 
-/* CONTACT BUTTON */
+/* ===============================
+   CONTACT BUTTON
+================================ */
 .contact-btn {
   display: inline-block;
-  margin-bottom: 16px;
   padding: 14px 38px;
   border-radius: 999px;
   border: none;
@@ -264,24 +266,14 @@ body.footer-open {
   box-shadow: 0 24px 60px rgba(56,189,248,0.6);
 }
 
-/* Footer Email */
-.footer-email {
-  display: block;
-  margin: 12px 0;
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  text-decoration: none;
-}
-.footer-email:hover {
-  color: var(--accent);
-}
-
-/* SOCIAL ICONS */
+/* ===============================
+   SOCIAL ICONS
+================================ */
 .footer-socials {
   display: flex;
   justify-content: center;
   gap: 20px;
-  margin: 16px 0;
+  margin: 12px 0; /* spacing above/below */
 }
 
 .footer-socials a {
@@ -300,59 +292,77 @@ body.footer-open {
   transform: translateY(-5px) scale(1.12);
 }
 
-/* Instagram Gradient */
+/* Individual platform colors */
 .footer-socials a[aria-label="Instagram"]:hover {
-  background: radial-gradient(circle at 30% 30%, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  background: radial-gradient(circle, #E1306C, #C13584);
   box-shadow: 0 0 18px rgba(225,48,108,.8);
 }
 
-/* Pinterest */
 .footer-socials a[aria-label="Pinterest"]:hover {
   background: radial-gradient(circle, #ff4b4b, #e60023);
   box-shadow: 0 0 18px rgba(230,0,35,.85);
 }
 
-/* GitHub */
 .footer-socials a[aria-label="GitHub"]:hover {
   background: #ffffff;
   color: #000;
   box-shadow: 0 0 22px rgba(255,255,255,.9);
 }
 
-/* LinkedIn */
 .footer-socials a[aria-label="LinkedIn"]:hover {
   background: #0a66c2;
   box-shadow: 0 0 18px rgba(10,102,194,.9);
 }
 
-/* Fiverr */
 .footer-socials a.fiverr-icon:hover {
   background: radial-gradient(circle, #1dbf73, #0fa958);
   box-shadow: 0 0 18px rgba(29,191,115,.9);
 }
 
-/* FLOATING LINKEDIN */
+/* ===============================
+   FOOTER EMAIL
+================================ */
+.footer-email {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.footer-email:hover {
+  color: var(--accent);
+}
+
+/* ===============================
+   COPYRIGHT TEXT
+================================ */
+.footer-copy {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 8px; /* spacing below icons */
+}
+
+/* ===============================
+   FLOATING LINKEDIN
+================================ */
 .floating-linkedin {
   position: fixed;
-  top: 40%;
-  right: 20px;
-  z-index: 10000;
-  width: 50px;
-  height: 50px;
+  bottom: 120px; /* above footer */
+  right: 20px; /* right side */
+  z-index: 10000; /* always above footer */
+  width: 48px;
+  height: 48px;
   display: grid;
   place-items: center;
+  border-radius: 50%;
   background: #0a66c2;
   color: #fff;
-  border-radius: 50%;
-  box-shadow: 0 6px 18px rgba(10,102,194,0.4);
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(10,102,194,0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.floating-linkedin i {
-  font-size: 1.2rem;
-}
-
-.floating-linkedin.show {
-  opacity: 1;
-  transform: translateY(0);
+.floating-linkedin:hover {
+  transform: translateY(-4px) scale(1.1);
+  box-shadow: 0 8px 28px rgba(10,102,194,0.8);
 }
