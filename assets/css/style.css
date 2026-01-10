@@ -138,17 +138,16 @@ nav ul {
   padding: 20px 40px;
   width: 100%;
   display: flex;
-  justify-content: space-between; /* left-right alignment */
-  align-items: center;            /* vertical alignment */
-  flex-wrap: wrap;                /* responsive */
+  justify-content: space-between; /* left & right sections */
+  align-items: center;            /* vertically center items */
   box-sizing: border-box;
+  flex-wrap: wrap;                /* responsive wrap */
 }
 
-/* Footer Left (Logo + Copyright) */
 .footer-left {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 12px; /* space between logo and text */
 }
 
 .footer-logo {
@@ -156,15 +155,15 @@ nav ul {
   height: auto;
 }
 
-/* Footer Right (Social Icons) */
 .footer-right {
   display: flex;
   gap: 16px;
   align-items: center;
   flex-wrap: wrap;
+  justify-content: flex-end; /* ensures icons stick to right */
 }
 
-/* Circle Social Icons */
+/* Circle social icons */
 .footer-right a {
   width: 60px;
   height: 60px;
@@ -188,21 +187,9 @@ nav ul {
   filter: brightness(1.2);
 }
 
-/* Brand Colors */
+/* Brand colors */
 .footer-right a.instagram { background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af); }
 .footer-right a.pinterest { background: #e60023; }
 .footer-right a.github { background: #000; }
 .footer-right a.linkedin { background: #0a66c2; }
 .footer-right a.fiverr-icon { background: #1dbf73; font-weight: 800; }
-
-/* ===============================
-   RESPONSIVE
-================================ */
-@media (max-width: 768px) {
-  .footer-left,
-  .footer-right {
-    justify-content: center;
-    width: 100%;
-    margin: 8px 0;
-  }
-}
