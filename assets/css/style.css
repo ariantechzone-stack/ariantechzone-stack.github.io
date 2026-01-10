@@ -244,8 +244,6 @@ body.footer-open {
   transition: transform 0.55s cubic-bezier(.22,.61,.36,1);
   z-index: 9999;
   pointer-events: none;
-  text-align: center;
-  padding: 28px 20px 36px;
 }
 
 .site-footer.footer-ready {
@@ -258,9 +256,21 @@ body.footer-open {
   pointer-events: auto;
 }
 
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 28px; /* spacing between button, socials, and text */
+  align-items: center;
+}
+
+/* ===============================
+   CONTACT BUTTON
+================================ */
 .contact-btn {
-  display: inline-block;
-  margin: 0 auto 12px;
   padding: 14px 38px;
   border-radius: 999px;
   border: none;
@@ -278,18 +288,6 @@ body.footer-open {
   box-shadow: 0 24px 60px rgba(56,189,248,0.6);
 }
 
-.footer-email {
-  display: block;
-  margin-top: 6px;
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  text-decoration: none;
-}
-
-.footer-email:hover {
-  color: var(--accent);
-}
-
 /* ===============================
    SOCIAL ICONS
 ================================ */
@@ -297,7 +295,6 @@ body.footer-open {
   display: flex;
   justify-content: center;
   gap: 20px;
-  margin-top: 16px;
 }
 
 .footer-socials a {
@@ -316,7 +313,7 @@ body.footer-open {
   transform: translateY(-5px) scale(1.12);
 }
 
-/* Individual platform colors */
+/* Platform colors */
 .footer-socials a[aria-label="Instagram"]:hover {
   background: radial-gradient(circle, #E1306C, #C13584);
   box-shadow: 0 0 18px rgba(225,48,108,.8);
@@ -344,12 +341,30 @@ body.footer-open {
 }
 
 /* ===============================
+   FOOTER EMAIL / TEXT
+================================ */
+.footer-email {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.footer-email:hover {
+  color: var(--accent);
+}
+
+.footer-text {
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+/* ===============================
    FLOATING LINKEDIN BUTTON
 ================================ */
 .floating-linkedin {
   position: fixed;
-  right: 24px;
-  bottom: 120px;
+  right: 20px; /* right side */
+  bottom: 120px; /* above footer */
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -357,26 +372,12 @@ body.footer-open {
   place-items: center;
   background: #0a66c2;
   color: #fff;
-  font-size: 1.25rem;
-  z-index: 10000;
-  text-decoration: none;
-  box-shadow: 0 8px 24px rgba(10,102,194,0.6);
-  transition: transform 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease;
-}
-
-.floating-linkedin.show {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
-}
-
-.floating-linkedin:not(.show) {
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(20px);
+  z-index: 10000; /* above footer */
+  box-shadow: 0 0 18px rgba(10,102,194,.9);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
 .floating-linkedin:hover {
-  transform: translateY(-4px) scale(1.12);
-  box-shadow: 0 14px 32px rgba(10,102,194,0.9);
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 0 22px rgba(10,102,194,.95);
 }
