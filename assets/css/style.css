@@ -555,7 +555,7 @@ body {
   color: var(--text-main);
 }
 
-header {
+.site-header {
   background: var(--header-bg);
 }
 
