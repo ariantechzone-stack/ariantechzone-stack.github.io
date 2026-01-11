@@ -192,6 +192,7 @@ header {
   border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
+
 nav {
   max-width: 1200px;
   margin: 0 auto;
@@ -207,6 +208,20 @@ nav h2 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+/* ===============================
+   TEXT LOGO (HEADER)
+================================ */
+.logo {
+  font-weight: 700;
+  font-size: 1.4rem;
+
+  background: var(--brand-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  color: transparent;
+}
+
 
 nav ul {
   display: flex;
@@ -392,7 +407,9 @@ nav ul {
 
 .footer-logo {
   width: 32px;
+  height: auto;
 }
+
 
 .footer-right {
   display: flex;
