@@ -123,7 +123,6 @@
   --bg-main: radial-gradient(circle at top, #0f172a, #020617);
   --header-bg: rgba(2,6,23,0.85);
   --card-bg: rgba(255,255,255,0.06);
-
   --text-main: #ffffff;
   --text-muted: #94a3b8;
 
@@ -139,8 +138,20 @@
   );
 }
 
+/* ===============================
+   LOGO STYLE
+================================ */
+
 .logo {
+  font-weight: 700;
+  font-size: 1.4rem;
+
+  background: var(--brand-gradient);
   background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+
   animation: logoGradient 6s ease infinite;
 }
 
@@ -148,6 +159,12 @@
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 16px var(--accent));
+  animation-play-state: paused;
+  transition: filter 0.3s ease;
 }
 
 
@@ -163,6 +180,13 @@
   --accent: #2563eb;
   --brand-gradient: linear-gradient(135deg, #2563eb, #4f46e5);
 }
+
+/* Light theme refinement */
+[data-theme="light"] .logo {
+  filter: drop-shadow(0 0 8px rgba(37, 99, 235, 0.35));
+  animation-duration: 8s;
+}
+
 
 /* ===============================
    RESET
