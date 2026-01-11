@@ -128,6 +128,8 @@
   --text-muted: #94a3b8;
 
   --accent: #38bdf8;
+  --brand-gradient: linear-gradient(135deg, #7dd3fc, #38bdf8, #818cf8);
+
 }
 
 /* Light theme */
@@ -140,6 +142,7 @@
   --text-muted: #475569;
 
   --accent: #2563eb;
+  --brand-gradient: linear-gradient(135deg, #2563eb, #4f46e5);
 }
 
 /* ===============================
