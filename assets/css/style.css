@@ -556,7 +556,8 @@ body {
 }
 
 .site-header {
-  background: var(--header-bg);
+  background: background: var(--card-bg);
+
 }
 
 .skill-card,
