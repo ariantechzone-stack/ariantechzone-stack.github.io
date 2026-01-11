@@ -128,9 +128,28 @@
   --text-muted: #94a3b8;
 
   --accent: #38bdf8;
-  --brand-gradient: linear-gradient(135deg, #7dd3fc, #38bdf8, #818cf8);
-
+ 
+  --brand-gradient: linear-gradient(
+    120deg,
+    #7dd3fc,
+    #38bdf8,
+    #818cf8,
+    #38bdf8,
+    #7dd3fc
+  );
 }
+
+.logo {
+  background-size: 200% 200%;
+  animation: logoGradient 6s ease infinite;
+}
+
+@keyframes logoGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 
 /* Light theme */
 [data-theme="light"] {
@@ -220,6 +239,18 @@ nav h2 {
   -webkit-background-clip: text;
 
   color: transparent;
+}
+/* ===============================
+   LOGO HOVER GLOW
+================================ */
+.logo {
+  position: relative;
+  transition: filter 0.35s ease, transform 0.35s ease;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.45));
+  transform: translateY(-1px);
 }
 
 
