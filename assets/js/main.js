@@ -58,3 +58,36 @@ document.addEventListener('DOMContentLoaded', () => {
     showLinkedIn(); // check on load
   }
 });
+/* ===============================
+   DARK / LIGHT THEME TOGGLE
+================================ */
+
+const toggleBtn = document.getElementById('themeToggle');
+const root = document.documentElement;
+
+// Load saved theme or system preference
+const savedTheme = localStorage.getItem('theme');
+const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+
+if (savedTheme) {
+  root.setAttribute('data-theme', savedTheme);
+} else if (prefersLight) {
+  root.setAttribute('data-theme', 'light');
+}
+
+// Update icon
+function updateIcon() {
+  const icon = toggleBtn.querySelector('i');
+  const isLight = root.getAttribute('data-theme') === 'light';
+
+  icon.className = isLight ? 'fas fa-moon' : 'fas fa-sun';
+}
+
+updateIcon();
+
+toggleBtn.addEventListener('click', () => {
+  const current = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+  root.setAttribute('data-theme', current);
+  localStorage.setItem('theme', current);
+  updateIcon();
+});
